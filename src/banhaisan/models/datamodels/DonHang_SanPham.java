@@ -1,6 +1,6 @@
 package banhaisan.models.datamodels;
 
-public class DonHang_SanPham extends banhaisan.models.datamodels.SanPham {
+public class DonHang_SanPham extends SanPham{
     private String maDonHang;
     private String maSP;
     private int soLuong;

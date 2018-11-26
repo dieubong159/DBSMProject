@@ -1,5 +1,6 @@
 package banhaisan.controllers.dangkythanhvien;
 
+import banhaisan.models.datahandle.NguoiDungAdminService;
 import banhaisan.models.datahandle.NguoiDungThongThuongService;
 import banhaisan.models.datamodels.NguoiDung;
 
@@ -39,10 +40,9 @@ public class DangKyThanhVienServlet extends HttpServlet {
         nguoiDung.setNgaySinh(new java.sql.Date(ngaySinh.getTime()));
         nguoiDung.setMatKhau(request.getParameter("txt-mat-khau"));
 
-        NguoiDungThongThuongService nguoiDungThongThuongs= new NguoiDungThongThuongService();
         NguoiDung nd=null;
         try {
-            nguoiDungThongThuongs.add(nguoiDung);
+            NguoiDungThongThuongService.getInstance().add(nguoiDung);
         } catch (SQLException | ClassNotFoundException e) {
             HttpSession error = request.getSession();
             error.setAttribute("error", e.toString());
@@ -51,8 +51,7 @@ public class DangKyThanhVienServlet extends HttpServlet {
 
     }
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/TrangChu.jsp");
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/DangKi.jsp");
         dispatcher.forward(request,response);
     }
 }
-

@@ -117,11 +117,11 @@
                                     <li style="padding-right: 15pt">
                                         <p style="padding-bottom: 15pt"><strong><a href="tel:+01269220162">0168 xxxx
                                                     xxx</a></strong></p>
-                                        <p>Tổng đài miễn phí</a></p>
+                                        <p>Tổng đài miễn phí</p>
                                     </li>
                                     <li style="padding-right: 15pt">
                                         <p style="padding-bottom: 15pt"><strong><a href="#">CÔNG THỨC</a></strong></p>
-                                        <p>Đảm đang - Khéo léo</a></p>
+                                        <p>Đảm đang - Khéo léo</p>
                                     </li>
                                     <li style="position:relative" class="toyscart toyscart2 cart cart box_1">
                                         <form action="#" method="post" class="last">
@@ -174,6 +174,7 @@
                     </div>
                 </nav>
             </div>
+        </div>
     </header>
 
     <!-- Modal 1-->
@@ -257,7 +258,7 @@
             <div class="clearfix"></div>
             <div class="text-center">
                 <p>TieuDanSeafood.vn sẽ nhắn tin hoặc gọi điện xác nhận đơn hàng trước 07:45 hôm sau</p>
-                <input type="button" value="OK! Về trang chủ" class="buttonorange" style="margin-top: 15px" onclick="window.location.href='TrangChu.jsp'">
+                <input type="button" value="OK! Về trang chủ" class="buttonorange" style="margin-top: 15px" onclick="window.location.href='Webpages.jsp'">
                 <p><a href="Hoadon-Abort.jsp">Hủy đơn hàng</a></p>
             </div>
             <hr>

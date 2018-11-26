@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class DanhMucService extends ConnectDatabase implements Business<DanhMuc>{
+public class DanhMucService extends ConnectDatabase implements Business<DanhMuc> {
     private static final DanhMucService instance = new DanhMucService();
     private DanhMucService(){}
     public static DanhMucService getInstance(){

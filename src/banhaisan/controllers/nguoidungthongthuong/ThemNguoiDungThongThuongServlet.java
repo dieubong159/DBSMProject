@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @WebServlet(name = "ThemNguoiDungThongThuongServlet", urlPatterns = "/Admin/TMNguoiDung")
 public class ThemNguoiDungThongThuongServlet extends HttpServlet {
@@ -38,10 +38,9 @@ public class ThemNguoiDungThongThuongServlet extends HttpServlet {
         nguoiDung.setNgaySinh(new java.sql.Date(ngaySinh.getTime()));
         nguoiDung.setMatKhau(request.getParameter("txt-mat-khau"));
 
-        NguoiDungThongThuongService nguoiDungThongThuongs= new NguoiDungThongThuongService();
         NguoiDung nd=null;
         try {
-            nguoiDungThongThuongs.add(nguoiDung);
+            NguoiDungThongThuongService.getInstance().add(nguoiDung);
         } catch (SQLException | ClassNotFoundException e) {
             HttpSession error = request.getSession();
             error.setAttribute("error", e.toString());

@@ -24,9 +24,8 @@ public class XoaNguoiDungThongThuongServlet extends HttpServlet {
         NguoiDung nd = new NguoiDung();
         nd.setMaNguoiDung(idNguoiDung);
         mes += idNguoiDung;
-        NguoiDungThongThuongService nguoiDung = new NguoiDungThongThuongService();
         try {
-            nguoiDung.delete(nd);
+            NguoiDungThongThuongService.getInstance().delete(nd);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
             mes += " " + e.toString();

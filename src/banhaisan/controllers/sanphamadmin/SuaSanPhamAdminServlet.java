@@ -26,7 +26,7 @@ public class SuaSanPhamAdminServlet extends HttpServlet {
             sanPham.setMaSP(request.getParameter("txtMaSP"));
             sanPham.setTenSP(request.getParameter("txtTenSP"));
             sanPham.setGiaSP(Double.parseDouble(request.getParameter("txtGiaSP")));
-            sanPham.setPhanTramKhuyenMai(Float.parseFloat(request.getParameter("txtPhanTramKhuyenMai")));
+            sanPham.setPhanTramKhuyenMai(Integer.parseInt(request.getParameter("txtPhanTramKhuyenMai")));
             sanPham.setXuatXu(request.getParameter("txtXuatXu"));
             sanPham.setMoTa(request.getParameter("txtMoTa"));
             sanPham.setMaDanhMuc(request.getParameter("txtMaDanhMuc"));
@@ -49,7 +49,7 @@ public class SuaSanPhamAdminServlet extends HttpServlet {
         }
         SanPham sp = null;
         try {
-            sp= SanPhamService.getInstance().get(idSanPham);
+            sp=SanPhamService.getInstance().get(idSanPham);
             ArrayList<DanhMuc> danhMucs = DanhMucService.getInstance().getData();
             request.setAttribute("danhMucs",danhMucs);
         }catch (SQLException | ClassNotFoundException e)

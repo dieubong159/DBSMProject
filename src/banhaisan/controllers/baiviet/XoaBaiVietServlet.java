@@ -1,7 +1,9 @@
 package banhaisan.controllers.baiviet;
 
 import banhaisan.models.datahandle.BaiVietService;
+import banhaisan.models.datahandle.NguoiDungThongThuongService;
 import banhaisan.models.datamodels.BaiViet;
+import banhaisan.models.datamodels.NguoiDung;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

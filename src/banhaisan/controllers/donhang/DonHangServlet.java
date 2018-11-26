@@ -3,6 +3,7 @@ package banhaisan.controllers.donhang;
 import banhaisan.models.datahandle.DanhMucService;
 import banhaisan.models.datahandle.DonHangService;
 import banhaisan.models.datamodels.DanhMuc;
+import banhaisan.models.datamodels.DonHang;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 public class DonHangServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try{
-            ArrayList<banhaisan.models.datamodels.DonHang> donHangs = DonHangService.getInstance().getData();
+            ArrayList<DonHang> donHangs = DonHangService.getInstance().getData();
             ArrayList<DanhMuc> danhMucs = DanhMucService.getInstance().getData();
             request.setAttribute("danhMucs",danhMucs);
             request.setAttribute("donHangs",donHangs);

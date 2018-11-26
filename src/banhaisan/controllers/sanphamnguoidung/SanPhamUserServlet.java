@@ -20,9 +20,6 @@ import java.util.ArrayList;
 
 @WebServlet(name = "SanPhamUserServlet", urlPatterns = {"/Products"})
 public class SanPhamUserServlet extends HttpServlet {
-//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//
-//    }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idDanhMuc = request.getParameter("idDM");
         if(idDanhMuc==null)

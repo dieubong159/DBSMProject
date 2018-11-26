@@ -1,9 +1,9 @@
-package banhaisan.controllers.sanphamadmin;
+package banhaisan.controllers.congthucchebien;
 
+import banhaisan.models.datahandle.BaiVietService;
 import banhaisan.models.datahandle.DanhMucService;
-import banhaisan.models.datahandle.SanPhamService;
+import banhaisan.models.datamodels.BaiViet;
 import banhaisan.models.datamodels.DanhMuc;
-import banhaisan.models.datamodels.SanPham;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,32 +15,33 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-@WebServlet(name = "XemCTSanPhamServlet", urlPatterns = "/Admin/CTSanPham")
-public class XemCTSanPhamServlet extends HttpServlet {
+@WebServlet(name = "XemCTBaiVietServlet",urlPatterns = {"/XemCTBaiViet"})
+public class XemCTBaiVietServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String idSanPham = request.getParameter("idSP");
-        if(idSanPham==null)
+        String idBaiViet = request.getParameter("idBV");
+        if(idBaiViet ==null)
         {
             response.setStatus(400);
             return;
         }
-        SanPham sp = null;
+        BaiViet bv = null;
         try {
-            sp=SanPhamService.getInstance().get(idSanPham);
+            bv = BaiVietService.getInstance().get(idBaiViet);
             ArrayList<DanhMuc> danhMucs = DanhMucService.getInstance().getData();
+            ArrayList<BaiViet> baiVietNoiBat = BaiVietService.getInstance().getTop4BaiViet();
             request.setAttribute("danhMucs",danhMucs);
+            request.setAttribute("baiVietNoiBat",baiVietNoiBat);
         }catch (SQLException | ClassNotFoundException e)
         {
             e.printStackTrace();
         }
-        if(sp==null)
+        if(bv==null)
         {
             response.setStatus(400);
             return;
         }
-        request.setAttribute("sanPham",sp);
-
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Admin/ChiTietSanPham.jsp");
+        request.setAttribute("baiViet",bv);
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/congthucchebien.jsp");
         dispatcher.forward(request,response);
     }
 }

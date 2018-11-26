@@ -13,7 +13,7 @@ public class SanPham {
     private Date ngayNhap;
     public SanPham() {    }
 
-    public SanPham(String maSP, String tenSP, double giaSP, int phanTramKhuyenMai, String maDanhMuc, String xuatXu, String moTa, Date ngayNhap) {
+    public SanPham(String maSP, String tenSP, double giaSP, float phanTramKhuyenMai, String maDanhMuc, String xuatXu, String moTa, Date ngayNhap) {
         this.maSP = maSP;
         this.tenSP = tenSP;
         this.giaSP = giaSP;

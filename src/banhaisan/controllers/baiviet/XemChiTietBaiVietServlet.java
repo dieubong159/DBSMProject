@@ -4,6 +4,7 @@ import banhaisan.models.datahandle.BaiVietService;
 import banhaisan.models.datahandle.DanhMucService;
 import banhaisan.models.datamodels.BaiViet;
 import banhaisan.models.datamodels.DanhMuc;
+import banhaisan.models.datamodels.SanPham;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,7 +27,7 @@ public class XemChiTietBaiVietServlet extends HttpServlet {
         }
         BaiViet bv = null;
         try{
-            bv= BaiVietService.getInstance().get(idBaiViet);
+            bv=BaiVietService.getInstance().get(idBaiViet);
             ArrayList<DanhMuc> danhMucs = DanhMucService.getInstance().getData();
             request.setAttribute("danhMucs",danhMucs);
         }catch (SQLException | ClassNotFoundException e)

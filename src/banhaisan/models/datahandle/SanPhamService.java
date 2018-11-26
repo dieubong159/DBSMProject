@@ -1,12 +1,14 @@
 package banhaisan.models.datahandle;
 
+import banhaisan.models.datamodels.SanPham;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 
-public class SanPhamService extends ConnectDatabase implements Business<banhaisan.models.datamodels.SanPham>{
+public class SanPhamService extends ConnectDatabase implements Business<SanPham> {
     private static final SanPhamService instance = new SanPhamService();
     private SanPhamService(){}
     public static SanPhamService getInstance()
@@ -15,8 +17,8 @@ public class SanPhamService extends ConnectDatabase implements Business<banhaisa
     }
 
     @Override
-    public ArrayList<banhaisan.models.datamodels.SanPham> getData() throws SQLException, ClassNotFoundException {
-        ArrayList<banhaisan.models.datamodels.SanPham> sanPhams = new ArrayList<>();
+    public ArrayList<SanPham> getData() throws SQLException, ClassNotFoundException {
+        ArrayList<SanPham> sanPhams = new ArrayList<>();
         openConnection();
 
         String query = "select  * from dbo.fc_DanhSachSanPhamTheoDanhMuc ?";
@@ -26,7 +28,7 @@ public class SanPhamService extends ConnectDatabase implements Business<banhaisa
 
         ResultSet resultSet = statement.executeQuery();
         while (resultSet.next()){
-            banhaisan.models.datamodels.SanPham sanPham = new banhaisan.models.datamodels.SanPham();
+            SanPham sanPham = new SanPham();
             sanPham.setMaSP(resultSet.getString(1));
             sanPham.setTenSP(resultSet.getString(2));
             sanPham.setGiaSP(Double.parseDouble(resultSet.getString(3)));
@@ -41,12 +43,12 @@ public class SanPhamService extends ConnectDatabase implements Business<banhaisa
         return sanPhams;
     }
 
-    public ArrayList<banhaisan.models.datamodels.SanPham> getDataCategory(Object... keys) throws SQLException, ClassNotFoundException{
+    public ArrayList<SanPham> getDataCategory(Object... keys) throws SQLException, ClassNotFoundException{
         if(keys.length<=0)
         {
             return null;
         }
-        ArrayList<banhaisan.models.datamodels.SanPham> sanPhams = new ArrayList<>();
+        ArrayList<SanPham> sanPhams = new ArrayList<>();
         openConnection();
         String query = "select  * from dbo.fc_DanhSachSanPhamTheoDanhMuc(?)";
         PreparedStatement statement = connection.prepareStatement(query);
@@ -57,7 +59,7 @@ public class SanPhamService extends ConnectDatabase implements Business<banhaisa
         ResultSet resultSet = statement.executeQuery();
         while (resultSet.next())
         {
-            banhaisan.models.datamodels.SanPham sanPham = new banhaisan.models.datamodels.SanPham();
+            SanPham sanPham = new SanPham();
             sanPham.setMaDanhMuc(resultSet.getString(1));
             sanPham.setMaSP(resultSet.getString(2));
             sanPham.setTenSP(resultSet.getString(3));
@@ -71,12 +73,12 @@ public class SanPhamService extends ConnectDatabase implements Business<banhaisa
         closeConnection();
         return sanPhams;
     }
-    public ArrayList<banhaisan.models.datamodels.SanPham> getDataCategoryIndex(Object... keys) throws SQLException, ClassNotFoundException{
+    public ArrayList<SanPham> getDataCategoryIndex(Object... keys) throws SQLException, ClassNotFoundException{
         if(keys.length<=0)
         {
             return null;
         }
-        ArrayList<banhaisan.models.datamodels.SanPham> sanPhams = new ArrayList<>();
+        ArrayList<SanPham> sanPhams = new ArrayList<>();
         openConnection();
         String query = "select  * from dbo.fc_IndexDSSanPham(?)";
         PreparedStatement statement = connection.prepareStatement(query);
@@ -87,7 +89,7 @@ public class SanPhamService extends ConnectDatabase implements Business<banhaisa
         ResultSet resultSet = statement.executeQuery();
         while (resultSet.next())
         {
-            banhaisan.models.datamodels.SanPham sanPham = new banhaisan.models.datamodels.SanPham();
+            SanPham sanPham = new SanPham();
             sanPham.setMaSP(resultSet.getString(1));
             sanPham.setTenSP(resultSet.getString(2));
             sanPham.setGiaSP(Double.parseDouble(resultSet.getString(3)));
@@ -98,7 +100,7 @@ public class SanPhamService extends ConnectDatabase implements Business<banhaisa
         return sanPhams;
     }
     @Override
-    public banhaisan.models.datamodels.SanPham get(Object... keys) throws SQLException, ClassNotFoundException{
+    public SanPham get(Object... keys) throws SQLException, ClassNotFoundException{
         if(keys.length<=0){
             return null;
         }
@@ -110,10 +112,10 @@ public class SanPhamService extends ConnectDatabase implements Business<banhaisa
         statement.setString(1,keys[0].toString());
 
         ResultSet resultSet = statement.executeQuery();
-        banhaisan.models.datamodels.SanPham sanPham = null;
+        SanPham sanPham = null;
         if(resultSet.next())
         {
-            sanPham = new banhaisan.models.datamodels.SanPham();
+            sanPham = new SanPham();
             sanPham.setMaDanhMuc(resultSet.getString(1));
             sanPham.setMaSP(resultSet.getString(2));
             sanPham.setTenSP(resultSet.getString(3));
@@ -129,7 +131,7 @@ public class SanPhamService extends ConnectDatabase implements Business<banhaisa
 
 
     @Override
-    public int add(banhaisan.models.datamodels.SanPham sanPham) throws SQLException, ClassNotFoundException {
+    public int add(SanPham sanPham) throws SQLException, ClassNotFoundException {
         openConnection();
 
         String query = "EXEC ThemSanPham ?,?,?,?,?,?,?";
@@ -150,7 +152,7 @@ public class SanPhamService extends ConnectDatabase implements Business<banhaisa
     }
 
     @Override
-    public int delete(banhaisan.models.datamodels.SanPham sanPham) throws SQLException, ClassNotFoundException {
+    public int delete(SanPham sanPham) throws SQLException, ClassNotFoundException {
         openConnection();
 
         String query = "EXEC XoaSanPham ?";
@@ -165,7 +167,7 @@ public class SanPhamService extends ConnectDatabase implements Business<banhaisa
     }
 
     @Override
-    public int modify(banhaisan.models.datamodels.SanPham sanPham) throws SQLException, ClassNotFoundException {
+    public int modify(SanPham sanPham) throws SQLException, ClassNotFoundException {
         openConnection();
 
         String query = "EXEC SuaSanPham ?,?,?,?,?,?,?";

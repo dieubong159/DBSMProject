@@ -18,7 +18,7 @@ public class DonHangService extends ConnectDatabase implements Business<DonHang>
         ArrayList<DonHang> donHangs = new ArrayList<>();
         openConnection();
 
-        String query = "select * from dbo.vw_DanhSachDonHang";
+        String query = "EXEC DonHangBaoGomTongTien";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setQueryTimeout(90);
         statement.setEscapeProcessing(true);
