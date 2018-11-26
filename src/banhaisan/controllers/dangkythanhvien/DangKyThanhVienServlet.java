@@ -51,7 +51,7 @@ public class DangKyThanhVienServlet extends HttpServlet {
 
     }
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/DangKi.jsp");
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/TrangChu.jsp");
         dispatcher.forward(request,response);
     }
 }
