@@ -17,31 +17,6 @@ import java.util.ArrayList;
 @WebServlet(name = "XemAdminServlet", urlPatterns = { "/Admin/ChiTietAdmin" })
 public class XemAdminServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("utf-8");
-        response.setContentType("text/html;charset=UTF-8");
-        try {
-            String idNv = request.getParameter("idNghiepVu");
-            String maNd = request.getParameter("maNd");
-            if (idNv == null || maNd == null) {
-                response.setStatus(400);
-                return;
-            }
-            NguoiDungAdminService service = new NguoiDungAdminService();
-            ArrayList<QuyenVM> quyenVMS = service.getQuyen(Integer.parseInt(idNv), maNd.trim());
-            PrintWriter out = response.getWriter();
-            for (QuyenVM item : quyenVMS) {
-                out.print("<label class=\"uniform\">\n");
-                out.print("<br>\n");
-                out.print("<div class=\"checker disabled\" id=\"uniform-optionsCheckbox1\"><span " + (item.isChoPhep() ? "class=\"checked\"" : "") + ">\n");
-                out.print("<input disabled class=\"uniform_on\" type=\"checkbox\" id=\"optionsCheckbox1\" value=\"" + item.getMaQuyen() +"\"");
-                out.print(">\n");
-                out.print("</span></div>");
-                out.print(item.getTenQuyen());
-                out.print("</label>\n");
-            }
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
 
     }
 
@@ -56,8 +31,6 @@ public class XemAdminServlet extends HttpServlet {
             NguoiDungAdminService service = new NguoiDungAdminService();
             NguoiDung admin = service.get(manguoiDung);
             request.setAttribute("admin", admin);
-            NghiepVuService nghiepVuService = new NghiepVuService();
-            request.setAttribute("nghiepvus", nghiepVuService.getData());
 
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();

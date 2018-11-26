@@ -137,23 +137,5 @@ public class NguoiDungAdminService extends ConnectDatabase implements Business<N
         return rowAffected;
     }
 
-    public ArrayList<QuyenVM> getQuyen(int maNghiepVu, String maAdmin) throws SQLException, ClassNotFoundException {
-        openConnection();
-        String sql = "EXEC LayQuyenAdminTheoNghiepVu ?,?";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setInt(1, maNghiepVu);
-        statement.setString(2, maAdmin);
-        ArrayList<QuyenVM> quyenVMS = new ArrayList<>();
-        ResultSet res = statement.executeQuery();
-        while (res.next()) {
-            QuyenVM quyen = new QuyenVM();
-            quyen.setMaQuyen(res.getString(1));
-            quyen.setTenQuyen(res.getString(2));
-            quyen.setChoPhep(res.getBoolean(3));
 
-            quyenVMS.add(quyen);
-        }
-        closeConnection();
-        return quyenVMS;
-    }
 }
