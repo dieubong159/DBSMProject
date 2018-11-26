@@ -1,7 +1,6 @@
 package banhaisan.models.datahandle;
 
 import banhaisan.models.datamodels.NguoiDung;
-import banhaisan.models.viewmodels.QuyenVM;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

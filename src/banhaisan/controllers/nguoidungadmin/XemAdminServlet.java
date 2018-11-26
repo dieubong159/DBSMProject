@@ -1,9 +1,7 @@
 package banhaisan.controllers.nguoidungadmin;
 
-import banhaisan.models.datahandle.NghiepVuService;
 import banhaisan.models.datahandle.NguoiDungAdminService;
 import banhaisan.models.datamodels.NguoiDung;
-import banhaisan.models.viewmodels.QuyenVM;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
