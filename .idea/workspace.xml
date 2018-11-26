@@ -1,78 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="DBSM:war exploded" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="eb522ea5-aa6e-47a4-aa25-f8e9350f2112" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/KiemTraDangNhap/DangNhapServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/TrangChu/TrangChuServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/baiviet/BaiVietServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/baiviet/SuaBaiVietServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/baiviet/ThemBaiVietServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/baiviet/XemChiTietBaiVietServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/baiviet/XoaBaiVietServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/dangkythanhvien/DangKyThanhVienServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/danhmucadmin/ChinhSuaDanhMucServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/danhmucadmin/DanhMucServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/danhmucadmin/ThemDanhMucServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/danhmucadmin/XoaDanhMucServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/donhang/DonHangServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/donhang/XemCTDonHangServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/donhang/XoaDonHangServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/nguoidungadmin/NguoiDungAdminServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/nguoidungadmin/PhanQuyenAdminServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/nguoidungadmin/SuaNguoiDungAdminServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/nguoidungadmin/ThemAdminServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/nguoidungadmin/XemAdminServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/nguoidungthongthuong/NguoiDungThongThuongServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/nguoidungthongthuong/SuaNguoiDungThongThuongServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/nguoidungthongthuong/ThemNguoiDungThongThuongServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/nguoidungthongthuong/XemNguoiDungThongThuongServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/nguoidungthongthuong/XoaNguoiDungThongThuongServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/sanphamadmin/SanPhamAdminServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/sanphamadmin/SuaSanPhamAdminServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/sanphamadmin/ThemSanPhamAdminServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/sanphamadmin/XemCTSanPhamServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/sanphamadmin/XoaSanPhamAdminServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/sanphamnguoidung/SanPhamUserServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/controllers/sanphamnguoidung/XemCTSanPhamUserServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/models/datahandle/BaiVietService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/models/datahandle/Business.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/models/datahandle/ConnectDatabase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/models/datahandle/DangNhapService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/models/datahandle/DanhMucService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/models/datahandle/DonHangService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/models/datahandle/HinhAnhService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/models/datahandle/NghiepVuService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/models/datahandle/NguoiDungAdminService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/models/datahandle/NguoiDungThongThuongService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/models/datahandle/SanPhamService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/models/datamodels/BaiViet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/models/datamodels/DangNhap_KetNoi.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/models/datamodels/DanhMuc.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/models/datamodels/DonHang.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/models/datamodels/DonHang_SanPham.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/models/datamodels/HinhAnh.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/models/datamodels/NghiepVu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/models/datamodels/NguoiDung.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/models/datamodels/SanPham.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/models/viewmodels/QlyQuyen_ShowTable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/banhaisan/models/viewmodels/QuyenVM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/About.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/About.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/Cart.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/Cart.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/ChiTietSP.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/ChiTietSP.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/DSCongthucchebien.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/DSCongthucchebien.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/DangKi.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/DangKi.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/Hoadon-Abort.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/Hoadon-Abort.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/Hoadon.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/Hoadon.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/LienHe.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/LienHe.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/Products.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/Products.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/Profile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/Profile.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/Profile_BillManagement.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/Profile_BillManagement.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/Profile_Password.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/Profile_Password.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/Thanhtoandonhang.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/Thanhtoandonhang.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/congthucchebien.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/congthucchebien.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/index-Login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/index-Login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/resources/css/shop.css" beforeDir="false" afterPath="$PROJECT_DIR$/../FINAL-PROJECT-NHOM4/WebContent/resources/css/shop.css" afterDir="false" />
+    <list default="true" id="eb522ea5-aa6e-47a4-aa25-f8e9350f2112" name="Default Changelist" comment="Dieu">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/CKFinder_2_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DBSM.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DBSM.iml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -102,68 +40,80 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="673930184">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="iml" value="1" />
+          <entry key="java" value="4" />
+          <entry key="jsp" value="8" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="IDEA_MODULE" value="1" />
+          <entry key="JAVA" value="4" />
+          <entry key="JSP" value="8" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="71" />
+          <entry key="jsp" value="155" />
+          <entry key="txt" value="4" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="71" />
+          <entry key="JSP" value="155" />
+          <entry key="PLAIN_TEXT" value="4" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.vcs.git.usages">
+        <counts>
+          <entry key="git.branch.checkout.local" value="4" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/banhaisan/controllers/TrangChu/TrangChuServlet.java">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/banhaisan/models/datamodels/DonHang_SanPham.java">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/banhaisan/controllers/danhmucadmin/XoaDanhMucServlet.java">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/banhaisan/controllers/nguoidungthongthuong/SuaNguoiDungThongThuongServlet.java">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/banhaisan/controllers/baiviet/BaiVietServlet.java">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/banhaisan/models/datamodels/BaiViet.java">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/banhaisan/models/datamodels/DanhMuc.java">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/banhaisan/models/datahandle/DanhMucService.java">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/banhaisan/controllers/donhang/DonHangServlet.java">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/banhaisan/controllers/nguoidungthongthuong/ThemNguoiDungThongThuongServlet.java">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/web/Admin/QlyAdmin.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="19" column="77" lean-forward="true" selection-start-line="19" selection-start-column="77" selection-end-line="19" selection-end-column="77" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>#</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="ROOT_SYNC" value="SYNC" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_COMMON_BRANCH" value="dieudbms" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/banhaisan/controllers/nguoidungthongthuong/ThemNguoiDungThongThuongServlet.java" />
+        <option value="$PROJECT_DIR$/src/banhaisan/controllers/KiemTraDangNhap/DangNhapServlet.java" />
+        <option value="$PROJECT_DIR$/web/index.jsp" />
+        <option value="$PROJECT_DIR$/web/Profile.jsp" />
+        <option value="$PROJECT_DIR$/src/banhaisan/controllers/thongtinuser/XemThongTinUserServlet.java" />
+        <option value="$PROJECT_DIR$/web/Admin/QlyAdmin.jsp" />
       </list>
     </option>
   </component>
@@ -173,13 +123,20 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths>
       <path value="$PROJECT_DIR$/web/Admin/vendors/flot/package.json" />
       <path value="$PROJECT_DIR$/web/Admin/vendors/jquery-validation/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="430" />
     <option name="y" value="-10" />
     <option name="width" value="980" />
@@ -193,34 +150,26 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="DBSM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DBSM" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DBSM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DBSM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DBSM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DBSM" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="DBSMProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DBSMProject" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543249555903" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -251,12 +200,29 @@
           </settings>
         </artifact>
       </deployment>
-      <server-settings />
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Tomcat_9_0_12_DBSMProject" />
+      </server-settings>
       <predefined_log_file id="Tomcat" enabled="true" />
       <predefined_log_file id="Tomcat Catalina" enabled="true" />
       <predefined_log_file id="Tomcat Manager" enabled="false" />
       <predefined_log_file id="Tomcat Host Manager" enabled="false" />
       <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
       <method v="2">
         <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
@@ -277,16 +243,25 @@
       <updated>1543067562467</updated>
       <workItem from="1543067566348" duration="1372000" />
       <workItem from="1543069501045" duration="428000" />
+      <workItem from="1543246954323" duration="2351000" />
     </task>
+    <task id="LOCAL-00001" summary="Dieu">
+      <created>1543249520598</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1543249520598</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1800000" />
+    <option name="totallyTimeSpent" value="4151000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25340393" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18003026" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -294,9 +269,10 @@
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" visible="true" weight="0.32861635" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32861635" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -323,6 +299,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Dieu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dieu" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/banhaisan/controllers/TrangChu/TrangChuServlet.java">
@@ -354,6 +334,61 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/banhaisan/controllers/nguoidungthongthuong/ThemNguoiDungThongThuongServlet.java">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DBSM.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/banhaisan/controllers/dangkythanhvien/DangKyThanhVienServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-462">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/banhaisan/controllers/KiemTraDangNhap/DangNhapServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="53" column="59" selection-start-line="53" selection-start-column="59" selection-end-line="53" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/Profile_Password.jsp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/DangKi.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1365">
+          <caret line="65" column="26" lean-forward="true" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/Profile.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7581">
+          <caret line="361" column="79" selection-start-line="361" selection-start-column="79" selection-end-line="361" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/banhaisan/controllers/thongtinuser/XemThongTinUserServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="36" column="19" lean-forward="true" selection-start-line="36" selection-start-column="19" selection-end-line="36" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/Admin/QlyAdmin.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="19" column="77" lean-forward="true" selection-start-line="19" selection-start-column="77" selection-end-line="19" selection-end-column="77" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
