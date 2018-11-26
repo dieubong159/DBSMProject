@@ -15,6 +15,13 @@
     <link href="/Admin/assets/styles.css" rel="stylesheet" media="screen">
     <script src="/Admin/vendors/jquery-1.9.1.min.js"></script>
     <script src="/Admin/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        function confirmDelete(obj) {
+            if (confirm("Bạn có chắc chắn muốn xóa người dùng này không?")) {
+                $.post("/Admin/XoaAdmin",{ txtMaNguoiDung : $(obj).attr("manguoidung").trim() }, content => location.href="/Admin/NguoiDungAdmin");
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -145,8 +152,9 @@
                                                     Edit</a>
                                             </td>
                                             <td>
-                                                <a href="/Admin/XoaAdmin?id=${nguoiDung.maNguoiDung}" class="btn btn-danger"><i class="icon-remove icon-white"></i>
-                                                    Delete</a>
+                                                <button class="btn btn-danger" maNguoiDung="${nguoiDung.maNguoiDung}" onclick="confirmDelete(this);"><i
+                                                        class="icon-remove icon-white"></i>
+                                                    Delete</button>
                                             </td>
                                             <td>
                                                 <a href="/Admin/PhanQuyenAdmin?id=${nguoiDung.maNguoiDung}" class="btn"><i class="icon-check"></i>Quyền</a>

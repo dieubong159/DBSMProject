@@ -96,8 +96,21 @@ public class NguoiDungAdminService extends ConnectDatabase implements Business<N
     }
 
     @Override
-    public int delete(NguoiDung model) {
-        return 0;
+    public int delete(NguoiDung model) throws SQLException, ClassNotFoundException {
+        if (model == null) {
+            return 0;
+        }
+        openConnection();
+
+        String sql = "EXEC XoaAdmin ?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setEscapeProcessing(true);
+        statement.setQueryTimeout(90);
+        statement.setString(1, model.getMaNguoiDung());
+
+        int rowAffected = statement.executeUpdate();
+        closeConnection();
+        return rowAffected;
     }
 
     @Override
