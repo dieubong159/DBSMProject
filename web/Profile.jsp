@@ -91,7 +91,7 @@
                                         <span class="fas fa-user"></span>
                                         <p><a data-toggle="modal" href="#LoginModal">Đăng nhập</a></p>
                                         <p>|</p>
-                                        <p><a href="#">Đăng ký</a></p>
+                                        <p><a href="/DangKyThanhVien">Đăng ký</a></p>
                                     </li>
                                 </c:when>
                                 <c:otherwise>
@@ -131,7 +131,7 @@
                                         <p>Tổng đài miễn phí</p>
                                     </li>
                                     <li style="padding-right: 15pt">
-                                        <p style="padding-bottom: 15pt"><strong><a href="#">CÔNG THỨC</a></strong></p>
+                                        <p style="padding-bottom: 15pt"><strong><a href="/DSBaiViet">CÔNG THỨC</a></strong></p>
                                         <p>Đảm đang - Khéo léo</p>
                                     </li>
                                     <li style="position:relative" class="toyscart toyscart2 cart cart box_1">
@@ -174,7 +174,7 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#!" class="nav-link">Công thức chế biến</a>
+                                <a href="/DSBaiViet" class="nav-link">Công thức chế biến</a>
                             </li>
                             <li class="nav-item">
                                 <a href="LienHe.jsp" class="nav-link">Liên hệ</a>
@@ -300,7 +300,7 @@
                             <div class="form-group">
                                 <label class="control-label" for="full_name">Họ tên </label>
                                 <div class="input-wrap">
-                                    <input type="text" name="full_name" class="form-control" id="full_name" value="${nguoiDung.hoTen}"
+                                    <input type="text" name="txt-hoten" class="form-control" id="full_name" value="${nguoiDung.hoTen}"
                                         placeholder="Họ tên">
                                     <span class="help-block"></span>
                                 </div>
@@ -326,14 +326,26 @@
                                 <label class="control-label" for="gender">Giới tính</label>
                                 <div class="input-wrap">
                                     <div class="row" id="gender">
-                                        <label class="radio-inline">
-                                            <input type="radio" name="gender" value="on" id="gender_male" class="gender"
-                                                checked="">Nam
-                                        </label>
-                                        <label class="radio-inline">
-                                            <input type="radio" name="gender" value="off" id="gender_female" class="gender">Nữ
-                                        </label>
-
+                                        <c:choose>
+                                            <c:when test="${nguoiDung.gioiTinh==true}">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="gender" value="on" id="gender_male" class="gender"
+                                                           checked="">Nam
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="gender" value="off" id="gender_female" class="gender">Nữ
+                                                </label>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="gender" value="off" id="gender_male" class="gender"
+                                                           checked="">Nam
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="gender" value="on" id="gender_female" class="gender">Nữ
+                                                </label>
+                                            </c:otherwise>
+                                        </c:choose>
                                     </div>
                                 </div>
                             </div>
@@ -347,6 +359,7 @@
                                 <div class="input-wrap">
                                     <div id="birthday-picker" class="birthday-picker">
                                         <fieldset class="birthday-picker"><select class="birth-day form-control" name="birth[day]">
+                                            <option value="${nguoiDung.ngaySinh}"
                                                 <option value="0">Ngày</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>

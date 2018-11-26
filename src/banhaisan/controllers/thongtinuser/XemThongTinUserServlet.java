@@ -2,6 +2,7 @@ package banhaisan.controllers.thongtinuser;
 
 import banhaisan.models.datahandle.NguoiDungThongThuongService;
 import banhaisan.models.datamodels.NguoiDung;
+import javafx.scene.input.DataFormat;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
 
 @WebServlet(name = "XemThongTinUserServlet",urlPatterns = "/Profile")
@@ -25,6 +27,8 @@ public class XemThongTinUserServlet extends HttpServlet {
         NguoiDung nd = null;
         try {
             nd= NguoiDungThongThuongService.getInstance().get(idNguoiDung);
+            String birthday = nd.getNgaySinh().toString();
+//            DataFormat
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }

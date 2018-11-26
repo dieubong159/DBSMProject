@@ -281,11 +281,11 @@
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputEmail">Email</label>
-              <input type="email" class="form-control" name="email" id="inputEmail" placeholder="Email" required>
+              <input type="email" class="form-control" name="txt-email" id="inputEmail" placeholder="Email" required>
             </div>
             <div class="form-group col-md-6">
               <label for="password">Mật khẩu</label>
-              <input type="password" name="password" class="form-control" id="password" placeholder="Nhập mật khẩu"
+              <input type="password" name="txt-mat-khau" class="form-control" id="password" placeholder="Nhập mật khẩu"
                 required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}">
             </div>
           </div>
@@ -296,26 +296,26 @@
           </div>
           <div class="form-group">
             <label for="inputName">Họ và Tên</label>
-            <input type="text" name="hoten" class="form-control" id="inputName" placeholder="Nhập họ và tên" required>
+            <input type="text" name="txt-ten" class="form-control" id="inputName" placeholder="Nhập họ và tên" required>
           </div>
           <div class="form-group">
             <label for="inputAddress2">Địa chỉ</label>
-            <input name="diachi" type="text" class="form-control" id="inputAddress2" placeholder="Nhập Địa chỉ">
+            <input name="txt-dia-chi" type="text" class="form-control" id="inputAddress2" placeholder="Nhập Địa chỉ">
           </div>
           <div class="form-group">
             <label for="inputTel">Số điện thoại</label>
-            <input name="sodienthoai" type="tel" class="form-control" id="inputTel" placeholder="Nhập Số điện thoại">
+            <input name="txt-dien-thoai" type="tel" class="form-control" id="inputTel" placeholder="Nhập Số điện thoại">
           </div>
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="inputBirthay">Ngày sinh</label>
-              <input name="ngaysinh" type="date" class="form-control" id="inputBirthay">
+              <input name="dt-ngay-sinh" type="date" class="form-control" id="inputBirthay">
             </div>
             <div class="form-group col-md-6">
               <label for="inputGender">Giới tính</label>
-              <select id="inputGender" class="form-control" onchange="run()">
-                <option value="true" selected>Nam</option>
-                <option value="false">Nữ</option>
+              <select name="txt-gioi-tinh" id="inputGender" class="form-control" onchange="run()">
+                <option value="1">Nam</option>
+                <option value="0">Nữ</option>
               </select>
               <input name="gioitinh" id="gender" name="cbGender" type="hidden">
                   <script>function run() {

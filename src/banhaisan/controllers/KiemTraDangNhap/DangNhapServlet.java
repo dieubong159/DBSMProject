@@ -51,7 +51,7 @@ public class DangNhapServlet extends HttpServlet {
                     session.setAttribute("currentSessionAdmin",user);
                     session.setAttribute("idcurrentSession",user.getMaNguoiDung());
                     request.setAttribute("loginResult",true);
-                    response.sendRedirect("/Admin/QLDanhMuc");
+                    response.sendRedirect("/Admin/index.jsp");
                 }
                 else
                 {
