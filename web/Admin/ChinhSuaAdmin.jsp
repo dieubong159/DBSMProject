@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Chỉnh sửa thông tin admin</title>
+    <title>ChinhSua người dùng</title>
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
     <link href="assets/styles.css" rel="stylesheet" media="screen">
@@ -130,7 +130,7 @@
                                 <div class="control-group">
                                     <label class="control-label">Địa chỉ email<span class="required">*</span></label>
                                     <div class="controls">
-                                        <input id="txt-email" name="txt-email" type="text" class="span6 m-wrap" style="width:500px !important;"
+                                        <input readonly id="txt-email" name="txt-email" type="text" class="span6 m-wrap" style="width:500px !important;"
                                                value="${nguoiDung.email}" />
                                         <br><small class="text-danger" id="validate-txt-email"></small>
                                     </div>
@@ -214,7 +214,6 @@
     <script src="vendors/wizard/jquery.bootstrap.wizard.min.js"></script>
 
     <script type="text/javascript" src="vendors/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="assets/form-validation.js"></script>
 
     <script src="assets/scripts.js"></script>
     <script>

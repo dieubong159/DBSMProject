@@ -189,7 +189,7 @@
                                 <a href="/DSBaiViet" class="nav-link">Công thức chế biến</a>
                             </li>
                             <li class="nav-item">
-                                <a href="LienHe.jsp" class="nav-link">Liên hệ</a>
+                                <a href="/LienHe" class="nav-link">Liên hệ</a>
                             </li>
                         </ul>
                     </div>

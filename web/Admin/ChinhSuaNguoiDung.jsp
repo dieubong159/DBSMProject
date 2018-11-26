@@ -130,7 +130,7 @@
                                 <div class="control-group">
                                     <label class="control-label">Địa chỉ email<span class="required">*</span></label>
                                     <div class="controls">
-                                        <input id="txt-email" name="txt-email" type="text" class="span6 m-wrap" style="width:500px !important;"
+                                        <input readonly id="txt-email" name="txt-email" type="text" class="span6 m-wrap" style="width:500px !important;"
                                                value="${nguoiDung.email}" />
                                         <br><small class="text-danger" id="validate-txt-email"></small>
                                     </div>

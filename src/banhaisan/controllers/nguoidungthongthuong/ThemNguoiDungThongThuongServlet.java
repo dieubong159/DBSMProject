@@ -46,7 +46,7 @@ public class ThemNguoiDungThongThuongServlet extends HttpServlet {
             error.setAttribute("error", e.toString());
             e.printStackTrace();
         }
-        response.sendRedirect("/Admin/TMNguoiDung");
+        response.sendRedirect("/Admin/NguoiDungThongThuong");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
