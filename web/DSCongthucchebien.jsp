@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> -->
 <!DOCTYPE html>
 <html lang="vi">
@@ -44,57 +45,6 @@
     <!-- //cart-js -->
     <!--responsiveslides banner-->
     <script src="resources/js/responsiveslides.min.js"></script>
-    <script>
-        // You can also use "$(window).load(function() {"
-        $(function () {
-            // Slideshow 4
-            $("#slider4").responsiveSlides({
-                auto: true,
-                pager: false,
-                nav: true,
-                speed: 900,
-                namespace: "callbacks",
-                before: function () {
-                    $('.events').append("<li>before event fired.</li>");
-                },
-                after: function () {
-                    $('.events').append("<li>after event fired.</li>");
-                }
-            });
-
-        });
-    </script>
-    <!--// responsiveslides banner-->
-    <!--slider flexisel -->
-    <script src="resources/js/jquery.flexisel.js"></script>
-    <script>
-        $(window).load(function () {
-            $("#flexiselDemo1").flexisel({
-                visibleItems: 3,
-                animationSpeed: 3000,
-                autoPlay: true,
-                autoPlaySpeed: 2000,
-                pauseOnHover: true,
-                enableResponsiveBreakpoints: true,
-                responsiveBreakpoints: {
-                    portrait: {
-                        changePoint: 480,
-                        visibleItems: 1
-                    },
-                    landscape: {
-                        changePoint: 640,
-                        visibleItems: 2
-                    },
-                    tablet: {
-                        changePoint: 768,
-                        visibleItems: 2
-                    }
-                }
-            });
-
-        });
-    </script>
-    <!-- //slider flexisel -->
     <!-- start-smoth-scrolling -->
     <script src="resources/js/move-top.js"></script>
     <script src="resources/js/easing.js"></script>
@@ -129,46 +79,7 @@
     <!--bootstrap working-->
     <script src="resources/js/bootstrap.min.js"></script>
     <!-- //bootstrap working-->
-    <!-- Slideshow Indicators -->
-    <script>
-        function currentDiv(n) {
-            showDivs(slideIndex = n);
-        }
 
-        function showDivs(n) {
-            var i;
-            var x = document.getElementsByClassName("mySlides");
-            var dots = document.getElementsByClassName("product");
-            if (n > x.length) { slideIndex = 1 }
-            if (n < 1) { slideIndex = x.length }
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
-            }
-            x[slideIndex - 1].style.display = "block";
-            dots[slideIndex - 1].className += " w3-opacity-off";
-        }
-    </script>
-    <!-- Slideshow Indicators -->
-    <!-- Tab Detail -->
-    <script>
-        function tabDetail(evt, delCom) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(delCom).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
-    </script>
-    <!-- Tab Detail -->
 </head>
 
 <body>
@@ -186,12 +97,24 @@
                                 <span class="fas fa-envelope"></span>
                                 <p><a href="mailto:info@example.com">tieudanseafood@gmail.com</a></p>
                             </li>
-                            <li class="float-md-right">
-                                <span class="fas fa-user"></span>
-                                <p><a data-toggle="modal" href="#LoginModal">Đăng nhập</a></p>
-                                <p>|</p>
-                                <p><a href="DangKi.jsp">Đăng ký</a></p>
-                            </li>
+                            <c:choose>
+                                <c:when test="${currentSessionUser == null}">
+                                    <li class="float-md-right">
+                                        <span class="fas fa-user"></span>
+                                        <p><a data-toggle="modal" href="#LoginModal">Đăng nhập</a></p>
+                                        <p>|</p>
+                                        <p><a href="#">Đăng ký</a></p>
+                                    </li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li class="float-md-right">
+                                        <span class="fas fa-user"></span>
+                                        <p>Chào <a href="/Profile">${currentSessionUser.hoTen}</a></p>
+                                        <p>|</p>
+                                        <p><a href="/Logout">Thoát</a></p>
+                                    </li>
+                                </c:otherwise>
+                            </c:choose>
                         </ul>
                     </div>
                 </div>
@@ -199,10 +122,10 @@
                     <div class="hedder-up row">
                         <div style="width:70%" class="col-lg-3 col-md-3 logo-head">
                             <li>
-                                <a class="navbar-brand" href="TrangChu.jsp" style="margin-left: 31%">
+                                <a class="navbar-brand" href="/Index" style="margin-left: 31%">
                                     <div class="logo"><img src="resources/images/CrabICO.png" alt=""> </div>
                                 </a>
-                                <h4 style="display:inline-block"><strong><a href="TrangChu.jsp">Tiêu Dân Seafood</strong></a></h4>
+                                <h4 style="display:inline-block"><strong><a href="TrangChu.jsp">Tiêu Dân Seafood</a></strong></h4>
                             </li>
                         </div>
                         <div class="col-lg-5 col-md-6 search-right">
@@ -217,11 +140,11 @@
                                     <li style="padding-right: 15pt">
                                         <p style="padding-bottom: 15pt"><strong><a href="tel:+01269220162">0168 xxxx
                                                     xxx</a></strong></p>
-                                        <p>Tổng đài miễn phí</a></p>
+                                        <p>Tổng đài miễn phí</p>
                                     </li>
                                     <li style="padding-right: 15pt">
-                                        <p style="padding-bottom: 15pt"><strong><a href="#">CÔNG THỨC</a></strong></p>
-                                        <p>Đảm đang - Khéo léo</a></p>
+                                        <p style="padding-bottom: 15pt"><strong><a href="/DSBaiViet">CÔNG THỨC</a></strong></p>
+                                        <p>Đảm đang - Khéo léo</p>
                                     </li>
                                     <li style="position:relative" class="toyscart toyscart2 cart cart box_1">
                                         <form action="#" method="post" class="last">
@@ -245,11 +168,11 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                         <ul class="navbar-nav ">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="TrangChu.jsp">Trang chủ <span class="sr-only">(current)</span></a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Index">Trang chủ <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a href="about.jsp" class="nav-link">Giới thiệu</a>
+                                <a href="/GioiThieu" class="nav-link">Giới thiệu</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -257,15 +180,13 @@
                                     Sản phẩm
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="nav-link" href="Products.jsp">Cá</a>
-                                    <a class="nav-link " href="#!">Tôm</a>
-                                    <a class="nav-link " href="#!">Mực</a>
-                                    <a class="nav-link " href="#!">Cua - ghẹ</a>
-                                    <a class="nav-link " href="#!">Ngao - Sò - Ốc</a>
+                                    <c:forEach var="danhMuc" items="${requestScope.danhMucs}">
+                                        <a class="nav-link" href="/Products?idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
+                                    </c:forEach>
                                 </div>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a href="#!" class="nav-link">Công thức chế biến</a>
+                            <li class="nav-item active">
+                                <a href="/DSBaiViet" class="nav-link">Công thức chế biến</a>
                             </li>
                             <li class="nav-item">
                                 <a href="LienHe.jsp" class="nav-link">Liên hệ</a>
@@ -274,6 +195,7 @@
                     </div>
                 </nav>
             </div>
+        </div>
     </header>
     <!-- Banner -->
     <div class="inner_page-banner one-img">
@@ -291,10 +213,10 @@
                 </div>
                 <div class="modal-body">
                     <div class="register-form">
-                        <form action="#" method="post" onsubmit="return checkForm(this)">
+                        <form action="/Login" onsubmit="return checkForm(this)">
                             <div class="fields-grid">
                                 <div class="styled-input">
-                                    <input type="email" placeholder="Email của bạn" name="Your Email" required="">
+                                    <input type="email" placeholder="Email của bạn" name="email" required="">
                                 </div>
                                 <div class="styled-input">
                                     <input type="password" placeholder="Nhập password" name="password" required="">
@@ -339,7 +261,7 @@
     <!-- //Modal 1-->
     <ul class="breadcrumb">
         <div class="container">
-            <li><a href="TrangChu.jsp">Trang chủ</a></li>
+            <li><a href="/Index">Trang chủ</a></li>
             <li>Công thức chế biến</li>
         </div>
     </ul>
@@ -352,31 +274,31 @@
                         <h3 class="agileits-sear-head">DANH MỤC SẢN PHẨM</h3>
                         <ul>
                             <li>
-                                <a href="#!">
+                                <a href="/Products?idDM=ca">
                                     <img src="resources/images/FISHICO.png" class="category">
                                     <span class="span">Cá</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#!">
+                                <a href="/Products?idDM=tom">
                                     <img src="resources/images/SHRIMPICO.png" class="category">
                                     <span class="span">Tôm</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#!">
+                                <a href="/Products?idDM=muc">
                                     <img src="resources/images/CuttleFishICO.png" class="category">
                                     <span class="span">Mực</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#!">
+                                <a href="/Products?idDM=cua">
                                     <img src="resources/images/CrabICO.gif" class="category">
                                     <span class="span">Cua ghẹ</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#!">
+                                <a href="/Products?idDM=ngao-so-oc">
                                     <img src="resources/images/clamICO.png" class="category">
                                     <span class="span">Ngao - Sò - Ốc</span>
                                 </a>
@@ -387,36 +309,14 @@
                     <div class="left-side">
                         <h3 class="agileits-sear-head">BÀI VIẾT NỔI BẬT</h3>
                         <ul>
-                            <li>
-                                <a href="#!">
-                                    <img src="resources/images/ca-mu-hap-hanh.jpg" width="70px" height="70px">
-                                    <p>Hướng dẫn làm món cá mú đỏ hấp bia cực ngon miệng</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#!">
-                                    <img src="resources/images/ca-chep-hap--bia01.jpg" width="70px" height="30px">
-                                    <p class="span">Món cá chép hấp bia cách làm tại nhà đơn giản </p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#!">
-                                    <img src="resources/images/Foods/tom-su-rang-toi.jpg" width="30px" height="30px">
-                                    <p class="span">Bí quyết cho món tôm sú rang tỏi cực ngon</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#!">
-                                    <img src="resources/images/Foods/tom-tit-rang-me01.jpg" width="30px" height="30px">
-                                    <p class="span">Cùng thay đổi khẩu vị với món bề bề rang me</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#!">
-                                    <img src="resources/images/Foods/cua-rang-me01.jpg" width="30px" height="30px">
-                                    <p class="span">Đơn giản mà ngon, đó là cua rang me</p>
-                                </a>
-                            </li>
+                            <c:forEach var="baiViet" items="${requestScope.baiViets}">
+                                <li>
+                                    <a href="/XemCTBaiViet?idBV=${baiViet.maBaiViet}">
+                                        <img src="resources/images/ca-mu-hap-hanh.jpg" width="70px" height="70px">
+                                        <p>${baiViet.tieuDe}</p>
+                                    </a>
+                                </li>
+                            </c:forEach>
                         </ul>
                     </div>
                     <!-- Bai Viet Noi Bat -->
@@ -426,134 +326,25 @@
                     </div>
                 </div>
                 <div class="side-bar col-md-9">
+                    <c:forEach var="baiViets" items="${requestScope.baiViets}">
                     <div class="col-lg-25ths col-md-25ths col-sm-4 col-xs-6  blog-mobile" style="width: 35%;float: left;">
-                        <div class="news-laste-item product-resize fixheight" style="height: 346px;">
+                        <div class="news-laste-item product-resize fixheight" style="height: 250px;">
 
                             <div class="post-thumb height-img image-resize" style="height: 199px;">
-                                <a href="!#">
+                                <a href="/XemCTBaiViet?idBV=${baiViets.maBaiViet}">
                                     <img src="resources/images/Foods/cua-rang-me01.jpg" width="193px" height="193px">
                                 </a>
                             </div><!-- /blog-alt-image -->
 
                             <div class="hgt">
-                                <div class="name"><a href="!#">5 Món
-                                        ngon từ hàu sữa cực đơn giản</a></div>
-                                <div>
-                                    <p class="text-justify">Hôm nay, Đảo Hải Sản gợi ý 5&nbsp;món ngon từ hàu
-                                        sữa&nbsp;nhằm làm đa dạng hơn thực đơn của gia...</p>
-                                </div>
+                                <div class="name"><a href="/XemCTBaiViet?idBV=${baiViets.maBaiViet}">${baiViets.tieuDe}</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-25ths col-md-25ths col-sm-4 col-xs-6  blog-mobile" style="width: 35%;float: left;">
-                        <div class="news-laste-item product-resize fixheight" style="height: 346px;">
-
-                            <div class="post-thumb height-img image-resize" style="height: 199px;">
-                                <a href="!#">
-                                    <img src="resources/images/Foods/cua-rang-me01.jpg" width="193px" height="193px">
-                                </a>
-                            </div><!-- /blog-alt-image -->
-
-                            <div class="hgt">
-                                <div class="name"><a href="!#">5 Món
-                                        ngon từ hàu sữa cực đơn giản</a></div>
-                                <div>
-                                    <p class="text-justify">Hôm nay, Đảo Hải Sản gợi ý 5&nbsp;món ngon từ hàu
-                                        sữa&nbsp;nhằm làm đa dạng hơn thực đơn của gia...</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-25ths col-md-25ths col-sm-4 col-xs-6  blog-mobile" style="width: 35%;float: left;">
-                        <div class="news-laste-item product-resize fixheight" style="height: 346px;">
-
-                            <div class="post-thumb height-img image-resize" style="height: 199px;">
-                                <a href="!#">
-                                    <img src="resources/images/Foods/cua-rang-me01.jpg" width="193px" height="193px">
-                                </a>
-                            </div><!-- /blog-alt-image -->
-
-                            <div class="hgt">
-                                <div class="name"><a href="!#">5 Món
-                                        ngon từ hàu sữa cực đơn giản</a></div>
-                                <div>
-                                    <p class="text-justify">Hôm nay, Đảo Hải Sản gợi ý 5&nbsp;món ngon từ hàu
-                                        sữa&nbsp;nhằm làm đa dạng hơn thực đơn của gia...</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-25ths col-md-25ths col-sm-4 col-xs-6  blog-mobile" style="width: 35%;float: left;">
-                        <div class="news-laste-item product-resize fixheight" style="height: 346px;">
-
-                            <div class="post-thumb height-img image-resize" style="height: 199px;">
-                                <a href="!#">
-                                    <img src="resources/images/Foods/cua-rang-me01.jpg" width="193px" height="193px">
-                                </a>
-                            </div><!-- /blog-alt-image -->
-
-                            <div class="hgt">
-                                <div class="name"><a href="!#">5 Món
-                                        ngon từ hàu sữa cực đơn giản</a></div>
-                                <div>
-                                    <p class="text-justify">Hôm nay, Đảo Hải Sản gợi ý 5&nbsp;món ngon từ hàu
-                                        sữa&nbsp;nhằm làm đa dạng hơn thực đơn của gia...</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-25ths col-md-25ths col-sm-4 col-xs-6  blog-mobile" style="width: 35%;float: left;">
-                        <div class="news-laste-item product-resize fixheight" style="height: 346px;">
-
-                            <div class="post-thumb height-img image-resize" style="height: 199px;">
-                                <a href="!#">
-                                    <img src="resources/images/Foods/cua-rang-me01.jpg" width="193px" height="193px">
-                                </a>
-                            </div><!-- /blog-alt-image -->
-
-                            <div class="hgt">
-                                <div class="name"><a href="!#">5 Món
-                                        ngon từ hàu sữa cực đơn giản</a></div>
-                                <div>
-                                    <p class="text-justify">Hôm nay, Đảo Hải Sản gợi ý 5&nbsp;món ngon từ hàu
-                                        sữa&nbsp;nhằm làm đa dạng hơn thực đơn của gia...</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-25ths col-md-25ths col-sm-4 col-xs-6  blog-mobile" style="width: 35%;float: left;">
-                        <div class="news-laste-item product-resize fixheight" style="height: 346px;">
-
-                            <div class="post-thumb height-img image-resize" style="height: 199px;">
-                                <a href="!#">
-                                    <img src="resources/images/Foods/cua-rang-me01.jpg" width="193px" height="193px">
-                                </a>
-                            </div><!-- /blog-alt-image -->
-
-                            <div class="hgt">
-                                <div class="name"><a href="!#">5 Món
-                                        ngon từ hàu sữa cực đơn giản</a></div>
-                                <div>
-                                    <p class="text-justify">Hôm nay, Đảo Hải Sản gợi ý 5&nbsp;món ngon từ hàu
-                                        sữa&nbsp;nhằm làm đa dạng hơn thực đơn của gia...</p>
-                                </div>
-                            </div>
-                        </div>
+                    </c:forEach>
                     </div>
                     <div class="clearfix"></div>
                     <div class="gap-element" style="display:block; height:auto; padding-top:15px"></div>
-                    <div class="col-md-8 col-sm-8">
-                        <div class="pagination pull-right">
-                            <a href="#">&laquo;</a>
-                            <a href="#">1</a>
-                            <a class="active" href="#">2</a>
-                            <a href="#">3</a>
-                            <a href="#">4</a>
-                            <a href="#">5</a>
-                            <a href="#">6</a>
-                            <a href="#">&raquo;</a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -582,16 +373,16 @@
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                     <h6 class="text-uppercase mb-4 font-weight-bold">MENU</h6>
                     <p>
-                        <a href="TrangChu.jsp">Trang chủ</a>
+                        <a href="/Index">Trang chủ</a>
                     </p>
                     <p>
-                        <a href="About.jsp">Giới thiệu</a>
+                        <a href="/GioiThieu">Giới thiệu</a>
                     </p>
                     <p>
                         <a href="LienHe.jsp">Liên hệ</a>
                     </p>
                     <p>
-                        <a href="DSCongthucchebien.jsp">Món ngon</a>
+                        <a href="/DSBaiViet">Món ngon</a>
                     </p>
                 </div>
                 <!-- Grid column -->

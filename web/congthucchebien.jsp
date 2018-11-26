@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> -->
 <!DOCTYPE html>
 <html lang="vi">
@@ -89,12 +90,24 @@
                                 <span class="fas fa-envelope"></span>
                                 <p><a href="mailto:info@example.com">tieudanseafood@gmail.com</a></p>
                             </li>
-                            <li class="float-md-right">
-                                <span class="fas fa-user"></span>
-                                <p><a data-toggle="modal" href="#LoginModal">Đăng nhập</a></p>
-                                <p>|</p>
-                                <p><a href="DangKi.jsp">Đăng ký</a></p>
-                            </li>
+                            <c:choose>
+                                <c:when test="${currentSessionUser == null}">
+                                    <li class="float-md-right">
+                                        <span class="fas fa-user"></span>
+                                        <p><a data-toggle="modal" href="#LoginModal">Đăng nhập</a></p>
+                                        <p>|</p>
+                                        <p><a href="/DangKyThanhVien">Đăng ký</a></p>
+                                    </li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li class="float-md-right">
+                                        <span class="fas fa-user"></span>
+                                        <p>Chào <a href="/Profile">${currentSessionUser.hoTen}</a></p>
+                                        <p>|</p>
+                                        <p><a href="/Logout">Thoát</a></p>
+                                    </li>
+                                </c:otherwise>
+                            </c:choose>
                         </ul>
                     </div>
                 </div>
@@ -102,10 +115,10 @@
                     <div class="hedder-up row">
                         <div style="width:70%" class="col-lg-3 col-md-3 logo-head">
                             <li>
-                                <a class="navbar-brand" href="TrangChu.jsp" style="margin-left: 31%">
+                                <a class="navbar-brand" href="/Index" style="margin-left: 31%">
                                     <div class="logo"><img src="resources/images/CrabICO.png" alt=""> </div>
                                 </a>
-                                <h4 style="display:inline-block"><strong><a href="TrangChu.jsp">Tiêu Dân Seafood</strong></a></h4>
+                                <h4 style="display:inline-block"><strong><a href="/Index">Tiêu Dân Seafood</a></strong></h4>
                             </li>
                         </div>
                         <div class="col-lg-5 col-md-6 search-right">
@@ -120,11 +133,11 @@
                                     <li style="padding-right: 15pt">
                                         <p style="padding-bottom: 15pt"><strong><a href="tel:+01269220162">0168 xxxx
                                                     xxx</a></strong></p>
-                                        <p>Tổng đài miễn phí</a></p>
+                                        <p>Tổng đài miễn phí</p>
                                     </li>
                                     <li style="padding-right: 15pt">
-                                        <p style="padding-bottom: 15pt"><strong><a href="#">CÔNG THỨC</a></strong></p>
-                                        <p>Đảm đang - Khéo léo</a></p>
+                                        <p style="padding-bottom: 15pt"><strong><a href="/DSBaiViet">CÔNG THỨC</a></strong></p>
+                                        <p>Đảm đang - Khéo léo</p>
                                     </li>
                                     <li style="position:relative" class="toyscart toyscart2 cart cart box_1">
                                         <form action="#" method="post" class="last">
@@ -148,11 +161,11 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                         <ul class="navbar-nav ">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="TrangChu.jsp">Trang chủ <span class="sr-only">(current)</span></a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Index">Trang chủ <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a href="about.jsp" class="nav-link">Giới thiệu</a>
+                                <a href="/GioiThieu" class="nav-link">Giới thiệu</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -160,15 +173,13 @@
                                     Sản phẩm
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="nav-link" href="Products.jsp">Cá</a>
-                                    <a class="nav-link " href="#!">Tôm</a>
-                                    <a class="nav-link " href="#!">Mực</a>
-                                    <a class="nav-link " href="#!">Cua - ghẹ</a>
-                                    <a class="nav-link " href="#!">Ngao - Sò - Ốc</a>
+                                    <c:forEach var="danhMuc" items="${requestScope.danhMucs}">
+                                        <a class="nav-link" href="/Products?idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
+                                    </c:forEach>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#!" class="nav-link">Công thức chế biến</a>
+                                <a href="/DSBaiViet" class="nav-link">Công thức chế biến</a>
                             </li>
                             <li class="nav-item">
                                 <a href="LienHe.jsp" class="nav-link">Liên hệ</a>
@@ -177,6 +188,7 @@
                     </div>
                 </nav>
             </div>
+        </div>
     </header>
     <!-- Banner -->
     <div class="inner_page-banner one-img">
@@ -194,10 +206,10 @@
                     </div>
                     <div class="modal-body">
                         <div class="register-form">
-                            <form action="#" method="post" onsubmit="return checkForm(this)">
+                            <form action="/Login" onsubmit="return checkForm(this)">
                                 <div class="fields-grid">
                                     <div class="styled-input">
-                                        <input type="email" placeholder="Email của bạn" name="Your Email" required="">
+                                        <input type="email" placeholder="Email của bạn" name="email" required="">
                                     </div>
                                     <div class="styled-input">
                                         <input type="password" placeholder="Nhập password" name="password" required="">
@@ -243,7 +255,7 @@
         <!-- //Modal 1-->
     <ul class="breadcrumb">
         <div class="container">
-            <li><a href="TrangChu.jsp">Trang chủ</a></li>
+            <li><a href="/Index">Trang chủ</a></li>
             <li>Công thức chế biến</li>
         </div>
     </ul>
@@ -257,32 +269,32 @@
                         <h3 class="agileits-sear-head">DANH MỤC SẢN PHẨM</h3>
                         <ul>
                             <li>
-                                <a href="#!">
-                                    <img src="resources/images/FISHICO.png" width="20px" height="20px">
+                                <a href="/Products?idDM=ca">
+                                    <img src="resources/images/FISHICO.png" class="category">
                                     <span class="span">Cá</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#!">
-                                    <img src="resources/images/SHRIMPICO.png" width="20px" height="20px">
+                                <a href="/Products?idDM=tom">
+                                    <img src="resources/images/SHRIMPICO.png" class="category">
                                     <span class="span">Tôm</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#!">
-                                    <img src="resources/images/CuttleFishICO.png" width="20px" height="20px">
+                                <a href="/Products?idDM=muc">
+                                    <img src="resources/images/CuttleFishICO.png" class="category">
                                     <span class="span">Mực</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#!">
-                                    <img src="resources/images/CrabICO.gif" width="20px" height="20px">
+                                <a href="/Products?idDM=cua">
+                                    <img src="resources/images/CrabICO.gif" class="category">
                                     <span class="span">Cua ghẹ</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#!">
-                                    <img src="resources/images/clamICO.png" width="20px" height="20px">
+                                <a href="/Products?idDM=ngao-so-oc">
+                                    <img src="resources/images/clamICO.png" class="category">
                                     <span class="span">Ngao - Sò - Ốc</span>
                                 </a>
                             </li>
@@ -292,36 +304,14 @@
                     <div class="left-side">
                         <h3 class="agileits-sear-head">BÀI VIẾT NỔI BẬT</h3>
                         <ul>
-                            <li>
-                                <a href="#!">
-                                    <img src="resources/images/ca-mu-hap-hanh.jpg" width="70px" height="70px">
-                                    <p>Hướng dẫn làm món cá mú đỏ hấp bia cực ngon miệng</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#!">
-                                    <img src="resources/images/ca-chep-hap--bia01.jpg" width="70px" height="30px">
-                                    <p class="span">Món cá chép hấp bia cách làm tại nhà đơn giản </p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#!">
-                                    <img src="resources/images/Foods/tom-su-rang-toi.jpg" width="30px" height="30px">
-                                    <p class="span">Bí quyết cho món tôm sú rang tỏi cực ngon</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#!">
-                                    <img src="resources/images/Foods/tom-tit-rang-me01.jpg" width="30px" height="30px">
-                                    <p class="span">Cùng thay đổi khẩu vị với món bề bề rang me</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#!">
-                                    <img src="resources/images/Foods/cua-rang-me01.jpg" width="30px" height="30px">
-                                    <p class="span">Đơn giản mà ngon, đó là cua rang me</p>
-                                </a>
-                            </li>
+                            <c:forEach var="baiViet" items="${requestScope.baiViets}">
+                                <li>
+                                    <a href="/XemCTBaiViet?idBV=${baiViet.maBaiViet}">
+                                        <img src="resources/images/ca-mu-hap-hanh.jpg" width="70px" height="70px">
+                                        <p>${baiViet.tieuDe}</p>
+                                    </a>
+                                </li>
+                            </c:forEach>
                         </ul>
                     </div>
                     <!-- Bai Viet Noi Bat -->
@@ -333,73 +323,12 @@
                 <div id="content_center" class="col-md-9">
                     <!-- <div  class="col-lg-8 col-md-8 col-sm-12 col-xs-12"> -->
                     <div class="article-list">
-                        <h1 id="article-name">Mách bạn công thức tôm sú rim cay xé lưỡi độc đáo</h1>
-                        <time class="article-time">2017-10-02 21:14:40 - Lượt xem : 370</time>
+                        <h1 id="article-name">${baiViet.tieuDe}</h1>
+                        <time class="article-time">Ngày đăng : ${baiViet.ngayDang}</time>
                         <div class="article-summary"></div>
                         <div class="clearfix"></div>
                         <article class="article-content">
-                            <h2 style="text-align: justify;"><strong>Mách bạn công thức tôm sú rim cay xé lưỡi độc
-                                    đáo và thử thách các tín đồ của món cay</strong></h2>
-                            <p style="text-align: justify;">Nếu bạn là tín đồ của các món cay thì chắc chắn với các
-                                công thức có vị cay không thể nảo làm khó được vị giác của bạn. Nếu như nhiều người
-                                khi nhắc đến các món cay thường nhắc đến khô gà xé cay hay mực rim cay thì hôm nay
-                                chúng tôi xin gửi đến cho bạn một công thức vô cùng tuyệt vời với <strong>tôm sú</strong>.
-                                Đó là công thức tôm sú rim cay xé lưỡi.</p>
-                            <p style="text-align: justify;">Đúng như tên gọi của món ăn này, công thức <strong>tôm
-                                    sú rim cay xé lưỡi</strong> này chắc chắn sẽ khiến cho vị giác của người thưởng
-                                thức bị đánh thức bởi độ cay nồng nhưng vẫn giữ được hương vị tuyệt vời từ tôm.
-                                Cuối tuần này rảnh rỗi, bạn hãy vào bếp và thử sức nhé.</p>
-                            <p style="text-align: center;"><img src="resources/images/Shrmip/tôm-sú01.jpg" alt="tôm sú bóc nõn"
-                                    width="500"></p>
-                            <h2 style="text-align: justify;"><strong>Công thức</strong> <strong>tôm sú rim cay xé
-                                    lưỡi cho các tín đồ yêu thích món cay</strong></h2>
-                            <p style="text-align: justify;">Không giống như các công thức nấu ăn về món cay trước
-                                đây <strong>tôm sú rim cay xé lưỡi </strong>là sự kết hợp tương đối đơn giản và dễ
-                                thực hiện giữa các gia vị thường thấy. Việc bạn cần phải làm chỉ cần thu thập đầy
-                                đủ các nguyên liệu va bắt tay ngay vào chế biến thôi nào.</p>
-                            <p style="text-align: justify;"><strong>Nguyên liệu cần chuẩn bị</strong></p>
-                            <p style="text-align: justify;">Để <strong>tôm sú</strong> rim cay chuẩn vị bạn cần
-                                khoảng 200 gram tôm sú hoặc nhiều hơn tùy theo khẩu phần ăn, ớt đỏ khô đã bỏ hạt,
-                                đậu Hà Lan, lạc bóc vỏ và các gia giảm dùng trong quá trình nêm nếm bao gồm: 1/2
-                                thìa canh đường, 1/2 thìa nhỏ tiêu đỏ, 1 thìa nhỏ mẻ, 1 thìa canh xì dầu, 2 tép tỏi
-                                băm nhỏ, hành lá, muối.</p>
-                            <p style="text-align: justify;">Như vậy có thể thấy, với <strong>tôm sú rim cay xé lưỡi</strong>
-                                bạn hoàn toàn có thể thực hiện ở bất kì mùa nào trong năm bởi nguyên liệu của chúng
-                                vô cùng dễ tìm kiếm. Ngay khi đã có đầy đủ các nguyên liệu rồi bạn còn chân chờ gì
-                                mà không bắt tay ngay vào thực hiện công thức này thôi nào.</p>
-                            <p style="text-align: center;"><img src="resources/images/Shrmip/TomThe01.jpg" alt="Nguyên liệu làm món tôm sú"
-                                    width="500"></p>
-                            <p style="text-align: justify;"><em>Quy trình chế biến tôm sú rim cay xé lưỡi</em>:</p>
-                            <p style="text-align: justify;"><strong>Bước 1:</strong> thực hiện ở chế các nguyên
-                                liệu</p>
-                            <p style="text-align: justify;">– <strong>Tôm sú</strong> ngay từ khi mua về bạn hãy
-                                tiến hành rửa thật sạch, sau đó bóc đi phần vỏ, rút chỉ đen trên lưng tôm. Bạn hãy
-                                lấy giấy ăn khô lau tôm để khi chiên không bị bắn.</p>
-                            <p style="text-align: justify;">– Ngâm phần ớt đỏ khô vào nước ấm khoảng 10 phút rồi
-                                đem ra thái nhỏ.</p>
-                            <p style="text-align: justify;"><strong>Bước 2:</strong> chế biến <strong>tôm sú rim
-                                    cay xé lưỡi</strong></p>
-                            <p style="text-align: justify;">– Đổ dầu ăn vào chảo, sau đó cho phần tỏi băm và ớt vào
-                                phi cho đến khi hỗn hợp này dậy mùi thơm.</p>
-                            <p style="text-align: justify;">– Cho tiếp hạt tiêu, mẻ, xì dầu, đường và 1 thìa canh
-                                nước lọc vào, đun khoảng 3 phút khi hỗn hợp này sôi thì tắt bếp, đổ ra bát riêng.</p>
-                            <p style="text-align: justify;">– Đun chảo dầu sôi, thả tôm sú vào lần lượt chiên chín
-                                vàng thì gắp ra đĩa trải trước một lớp giấy thấm dầu cho ráo mỡ</p>
-                            <p style="text-align: justify;"><strong>Bước 3:</strong></p>
-                            <p style="text-align: justify;">– Tận dụng chảo dầu vừa chiên tôm để chiên lạc 7-8 phút
-                                rồi vớt ra.</p>
-                            <p style="text-align: justify;">– Đổ bát nước sốt vào một chiếc chảo khác, cho đậu Hà
-                                Lan vào đảo khoảng 3 phút đến khi đậu trở nên mềm thì đổ tôm và lạc vào, rim từ 3-5
-                                phút cho tất cả các nguyên liệu đều ngấm đều các gia vị thì rắc hành thái nhỏ, tắt
-                                bếp. Vậy là công thức <strong>tôm sú rim cay xé lưỡi</strong> của bạn đã hoàn thành
-                                rồi đấy, cuối cùng bạn chỉ cần múc ra đĩa dùng nóng với cơm. Nếu không thích ăn quá
-                                cay bạn có thể gia giảm lượng ớt và hạt tiêu tùy ý thích.</p>
-                            <p style="text-align: center;"><img src="resources/images/Foods/tom-su-rang-toi.jpg" alt="Tôm rim cay"
-                                    width="500"></p>
-                            <p style="text-align: justify;">Hi vọng với công thức <strong>tôm sú</strong> kết hợp
-                                với vị cay nồng của ớt khô này sẽ làm bạn yêu thích và có thể thực hiện trổ tài
-                                cùng cho gia đình thưởng thức. Hãy thử sức và cho chúng tôi những trải nghiệm mới
-                                nhất bạn nhé.</p>
+                            ${baiViet.noiDung}
                         </article>
                         <div class="clearfix"></div>
                     </div>
@@ -441,16 +370,16 @@
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                     <h6 class="text-uppercase mb-4 font-weight-bold">MENU</h6>
                     <p>
-                        <a href="TrangChu.jsp">Trang chủ</a>
+                        <a href="/Index">Trang chủ</a>
                     </p>
                     <p>
-                        <a href="About.jsp">Giới thiệu</a>
+                        <a href="/GioiThieu">Giới thiệu</a>
                     </p>
                     <p>
                         <a href="LienHe.jsp">Liên hệ</a>
                     </p>
                     <p>
-                        <a href="DSCongthucchebien.jsp">Món ngon</a>
+                        <a href="/DSBaiViet">Món ngon</a>
                     </p>
                 </div>
                 <!-- Grid column -->

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> -->
 <!DOCTYPE html>
 <html lang="en">
@@ -104,12 +105,24 @@
                 <span class="fas fa-envelope"></span>
                 <p><a href="mailto:info@example.com">tieudanseafood@gmail.com</a></p>
               </li>
-              <li class="float-md-right">
-                <span class="fas fa-user"></span>
-                <p><a data-toggle="modal" href="#LoginModal">Đăng nhập</a></p>
-                <p>|</p>
-                <p><a href="DangKi.jsp">Đăng ký</a></p>
-              </li>
+                <c:choose>
+                    <c:when test="${currentSessionUser == null}">
+                        <li class="float-md-right">
+                            <span class="fas fa-user"></span>
+                            <p><a data-toggle="modal" href="#LoginModal">Đăng nhập</a></p>
+                            <p>|</p>
+                            <p><a href="/DangKyThanhVien">Đăng ký</a></p>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="float-md-right">
+                            <span class="fas fa-user"></span>
+                            <p>Chào <a href="/Profile">${currentSessionUser.hoTen}</a></p>
+                            <p>|</p>
+                            <p><a href="/Logout">Thoát</a></p>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
             </ul>
           </div>
         </div>
@@ -117,10 +130,10 @@
           <div class="hedder-up row">
             <div style="width:70%" class="col-lg-3 col-md-3 logo-head">
               <li>
-                <a class="navbar-brand" href="TrangChu.jsp" style="margin-left: 31%">
+                <a class="navbar-brand" href="/Index" style="margin-left: 31%">
                   <div class="logo"><img src="resources/images/CrabICO.png" alt=""> </div>
                 </a>
-                <h4 style="display:inline-block"><strong><a href="TrangChu.jsp">Tiêu Dân Seafood </a></strong></h4>
+                <h4 style="display:inline-block"><strong><a href="/Index">Tiêu Dân Seafood </a></strong></h4>
               </li>
             </div>
             <div class="col-lg-5 col-md-6 search-right">
@@ -138,7 +151,7 @@
                     <p>Tổng đài miễn phí</p>
                   </li>
                   <li style="padding-right: 15pt">
-                    <p style="padding-bottom: 15pt"><strong><a href="#">CÔNG THỨC</a></strong></p>
+                    <p style="padding-bottom: 15pt"><strong><a href="/DSBaiViet">CÔNG THỨC</a></strong></p>
                     <p>Đảm đang - Khéo léo<</p>
                   </li>
                   <li style="position:relative" class="toyscart toyscart2 cart cart box_1">
@@ -163,11 +176,11 @@
           </button>
           <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
             <ul class="navbar-nav ">
-              <li class="nav-item active">
-                <a class="nav-link" href="TrangChu.jsp">Trang chủ <span class="sr-only">(current)</span></a>
+              <li class="nav-item">
+                <a class="nav-link" href="/Index">Trang chủ <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a href="about.jsp" class="nav-link">Giới thiệu</a>
+                <a href="/GioiThieu" class="nav-link">Giới thiệu</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -175,18 +188,16 @@
                   Sản phẩm
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="nav-link" href="Products.jsp">Cá</a>
-                  <a class="nav-link " href="#!">Tôm</a>
-                  <a class="nav-link " href="#!">Mực</a>
-                  <a class="nav-link " href="#!">Cua - ghẹ</a>
-                  <a class="nav-link " href="#!">Ngao - Sò - Ốc</a>
+                    <c:forEach var="danhMuc" items="${requestScope.danhMucs}">
+                        <a class="nav-link" href="/Products?idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
+                    </c:forEach>
                 </div>
               </li>
               <li class="nav-item dropdown">
-                <a href="#!" class="nav-link">Công thức chế biến</a>
+                <a href="/DSBaiViet" class="nav-link">Công thức chế biến</a>
               </li>
               <li class="nav-item">
-                <a href="LienHe.jsp" class="nav-link">Liên hệ</a>
+                <a href="/LienHe" class="nav-link">Liên hệ</a>
               </li>
             </ul>
           </div>
@@ -210,10 +221,10 @@
         </div>
         <div class="modal-body">
           <div class="register-form">
-            <form action="#" method="post" onsubmit="return checkForm(this)">
+            <form action="/Login" onsubmit="return checkForm(this)">
               <div class="fields-grid">
                 <div class="styled-input">
-                  <input type="email" placeholder="Email của bạn" name="Your Email" required="">
+                  <input type="email" placeholder="Email của bạn" name="email" required="">
                 </div>
                 <div class="styled-input">
                   <input type="password" placeholder="Nhập password" name="password" required="">
@@ -258,7 +269,7 @@
 
   <div class="container" style="margin-top:30px">
     <ul class="breadcrumb">
-      <li><a href="index.html">Trang chủ</a></li>
+      <li><a href="/Index">Trang chủ</a></li>
       <li class="active">Đăng ký thành viên</li>
     </ul>
 
@@ -341,16 +352,16 @@
         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
           <h6 class="text-uppercase mb-4 font-weight-bold">MENU</h6>
           <p>
-            <a href="TrangChu.jsp">Trang chủ</a>
+            <a href="/Index">Trang chủ</a>
           </p>
           <p>
-            <a href="About.jsp">Giới thiệu</a>
+            <a href="/GioiThieu">Giới thiệu</a>
           </p>
           <p>
-            <a href="LienHe.jsp">Liên hệ</a>
+            <a href="/LienHe">Liên hệ</a>
           </p>
           <p>
-            <a href="DSCongthucchebien.jsp">Món ngon</a>
+            <a href="/DSBaiViet">Món ngon</a>
           </p>
         </div>
         <!-- Grid column -->

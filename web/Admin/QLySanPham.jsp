@@ -133,7 +133,7 @@
                                         <td>${sanPham.maSP}</td>
                                         <td>${sanPham.tenSP}</td>
                                         <td>${sanPham.giaSP}</td>
-                                        <td>${sanPham.phanTramKhuyenMai}%</td>
+                                        <td>${sanPham.phanTramKhuyenMai}</td>
                                         <td>${sanPham.xuatXu}</td>
                                         <td>${sanPham.ngayNhap}</td>
                                         <td>

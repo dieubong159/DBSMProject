@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> -->
 <!DOCTYPE html>
 <html lang="vi">
@@ -136,11 +137,11 @@
                                     <li style="padding-right: 15pt">
                                         <p style="padding-bottom: 15pt"><strong><a href="tel:+01269220162">0168 xxxx
                                                     xxx</a></strong></p>
-                                        <p>Tổng đài miễn phí</a></p>
+                                        <p>Tổng đài miễn phí</p>
                                     </li>
                                     <li style="padding-right: 15pt">
                                         <p style="padding-bottom: 15pt"><strong><a href="#">CÔNG THỨC</a></strong></p>
-                                        <p>Đảm đang - Khéo léo</a></p>
+                                        <p>Đảm đang - Khéo léo</p>
                                     </li>
                                     <li style="position:relative" class="toyscart toyscart2 cart cart box_1">
                                         <form action="#" method="post" class="last">
@@ -165,10 +166,10 @@
                     <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                         <ul class="navbar-nav ">
                             <li class="nav-item active">
-                                <a class="nav-link" href="TrangChu.jsp">Trang chủ <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="/Index">Trang chủ <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a href="about.jsp" class="nav-link">Giới thiệu</a>
+                                <a href="/GioiThieu" class="nav-link">Giới thiệu</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -176,11 +177,9 @@
                                     Sản phẩm
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="nav-link" href="Products.jsp">Cá</a>
-                                    <a class="nav-link " href="#!">Tôm</a>
-                                    <a class="nav-link " href="#!">Mực</a>
-                                    <a class="nav-link " href="#!">Cua - ghẹ</a>
-                                    <a class="nav-link " href="#!">Ngao - Sò - Ốc</a>
+                                    <c:forEach var="danhMuc" items="${requestScope.danhMucs}">
+                                        <a class="nav-link" href="/Products?idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
+                                    </c:forEach>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
@@ -193,6 +192,7 @@
                     </div>
                 </nav>
             </div>
+        </div>
     </header>
     <!-- banner -->
     <div class="inner_page-banner one-img">
@@ -213,7 +213,7 @@
                         <form action="#" method="post" onsubmit="return checkForm(this)">
                             <div class="fields-grid">
                                 <div class="styled-input">
-                                    <input type="email" placeholder="Email của bạn" name="Your Email" required="">
+                                    <input type="email" placeholder="Email của bạn" name="email" required="">
                                 </div>
                                 <div class="styled-input">
                                     <input type="password" placeholder="Nhập password" name="password" required="">
@@ -273,14 +273,14 @@
                             <p class="image"><img src="resources/images/userICO.png" alt="" width="45" height="45"></p>
                             <p class="name" style="text-align: left">Tài khoản của</p>
                             <strong>
-                                <h6>Jaxkie Phạm</h6>
+                                <h6>${currentSessionUser.hoTen}</h6>
                             </strong>
                         </div>
                         <ul class="list-group margin-bottom-25 sidebar-menu">
-                            <li class="list-group-item clearfix"><a href="Profile.jsp"><i class="fa fa-angle-right"></i>
+                            <li class="list-group-item clearfix"><a href="/Profile"><i class="fa fa-angle-right"></i>
                                     Thông
                                     tin tài khoản</a></li>
-                            <li class="list-group-item clearfix"><a href="Profile_Password.jsp"><i class="fa fa-angle-right"></i>
+                            <li class="list-group-item clearfix"><a href="/DoiMatKhau"><i class="fa fa-angle-right"></i>
                                     Đổi mật
                                     khẩu</a></li>
                             <li class="list-group-item clearfix"><a href="Profile_BillManagement.jsp"><i class="fa fa-angle-right"></i>
@@ -304,18 +304,34 @@
                     <!-- <div class="alert alert-success">Thông tin tài khoản của bạn đã được cập nhật.</div> -->
                     <h1 class="have-margin">Đổi mật khẩu</h1>
                     <div class="account-profile">
-                        <form class="content" method="post" action="" id="edit-account" onsubmit="return checkForm(this)">
+                        <form class="content" method="post" action="/DoiMatKhau" id="edit-account" onsubmit="return checkForm(this)">
                             <div class="form-group">
                                 <label class="control-label" for="old_password">Mật khẩu cũ</label>
                                 <div class="input-wrap">
                                     <input type="password" name="old_password" class="form-control" id="old_password"
                                         value="" autocomplete="off" placeholder="Nhập mật khẩu cũ">
                                     <span class="help-block"></span>
+                                    <c:choose>
+                                        <c:when test="${pwIsValid == false}">
+                                        <div class="alert1">
+                                            <span class="exitbtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                            Mật khẩu cũ không trùng khớp !!
+                                        </div>
+                                        </c:when>
+                                        <c:when test="${pwIsValid == null}">
+                                        </c:when>
+                                        <c:otherwise>
+                                            <div class="alert1">
+                                                <span class="exitbtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                                Đã cập nhật mật khẩu thành công!!
+                                            </div>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </div>
 
                             </div>
                             <div class="form-group">
-                                <label class="control-label" for="new-password">Mật khẩu mới</label>
+                                <label class="control-label" for="new_password">Mật khẩu mới</label>
                                 <div class="input-wrap">
                                     <input type="password" name="new_password" class="form-control" id="new_password"
                                         value="" autocomplete="off" placeholder="Mật khẩu từ 6 đến 32 ký tự" required

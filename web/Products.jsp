@@ -108,12 +108,24 @@
                                 <span class="fas fa-envelope"></span>
                                 <p><a href="mailto:info@example.com">tieudanseafood@gmail.com</a></p>
                             </li>
-                            <li class="float-md-right">
-                                <span class="fas fa-user"></span>
-                                <p><a data-toggle="modal" href="#LoginModal">Đăng nhập</a></p>
-                                <p>|</p>
-                                <p><a href="DangKi.jsp">Đăng ký</a></p>
-                            </li>
+                            <c:choose>
+                                <c:when test="${currentSessionUser == null}">
+                                    <li class="float-md-right">
+                                        <span class="fas fa-user"></span>
+                                        <p><a data-toggle="modal" href="#LoginModal">Đăng nhập</a></p>
+                                        <p>|</p>
+                                        <p><a href="#">Đăng ký</a></p>
+                                    </li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li class="float-md-right">
+                                        <span class="fas fa-user"></span>
+                                        <p>Chào <a href="/Profile">${currentSessionUser.hoTen}</a></p>
+                                        <p>|</p>
+                                        <p><a href="/Logout">Thoát</a></p>
+                                    </li>
+                                </c:otherwise>
+                            </c:choose>
                         </ul>
                     </div>
                 </div>
@@ -124,7 +136,7 @@
                                 <a class="navbar-brand" href="TrangChu.jsp" style="margin-left: 31%">
                                     <div class="logo"><img src="resources/images/CrabICO.png" alt=""> </div>
                                 </a>
-                                <h4 style="display:inline-block"><strong><a href="TrangChu.jsp">Tiêu Dân Seafood </a></strong></h4>
+                                <h4 style="display:inline-block"><strong><a href="/Index">Tiêu Dân Seafood </a></strong></h4>
                             </li>
                         </div>
                         <div class="col-lg-5 col-md-6 search-right">
@@ -142,7 +154,7 @@
                                         <p>Tổng đài miễn phí</p>
                                     </li>
                                     <li style="padding-right: 15pt">
-                                        <p style="padding-bottom: 15pt"><strong><a href="#">CÔNG THỨC</a></strong></p>
+                                        <p style="padding-bottom: 15pt"><strong><a href="/DSBaiViet">CÔNG THỨC</a></strong></p>
                                         <p>Đảm đang - Khéo léo</p>
                                     </li>
                                     <li style="position:relative" class="toyscart toyscart2 cart cart box_1">
@@ -167,28 +179,28 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                         <ul class="navbar-nav ">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="TrangChu.jsp">Trang chủ <span class="sr-only">(current)</span></a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Index">Trang chủ</a>
                             </li>
                             <li class="nav-item">
-                                <a href="about.jsp" class="nav-link">Giới thiệu</a>
+                                <a href="/GioiThieu" class="nav-link">Giới thiệu</a>
                             </li>
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown active">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Sản phẩm
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <c:forEach var="danhMuc" items="${requestScope.danhMucs}">
-                                        <a class="nav-link" href="Products.jsp">${danhMuc.tenDanhmuc}</a>
+                                        <a class="nav-link" href="/Products?idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
                                     </c:forEach>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#!" class="nav-link">Công thức chế biến</a>
+                                <a href="/DSBaiViet" class="nav-link">Công thức chế biến</a>
                             </li>
                             <li class="nav-item">
-                                <a href="LienHe.jsp" class="nav-link">Liên hệ</a>
+                                <a href="/LienHe" class="nav-link">Liên hệ</a>
                             </li>
                         </ul>
                     </div>
@@ -212,10 +224,10 @@
                 </div>
                 <div class="modal-body">
                     <div class="register-form">
-                        <form action="#" method="post" onsubmit="return checkForm(this)">
+                        <form action="/Login" onsubmit="return checkForm(this)">
                             <div class="fields-grid">
                                 <div class="styled-input">
-                                    <input type="email" placeholder="Email của bạn" name="Your Email" required="">
+                                    <input type="email" placeholder="Email của bạn" name="email" required="">
                                 </div>
                                 <div class="styled-input">
                                     <input type="password" placeholder="Nhập password" name="password" required="">
@@ -328,7 +340,7 @@
                         <ul>
                             <c:forEach var="baiViet" items="${requestScope.baiViets}">
                                 <li>
-                                    <a href="#!">
+                                    <a href="/XemCTBaiViet?idBV=${baiViet.maBaiViet}">
                                         <img src="resources/images/ca-mu-hap-hanh.jpg" width="70px" height="70px">
                                         <p>${baiViet.tieuDe}</p>
                                     </a>
@@ -364,20 +376,20 @@
                         </c:forEach>
 
                         <hr>
-                        <!-- <div class="row"> -->
-                        <div class="col-md-4 col-sm-4 items-info">Items 1 to 9 of 10 total</div>
-                        <div class="col-md-8 col-sm-8">
-                            <div class="pagination pull-right">
-                                <a href="#">&laquo;</a>
-                                <a class="active" href="#">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
-                                <a href="#">4</a>
-                                <a href="#">5</a>
-                                <a href="#">6</a>
-                                <a href="#">&raquo;</a>
-                            </div>
-                        </div>
+                        <%--<!-- <div class="row"> -->--%>
+                        <%--<div class="col-md-4 col-sm-4 items-info">Items 1 to 9 of 10 total</div>--%>
+                        <%--<div class="col-md-8 col-sm-8">--%>
+                            <%--<div class="pagination pull-right">--%>
+                                <%--<a href="#">&laquo;</a>--%>
+                                <%--<a class="active" href="#">1</a>--%>
+                                <%--<a href="#">2</a>--%>
+                                <%--<a href="#">3</a>--%>
+                                <%--<a href="#">4</a>--%>
+                                <%--<a href="#">5</a>--%>
+                                <%--<a href="#">6</a>--%>
+                                <%--<a href="#">&raquo;</a>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
                         <!-- </div> -->
                     </div>
                 </div>
@@ -412,13 +424,13 @@
                         <a href="/Index">Trang chủ</a>
                     </p>
                     <p>
-                        <a href="About.jsp">Giới thiệu</a>
+                        <a href="/GioiThieu">Giới thiệu</a>
                     </p>
                     <p>
-                        <a href="LienHe.jsp">Liên hệ</a>
+                        <a href="/LienHe">Liên hệ</a>
                     </p>
                     <p>
-                        <a href="DSCongthucchebien.jsp">Món ngon</a>
+                        <a href="/DSBaiViet">Món ngon</a>
                     </p>
                 </div>
                 <!-- Grid column -->

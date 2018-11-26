@@ -2,16 +2,57 @@ package banhaisan.models.datamodels;
 
 public class DangNhap_KetNoi {
     private String ipAddress;
+    private String hoTen;
     private String email;
     private String passWord;
+    private boolean valid;
+    private boolean Admin;
+    private String maNguoiDung;
 
-    public DangNhap_KetNoi() {
+    public String getMaNguoiDung() {
+        return maNguoiDung;
     }
 
-    public DangNhap_KetNoi(String ipAddress, String email, String passWord) {
+    public void setMaNguoiDung(String maNguoiDung) {
+        this.maNguoiDung = maNguoiDung;
+    }
+
+    public DangNhap_KetNoi(String ipAddress, String hoTen, String email, String passWord, boolean valid, boolean admin, String maNguoiDung) {
         this.ipAddress = ipAddress;
+        this.hoTen = hoTen;
         this.email = email;
         this.passWord = passWord;
+        this.valid = valid;
+        Admin = admin;
+        this.maNguoiDung = maNguoiDung;
+    }
+
+    public String getHoTen() {
+        return hoTen;
+    }
+
+    public void setHoTen(String hoTen) {
+        this.hoTen = hoTen;
+    }
+    public void setAdmin(boolean admin) {
+        Admin = admin;
+    }
+
+
+    public boolean isAdmin() {
+        return Admin;
+    }
+
+    public boolean isValid() {
+        return valid;
+    }
+
+    public void setValid(boolean valid) {
+        this.valid = valid;
+    }
+
+
+    public DangNhap_KetNoi() {
     }
 
     public String getIpAddress() {

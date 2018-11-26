@@ -2,7 +2,7 @@ package banhaisan.models.datamodels;
 
 import java.sql.Date;
 
-public class DonHang extends DonHang_SanPham {
+public class DonHang extends DonHang_SanPham{
     private String maDonHang;
     private String diaChiGiaoHang;
     private String ghiChu;

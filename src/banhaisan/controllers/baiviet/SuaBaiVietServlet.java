@@ -48,7 +48,7 @@ public class SuaBaiVietServlet extends HttpServlet {
         }
         BaiViet bv = null;
         try{
-            bv= BaiVietService.getInstance().get(idBaiViet);
+            bv=BaiVietService.getInstance().get(idBaiViet);
             ArrayList<DanhMuc> danhMucs = DanhMucService.getInstance().getData();
             request.setAttribute("danhMucs",danhMucs);
         }catch (SQLException | ClassNotFoundException e)

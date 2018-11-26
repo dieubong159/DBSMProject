@@ -150,7 +150,6 @@
                                         <br><small class="text-danger" id="validate-txt-khuyen-mai"></small>
                                     </div>
                                 </div>
-                                <form id="frmImg" runat="server">
                                 <div class="control-group">
                                     <label class="control-label" for="fileInput">Hình ảnh</label>
                                     <div class="controls">
@@ -158,11 +157,9 @@
                                             <input class="input-file uniform_on" id="fileInput" type="file"><span class="filename"
                                                 style="user-select: none;;">Không có file</span><span class="action"
                                                 style="user-select: none;">Chọn File</span>
-                                            <img id="blah" src="#" alt="your image" />
                                         </div>
                                     </div>
                                 </div>
-                            </form>
                                 <div class="control-group">
                                     <label class="control-label">Xuất xứ<span class="required">*</span></label>
                                     <div class="controls">
@@ -220,13 +217,6 @@
     <script src="assets/form-validation.js"></script>
 
     <script src="assets/scripts.js"></script>
-    <script type="text/javascript">
-        function getFilePath(){
-            $('input[type=file]').change(function () {
-                var filePath=$('#fileUpload').val();
-            });
-        }
-    </script>
     <script>
         function kiemTraKhuyenMai() {
             let reg = /([0-9])/;

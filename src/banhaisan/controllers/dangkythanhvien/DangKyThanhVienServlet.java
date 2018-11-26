@@ -1,5 +1,6 @@
 package banhaisan.controllers.dangkythanhvien;
 
+import banhaisan.models.datahandle.NguoiDungAdminService;
 import banhaisan.models.datahandle.NguoiDungThongThuongService;
 import banhaisan.models.datamodels.NguoiDung;
 
@@ -20,43 +21,34 @@ import java.text.SimpleDateFormat;
 @WebServlet(name = "DangKyThanhVienServlet", urlPatterns = {"/DangKyThanhVien"})
 public class DangKyThanhVienServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
         NguoiDung nguoiDung= new NguoiDung();
-        nguoiDung.setHoTen(request.getParameter("hoten"));
-        nguoiDung.setGioiTinh(Boolean.getBoolean(request.getParameter("gioitinh")));
-        nguoiDung.setEmail(request.getParameter("email"));
-        nguoiDung.setSdt(request.getParameter("sodienthoai"));
-        nguoiDung.setDiaChi(request.getParameter("diachi"));
+        nguoiDung.setHoTen(request.getParameter("txt-ten"));
+        nguoiDung.setGioiTinh(request.getParameter("txt-gioi-tinh") =="1");
+        nguoiDung.setEmail(request.getParameter("txt-email"));
+        nguoiDung.setSdt(request.getParameter("txt-dien-thoai"));
+        nguoiDung.setDiaChi(request.getParameter("txt-dia-chi"));
         java.util.Date ngaySinh = null;
-        if (request.getParameter("ngaysinh") != null) {
+        if (request.getParameter("dt-ngay-sinh") != null) {
             try {
-                ngaySinh = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("ngaysinh"));
+                ngaySinh = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dt-ngay-sinh"));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
         }
-        nguoiDung.setNgaySinh(new Date(ngaySinh.getTime()));
-        nguoiDung.setMatKhau(request.getParameter("matkhau"));
+        nguoiDung.setNgaySinh(new java.sql.Date(ngaySinh.getTime()));
+        nguoiDung.setMatKhau(request.getParameter("txt-mat-khau"));
 
-        NguoiDungThongThuongService nguoiDungThongThuongs= new NguoiDungThongThuongService();
         NguoiDung nd=null;
         try {
-            if(nguoiDungThongThuongs.add(nguoiDung)==1) {
-                nguoiDungThongThuongs.add(nguoiDung);
-                out.println("<p style='color:green;'>Đăng ký thành công!</p>");
-            }
-            else {
-                out.println("<meta http-equiv='refresh' content='3;URL=/DangKi.jsp'>");//redirects after 3 seconds
-                out.println("<p style='color:red;'>Thất bại!</p>");
-            }
+            NguoiDungThongThuongService.getInstance().add(nguoiDung);
         } catch (SQLException | ClassNotFoundException e) {
             HttpSession error = request.getSession();
             error.setAttribute("error", e.toString());
             e.printStackTrace();
         }
+
     }
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/DangKi.jsp");

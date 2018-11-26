@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> -->
 <!DOCTYPE html>
 <html lang="vi">
@@ -84,12 +85,24 @@
                                 <span class="fas fa-envelope"></span>
                                 <p><a href="mailto:info@example.com">tieudanseafood@gmail.com</a></p>
                             </li>
-                            <li class="float-md-right">
-                                <span class="fas fa-user"></span>
-                                <p>Chào <a href="Profile.jsp">Diêu</a></p>
-                                <p>|</p>
-                                <p><a href="TrangChu.jsp">Thoát</a></p>
-                            </li>
+                            <c:choose>
+                                <c:when test="${currentSessionUser == null}">
+                                    <li class="float-md-right">
+                                        <span class="fas fa-user"></span>
+                                        <p><a data-toggle="modal" href="#LoginModal">Đăng nhập</a></p>
+                                        <p>|</p>
+                                        <p><a href="#">Đăng ký</a></p>
+                                    </li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li class="float-md-right">
+                                        <span class="fas fa-user"></span>
+                                        <p>Chào <a href="Profile.jsp">${currentSessionUser.hoTen}</a></p>
+                                        <p>|</p>
+                                        <p><a href="/Logout">Thoát</a></p>
+                                    </li>
+                                </c:otherwise>
+                            </c:choose>
                         </ul>
                     </div>
                 </div>
@@ -115,11 +128,11 @@
                                     <li style="padding-right: 15pt">
                                         <p style="padding-bottom: 15pt"><strong><a href="tel:+01269220162">0168 xxxx
                                                     xxx</a></strong></p>
-                                        <p>Tổng đài miễn phí</a></p>
+                                        <p>Tổng đài miễn phí</p>
                                     </li>
                                     <li style="padding-right: 15pt">
                                         <p style="padding-bottom: 15pt"><strong><a href="#">CÔNG THỨC</a></strong></p>
-                                        <p>Đảm đang - Khéo léo</a></p>
+                                        <p>Đảm đang - Khéo léo</p>
                                     </li>
                                     <li style="position:relative" class="toyscart toyscart2 cart cart box_1">
                                         <form action="#" method="post" class="last">
@@ -155,11 +168,9 @@
                                     Sản phẩm
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="nav-link" href="Products.jsp">Cá</a>
-                                    <a class="nav-link " href="#!">Tôm</a>
-                                    <a class="nav-link " href="#!">Mực</a>
-                                    <a class="nav-link " href="#!">Cua - ghẹ</a>
-                                    <a class="nav-link " href="#!">Ngao - Sò - Ốc</a>
+                                    <c:forEach var="danhMuc" items="${requestScope.danhMucs}">
+                                        <a class="nav-link" href="/Products?idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
+                                    </c:forEach>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
@@ -172,6 +183,7 @@
                     </div>
                 </nav>
             </div>
+        </div>
     </header>
     <!-- banner -->
     <div class="inner_page-banner one-img">
@@ -189,10 +201,10 @@
                 </div>
                 <div class="modal-body">
                     <div class="register-form">
-                        <form action="#" method="post" onsubmit="return checkForm(this)">
+                        <form action="/Login" method="post" onsubmit="return checkForm(this)">
                             <div class="fields-grid">
                                 <div class="styled-input">
-                                    <input type="email" placeholder="Email của bạn" name="Your Email" required="">
+                                    <input type="email" placeholder="Email của bạn" name="email" required="">
                                 </div>
                                 <div class="styled-input">
                                     <input type="password" placeholder="Nhập password" name="password" required="">
@@ -252,14 +264,14 @@
                             <p class="image"><img src="resources/images/userICO.png" alt="" width="45" height="45"></p>
                             <p class="name" style="text-align: left">Tài khoản của</p>
                             <strong>
-                                <h6>Phạm Ngọc Diêu</h6>
+                                <h6>${currentSessionUser.hoTen}</h6>
                             </strong>
                         </div>
                         <ul class="list-group margin-bottom-25 sidebar-menu">
-                            <li class="list-group-item clearfix"><a href="Profile.jsp"><i class="fa fa-angle-right"></i>
+                            <li class="list-group-item clearfix"><a href="/Profile"><i class="fa fa-angle-right"></i>
                                     Thông
                                     tin tài khoản</a></li>
-                            <li class="list-group-item clearfix"><a href="Profile_Password.jsp"><i class="fa fa-angle-right"></i>
+                            <li class="list-group-item clearfix"><a href="/DoiMatKhau"><i class="fa fa-angle-right"></i>
                                     Đổi mật
                                     khẩu</a></li>
                             <li class="list-group-item clearfix"><a href="Profile_BillManagement.jsp"><i class="fa fa-angle-right"></i>
@@ -288,7 +300,7 @@
                             <div class="form-group">
                                 <label class="control-label" for="full_name">Họ tên </label>
                                 <div class="input-wrap">
-                                    <input type="text" name="full_name" class="form-control" id="full_name" value="Phạm Ngọc Diêu"
+                                    <input type="text" name="full_name" class="form-control" id="full_name" value="${nguoiDung.hoTen}"
                                         placeholder="Họ tên">
                                     <span class="help-block"></span>
                                 </div>
@@ -297,23 +309,23 @@
                             <div class="form-group">
                                 <label class="control-label" for="phone_number">Số điện thoại</label>
                                 <div class="input-wrap">
-                                    <input type="text" disabled="" value="0586060734" class="form-control" name="phone_number"
+                                    <input type="text" disabled="" value="${nguoiDung.sdt}" class="form-control" name="phone_number"
                                         id="phone_number" placeholder="Số điện thoại">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label" for="email">Email</label>
+                                <label class="control-label" for="form_email">Email</label>
                                 <div class="input-wrap">
-                                    <input type="email" disabled="" value="16110291@student.hcmute.edu.vn" class="form-control"
-                                        name="email" id="form_email" placeholder="Email">
+                                    <input type="email" disabled="" value="${nguoiDung.email}" class="form-control"
+                                        name="email-profile" id="form_email" placeholder="Email">
                                 </div>
                             </div>
 
                             <div class="form-group gender-select-wrap" id="register_name">
-                                <label class="control-label" for="pasword">Giới tính</label>
+                                <label class="control-label" for="gender">Giới tính</label>
                                 <div class="input-wrap">
-                                    <div class="row">
+                                    <div class="row" id="gender">
                                         <label class="radio-inline">
                                             <input type="radio" name="gender" value="on" id="gender_male" class="gender"
                                                 checked="">Nam
@@ -511,7 +523,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="input-wrap margin">
-                                    <input type="hidden" name="customer_birthdate" value="1998-11-07">
+                                    <input type="hidden" name="customer_birthdate" value="${nguoiDung.ngaySinh}">
                                     <button type="submit" class="btn btn-info btn-block btn-update">Cập nhật</button>
                                 </div>
                             </div>

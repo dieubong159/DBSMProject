@@ -38,10 +38,9 @@ public class SuaNguoiDungThongThuongServlet extends HttpServlet {
         nguoiDung.setNgaySinh(new java.sql.Date(ngaySinh.getTime()));
         nguoiDung.setMatKhau(request.getParameter("txt-mat-khau"));
 
-        NguoiDungThongThuongService nguoiDungThongThuongs= new NguoiDungThongThuongService();
         NguoiDung nd=null;
         try {
-            nguoiDungThongThuongs.modify(nguoiDung);
+            NguoiDungThongThuongService.getInstance().modify(nguoiDung);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -56,10 +55,9 @@ public class SuaNguoiDungThongThuongServlet extends HttpServlet {
             return;
         }
 
-        NguoiDungThongThuongService nguoiDung = new NguoiDungThongThuongService();
         NguoiDung nd = null;
         try {
-            nd = nguoiDung.get(idNguoiDung);
+            nd = NguoiDungThongThuongService.getInstance().get(idNguoiDung);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {

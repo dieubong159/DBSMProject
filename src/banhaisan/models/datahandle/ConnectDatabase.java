@@ -17,7 +17,6 @@ public abstract class ConnectDatabase {
 //        String connectionString = "jdbc:sqlserver://"+ IP +";database=WebHaiSanTuoiSong;username="+ serverName +";password="+ passWord +"";
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         connection = DriverManager.getConnection(connectionString);
-
     }
 
     public void closeConnection() throws SQLException {

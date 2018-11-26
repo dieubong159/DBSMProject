@@ -8,7 +8,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class NguoiDungThongThuongService extends ConnectDatabase implements Business<NguoiDung> {
+    private static final NguoiDungThongThuongService instance = new NguoiDungThongThuongService();
+    private NguoiDungThongThuongService(){}
+    public static NguoiDungThongThuongService getInstance()
+    {
+        return instance;
 
+    }
     @Override
     public ArrayList<NguoiDung> getData() throws SQLException, ClassNotFoundException {
         ArrayList<NguoiDung> nguoiDungs = new ArrayList<>();
@@ -133,6 +139,24 @@ public class NguoiDungThongThuongService extends ConnectDatabase implements Busi
         statement.setString(6,model.getSdt());
         statement.setBoolean(7,model.getGioiTinh());
         statement.setDate(8,model.getNgaySinh());
+
+        int rowAffected = statement.executeUpdate();
+        closeConnection();
+        return rowAffected;
+    }
+
+    public int DoiMatKhau(NguoiDung model) throws SQLException, ClassNotFoundException {
+        if (model == null) {
+            return 0;
+        }
+        openConnection();
+
+        String sql = "exec dbo.sp_DoiMatKhau ?,?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setEscapeProcessing(true);
+        statement.setQueryTimeout(90);
+        statement.setString(1, model.getEmail());
+        statement.setString(2,model.getMatKhau());
 
         int rowAffected = statement.executeUpdate();
         closeConnection();

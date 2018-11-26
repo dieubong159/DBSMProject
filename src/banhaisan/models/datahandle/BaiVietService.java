@@ -1,5 +1,7 @@
 package banhaisan.models.datahandle;
 
+
+
 import banhaisan.models.datamodels.BaiViet;
 
 import java.sql.Date;
@@ -9,12 +11,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class BaiVietService extends ConnectDatabase implements Business<BaiViet> {
-
     private static final BaiVietService instance = new BaiVietService();
-    private  BaiVietService(){}
-    public static BaiVietService getInstance() {return  instance ; }
+    private BaiVietService(){}
+    public static BaiVietService getInstance(){
+        return instance;
+    }
     @Override
     public ArrayList<BaiViet> getData() throws SQLException, ClassNotFoundException {
+
         ArrayList<BaiViet> baiViets= new ArrayList<>();
         openConnection();
         String query = "select * from vw_LayBaiViet";
@@ -28,6 +32,7 @@ public class BaiVietService extends ConnectDatabase implements Business<BaiViet>
             baiViet.setMaBaiViet(resultSet.getString(1));
             baiViet.setNgayDang(resultSet.getDate(2));
             baiViet.setTieuDe(resultSet.getString(3));
+            baiViet.setNoiDung(resultSet.getString(4));
 
             baiViets.add(baiViet);
         }
@@ -58,7 +63,6 @@ public class BaiVietService extends ConnectDatabase implements Business<BaiViet>
         closeConnection();
         return baiViets;
     }
-
     @Override
     public BaiViet get(Object... keys) throws SQLException, ClassNotFoundException {
         if(keys.length<=0){
