@@ -172,24 +172,24 @@
                                         <br><small class="text-danger" id="validate-txt-mat-khau"></small>
                                     </div>
                                 </div>
-                                <h4 style="text-align: center;">Quyền hạn</h4>
-                                <div class="control-group">
-                                    <label class="control-label">Chọn nghiệp vụ</label>
-                                    <div class="controls">
-                                        <select class="span6 m-wrap" name="category" id="nghiep-vu" style="width:500px !important;">
-                                            <option value="-1" selected>chọn nghiệp vụ</option>
-                                            <c:forEach var="nghiepVu" items="${nghiepvus}">
-                                                <option value="${nghiepVu.maNghiepVu}">${nghiepVu.tenNghiepVu}</option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
-                                </div>
-                                <h4 style="text-align: center">Danh sách quyền hạn</h4>
-                                <div class="control-group" id="quyens" style="margin-left: 36%;">
-                                </div>
-                                <div style="text-align: center">
-                                    <button type="button" class="btn btn-success btn-large">Quay về trang chủ</button>
-                                </div>
+                                <%--<h4 style="text-align: center;">Quyền hạn</h4>--%>
+                                <%--<div class="control-group">--%>
+                                    <%--<label class="control-label">Chọn nghiệp vụ</label>--%>
+                                    <%--<div class="controls">--%>
+                                        <%--<select class="span6 m-wrap" name="category" id="nghiep-vu" style="width:500px !important;">--%>
+                                            <%--<option value="-1" selected>chọn nghiệp vụ</option>--%>
+                                            <%--<c:forEach var="nghiepVu" items="${nghiepvus}">--%>
+                                                <%--<option value="${nghiepVu.maNghiepVu}">${nghiepVu.tenNghiepVu}</option>--%>
+                                            <%--</c:forEach>--%>
+                                        <%--</select>--%>
+                                    <%--</div>--%>
+                                <%--</div>--%>
+                                <%--<h4 style="text-align: center">Danh sách quyền hạn</h4>--%>
+                                <%--<div class="control-group" id="quyens" style="margin-left: 36%;">--%>
+                                <%--</div>--%>
+                                <%--<div style="text-align: center">--%>
+                                    <%--<button type="button" class="btn btn-success btn-large">Quay về trang chủ</button>--%>
+                                <%--</div>--%>
                             </form>
 
                             <!-- END FORM-->

@@ -136,7 +136,7 @@
                                         <th width="75">Chi tiết</th>
                                         <th width="70">Chỉnh sửa</th>
                                         <th width="85">Xóa</th>
-                                        <th width="90">Phân quyền</th>
+                                        <%--<th width="90">Phân quyền</th>--%>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -156,9 +156,9 @@
                                                         class="icon-remove icon-white"></i>
                                                     Delete</button>
                                             </td>
-                                            <td>
-                                                <a href="/Admin/PhanQuyenAdmin?id=${nguoiDung.maNguoiDung}" class="btn"><i class="icon-check"></i>Quyền</a>
-                                            </td>
+                                            <%--<td>--%>
+                                                <%--<a href="/Admin/PhanQuyenAdmin?id=${nguoiDung.maNguoiDung}" class="btn"><i class="icon-check"></i>Quyền</a>--%>
+                                            <%--</td>--%>
                                         </tr>
                                     </c:forEach>
                                 </tbody>
