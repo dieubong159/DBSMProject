@@ -403,11 +403,11 @@
             <div class="row mt-60">
                 <div class="row">
                     <c:forEach var="sanPhams" items="${requestScope.sanPhamTom}">
-                    <div class="gallery">
-                        <a target="_blank" href="/CTSanPham?idSP=${sanPhams.maSP}">
-                            <img src="${sanPhams.urlHinhAnh}" alt="Ca Mat Quy">
-                        </a>
-                    </div>
+                        <div class="gallery">
+                            <a target="_blank" href="/CTSanPham?idSP=${sanPhams.maSP}">
+                                <img src="${sanPhams.urlHinhAnh}" alt="Ca Mat Quy">
+                            </a>
+                        </div>
                     </c:forEach>
                 </div>
             </div>
