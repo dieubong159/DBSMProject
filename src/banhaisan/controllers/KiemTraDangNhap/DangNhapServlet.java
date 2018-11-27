@@ -22,7 +22,6 @@ public class DangNhapServlet extends HttpServlet {
             user.setEmail(request.getParameter("email"));
             user.setPassWord(request.getParameter("password"));
             user.setIpAddress(request.getParameter("ipaddress"));
-
             String backrefresh = request.getHeader("referer");
             DangNhapService.getInstance().IsLogin(user);
 
@@ -34,7 +33,7 @@ public class DangNhapServlet extends HttpServlet {
                     session.setAttribute("currentSessionAdmin",user);
                     session.setAttribute("idcurrentSession",user.getMaNguoiDung());
                     request.setAttribute("loginResult",true);
-                    response.sendRedirect("/Admin/index.jsp");
+                    response.sendRedirect("/Admin/TrangChuAdmin");
                 }
                 else
                 {

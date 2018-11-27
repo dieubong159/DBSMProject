@@ -293,7 +293,7 @@
                             <li class="list-group-item clearfix"><a href="#"><i class="fa fa-angle-right"></i> Nhận xét
                                     của
                                     tôi</a></li>
-                            <li class="list-group-item clearfix"><a href="/Logout"><i class="fa fa-angle-right"></i>
+                            <li class="list-group-item clearfix"><a href="/LogoutAdmin"><i class="fa fa-angle-right"></i>
                                     Thoát
                                     tài
                                     khoản</a></li>

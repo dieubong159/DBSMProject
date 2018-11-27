@@ -48,16 +48,16 @@
                 <ul class="nav pull-right">
                     <li class="dropdown">
                         <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="icon-user"></i> Tan Nguyen <i class="caret"></i>
+                            <i class="icon-user"></i>${currentSessionAdmin.hoTen}<i class="caret"></i>
 
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a tabindex="-1" href="ThongTinCaNhan.jsp">Thông tin cá nhân</a>
+                                <a tabindex="-1" href="/Admin/Profile">Thông tin cá nhân</a>
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a tabindex="-1" href="login.jsp">Đăng xuất</a>
+                                <a tabindex="-1" href="/LogoutAdmin">Đăng xuất</a>
                             </li>
                         </ul>
                     </li>

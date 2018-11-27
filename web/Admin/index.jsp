@@ -40,7 +40,7 @@
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a tabindex="-1" href="/Logout">Đăng xuất</a>
+                                    <a tabindex="-1" href="/LogoutAdmin">Đăng xuất</a>
                                 </li>
                             </ul>
                         </li>

@@ -284,7 +284,7 @@
                             <li class="list-group-item clearfix"><a href="#"><i class="fa fa-angle-right"></i> Nhận xét
                                     của
                                     tôi</a></li>
-                            <li class="list-group-item clearfix"><a href="TrangChu.jsp"><i class="fa fa-angle-right"></i>
+                            <li class="list-group-item clearfix"><a href="/LogoutAdmin"><i class="fa fa-angle-right"></i>
                                     Thoát
                                     tài
                                     khoản</a></li>
@@ -339,10 +339,10 @@
                                             <c:otherwise>
                                                 <label class="radio-inline">
                                                     <input type="radio" name="gender" value="off" id="gender_male" class="gender"
-                                                           checked="">Nam
+                                                           >Nam
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="gender" value="on" id="gender_female" class="gender">Nữ
+                                                    <input type="radio" name="gender" value="on" id="gender_female" class="gender" checked="">Nữ
                                                 </label>
                                             </c:otherwise>
                                         </c:choose>
@@ -359,7 +359,7 @@
                                 <div class="input-wrap">
                                     <div id="birthday-picker" class="birthday-picker">
                                         <fieldset class="birthday-picker"><select class="birth-day form-control" name="birth[day]">
-                                            <option value="${nguoiDung.ngaySinh}"
+                                            <option value="${nguoiDung.ngaySinh}"></option>
                                                 <option value="0">Ngày</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
