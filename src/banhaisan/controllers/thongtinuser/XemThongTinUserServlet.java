@@ -14,6 +14,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 @WebServlet(name = "XemThongTinUserServlet",urlPatterns = "/Profile")
 public class XemThongTinUserServlet extends HttpServlet {
@@ -27,8 +29,6 @@ public class XemThongTinUserServlet extends HttpServlet {
         NguoiDung nd = null;
         try {
             nd= NguoiDungThongThuongService.getInstance().get(idNguoiDung);
-            String birthday = nd.getNgaySinh().toString();
-//            DataFormat
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -41,5 +41,33 @@ public class XemThongTinUserServlet extends HttpServlet {
 
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Profile.jsp");
         dispatcher.forward(request, response);
+    }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=UTF-8");
+        NguoiDung nguoiDung= new NguoiDung();
+        nguoiDung.setMaNguoiDung(request.getParameter("txtMaNguoiDung"));
+        nguoiDung.setHoTen(request.getParameter("txt-hoten"));
+        nguoiDung.setGioiTinh(request.getParameter("gender").trim().equals("1"));
+        nguoiDung.setEmail(request.getParameter("txt-email"));
+        nguoiDung.setSdt(request.getParameter("txt-phone"));
+        nguoiDung.setDiaChi(request.getParameter("txt-dia-chi"));
+        java.util.Date ngaySinh = null;
+        if (request.getParameter("customer_birthdate") != null) {
+            try {
+                ngaySinh = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("customer_birthdate"));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        nguoiDung.setNgaySinh(new java.sql.Date(ngaySinh.getTime()));
+        nguoiDung.setMatKhau(request.getParameter("txt-mat-khau"));
+
+        try {
+            NguoiDungThongThuongService.getInstance().modify(nguoiDung);
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        response.sendRedirect("/Profile");
     }
 }

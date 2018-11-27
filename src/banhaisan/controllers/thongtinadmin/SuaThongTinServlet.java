@@ -45,7 +45,6 @@ public class SuaThongTinServlet extends HttpServlet {
         NguoiDungAdminService nguoiDungAdmins= new NguoiDungAdminService();
         try {
             nguoiDungAdmins.modify(nguoiDung);
-            nguoiDungAdmins.DoiMatKhau(nguoiDung);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
