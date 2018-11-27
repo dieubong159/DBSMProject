@@ -100,7 +100,7 @@
                                 <div class="control-group">
                                     <label class="control-label">Mã danh mục<span class="required">*</span></label>
                                     <div class="controls">
-                                        <input id="txt-ma-danh-muc" type="text" name="txtMaDanhMuc" data-required="1" class="span6 m-wrap"
+                                        <input readonly id="txt-ma-danh-muc" type="text" name="txtMaDanhMuc" data-required="1" class="span6 m-wrap"
                                             style="width:500px !important;"  value="${danhMuc.maDanhmuc}"/>
                                         <br><small class="text-danger" id="validate-txt-ma-danh-muc"></small>
                                     </div>
