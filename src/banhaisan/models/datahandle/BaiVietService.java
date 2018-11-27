@@ -21,7 +21,7 @@ public class BaiVietService extends ConnectDatabase implements Business<BaiViet>
 
         ArrayList<BaiViet> baiViets= new ArrayList<>();
         openConnection();
-        String query = "select * from vw_LayBaiViet";
+        String query = "select * from vw_LayDSBaiViet";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setQueryTimeout(90);
         statement.setEscapeProcessing(true);
@@ -33,6 +33,7 @@ public class BaiVietService extends ConnectDatabase implements Business<BaiViet>
             baiViet.setNgayDang(resultSet.getDate(2));
             baiViet.setTieuDe(resultSet.getString(3));
             baiViet.setNoiDung(resultSet.getString(4));
+            baiViet.setUrlHinhAnh(resultSet.getString(5));
 
             baiViets.add(baiViet);
         }
@@ -44,7 +45,7 @@ public class BaiVietService extends ConnectDatabase implements Business<BaiViet>
     public ArrayList<BaiViet> getTop4BaiViet() throws SQLException, ClassNotFoundException {
         ArrayList<BaiViet> baiViets= new ArrayList<>();
         openConnection();
-        String query = "select top 4 * from vw_LayBaiViet";
+        String query = "select top 4 * from vw_LayDSBaiViet";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setQueryTimeout(90);
         statement.setEscapeProcessing(true);
@@ -56,6 +57,7 @@ public class BaiVietService extends ConnectDatabase implements Business<BaiViet>
             baiViet.setNgayDang(resultSet.getDate(2));
             baiViet.setTieuDe(resultSet.getString(3));
             baiViet.setNoiDung(resultSet.getString(4));
+            baiViet.setUrlHinhAnh(resultSet.getString(5));
 
             baiViets.add(baiViet);
         }

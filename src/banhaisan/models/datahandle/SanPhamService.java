@@ -21,7 +21,7 @@ public class SanPhamService extends ConnectDatabase implements Business<SanPham>
         ArrayList<SanPham> sanPhams = new ArrayList<>();
         openConnection();
 
-        String query = "select  * from dbo.fc_DanhSachSanPhamTheoDanhMuc ?";
+        String query = "select  * from dbo.fc_DanhSachSanPhamTheoDanhMuc(?)";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setEscapeProcessing(true);
         statement.setQueryTimeout(90);
@@ -29,13 +29,14 @@ public class SanPhamService extends ConnectDatabase implements Business<SanPham>
         ResultSet resultSet = statement.executeQuery();
         while (resultSet.next()){
             SanPham sanPham = new SanPham();
-            sanPham.setMaSP(resultSet.getString(1));
-            sanPham.setTenSP(resultSet.getString(2));
-            sanPham.setGiaSP(Double.parseDouble(resultSet.getString(3)));
-            sanPham.setPhanTramKhuyenMai(Integer.parseInt(resultSet.getString(4)));
-            sanPham.setXuatXu(resultSet.getString(5));
-            sanPham.setMaDanhMuc(resultSet.getString(7));
-            sanPham.setNgayNhap(resultSet.getDate(8));
+            sanPham.setMaDanhMuc(resultSet.getString(1));
+            sanPham.setMaSP(resultSet.getString(2));
+            sanPham.setTenSP(resultSet.getString(3));
+            sanPham.setGiaSP(Double.parseDouble(resultSet.getString(4)));
+            sanPham.setPhanTramKhuyenMai(Integer.parseInt(resultSet.getString(5)));
+            sanPham.setXuatXu(resultSet.getString(6));
+            sanPham.setNgayNhap(resultSet.getDate(7));
+            sanPham.setUrlHinhAnh(resultSet.getString(8));
 
             sanPhams.add(sanPham);
         }
@@ -67,6 +68,7 @@ public class SanPhamService extends ConnectDatabase implements Business<SanPham>
             sanPham.setPhanTramKhuyenMai(Integer.parseInt(resultSet.getString(5)));
             sanPham.setXuatXu(resultSet.getString(6));
             sanPham.setNgayNhap(resultSet.getDate(7));
+            sanPham.setUrlHinhAnh(resultSet.getString(8));
 
             sanPhams.add(sanPham);
         }
@@ -93,6 +95,7 @@ public class SanPhamService extends ConnectDatabase implements Business<SanPham>
             sanPham.setMaSP(resultSet.getString(1));
             sanPham.setTenSP(resultSet.getString(2));
             sanPham.setGiaSP(Double.parseDouble(resultSet.getString(3)));
+            sanPham.setUrlHinhAnh(resultSet.getString(4));
 
             sanPhams.add(sanPham);
         }

@@ -40,6 +40,8 @@ public class DangNhapServlet extends HttpServlet {
             DangNhap_KetNoi user = new DangNhap_KetNoi();
             user.setEmail(request.getParameter("email"));
             user.setPassWord(request.getParameter("password"));
+            user.setIpAddress(request.getParameter("ipaddress"));
+
             String backrefresh = request.getHeader("referer");
             DangNhapService.getInstance().IsLogin(user);
 
