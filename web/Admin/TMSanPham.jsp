@@ -117,13 +117,13 @@
                                             }</script>
                                     </div>
                                 </div>
-                                <div class="control-group">
-                                    <label class="control-label">Mã sản phẩm<span class="required">*</span></label>
-                                    <div class="controls">
-                                        <input name="txtMaSP" id="txt-ma-sp" type="text" class="span6 m-wrap" style="width:500px !important;" />
-                                        <br><small class="text-danger" id="validate-txt-ma-sp"></small>
-                                    </div>
-                                </div>
+                                <%--<div class="control-group">--%>
+                                    <%--<label class="control-label">Mã sản phẩm<span class="required">*</span></label>--%>
+                                    <%--<div class="controls">--%>
+                                        <%--<input name="txtMaSP" id="txt-ma-sp" type="text" class="span6 m-wrap" style="width:500px !important;" />--%>
+                                        <%--<br><small class="text-danger" id="validate-txt-ma-sp"></small>--%>
+                                    <%--</div>--%>
+                                <%--</div>--%>
                                 <div class="control-group">
                                     <label class="control-label">Tên sản phẩm<span class="required">*</span></label>
                                     <div class="controls">
