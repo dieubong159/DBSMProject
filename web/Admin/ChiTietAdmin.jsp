@@ -174,9 +174,9 @@
                                 <%--<h4 style="text-align: center">Danh sách quyền hạn</h4>--%>
                                 <%--<div class="control-group" id="quyens" style="margin-left: 36%;">--%>
                                 <%--</div>--%>
-                                <%--<div style="text-align: center">--%>
-                                    <%--<button type="button" class="btn btn-success btn-large">Quay về trang chủ</button>--%>
-                                <%--</div>--%>
+                                <div style="text-align: center">
+                                    <a href="/Admin/NguoiDungAdmin" type="button" class="btn btn-success btn-large">Quay về trang chủ</a>
+                                </div>
                             </form>
 
                             <!-- END FORM-->

@@ -163,7 +163,7 @@
                                 </div>
                                 <div style="text-align:center;">
                                     <button type="submit" id="btn-them" class="btn btn-primary">Thêm người dùng</button>
-                                    <button type="button" class="btn">Hủy bỏ</button>
+                                    <a href="/Admin/NguoiDungThongThuong" type="button" class="btn">Hủy bỏ</a>
                                 </div>
                             </form>
 

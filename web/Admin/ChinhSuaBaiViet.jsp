@@ -134,7 +134,7 @@
                                 </div>
                                 <div style="text-align:center;">
                                     <button id="btn-them" type="submit" class="btn btn-primary">Hoàn tất</button>
-                                    <button type="button" class="btn">Hủy bỏ</button>
+                                    <a href="/Admin/QlyBaiViet" type="button" class="btn">Hủy bỏ</a>
                                 </div>
                             </form>
 

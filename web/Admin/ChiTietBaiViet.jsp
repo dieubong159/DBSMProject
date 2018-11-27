@@ -133,7 +133,7 @@
                                     </div>
                                 </div>
                                 <div style="text-align:center;">
-                                    <button href="/Admin/QLBaiViet" type="button" class="btn btn-success btn-large">Quay về trang chủ</button>
+                                    <a href="/Admin/QLBaiViet" type="button" class="btn btn-success btn-large">Quay về trang chủ</a>
                                 </div>
                             </form>
 

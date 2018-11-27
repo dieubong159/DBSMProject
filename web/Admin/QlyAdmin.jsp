@@ -130,7 +130,7 @@
                                         <th>Họ tên</th>
                                         <th>Email</th>
                                         <th width="75">Chi tiết</th>
-                                        <th width="70">Chỉnh sửa</th>
+                                        <%--<th width="70">Chỉnh sửa</th>--%>
                                         <%--<th width="85">Xóa</th>--%>
                                         <%--<th width="90">Phân quyền</th>--%>
                                     </tr>
@@ -143,10 +143,10 @@
                                             <td>${nguoiDung.hoTen}</td>
                                             <td class="center">${nguoiDung.email}</td>
                                             <td><a href="/Admin/ChiTietAdmin?id=${nguoiDung.maNguoiDung}" class="btn"><i class="icon-eye-open"></i>View</a></td>
-                                            <td>
-                                                <a href="/Admin/ChinhSuaAdmin?id=${nguoiDung.maNguoiDung}" class="btn btn-primary"><i class="icon-pencil icon-white"></i>
-                                                    Edit</a>
-                                            </td>
+                                            <%--<td>--%>
+                                                <%--<a href="/Admin/ChinhSuaAdmin?id=${nguoiDung.maNguoiDung}" class="btn btn-primary"><i class="icon-pencil icon-white"></i>--%>
+                                                    <%--Edit</a>--%>
+                                            <%--</td>--%>
                                             <%--<td>--%>
                                                 <%--<button class="btn btn-danger" maNguoiDung="${nguoiDung.maNguoiDung}" onclick="confirmDelete(this);"><i--%>
                                                         <%--class="icon-remove icon-white"></i>--%>
