@@ -41,9 +41,9 @@ public class SuaNguoiDungThongThuongServlet extends HttpServlet {
         nguoiDung.setNgaySinh(new java.sql.Date(ngaySinh.getTime()));
         nguoiDung.setMatKhau(request.getParameter("txt-mat-khau"));
 
-        NguoiDung nd=null;
         try {
             NguoiDungThongThuongService.getInstance().modify(nguoiDung);
+            NguoiDungThongThuongService.getInstance().DoiMatKhau(nguoiDung);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }

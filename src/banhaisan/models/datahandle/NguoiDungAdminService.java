@@ -136,6 +136,22 @@ public class NguoiDungAdminService extends ConnectDatabase implements Business<N
         closeConnection();
         return rowAffected;
     }
+    public int DoiMatKhau(NguoiDung model) throws SQLException, ClassNotFoundException {
+        if (model == null) {
+            return 0;
+        }
+        openConnection();
 
+        String sql = "exec dbo.sp_DoiMatKhau ?,?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setEscapeProcessing(true);
+        statement.setQueryTimeout(90);
+        statement.setString(1, model.getEmail());
+        statement.setString(2,model.getMatKhau());
+
+        int rowAffected = statement.executeUpdate();
+        closeConnection();
+        return rowAffected;
+    }
 
 }

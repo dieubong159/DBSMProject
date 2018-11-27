@@ -15,13 +15,13 @@
     <link href="/Admin/assets/styles.css" rel="stylesheet" media="screen">
     <script src="/Admin/vendors/jquery-1.9.1.min.js"></script>
     <script src="/Admin/bootstrap/js/bootstrap.min.js"></script>
-    <script>
-        function confirmDelete(obj) {
-            if (confirm("Bạn có chắc chắn muốn xóa người dùng này không?")) {
-                $.post("/Admin/XoaAdmin",{ txtMaNguoiDung : $(obj).attr("manguoidung").trim() }, content => location.href="/Admin/NguoiDungAdmin");
-            }
-        }
-    </script>
+    <%--<script>--%>
+        <%--function confirmDelete(obj) {--%>
+            <%--if (confirm("Bạn có chắc chắn muốn xóa người dùng này không?")) {--%>
+                <%--$.post("/Admin/XoaAdmin",{ txtMaNguoiDung : $(obj).attr("manguoidung").trim() }, content => location.href="/Admin/NguoiDungAdmin");--%>
+            <%--}--%>
+        <%--}--%>
+    <%--</script>--%>
     <script>
         $(document).ready(function(){
             $("#myInput").on("keyup", function() {
@@ -131,7 +131,7 @@
                                         <th>Email</th>
                                         <th width="75">Chi tiết</th>
                                         <th width="70">Chỉnh sửa</th>
-                                        <th width="85">Xóa</th>
+                                        <%--<th width="85">Xóa</th>--%>
                                         <%--<th width="90">Phân quyền</th>--%>
                                     </tr>
                                 </thead>
@@ -147,11 +147,11 @@
                                                 <a href="/Admin/ChinhSuaAdmin?id=${nguoiDung.maNguoiDung}" class="btn btn-primary"><i class="icon-pencil icon-white"></i>
                                                     Edit</a>
                                             </td>
-                                            <td>
-                                                <button class="btn btn-danger" maNguoiDung="${nguoiDung.maNguoiDung}" onclick="confirmDelete(this);"><i
-                                                        class="icon-remove icon-white"></i>
-                                                    Delete</button>
-                                            </td>
+                                            <%--<td>--%>
+                                                <%--<button class="btn btn-danger" maNguoiDung="${nguoiDung.maNguoiDung}" onclick="confirmDelete(this);"><i--%>
+                                                        <%--class="icon-remove icon-white"></i>--%>
+                                                    <%--Delete</button>--%>
+                                            <%--</td>--%>
                                             <%--<td>--%>
                                                 <%--<a href="/Admin/PhanQuyenAdmin?id=${nguoiDung.maNguoiDung}" class="btn"><i class="icon-check"></i>Quyền</a>--%>
                                             <%--</td>--%>
