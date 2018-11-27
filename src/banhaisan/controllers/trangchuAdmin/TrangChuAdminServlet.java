@@ -1,8 +1,6 @@
-package banhaisan.controllers.baiviet;
+package banhaisan.controllers.trangchuAdmin;
 
-import banhaisan.models.datahandle.BaiVietService;
 import banhaisan.models.datahandle.DanhMucService;
-import banhaisan.models.datamodels.BaiViet;
 import banhaisan.models.datamodels.DanhMuc;
 
 import javax.servlet.RequestDispatcher;
@@ -15,25 +13,22 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-@WebServlet(name = "BaiVietServlet" , urlPatterns = "/Admin/QlyBaiViet")
-public class BaiVietServlet extends HttpServlet {
+@WebServlet(name = "TrangChuAdminServlet",urlPatterns = "/Admin/TrangChuAdmin")
+public class TrangChuAdminServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ArrayList<DanhMuc> danhMucs = null;
         try {
-            ArrayList<DanhMuc> danhMucs = DanhMucService.getInstance().getData();
-            request.setAttribute("danhMucs",danhMucs);
-
-            ArrayList<BaiViet> baiViets= BaiVietService.getInstance().getData();
-            request.setAttribute("baiViet", baiViets);
+            danhMucs = DanhMucService.getInstance().getData();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/Admin/QlyBaiViet.jsp");
+        request.setAttribute("danhMucs",danhMucs);
+
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Admin/index.jsp");
         dispatcher.forward(request,response);
-
-
     }
 }

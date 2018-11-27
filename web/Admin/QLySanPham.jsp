@@ -26,7 +26,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <a class="brand" href="index.html">TieuDanSeaFood</a>
+                <a class="brand" href="/Admin/TrangChuAdmin">TieuDanSeaFood</a>
                 <div class="nav-collapse collapse">
                     <ul class="nav pull-right">
                         <li class="dropdown">
@@ -49,21 +49,21 @@
                         <li class="dropdown">
                             <a href="#" data-toggle="dropdown" class="dropdown-toggle">Quản lý Người dùng <b class="caret"></b>
                             </a>
-                            <ul class="dropdown-menu" id="menu1">
+                            <ul class="dropdown-menu" id="menu2">
                                 <li>
-                                    <a href="QlyNguoiDungThongThuong.jsp">Người dùng thông thường</a>
+                                    <a href="/Admin/NguoiDungThongThuong">Người dùng thông thường</a>
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a href="QlyAdmin.jsp">Admin</a>
+                                    <a href="/Admin/NguoiDungAdmin">Admin</a>
                                 </li>
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="QLySanPham.jsp" data-toggle="dropdown" class="dropdown-toggle">Quản lý Sản phẩm
+                            <a href="/Admin/QLSanPham" data-toggle="dropdown" class="dropdown-toggle">Quản lý Sản phẩm
                                 <b class="caret"></b>
                             </a>
-                            <ul class="dropdown-menu" id="menu">
+                            <ul class="dropdown-menu" id="menu1">
                                 <c:forEach var="danhMuc" items="${requestScope.danhMucs}">
                                     <li>
                                         <a href="QLSanPham?idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
@@ -72,16 +72,13 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="QlyBaiViet.jsp">Quản lý Bài Viết</a>
+                            <a href="/Admin/QlyBaiViet">Quản lý Bài Viết</a>
                         </li>
                         <li>
-                            <a href="QLDanhMuc">Quản lý Danh mục</a>
+                            <a href="/Admin/QLDanhMuc">Quản lý Danh mục</a>
                         </li>
                         <li>
-                            <a href="QlyDonHang.jsp">Quản lý Đơn hàng</a>
-                        </li>
-                        <li>
-                            <a href="QlyQuyen.jsp">Quản lý quyền</a>
+                            <a href="/Admin/QLDonHang">Quản lý Đơn hàng</a>
                         </li>
                     </ul>
                 </div>

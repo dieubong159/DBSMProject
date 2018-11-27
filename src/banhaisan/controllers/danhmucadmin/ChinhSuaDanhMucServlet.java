@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 @WebServlet(name = "ChinhSuaDanhMucServlet",urlPatterns = {"/Admin/ChinhSuaDanhMuc"})
 public class ChinhSuaDanhMucServlet extends HttpServlet {
@@ -38,7 +39,9 @@ public class ChinhSuaDanhMucServlet extends HttpServlet {
             return;
         }
         DanhMuc dm = null;
+        ArrayList<DanhMuc> danhMucs = null;
         try {
+            danhMucs = DanhMucService.getInstance().getData();
             dm = DanhMucService.getInstance().get(idDanhMuc);
         }catch (SQLException | ClassNotFoundException e)
         {
@@ -50,6 +53,7 @@ public class ChinhSuaDanhMucServlet extends HttpServlet {
             return;
         }
         request.setAttribute("danhMuc",dm);
+        request.setAttribute("danhMucs",danhMucs);
 
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Admin/ChinhSuaDanhMuc.jsp");
         dispatcher.forward(request,response);
