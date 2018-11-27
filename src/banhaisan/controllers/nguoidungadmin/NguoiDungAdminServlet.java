@@ -1,6 +1,8 @@
 package banhaisan.controllers.nguoidungadmin;
 
+import banhaisan.models.datahandle.DanhMucService;
 import banhaisan.models.datahandle.NguoiDungAdminService;
+import banhaisan.models.datamodels.DanhMuc;
 import banhaisan.models.datamodels.NguoiDung;
 
 import javax.servlet.RequestDispatcher;
@@ -22,6 +24,9 @@ public class NguoiDungAdminServlet extends HttpServlet {
             ArrayList<NguoiDung> nguoiDungs= service.getData();
 
             request.setAttribute("nguoiDungs" , nguoiDungs);
+
+            ArrayList<DanhMuc> danhMucs = DanhMucService.getInstance().getData();
+            request.setAttribute("danhMucs",danhMucs);
 
         } catch (SQLException | ClassNotFoundException e){
 

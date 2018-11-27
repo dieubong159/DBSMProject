@@ -1,6 +1,8 @@
 package banhaisan.controllers.nguoidungadmin;
 
+import banhaisan.models.datahandle.DanhMucService;
 import banhaisan.models.datahandle.NguoiDungAdminService;
+import banhaisan.models.datamodels.DanhMuc;
 import banhaisan.models.datamodels.NguoiDung;
 
 import javax.servlet.RequestDispatcher;
@@ -14,6 +16,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 @WebServlet(name = "ThemAdminServlet", urlPatterns = "/Admin/TMAdmin")
@@ -51,6 +54,14 @@ public class ThemAdminServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ArrayList<DanhMuc> danhMucs = null;
+        try {
+            danhMucs = DanhMucService.getInstance().getData();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        request.setAttribute("danhMucs",danhMucs);
+
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Admin/TMAdmin.jsp");
         dispatcher.forward(request, response);
     }

@@ -1,6 +1,8 @@
 package banhaisan.controllers.nguoidungadmin;
 
+import banhaisan.models.datahandle.DanhMucService;
 import banhaisan.models.datahandle.NguoiDungAdminService;
+import banhaisan.models.datamodels.DanhMuc;
 import banhaisan.models.datamodels.NguoiDung;
 
 import javax.servlet.RequestDispatcher;
@@ -13,6 +15,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 @WebServlet(name = "SuaNguoiDungAdminServlet",urlPatterns = "/Admin/ChinhSuaAdmin")
@@ -57,11 +60,11 @@ public class SuaNguoiDungAdminServlet extends HttpServlet {
 
         NguoiDungAdminService nguoiDungAdmins= new NguoiDungAdminService();
         NguoiDung nd=null;
+        ArrayList<DanhMuc> danhMucs = null;
         try {
             nd = nguoiDungAdmins.get(idNguoiDung);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+            danhMucs = DanhMucService.getInstance().getData();
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         if(nd == null){
@@ -69,6 +72,7 @@ public class SuaNguoiDungAdminServlet extends HttpServlet {
             return;
         }
         request.setAttribute("nguoiDung", nd);
+        request.setAttribute("danhMucs",danhMucs);
 
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Admin/ChinhSuaAdmin.jsp");
         dispatcher.forward(request, response);

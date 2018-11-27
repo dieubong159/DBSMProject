@@ -1,6 +1,8 @@
 package banhaisan.controllers.nguoidungthongthuong;
 
+import banhaisan.models.datahandle.DanhMucService;
 import banhaisan.models.datahandle.NguoiDungThongThuongService;
+import banhaisan.models.datamodels.DanhMuc;
 import banhaisan.models.datamodels.NguoiDung;
 
 import javax.servlet.RequestDispatcher;
@@ -12,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -50,6 +53,13 @@ public class ThemNguoiDungThongThuongServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ArrayList<DanhMuc> danhMucs = null;
+        try {
+            danhMucs = DanhMucService.getInstance().getData();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        request.setAttribute("danhMucs",danhMucs);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Admin/TMNguoiDung.jsp");
         dispatcher.forward(request, response);
     }
