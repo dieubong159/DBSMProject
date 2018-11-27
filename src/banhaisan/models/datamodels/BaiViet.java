@@ -8,17 +8,29 @@ public class BaiViet {
     private String noiDung;
     private Date ngayDang;
     private String maDanhMuc;
+    private String urlHinhAnh;
 
-    public BaiViet() {
+    public String getUrlHinhAnh() {
+        return urlHinhAnh;
     }
 
-    public BaiViet(String maBaiViet, String tieuDe, String noiDung, Date ngayDang, String maDanhMuc) {
+    public void setUrlHinhAnh(String urlHinhAnh) {
+        this.urlHinhAnh = urlHinhAnh;
+    }
+
+    public BaiViet(String maBaiViet, String tieuDe, String noiDung, Date ngayDang, String maDanhMuc, String urlHinhAnh) {
         this.maBaiViet = maBaiViet;
         this.tieuDe = tieuDe;
         this.noiDung = noiDung;
         this.ngayDang = ngayDang;
         this.maDanhMuc = maDanhMuc;
+        this.urlHinhAnh = urlHinhAnh;
     }
+
+    public BaiViet() {
+    }
+
+
 
     public String getMaBaiViet() {
         return maBaiViet;

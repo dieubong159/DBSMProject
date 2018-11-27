@@ -18,7 +18,7 @@ public class DonHangService extends ConnectDatabase implements Business<DonHang>
         ArrayList<DonHang> donHangs = new ArrayList<>();
         openConnection();
 
-        String query = "EXEC DonHangBaoGomTongTien";
+        String query = "select * from dbo.vw_DanhSachDonHang";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setQueryTimeout(90);
         statement.setEscapeProcessing(true);
@@ -27,14 +27,13 @@ public class DonHangService extends ConnectDatabase implements Business<DonHang>
         while (resultSet.next())
         {
             DonHang donHang = new DonHang();
-            donHang.setMaDonHang(resultSet.getString(1));
-            donHang.setDiaChiGiaoHang(resultSet.getString(2));
-            donHang.setGhiChu(resultSet.getString(3));
-            donHang.setHinhThucThanhToan(resultSet.getBoolean(4));
-            donHang.setNgayDatHang(resultSet.getDate(5));
-            donHang.setTinhTrang(resultSet.getString(6));
-            donHang.setMaNguoiDung(resultSet.getString(7));
-            donHang.setTongTien(Double.parseDouble(resultSet.getString(8)));
+            donHang.setTinhTrang(resultSet.getString(1));
+            donHang.setMaDonHang(resultSet.getString(2));
+            donHang.setMaNguoiDung(resultSet.getString(3));
+            donHang.setTongTien(Double.parseDouble(resultSet.getString(4)));
+            donHang.setDiaChiGiaoHang(resultSet.getString(5));
+            donHang.setHinhThucThanhToan(resultSet.getBoolean(6));
+            donHang.setNgayDatHang(resultSet.getDate(7));
 
             donHangs.add(donHang);
         }
@@ -52,7 +51,7 @@ public class DonHangService extends ConnectDatabase implements Business<DonHang>
         }
         ArrayList<DonHang> donHangs = new ArrayList<>();
         openConnection();
-        String query = "EXEC LayMotDonHang ?";
+        String query = "select * from dbo.fc_ChiTietDonHang(?)";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setEscapeProcessing(true);
         statement.setQueryTimeout(90);

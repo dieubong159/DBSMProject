@@ -1,20 +1,23 @@
 package banhaisan.models.datahandle;
 
+import banhaisan.models.datamodels.DangNhap_KetNoi;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public abstract class ConnectDatabase {
-    protected String IP;
-    protected String serverName;
-    protected String passWord;
+    protected String IP="localhost";
+    protected String serverName="sa";
+    protected String passWord="12345";
 
-    private final String connectionString = "jdbc:sqlserver://localhost:1433;database=WebHaiSanTuoiSong;username=sa;password=12345";
+
 
     protected Connection connection = null;
 
     public void openConnection() throws SQLException, ClassNotFoundException {
-//        String connectionString = "jdbc:sqlserver://"+ IP +";database=WebHaiSanTuoiSong;username="+ serverName +";password="+ passWord +"";
+//      String connectionString = "jdbc:sqlserver://"+ IP +";database=WebHaiSanTuoiSong;username="+ serverName +";password="+ passWord +"";
+        String connectionString = "jdbc:sqlserver://"+IP+":1433;database=WebHaiSanTuoiSong;username="+serverName+";password="+passWord;
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         connection = DriverManager.getConnection(connectionString);
     }

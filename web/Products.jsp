@@ -327,9 +327,11 @@
                         </ul>
                     </div>
                     <!-- Price range -->
+                    <div class="gap-element" style="display:block; height:auto; padding-top:30px"></div>
                     <div class="slidecontainer">
-                        <input oninput="run()" type="range" min="1" max="100" value="50" class="slider" id="myRange">
-                        <p>Value: <input id="demo" value=""></input></p>
+                        <h3 class="agileits-sear-head">LỌC GIÁ SẢN PHẨM</h3>
+                        <input oninput="run()" type="range" min="1" max="" value="50" class="slider" id="myRange">
+                        <p>Value: <input id="demo" value="" readonly style="border: none;background-color: #F9F9F9;"></p>
                     </div>
 
                     <!-- Price range -->
@@ -341,7 +343,7 @@
                             <c:forEach var="baiViet" items="${requestScope.baiViets}">
                                 <li>
                                     <a href="/XemCTBaiViet?idBV=${baiViet.maBaiViet}">
-                                        <img src="resources/images/ca-mu-hap-hanh.jpg" width="70px" height="70px">
+                                        <img src="${baiViet.urlHinhAnh}" width="70px" height="70px">
                                         <p>${baiViet.tieuDe}</p>
                                     </a>
                                 </li>
@@ -356,7 +358,7 @@
                             <div class="col-lg-20 col-md-4 col-sm-4 col-xs-6">
                                 <div class="product-item">
                                     <div class="image" style="height:auto">
-                                        <a href=/CTSanPham?idSP=${sanPhams.maSP}> <img src="resources/images/Fish/ca-chep-gion01.jpg"></a></div>
+                                        <a href=/CTSanPham?idSP=${sanPhams.maSP}> <img src="${sanPhams.urlHinhAnh}"></a></div>
                                     <div class="name">
                                         <a href="/CTSanPham?idSP=${sanPhams.maSP}">${sanPhams.tenSP}</a>
                                     </div>

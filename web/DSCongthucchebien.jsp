@@ -312,7 +312,7 @@
                             <c:forEach var="baiViet" items="${requestScope.baiViets}">
                                 <li>
                                     <a href="/XemCTBaiViet?idBV=${baiViet.maBaiViet}">
-                                        <img src="resources/images/ca-mu-hap-hanh.jpg" width="70px" height="70px">
+                                        <img src="${baiViet.urlHinhAnh}" width="70px" height="70px">
                                         <p>${baiViet.tieuDe}</p>
                                     </a>
                                 </li>
@@ -332,7 +332,7 @@
 
                             <div class="post-thumb height-img image-resize" style="height: 199px;">
                                 <a href="/XemCTBaiViet?idBV=${baiViets.maBaiViet}">
-                                    <img src="resources/images/Foods/cua-rang-me01.jpg" width="193px" height="193px">
+                                    <img src="${baiViets.urlHinhAnh}" width="193px" height="193px">
                                 </a>
                             </div><!-- /blog-alt-image -->
 

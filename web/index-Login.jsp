@@ -338,6 +338,9 @@
                     <form action="/Login" onsubmit="return checkForm(this)">
                         <div class="fields-grid">
                             <div class="styled-input">
+                                <input type="text" placeholder="Nhập Ip Address" name="ipaddress" required="">
+                            </div>
+                            <div class="styled-input">
                                 <input type="email" placeholder="Email của bạn" name="email" required="">
                             </div>
                             <div class="styled-input">
@@ -393,48 +396,19 @@
                         <li style="display:inline-block">
                             <h2>Sản phẩm hot</h2>
                         </li>
-                        <li style="float:right"><a class="XMlink" href="">>>XEM THÊM</a></li>
+                        <li style="float:right"><a class="XMlink" href="/Products?idDM=cua">>>XEM THÊM</a></li>
                     </ul>
                 </div>
             </div>
             <div class="row mt-60">
                 <div class="row">
+                    <c:forEach var="sanPhams" items="${requestScope.sanPhamTom}">
                     <div class="gallery">
-                        <a target="_blank" href="#">
-                            <img src="resources/images/Fish/ca-mat-quy01-fullthumbnail.jpg" alt="Ca Mat Quy">
+                        <a target="_blank" href="/CTSanPham?idSP=${sanPhams.maSP}">
+                            <img src="${sanPhams.urlHinhAnh}" alt="Ca Mat Quy">
                         </a>
                     </div>
-
-                    <div class="gallery">
-                        <a target="_blank" href="">
-                            <img src="resources/images/Cuttle/bach-tuot-nhat-ban01-fullthumbnail.jpg" alt="Bach Tuoc do">
-                        </a>
-                    </div>
-
-                    <div class="gallery">
-                        <a target="_blank" href="lights.jpg">
-                            <img src="resources/images/Oyster/hausua01.png" alt="Northern Lights" width="300"
-                                 height="200">
-                        </a>
-                    </div>
-
-                    <div class="gallery">
-                        <a target="_blank" href="mountains.jpg">
-                            <img src="resources/images/Shrmip/tom-cang-xanh01.jpg" alt="Mountains" width="300"
-                                 height="200">
-                        </a>
-                    </div>
-                    <div class="gallery">
-                        <a target="_blank" href="fjords.jpg">
-                            <img src="resources/images/Snail/Sò_điệp01.jpg" alt="Cinque Terre" width="300" height="200">
-                        </a>
-                    </div>
-                    <div class="gallery">
-                        <a target="_blank" href="fjords.jpg">
-                            <img src="resources/images/Cuttle/cua-lca-mau01.jpg" alt="Cinque Terre" width="300"
-                                 height="200">
-                        </a>
-                    </div>
+                    </c:forEach>
                 </div>
             </div>
         </div>
@@ -447,7 +421,7 @@
                         <li style="display:inline-block">
                             <h2>Cá</h2>
                         </li>
-                        <li style="float:right"><a class="XMlink" href="">>>XEM THÊM</a></li>
+                        <li style="float:right"><a class="XMlink" href="/Products?idDM=ca">>>XEM THÊM</a></li>
                     </ul>
                 </div>
             </div>
@@ -455,8 +429,8 @@
                 <div class="row">
                     <c:forEach var="sanPhamca" items="${requestScope.sanPhamCa}">
                         <div class="gallery">
-                            <a target="_blank" href="#">
-                                <img src="resources/images/Fish/ca-mat-quy01.jpg" alt="Cinque Terre" width="300" height="200">
+                            <a target="_blank" href="/CTSanPham?idSP=${sanPhamca.maSP}">
+                                <img src="${sanPhamca.urlHinhAnh}" alt="Cinque Terre" width="300" height="200">
                             </a>
                             <div class="desc">
                                 <p>${sanPhamca.tenSP}</p>
@@ -477,7 +451,7 @@
                         <li style="display:inline-block">
                             <h2>Tôm</h2>
                         </li>
-                        <li style="float:right"><a class="XMlink" href="">>>XEM THÊM</a></li>
+                        <li style="float:right"><a class="XMlink" href="/Products?idDM=tom">>>XEM THÊM</a></li>
                     </ul>
                 </div>
             </div>
@@ -485,8 +459,8 @@
                 <div class="row">
                     <c:forEach var="SanPhamtom" items="${requestScope.sanPhamTom}">
                         <div class="gallery">
-                            <a target="_blank" href="#">
-                                <img src="resources/images/Shrmip/tôm-sú01.jpg" alt="Cinque Terre" width="300" height="200">
+                            <a target="_blank" href="/CTSanPham?idSP=${SanPhamtom.maSP}">
+                                <img src="${SanPhamtom.urlHinhAnh}" alt="Cinque Terre" width="300" height="200">
                             </a>
                             <div class="desc">
                                 <p>${SanPhamtom.tenSP}</p>
@@ -507,7 +481,7 @@
                         <li style="display:inline-block">
                             <h2>Cua - Ghẹ</h2>
                         </li>
-                        <li style="float:right"><a class="XMlink" href="">>>XEM THÊM</a></li>
+                        <li style="float:right"><a class="XMlink" href="/Products?idDM=cua">>>XEM THÊM</a></li>
                     </ul>
                 </div>
             </div>
@@ -515,8 +489,8 @@
                 <div class="row">
                     <c:forEach var="sanPhamcua" items="${requestScope.sanPhamCua}">
                         <div class="gallery">
-                            <a target="_blank" href="#">
-                                <img src="resources/images/Cuttle/cua-gach-son01.jpg" alt="Cinque Terre" width="300"
+                            <a target="_blank" href="/CTSanPham?idSP=${sanPhamcua.maSP}">
+                                <img src="${sanPhamcua.urlHinhAnh}" alt="Cinque Terre" width="300"
                                      height="200">
                             </a>
                             <div class="desc">
@@ -538,7 +512,7 @@
                         <li style="display:inline-block">
                             <h2>Mực</h2>
                         </li>
-                        <li style="float:right"><a class="XMlink" href="">>>XEM THÊM</a></li>
+                        <li style="float:right"><a class="XMlink" href="/Products?idDM=muc">>>XEM THÊM</a></li>
                     </ul>
                 </div>
             </div>
@@ -546,8 +520,8 @@
                 <div class="row">
                     <c:forEach var="sanPhamMuc" items="${requestScope.sanPhamMuc}">
                         <div class="gallery">
-                            <a target="_blank" href="#">
-                                <img src="resources/images/Snail/oc-ban-tay01.jpg" alt="Cinque Terre" width="300"
+                            <a target="_blank" href="/CTSanPham?idSP=${sanPhamMuc.maSP}">
+                                <img src="${sanPhamMuc.urlHinhAnh}" alt="Cinque Terre" width="300"
                                      height="200">
                             </a>
                             <div class="desc">
@@ -569,7 +543,7 @@
                         <li style="display:inline-block">
                             <h2>Ngao - Sò - Ốc</h2>
                         </li>
-                        <li style="float:right"><a class="XMlink" href="">>>XEM THÊM</a></li>
+                        <li style="float:right"><a class="XMlink" href="/Products?idDM=ngao-so-oc">>>XEM THÊM</a></li>
                     </ul>
                 </div>
             </div>
@@ -577,8 +551,8 @@
                 <div class="row">
                     <c:forEach var="sanPhamNgaosooc" items="${requestScope.sanPhamNgaoSoOc}">
                         <div class="gallery">
-                            <a target="_blank" href="#">
-                                <img src="resources/images/Snail/oc-ban-tay01.jpg" alt="Cinque Terre" width="300"
+                            <a target="_blank" href="/CTSanPham?idSP=${sanPhamNgaosooc.maSP}">
+                                <img src="${sanPhamNgaosooc.urlHinhAnh}" alt="Cinque Terre" width="300"
                                      height="200">
                             </a>
                             <div class="desc">
@@ -600,7 +574,7 @@
                         <li style="display:inline-block">
                             <h2>CÔNG THỨC CHẾ BIẾN</h2>
                         </li>
-                        <li style="float:right"><a class="XMlink" href="DSCongthucchebien.jsp">&gt;&gt;XEM THÊM</a></li>
+                        <li style="float:right"><a class="XMlink" href="/DSBaiViet">&gt;&gt;XEM THÊM</a></li>
                     </ul></div>
             </div>
             <div class="row mt-60">
@@ -609,7 +583,7 @@
                         <c:forEach var="baiViet" items="${requestScope.baiViets}">
                             <div class="card">
                                 <div class="card-body"><a href="">
-                                    <a href=""><img class="card-img-top" src="resources/images/Foods/ca-mu-hap-hanh.jpg" alt="Card image cap"> </a>
+                                    <a href="/XemCTBaiViet?idBV=${baiViet.maBaiViet}"><img class="card-img-top" src="${baiViet.urlHinhAnh}" alt="Card image cap"> </a>
                                     <h5 class="card-title">${baiViet.tieuDe}</h5>
                                 </a>
                                     <p class="card-text"> ${baiViet.noiDung}</p>

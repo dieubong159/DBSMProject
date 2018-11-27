@@ -11,9 +11,17 @@ public class SanPham {
     private String xuatXu;
     private String moTa;
     private Date ngayNhap;
-    public SanPham() {    }
+    private String urlHinhAnh;
 
-    public SanPham(String maSP, String tenSP, double giaSP, float phanTramKhuyenMai, String maDanhMuc, String xuatXu, String moTa, Date ngayNhap) {
+    public String getUrlHinhAnh() {
+        return urlHinhAnh;
+    }
+
+    public void setUrlHinhAnh(String urlHinhAnh) {
+        this.urlHinhAnh = urlHinhAnh;
+    }
+
+    public SanPham(String maSP, String tenSP, double giaSP, float phanTramKhuyenMai, String maDanhMuc, String xuatXu, String moTa, Date ngayNhap, String urlHinhAnh) {
         this.maSP = maSP;
         this.tenSP = tenSP;
         this.giaSP = giaSP;
@@ -21,8 +29,12 @@ public class SanPham {
         this.maDanhMuc = maDanhMuc;
         this.xuatXu = xuatXu;
         this.moTa = moTa;
-        this.ngayNhap=ngayNhap;
+        this.ngayNhap = ngayNhap;
+        this.urlHinhAnh = urlHinhAnh;
     }
+
+    public SanPham() {    }
+
 
     public String getMaSP() {
         return maSP;

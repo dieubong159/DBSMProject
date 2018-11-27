@@ -17,15 +17,16 @@ public class DangNhapService extends ConnectDatabase {
     }
 
     public DangNhap_KetNoi IsLogin(DangNhap_KetNoi dangNhap_ketNoi) throws SQLException,ClassNotFoundException {
+        serverName = dangNhap_ketNoi.getEmail();
+        passWord = dangNhap_ketNoi.getPassWord();
+        IP = dangNhap_ketNoi.getIpAddress();
         openConnection();
-        String email = dangNhap_ketNoi.getEmail();
-        String password = dangNhap_ketNoi.getPassWord();
         String query = "SELECT * FROM dbo.fc_KiemTraDangNhap(?,?)";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setEscapeProcessing(true);
         statement.setQueryTimeout(90);
-        statement.setString(1,email);
-        statement.setString(2,password);
+        statement.setString(1,serverName);
+        statement.setString(2,passWord);
 
         ResultSet resultSet = statement.executeQuery();
         if(resultSet.next())
