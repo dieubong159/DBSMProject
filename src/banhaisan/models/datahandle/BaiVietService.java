@@ -21,7 +21,7 @@ public class BaiVietService extends ConnectDatabase implements Business<BaiViet>
 
         ArrayList<BaiViet> baiViets= new ArrayList<>();
         openConnection();
-        String query = "select * from vw_LayBaiViet";
+        String query = "select * from dbo.vw_LayDSBaiViet";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setQueryTimeout(90);
         statement.setEscapeProcessing(true);
@@ -33,7 +33,7 @@ public class BaiVietService extends ConnectDatabase implements Business<BaiViet>
             baiViet.setNgayDang(resultSet.getDate(2));
             baiViet.setTieuDe(resultSet.getString(3));
             baiViet.setNoiDung(resultSet.getString(4));
-//            baiViet.setUrlHinhAnh(resultSet.getString(5));
+            baiViet.setUrlHinhAnh(resultSet.getString(5));
 
             baiViets.add(baiViet);
         }
