@@ -191,10 +191,10 @@
             <div class="hedder-up row">
                 <div style="width:70%" class="col-lg-3 col-md-3 col-xs-12 col-sm-12 logo-head">
                     <li>
-                        <a class="navbar-brand" href="TrangChu.jsp" style="margin-left: 31%">
+                        <a class="navbar-brand" href="/Index" style="margin-left: 31%">
                             <div class="logo"><img src="resources/images/CrabICO.png" alt=""> </div>
                         </a>
-                        <h4 style="display:inline-block"><strong><a href="TrangChu.jsp">Tiêu Dân Seafood </a></strong></h4>
+                        <h4 style="display:inline-block"><strong><a href="/Index">Tiêu Dân Seafood </a></strong></h4>
                     </li>
                 </div>
                 <div class="col-lg-5 col-md-6 col-xs-12 col-sm-12 search-right">
@@ -212,7 +212,7 @@
                                 <p>Tổng đài miễn phí</p>
                             </li>
                             <li style="padding-right: 15pt">
-                                <p style="padding-bottom: 15pt"><strong><a href="DSCongthucchebien.jsp">CÔNG
+                                <p style="padding-bottom: 15pt"><strong><a href="/DSBaiViet">CÔNG
                                     THỨC</a></strong></p>
                                 <p>Đảm đang - Khéo léo</p>
                             </li>
@@ -220,7 +220,7 @@
                                 <form action="" method="post" class="last">
                                     <input type="hidden" name="cmd" value="_cart">
                                     <input type="hidden" name="display" value="1">
-                                    <p style="display:inline-block"><strong><a href="Cart.jsp">GIỎ HÀNG</a></strong></p>
+                                    <p style="display:inline-block"><strong><a href="#!">GIỎ HÀNG</a></strong></p>
                                     <button class="top_toys_cart" type="submit" name="submit" onclick="window.location.href='Cart.jsp'">
                                         <span class="fas fa-cart-arrow-down"></span>
                                     </button>
@@ -256,10 +256,10 @@
                             </div>
                         </li>
                         <li class="nav-item dropdown">
-                            <a href="DSCongthucchebien.jsp" class="nav-link">Công thức chế biến</a>
+                            <a href="/DSBaiViet" class="nav-link">Công thức chế biến</a>
                         </li>
                         <li class="nav-item">
-                            <a href="LienHe.jsp" class="nav-link">Liên hệ</a>
+                            <a href="/LienHe" class="nav-link">Liên hệ</a>
                         </li>
                     </ul>
                 </div>
@@ -277,7 +277,7 @@
                             <h5>Hãy chọn chúng tôi <br>trong những bữa ăn của gia đình bạn</h5>
                             <div class="bottom-info">
                                 <p>Luôn luôn phục vụ khách hàng với 100% sự nhiệt tình <3 </p> </div> <div class="outs_more-buttn">
-                            <a href="about.jsp">Xem thêm</a>
+                            <a href="/GioiThieu">Xem thêm</a>
                         </div>
                         </div>
                     </div>
@@ -292,7 +292,7 @@
                                 <p>Cam kết sản phẩm tươi sống. Không chất bảo quản. Không phụ gia và phẩm màu</p>
                             </div>
                             <div class="outs_more-buttn">
-                                <a href="about.jsp">Xem thêm</a>
+                                <a href="/GioiThieu">Xem thêm</a>
                             </div>
                         </div>
                     </div>
@@ -307,7 +307,7 @@
                                 <p>Cam kết đổi trả và bồi thường nếu sản phẩm không đúng như khách hàng yêu cầu !!</p>
                             </div>
                             <div class="outs_more-buttn">
-                                <a href="about.jsp">Xem thêm</a>
+                                <a href="/GioiThieu">Xem thêm</a>
                             </div>
                         </div>
                     </div>
@@ -628,16 +628,16 @@
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                 <h6 class="text-uppercase mb-4 font-weight-bold">MENU</h6>
                 <p>
-                    <a href="TrangChu.jsp">Trang chủ</a>
+                    <a href="/Index">Trang chủ</a>
                 </p>
                 <p>
                     <a href="/GioiThieu">Giới thiệu</a>
                 </p>
                 <p>
-                    <a href="LienHe.jsp">Liên hệ</a>
+                    <a href="/LienHe">Liên hệ</a>
                 </p>
                 <p>
-                    <a href="DSCongthucchebien.jsp">Món ngon</a>
+                    <a href="/DSBaiViet">Món ngon</a>
                 </p>
             </div>
             <!-- Grid column -->

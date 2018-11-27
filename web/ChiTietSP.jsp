@@ -316,7 +316,7 @@
                             <li>
                                 <a href="/CTSanPham?idSP=${sanPhamLQ.maSP}">
                                     <div class="image" style="display:flex;">
-                                        <img src="resources/images/Fish/ca-chep-gion01.jpg">
+                                        <img src="${sanPhamLQ.urlHinhAnh}">
                                         <div class="name">
                                             <p>${sanPhamLQ.tenSP}</p><br>
                                             <p>
@@ -338,7 +338,7 @@
                             <c:forEach var="baiViet" items="${requestScope.baiViets}">
                             <li>
                                 <a href="/XemCTBaiViet?iDBV=${baiViet.maBaiViet}">
-                                    <img src="resources/images/ca-mu-hap-hanh.jpg" width="70px" height="70px">
+                                    <img src="${baiViet.urlHinhAnh}" width="70px" height="70px">
                                     <p>${baiViet.tieuDe}</p>
                                 </a>
                             </li>
