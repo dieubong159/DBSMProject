@@ -1,5 +1,6 @@
 <!-- <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%> -->
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -29,7 +30,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <a class="brand" href="index.html">TieuDanSeaFood</a>
+                <a class="brand" href="/Admin/TrangChuAdmin">TieuDanSeaFood</a>
                 <div class="nav-collapse collapse">
                     <ul class="nav pull-right">
                         <li class="dropdown">
@@ -52,49 +53,36 @@
                         <li class="dropdown">
                             <a href="#" data-toggle="dropdown" class="dropdown-toggle">Quản lý Người dùng <b class="caret"></b>
                             </a>
-                            <ul class="dropdown-menu" id="menu">
+                            <ul class="dropdown-menu" id="menu2">
                                 <li>
-                                    <a href="QlyNguoiDungThongThuong.jsp">Người dùng thông thường</a>
+                                    <a href="/Admin/NguoiDungThongThuong">Người dùng thông thường</a>
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a href="QlyAdmin.jsp">Admin</a>
+                                    <a href="/Admin/NguoiDungAdmin">Admin</a>
                                 </li>
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="QLySanPham.jsp" data-toggle="dropdown" class="dropdown-toggle">Quản lý Sản phẩm
+                            <a href="/Admin/QLSanPham" data-toggle="dropdown" class="dropdown-toggle">Quản lý Sản phẩm
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu" id="menu1">
-                                <li>
-                                    <a href="QLySanPham.jsp">Tôm</a>
-                                </li>
-                                <li>
-                                    <a href="QLySanPham.jsp">Cua</a>
-                                </li>
-                                <li>
-                                    <a href="QLySanPham.jsp">Cá</a>
-                                </li>
-                                <li>
-                                    <a href="QLySanPham.jsp">Mực</a>
-                                </li>
-                                <li>
-                                    <a href="QLySanPham.jsp">Ngao-Sò-Ốc</a>
-                                </li>
+                                <c:forEach var="danhMuc" items="${requestScope.danhMucs}">
+                                    <li>
+                                        <a href="QLSanPham?idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
+                                    </li>
+                                </c:forEach>
                             </ul>
                         </li>
                         <li>
-                            <a href="QlyBaiViet.jsp">Quản lý Bài Viết</a>
+                            <a href="/Admin/QlyBaiViet">Quản lý Bài Viết</a>
                         </li>
                         <li>
-                            <a href="QLyDanhMuc.jsp">Quản lý Danh mục</a>
+                            <a href="/Admin/QLDanhMuc">Quản lý Danh mục</a>
                         </li>
                         <li>
-                            <a href="QlyDonHang.jsp">Quản lý Đơn hàng</a>
-                        </li>
-                        <li>
-                            <a href="QlyQuyen.jsp">Quản lý quyền</a>
+                            <a href="/Admin/QLDonHang">Quản lý Đơn hàng</a>
                         </li>
                     </ul>
                 </div>
@@ -106,13 +94,10 @@
             <div class="span3" id="sidebar" style="width: 200px;">
                 <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
                     <li class="active">
-                        <a href="ThongTinCaNhan.jsp"><i class="icon-chevron-right"></i>Hồ sơ</a>
+                        <a href="/Admin/Profile"><i class="icon-chevron-right"></i>Hồ sơ</a>
                     </li>
                     <li>
-                        <a href="DoiMatKhau.jsp"><i class="icon-chevron-right"></i>Đổi mật khẩu</a>
-                    </li>
-                    <li>
-                        <a href="ThongTinQuyen_Info.jsp"><i class="icon-chevron-right"></i>Quyền</a>
+                        <a href="/Admin/DoiMatKhau"><i class="icon-chevron-right"></i>Đổi mật khẩu</a>
                     </li>
                 </ul>
             </div>
@@ -186,9 +171,9 @@
                                             </div>
                                         </div>
                                         <div style="text-align: right;">
-                                            <a href="ChinhSuaThongTinCaNhan.jsp" class="btn btn-primary"><i class="icon-pencil icon-white"></i>
+                                            <a href="/Admin/EditProfile" class="btn btn-primary"><i class="icon-pencil icon-white"></i>
                                             Edit</a>
-                                            <button type="button" class="btn">Trở về</button>
+                                            <a href="TrangChuAdminServlet" type="button" class="btn">Trở về</a>
                                         </div>
                                     </form>
 

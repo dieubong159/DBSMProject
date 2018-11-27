@@ -1,5 +1,6 @@
 <!-- <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%> -->
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -29,7 +30,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <a class="brand" href="index.html">TieuDanSeaFood</a>
+                <a class="brand" href="/Admin/TrangChuAdmin">TieuDanSeaFood</a>
                 <div class="nav-collapse collapse">
                     <ul class="nav pull-right">
                         <li class="dropdown">
@@ -52,49 +53,36 @@
                         <li class="dropdown">
                             <a href="#" data-toggle="dropdown" class="dropdown-toggle">Quản lý Người dùng <b class="caret"></b>
                             </a>
-                            <ul class="dropdown-menu" id="menu1">
+                            <ul class="dropdown-menu" id="menu2">
                                 <li>
-                                    <a href="QlyNguoiDungThongThuong.jsp">Người dùng thông thường</a>
+                                    <a href="/Admin/NguoiDungThongThuong">Người dùng thông thường</a>
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a href="QlyAdmin.jsp">Admin</a>
+                                    <a href="/Admin/NguoiDungAdmin">Admin</a>
                                 </li>
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="QLySanPham.jsp" data-toggle="dropdown" class="dropdown-toggle">Quản lý Sản phẩm
+                            <a href="/Admin/QLSanPham" data-toggle="dropdown" class="dropdown-toggle">Quản lý Sản phẩm
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu" id="menu1">
-                                <li>
-                                    <a href="QLySanPham.jsp">Tôm</a>
-                                </li>
-                                <li>
-                                    <a href="QLySanPham.jsp">Cua</a>
-                                </li>
-                                <li>
-                                    <a href="QLySanPham.jsp">Cá</a>
-                                </li>
-                                <li>
-                                    <a href="QLySanPham.jsp">Mực</a>
-                                </li>
-                                <li>
-                                    <a href="QLySanPham.jsp">Ngao-Sò-Ốc</a>
-                                </li>
+                                <c:forEach var="danhMuc" items="${requestScope.danhMucs}">
+                                    <li>
+                                        <a href="QLSanPham?idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
+                                    </li>
+                                </c:forEach>
                             </ul>
                         </li>
                         <li>
-                            <a href="QlyBaiViet.jsp">Quản lý Bài Viết</a>
+                            <a href="/Admin/QlyBaiViet">Quản lý Bài Viết</a>
                         </li>
                         <li>
-                            <a href="QLyDanhMuc.jsp">Quản lý Danh mục</a>
+                            <a href="/Admin/QLDanhMuc">Quản lý Danh mục</a>
                         </li>
                         <li>
-                            <a href="QlyDonHang.jsp">Quản lý Đơn hàng</a>
-                        </li>
-                        <li>
-                            <a href="QlyQuyen.jsp">Quản lý quyền</a>
+                            <a href="/Admin/QLDonHang">Quản lý Đơn hàng</a>
                         </li>
                     </ul>
                 </div>
@@ -106,13 +94,10 @@
             <div class="span3" id="sidebar" style="width: 200px;">
                 <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
                     <li class="active">
-                        <a href="ThongTinCaNhan.jsp"><i class="icon-chevron-right"></i>Hồ sơ</a>
+                        <a href="/Admin/Profile"><i class="icon-chevron-right"></i>Hồ sơ</a>
                     </li>
                     <li>
-                        <a href="DoiMatKhau.jsp"><i class="icon-chevron-right"></i>Đổi mật khẩu</a>
-                    </li>
-                    <li>
-                        <a href="ThongTinQuyen_Info.jsp"><i class="icon-chevron-right"></i>Quyền</a>
+                        <a href="/Admin/DoiMatKhau"><i class="icon-chevron-right"></i>Đổi mật khẩu</a>
                     </li>
                 </ul>
             </div>
@@ -128,13 +113,14 @@
                                 </div>
                                 <div class="block-content collapse in">
                                     <!-- BEGIN FORM-->
-                                    <form action="#" id="form_sample_1" class="form-horizontal" style="width:70%;margin:0 auto;">
+                                    <form action="/Admin/EditProfile" id="form_sample_1" class="form-horizontal" style="width:70%;margin:0 auto;" method="post">
+                                        <input type="hidden" value="${admin.maNguoiDung}" name="txtMaNguoiDung">
                                         <div class="control-group">
                                             <div style="float:left;width:50%;">
-                                                <label class="control-label">Họ tên(bắt buộc)<span class="required">*</span></label>
+                                                <label class="control-label">Họ tên<span class="required">*</span></label>
                                                 <div class="controls">
-                                                    <input id="txt-ten" type="text" name="name" data-required="1" class="span6 m-wrap"
-                                                        style="width:500px !important;" value="Nguyễn Thanh Tân" />
+                                                    <input id="txt-ten" type="text" name="txt-ten" data-required="1"
+                                                           class="span6 m-wrap" style="width:500px !important;" value= "${admin.hoTen} "/>
                                                     <br><small class="text-danger" id="validate-txt-ten"></small>
                                                 </div>
                                             </div>
@@ -142,44 +128,48 @@
                                         <div class="control-group">
                                             <label class="control-label">Giới tính<span class="required">*</span></label>
                                             <div class="controls">
-                                                <input id="txt-ten" type="text" name="name" data-required="1" class="span6 m-wrap"
-                                                    style="width:500px !important;" value="Nam" />
+                                                <select class="span6 m-wrap" name="txt-gioi-tinh" style="width:500px !important;">
+                                                    <option value="1" <c:if test="${admin.gioiTinh}">selected</c:if>>Nam</option>
+                                                    <option value="0" <c:if test="${admin.gioiTinh ne true}">selected</c:if>>Nữ</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="control-group">
-                                            <label class="control-label">Địa chỉ email(bắt buộc):<span class="required">*</span></label>
+                                            <label class="control-label">Địa chỉ email<span class="required">*</span></label>
                                             <div class="controls">
-                                                <input id="txt-email" name="email" type="text" class="span6 m-wrap"
-                                                    style="width:500px !important;" value="nguyentan.dc25@gmail.com" />
+                                                <input readonly id="txt-email" name="txt-email" type="text" class="span6 m-wrap" style="width:500px !important;"
+                                                       value="${admin.email}" />
                                                 <br><small class="text-danger" id="validate-txt-email"></small>
                                             </div>
                                         </div>
                                         <div class="control-group">
-                                            <label class="control-label">Số điện thoại(bắt buộc)<span class="required">*</span></label>
+                                            <label class="control-label">Số điện thoại<span class="required">*</span></label>
                                             <div class="controls">
-                                                <input id="txt-dien-thoai" type="text" name="name" data-required="1"
-                                                    class="span6 m-wrap" style="width:500px !important;" value="0828088818" />
+                                                <input id="txt-dien-thoai" type="text" name="txt-dien-thoai" data-required="1"
+                                                       class="span6 m-wrap" style="width:500px !important;" value="${admin.sdt} " />
                                                 <br><small class="text-danger" id="validate-txt-dien-thoai"></small>
                                             </div>
                                         </div>
                                         <div class="control-group">
                                             <label class="control-label">Địa chỉ<span class="required">*</span></label>
                                             <div class="controls">
-                                                <input id="txt-dia-chi" type="text" name="name" data-required="1" class="span6 m-wrap"
-                                                    style="width:500px !important;" value="75/6 Trương Văn Hải, Quận 9, TP HCM" />
+                                                <input id="txt-dia-chi" type="text" name="txt-dia-chi" data-required="1"
+                                                       class="span6 m-wrap" style="width:500px !important;" value="${admin.diaChi}" />
                                             </div>
                                         </div>
                                         <div class="control-group">
                                             <label class="control-label">Ngày sinh<span class="required">*</span></label>
                                             <div class="controls">
-                                                <input type="text" class="input-xlarge datepicker" id="date01" value="07/27/2018"
-                                                    style="width:500px !important;">
+                                                <input type="date" name="dt-ngay-sinh" class="input-xlarge datepicker" id="date01" value="${admin.ngaySinh}"
+                                                       style="width:486px !important;">
                                                 <br><small class="text-danger" id="validate-dt-ngay-sinh"></small>
                                             </div>
                                         </div>
+                                        <input id="txt-mat-khau" type="hidden" name="txt-mat-khau" data-required="1"
+                                               class="span6 m-wrap" style="width:500px !important;" value="${admin.matKhau}" />
                                         <div style="text-align: right">
                                             <button type="submit" id="btn-them" class="btn btn-primary">Hoàn tất</button>
-                                            <button type="button" class="btn">Hủy bỏ</button>
+                                            <a href="/Admin/Profile" type="button" class="btn">Hủy bỏ</a>
                                         </div>
                                     </form>
 

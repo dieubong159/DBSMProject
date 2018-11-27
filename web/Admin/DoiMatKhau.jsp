@@ -1,5 +1,6 @@
 <!-- <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%> -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -29,7 +30,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <a class="brand" href="index.html">TieuDanSeaFood</a>
+                <a class="brand" href="/Admin/TrangChuAdmin">TieuDanSeaFood</a>
                 <div class="nav-collapse collapse">
                     <ul class="nav pull-right">
                         <li class="dropdown">
@@ -52,49 +53,36 @@
                         <li class="dropdown">
                             <a href="#" data-toggle="dropdown" class="dropdown-toggle">Quản lý Người dùng <b class="caret"></b>
                             </a>
-                            <ul class="dropdown-menu" id="menu1">
+                            <ul class="dropdown-menu" id="menu2">
                                 <li>
-                                    <a href="QlyNguoiDungThongThuong.jsp">Người dùng thông thường</a>
+                                    <a href="/Admin/NguoiDungThongThuong">Người dùng thông thường</a>
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a href="QlyAdmin.jsp">Admin</a>
+                                    <a href="/Admin/NguoiDungAdmin">Admin</a>
                                 </li>
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="QLySanPham.jsp" data-toggle="dropdown" class="dropdown-toggle">Quản lý Sản phẩm
+                            <a href="/Admin/QLSanPham" data-toggle="dropdown" class="dropdown-toggle">Quản lý Sản phẩm
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu" id="menu1">
-                                <li>
-                                    <a href="QLySanPham.jsp">Tôm</a>
-                                </li>
-                                <li>
-                                    <a href="QLySanPham.jsp">Cua</a>
-                                </li>
-                                <li>
-                                    <a href="QLySanPham.jsp">Cá</a>
-                                </li>
-                                <li>
-                                    <a href="QLySanPham.jsp">Mực</a>
-                                </li>
-                                <li>
-                                    <a href="QLySanPham.jsp">Ngao-Sò-Ốc</a>
-                                </li>
+                                <c:forEach var="danhMuc" items="${requestScope.danhMucs}">
+                                    <li>
+                                        <a href="QLSanPham?idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
+                                    </li>
+                                </c:forEach>
                             </ul>
                         </li>
                         <li>
-                            <a href="QlyBaiViet.jsp">Quản lý Bài Viết</a>
+                            <a href="/Admin/QlyBaiViet">Quản lý Bài Viết</a>
                         </li>
                         <li>
-                            <a href="QLyDanhMuc.jsp">Quản lý Danh mục</a>
+                            <a href="/Admin/QLDanhMuc">Quản lý Danh mục</a>
                         </li>
                         <li>
-                            <a href="QlyDonHang.jsp">Quản lý Đơn hàng</a>
-                        </li>
-                        <li>
-                            <a href="QlyQuyen.jsp">Quản lý quyền</a>
+                            <a href="/Admin/QLDonHang">Quản lý Đơn hàng</a>
                         </li>
                     </ul>
                 </div>
@@ -109,10 +97,7 @@
                         <a href="ThongTinCaNhan.jsp"><i class="icon-chevron-right"></i>Hồ sơ</a>
                     </li>
                     <li class="active">
-                        <a href="DoiMatKhau.jsp"><i class="icon-chevron-right"></i>Đổi mật khẩu</a>
-                    </li>
-                    <li>
-                        <a href="ThongTinQuyen_Info.jsp"><i class="icon-chevron-right"></i>Quyền</a>
+                        <a href="/Admin/DoiMatKhau"><i class="icon-chevron-right"></i>Đổi mật khẩu</a>
                     </li>
                 </ul>
             </div>
@@ -128,20 +113,36 @@
                                 </div>
                                 <div class="block-content collapse in">
                                     <!-- BEGIN FORM-->
-                                    <form action="#" id="form_sample_1" class="form-horizontal" style="width:70%;margin:0 auto;">
+                                    <form action="/Admin/DoiMatKhau" id="form_sample_1" class="form-horizontal" style="width:70%;margin:0 auto;" method="post">
                                         <div class="control-group">
                                             <label class="control-label">Mật khẩu cũ:<span class="required">*</span></label>
                                             <div class="controls">
-                                                <input id="txt-mat-khau-cu" type="password" name="name" data-required="1"
-                                                    class="span6 m-wrap" style="width:500px !important;" value="********" />
+                                                <input id="txt-mat-khau-cu" type="password" name="txt-mk-cu" data-required="1"
+                                                    class="span6 m-wrap" style="width:500px !important;"  />
+                                                <c:choose>
+                                                    <c:when test="${pwIsValid == false}">
+                                                        <div class="alert1">
+                                                            <span class="exitbtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                                            Mật khẩu cũ không trùng khớp !!
+                                                        </div>
+                                                    </c:when>
+                                                    <c:when test="${pwIsValid == null}">
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <div class="alert1">
+                                                            <span class="exitbtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                                            Đã cập nhật mật khẩu thành công!!
+                                                        </div>
+                                                    </c:otherwise>
+                                                </c:choose>
                                                 <br><small class="text-danger" id="validate-txt-mat-khau-cu"></small>
                                             </div>
                                         </div>
                                         <div class="control-group">
                                             <label class="control-label">Mật khẩu mới<span class="required">*</span></label>
                                             <div class="controls">
-                                                <input id="txt-mat-khau" type="password" name="name" data-required="1"
-                                                    class="span6 m-wrap" style="width:500px !important;" value="********" />
+                                                <input id="txt-mat-khau" type="password" name="txt-mk-moi" data-required="1"
+                                                    class="span6 m-wrap" style="width:500px !important;"  />
                                                 <br><small class="text-danger" id="validate-txt-mat-khau"></small>
                                             </div>
                                         </div>
@@ -149,8 +150,7 @@
                                             <label class="control-label">Xác nhận mật khẩu<span class="required">*</span></label>
                                             <div class="controls">
                                                 <input id="txt-xac-nhan-mat-khau" type="password" name="name"
-                                                    data-required="1" class="span6 m-wrap" style="width:500px!important;"
-                                                    value="********" />
+                                                    data-required="1" class="span6 m-wrap" style="width:500px!important;"/>
                                                 <br><small class="text-danger" id="validate-txt-xac-nhan-mat-khau"></small>
                                             </div>
                                         </div>

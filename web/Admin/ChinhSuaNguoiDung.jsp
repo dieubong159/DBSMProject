@@ -148,7 +148,7 @@
                                 <div class="control-group">
                                     <label class="control-label">Mật khẩu<span class="required">*</span></label>
                                     <div class="controls">
-                                        <input id="txt-mat-khau" type="text" name="txt-mat-khau" data-required="1"
+                                        <input id="txt-mat-khau" type="password" name="txt-mat-khau" data-required="1"
                                                class="span6 m-wrap" style="width:500px !important;" value="${nguoiDung.matKhau}" />
                                         <br><small class="text-danger" id="validate-txt-mat-khau"></small>
                                     </div>
@@ -156,7 +156,7 @@
                                 <div class="control-group">
                                     <label class="control-label">Xác nhận mật khẩu<span class="required">*</span></label>
                                     <div class="controls">
-                                        <input id="txt-xac-nhan-mat-khau" type="text" name="name" data-required="1"
+                                        <input id="txt-xac-nhan-mat-khau" type="password" name="name" data-required="1"
                                                class="span6 m-wrap" style="width:500px!important;" value="${nguoiDung.matKhau} " />
                                         <br><small class="text-danger" id="validate-txt-xac-nhan-mat-khau"></small>
                                     </div>
@@ -164,7 +164,7 @@
                                 <div style="text-align: center">
                                     <div style="text-align:center;">
                                         <button type="submit" id="btn-them" class="btn btn-primary">Hoàn tất</button>
-                                        <button type="button" class="btn">Hủy bỏ</button>
+                                        <a href="/Admin/NguoiDungThongThuong" type="button" class="btn">Hủy bỏ</a>
                                     </div>
                                 </div>
                             </form>

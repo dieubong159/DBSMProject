@@ -160,7 +160,7 @@
                                 </div>
                                 <div style="text-align: center">
                                     <div style="text-align:center;">
-                                        <button href="/Admin/ChiTietNguoiDung" type="button" class="btn btn-success btn-large">Quay về trang chủ</button>
+                                        <a href="/Admin/NguoiDungThongThuong" type="button" class="btn btn-success btn-large">Quay về trang chủ</a>
                                     </div>
                                 </div>
                             </form>

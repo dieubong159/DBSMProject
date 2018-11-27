@@ -7,9 +7,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public abstract class ConnectDatabase {
-    protected String IP="localhost";
-    protected String serverName="sa";
-    protected String passWord="12345";
+    protected static String IP="localhost";
+    protected static String serverName="sa";
+    protected static String passWord="12345";
 
 
 
