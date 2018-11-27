@@ -102,6 +102,25 @@ public class SanPhamService extends ConnectDatabase implements Business<SanPham>
         closeConnection();
         return sanPhams;
     }
+    public double layGiaCaoNhat(Object... keys) throws SQLException, ClassNotFoundException{
+        if(keys.length<=0)
+        {
+            return 0;
+        }
+        Double GiaCaoNhat = null;
+        openConnection();
+        String query = "Select dbo.fc_GiaCaoNhatSanPham(?)";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setQueryTimeout(90);
+        statement.setEscapeProcessing(true);
+        statement.setString(1,keys[0].toString());
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            GiaCaoNhat = resultSet.getDouble(1);
+        }
+        closeConnection();
+        return GiaCaoNhat;
+    }
     @Override
     public SanPham get(Object... keys) throws SQLException, ClassNotFoundException{
         if(keys.length<=0){

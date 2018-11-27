@@ -330,7 +330,7 @@
                     <div class="gap-element" style="display:block; height:auto; padding-top:30px"></div>
                     <div class="slidecontainer">
                         <h3 class="agileits-sear-head">LỌC GIÁ SẢN PHẨM</h3>
-                        <input oninput="run()" type="range" min="1" max="" value="50" class="slider" id="myRange">
+                        <input oninput="run()" type="range" min="1" max="${giaCaoNhat}" value="50" class="slider" id="myRange">
                         <p>Value: <input id="demo" value="" readonly style="border: none;background-color: #F9F9F9;"></p>
                     </div>
 

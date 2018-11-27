@@ -52,7 +52,7 @@
                         <li class="dropdown">
                             <a href="#" data-toggle="dropdown" class="dropdown-toggle">Quản lý Người dùng <b class="caret"></b>
                             </a>
-                            <ul class="dropdown-menu" id="menu1">
+                            <ul class="dropdown-menu" id="menu">
                                 <li>
                                     <a href="QlyNguoiDungThongThuong.jsp">Người dùng thông thường</a>
                                 </li>
@@ -128,13 +128,13 @@
                                 </div>
                                 <div class="block-content collapse in">
                                     <!-- BEGIN FORM-->
-                                    <form action="#" id="form_sample_1" class="form-horizontal" style="width:70%;margin:0 auto;">
+                                    <form action="" method="post" id="form_sample_1" class="form-horizontal" style="width:70%;margin:0 auto;">
                                         <div class="control-group">
                                             <div style="float:left;width:50%;">
                                                 <label class="control-label">Họ tên<span class="required">*</span></label>
                                                 <div class="controls">
                                                     <input disabled id="txt-ten" type="text" name="name" data-required="1"
-                                                        class="span6 m-wrap" style="width:500px !important;" value="Nguyễn Thanh Tân" />
+                                                           class="span6 m-wrap" style="width:500px !important;" value= "${admin.hoTen} "/>
                                                     <br><small class="text-danger" id="validate-txt-ten"></small>
                                                 </div>
                                             </div>
@@ -142,24 +142,31 @@
                                         <div class="control-group">
                                             <label class="control-label">Giới tính<span class="required">*</span></label>
                                             <div class="controls">
-                                                <input disabled id="txt-ten" type="text" name="name" data-required="1"
-                                                    class="span6 m-wrap" style="width:500px !important;" value="Nam" />
+                                                <c:choose>
+                                                    <c:when test="${admin.gioiTinh}">
+                                                        <input disabled id="txt-gioi-tinh" type="text" name="name" data-required="1" class="span6 m-wrap"
+                                                               style="width:500px !important;"  value="Nam"/>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <input disabled id="txt-gioi-tinh" type="text" name="name" data-required="1" class="span6 m-wrap"
+                                                               style="width:500px !important;"  value="Nữ"/>
+                                                    </c:otherwise>
+                                                </c:choose>
                                             </div>
                                         </div>
                                         <div class="control-group">
                                             <label class="control-label">Địa chỉ email<span class="required">*</span></label>
                                             <div class="controls">
-                                                <input disabled id="txt-email" name="email" type="text" class="span6 m-wrap"
-                                                    style="width:500px !important;" value="nguyentan.dc25@gmail.com" />
+                                                <input disabled id="txt-email" name="email" type="text" class="span6 m-wrap" style="width:500px !important;"
+                                                       value="${admin.email}" />
                                                 <br><small class="text-danger" id="validate-txt-email"></small>
                                             </div>
                                         </div>
                                         <div class="control-group">
                                             <label class="control-label">Số điện thoại<span class="required">*</span></label>
                                             <div class="controls">
-                                                <input disabled id="txt-dien-thoai" type="text" name="name"
-                                                    data-required="1" class="span6 m-wrap" style="width:500px !important;"
-                                                    value="0828088818" />
+                                                <input disabled id="txt-dien-thoai" type="text" name="name" data-required="1"
+                                                       class="span6 m-wrap" style="width:500px !important;" value="${admin.sdt} " />
                                                 <br><small class="text-danger" id="validate-txt-dien-thoai"></small>
                                             </div>
                                         </div>
@@ -167,14 +174,14 @@
                                             <label class="control-label">Địa chỉ<span class="required">*</span></label>
                                             <div class="controls">
                                                 <input disabled id="txt-dia-chi" type="text" name="name" data-required="1"
-                                                    class="span6 m-wrap" style="width:500px !important;" value="75/6 Trương Văn Hải, Quận 9, TP HCM" />
+                                                       class="span6 m-wrap" style="width:500px !important;" value="${admin.diaChi}" />
                                             </div>
                                         </div>
                                         <div class="control-group">
                                             <label class="control-label">Ngày sinh<span class="required">*</span></label>
                                             <div class="controls">
-                                                <input disabled id="dt-ngay-sinh" type="text" class="input-xlarge datepicker"
-                                                    style="width:486px !important;" value="27/07/1998">
+                                                <input disabled type="text" class="input-xlarge datepicker" id="date01" value="${admin.ngaySinh}"
+                                                       style="width:486px !important;">
                                                 <br><small class="text-danger" id="validate-dt-ngay-sinh"></small>
                                             </div>
                                         </div>
