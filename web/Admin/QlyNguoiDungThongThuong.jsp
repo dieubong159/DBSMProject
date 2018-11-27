@@ -22,6 +22,16 @@
             }
         }
     </script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -111,7 +121,7 @@
                                     </a>
                                 </div>
                                 <div style="float:right;">
-                                    <label>Search: <input type="text" aria-controls="example2"></label>
+                                    <label>Search: <input id="myInput" type="text" aria-controls="example2"></label>
                                 </div>
                             </div>
                         </div>
@@ -129,7 +139,7 @@
                                 <th width="85">Xóa</th>
                             </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="myTable">
                             <c:forEach var="nguoiDung" items="${requestScope.nguoiDungs}">
                                 <tr class="odd gradeX">
                                     <td><input type="checkbox" name="chkKichHoat" class="form-control"

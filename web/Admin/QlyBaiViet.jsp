@@ -13,14 +13,24 @@
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
     <link href="assets/styles.css" rel="stylesheet" media="screen">
-    <script src="vendors/jquery-1.9.1.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="/Admin/vendors/jquery-1.9.1.min.js"></script>
+    <script src="/Admin/bootstrap/js/bootstrap.min.js"></script>
     <script>
         function confirmDelete(obj) {
             if (confirm("Bạn có chắc chắn muốn xóa bài viết này không?")) {
                 $.post("/Admin/XoaBaiViet",{ txtMaBaiViet : $(obj).attr("maBaiViet").trim() }, content => location.href="/Admin/QlyBaiViet");
             }
         }
+    </script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
     </script>
 </head>
 
@@ -108,7 +118,7 @@
                                         <a href="/Admin/TMBaiViet"><button class="btn btn-success">Thêm mới <i class="icon-plus icon-white"></i></button></a>
                                     </div>
                                     <div style="float:right;">
-                                        <label>Search: <input type="text" aria-controls="example2"></label>
+                                        <label>Search: <input id="myInput" type="text" aria-controls="example2"></label>
                                     </div>
                                 </div>
                             </div>
@@ -124,7 +134,7 @@
                                         <th width="85">Xóa</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="myTable">
                                 <c:forEach var="baiViet" items="${requestScope.baiViet}">
                                     <tr class="odd gradeX">
                                         <td>${baiViet.maBaiViet}</td>

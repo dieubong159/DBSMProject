@@ -13,8 +13,18 @@
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
     <link href="assets/styles.css" rel="stylesheet" media="screen">
-    <script src="vendors/jquery-1.9.1.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="/Admin/vendors/jquery-1.9.1.min.js"></script>
+    <script src="/Admin/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -103,7 +113,7 @@
                                     <div style="float:right;position: relative;">
                                         <!-- <button style="display:inline-block;position: absolute;top: 0;left:-70px;"
                                             class="btn"><i class="icon-filter"></i>Lọc</button> -->
-                                        <label style="display:inline-block;">Search: <input type="text" aria-controls="example2"></label>
+                                        <label style="display:inline-block;">Search: <input id="myInput" type="text" aria-controls="example2"></label>
                                     </div>
                                 </div>
                             </div>
@@ -123,7 +133,7 @@
                                         <th width="85">Xóa</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="myTable">
                                 <c:forEach var="sanPham" items="${requestScope.sanPhams}">
                                     <tr class="odd gradeX">
                                         <td>${sanPham.maDanhMuc}</td>
