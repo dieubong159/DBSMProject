@@ -157,17 +157,16 @@ public class SanPhamService extends ConnectDatabase implements Business<SanPham>
     public int add(SanPham sanPham) throws SQLException, ClassNotFoundException {
         openConnection();
 
-        String query = "EXEC ThemSanPham ?,?,?,?,?,?,?";
+        String query = "EXEC ThemSanPham ?,?,?,?,?,?";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setEscapeProcessing(true);
         statement.setQueryTimeout(90);
-        statement.setString(1,sanPham.getMaSP());
-        statement.setString(2,sanPham.getTenSP());
-        statement.setDouble(3,sanPham.getGiaSP());
-        statement.setFloat(4,sanPham.getPhanTramKhuyenMai());
-        statement.setString(5,sanPham.getXuatXu());
-        statement.setString(6,sanPham.getMoTa());
-        statement.setString(7,sanPham.getMaDanhMuc());
+        statement.setString(1,sanPham.getTenSP());
+        statement.setDouble(2,sanPham.getGiaSP());
+        statement.setFloat(3,sanPham.getPhanTramKhuyenMai());
+        statement.setString(4,sanPham.getXuatXu());
+        statement.setString(5,sanPham.getMoTa());
+        statement.setString(6,sanPham.getMaDanhMuc());
 
         int rowAffected = statement.executeUpdate();
         closeConnection();

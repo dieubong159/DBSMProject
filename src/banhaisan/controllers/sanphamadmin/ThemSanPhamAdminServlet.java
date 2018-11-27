@@ -21,7 +21,6 @@ public class ThemSanPhamAdminServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try {
             SanPham sanPham = new SanPham();
-            sanPham.setMaSP(request.getParameter("txtMaSP"));
             sanPham.setTenSP(request.getParameter("txtTenSP"));
             sanPham.setGiaSP(Double.parseDouble(request.getParameter("txtGiaSP")));
             sanPham.setPhanTramKhuyenMai(Integer.parseInt(request.getParameter("txtPhanTramKhuyenMai")));

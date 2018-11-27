@@ -92,7 +92,7 @@ public class DanhMucService extends ConnectDatabase implements Business<DanhMuc>
     @Override
     public int modify(DanhMuc danhMuc) throws SQLException, ClassNotFoundException {
         openConnection();
-        String query = "EXEC ChinhSuaDanhMuc ?,?";
+        String query = "EXEC SuaDanhMuc ?,?";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setQueryTimeout(90);
         statement.setEscapeProcessing(true);
