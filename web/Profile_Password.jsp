@@ -108,9 +108,9 @@
                             </li>
                             <li class="float-md-right">
                                 <span class="fas fa-user"></span>
-                                <p>Chào <a href="Profile.jsp">Diêu</a></p>
+                                <p>Chào <a href="/Profile">Diêu</a></p>
                                 <p>|</p>
-                                <p><a href="TrangChu.jsp">Thoát</a></p>
+                                <p><a href="/Logout">Thoát</a></p>
                             </li>
                         </ul>
                     </div>
@@ -119,10 +119,10 @@
                     <div class="hedder-up row">
                         <div style="width:70%" class="col-lg-3 col-md-3 logo-head">
                             <li>
-                                <a class="navbar-brand" href="TrangChu.jsp" style="margin-left: 31%">
+                                <a class="navbar-brand" href="/Index" style="margin-left: 31%">
                                     <div class="logo"><img src="resources/images/CrabICO.png" alt=""> </div>
                                 </a>
-                                <h4 style="display:inline-block"><strong><a href="TrangChu.jsp">Tiêu Dân Seafood </a></strong></h4>
+                                <h4 style="display:inline-block"><strong><a href="/Index">Tiêu Dân Seafood </a></strong></h4>
                             </li>
                         </div>
                         <div class="col-lg-5 col-md-6 search-right">
@@ -140,7 +140,7 @@
                                         <p>Tổng đài miễn phí</p>
                                     </li>
                                     <li style="padding-right: 15pt">
-                                        <p style="padding-bottom: 15pt"><strong><a href="#">CÔNG THỨC</a></strong></p>
+                                        <p style="padding-bottom: 15pt"><strong><a href="/DSBaiViet">CÔNG THỨC</a></strong></p>
                                         <p>Đảm đang - Khéo léo</p>
                                     </li>
                                     <li style="position:relative" class="toyscart toyscart2 cart cart box_1">
@@ -183,10 +183,10 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#!" class="nav-link">Công thức chế biến</a>
+                                <a href="/DSBaiViet" class="nav-link">Công thức chế biến</a>
                             </li>
                             <li class="nav-item">
-                                <a href="LienHe.jsp" class="nav-link">Liên hệ</a>
+                                <a href="/LienHe" class="nav-link">Liên hệ</a>
                             </li>
                         </ul>
                     </div>
@@ -258,7 +258,7 @@
     <!-- //Modal 1-->
     <ul class="breadcrumb">
         <div class="container">
-            <li><a href="TrangChu.jsp">Trang chủ</a></li>
+            <li><a href="/Index">Trang chủ</a></li>
             <li>Đổi mật khẩu</li>
         </div>
     </ul>
@@ -293,7 +293,7 @@
                             <li class="list-group-item clearfix"><a href="#"><i class="fa fa-angle-right"></i> Nhận xét
                                     của
                                     tôi</a></li>
-                            <li class="list-group-item clearfix"><a href="TrangChu.jsp"><i class="fa fa-angle-right"></i>
+                            <li class="list-group-item clearfix"><a href="/Logout"><i class="fa fa-angle-right"></i>
                                     Thoát
                                     tài
                                     khoản</a></li>
@@ -383,16 +383,16 @@
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                     <h6 class="text-uppercase mb-4 font-weight-bold">MENU</h6>
                     <p>
-                        <a href="TrangChu.jsp">Trang chủ</a>
+                        <a href="/Index">Trang chủ</a>
                     </p>
                     <p>
-                        <a href="About.jsp">Giới thiệu</a>
+                        <a href="/GioiThieu">Giới thiệu</a>
                     </p>
                     <p>
-                        <a href="LienHe.jsp">Liên hệ</a>
+                        <a href="/LienHe">Liên hệ</a>
                     </p>
                     <p>
-                        <a href="DSCongthucchebien.jsp">Món ngon</a>
+                        <a href="/DSBaiViet">Món ngon</a>
                     </p>
                 </div>
                 <!-- Grid column -->

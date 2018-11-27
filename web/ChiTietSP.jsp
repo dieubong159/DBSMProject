@@ -351,24 +351,7 @@
                     <div class="row">
                         <div class="col-md-8 col-sm-12 col-xs-12">
                             <div class="w3-content" style="max-width:1200px">
-                                <img class="mySlides" src="resources/images/Fish/Ca-mat-quy01.jpg" style="width:100%;display:none">
-                                <img class="mySlides" src="resources/images/Fish/ca-mat-quy02.jpg" style="width:100%">
-                                <img class="mySlides" src="resources/images/Fish/ca-mat-quy03.jpg" style="width:100%;display:none">
-
-                                <div class="w3-row-padding w3-section">
-                                    <div class="w3-col s4">
-                                        <img class="product w3-opacity w3-hover-opacity-off" src="resources/images/Fish/ca-mat-quy01.jpg"
-                                            style="width:100%;cursor:pointer" onclick="currentDiv(1)">
-                                    </div>
-                                    <div class="w3-col s4">
-                                        <img class="product w3-opacity w3-hover-opacity-off" src="resources/images/Fish/Ca-mat-quy02.jpg"
-                                            style="width:100%;cursor:pointer" onclick="currentDiv(2)">
-                                    </div>
-                                    <div class="w3-col s4">
-                                        <img class="product w3-opacity w3-hover-opacity-off" src="resources/images/Fish/ca-mat-quy03.jpg"
-                                            style="width:100%;cursor:pointer" onclick="currentDiv(3)">
-                                    </div>
-                                </div>
+                                <img src="${sanPham.urlHinhAnh}">
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-12 col-xs-12">

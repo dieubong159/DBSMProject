@@ -16,7 +16,6 @@ public abstract class ConnectDatabase {
     protected Connection connection = null;
 
     public void openConnection() throws SQLException, ClassNotFoundException {
-//      String connectionString = "jdbc:sqlserver://"+ IP +";database=WebHaiSanTuoiSong;username="+ serverName +";password="+ passWord +"";
         String connectionString = "jdbc:sqlserver://"+IP+":1433;database=WebHaiSanTuoiSong;username="+serverName+";password="+passWord;
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         connection = DriverManager.getConnection(connectionString);

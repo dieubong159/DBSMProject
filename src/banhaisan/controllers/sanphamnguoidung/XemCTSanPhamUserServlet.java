@@ -19,9 +19,9 @@ import java.util.ArrayList;
 
 @WebServlet(name = "XemCTSanPhamUserServlet",urlPatterns = {"/CTSanPham"})
 public class XemCTSanPhamUserServlet extends HttpServlet {
-//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//
-//    }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.sendRedirect(getServletContext().getContextPath());
+    }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idSanPham = request.getParameter("idSP");
         if(idSanPham==null)

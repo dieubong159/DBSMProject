@@ -145,6 +145,7 @@ public class SanPhamService extends ConnectDatabase implements Business<SanPham>
             sanPham.setPhanTramKhuyenMai(Float.parseFloat(resultSet.getString(5)));
             sanPham.setXuatXu(resultSet.getString(6));
             sanPham.setMoTa(resultSet.getString(7));
+            sanPham.setUrlHinhAnh(resultSet.getString(8));
 
         }
         closeConnection();

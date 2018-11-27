@@ -16,25 +16,6 @@ import java.sql.SQLException;
 
 @WebServlet(name = "DangNhapServlet", urlPatterns = "/Login")
 public class DangNhapServlet extends HttpServlet {
-//    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        request.setCharacterEncoding("utf-8");
-//        response.setContentType("text/html;charset=UTF-8");
-//        DangNhap_KetNoi ketNoi= new DangNhap_KetNoi();
-//        ketNoi.setIpAddress(request.getParameter("txt-ip"));
-//        ketNoi.setEmail(request.getParameter("txt-email"));
-//        ketNoi.setPassWord(request.getParameter("txt-password"));
-//
-//
-////        DangNhapService service= new DangNhapService(ketNoi);
-////        try {
-//////            service.openConnection();
-////        } catch (SQLException | ClassNotFoundException e) {
-////            e.printStackTrace();
-////        }
-//
-//
-//    }
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             DangNhap_KetNoi user = new DangNhap_KetNoi();
