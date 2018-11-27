@@ -42,9 +42,9 @@ public class SuaNguoiDungAdminServlet extends HttpServlet {
         nguoiDung.setMatKhau(request.getParameter("txt-mat-khau"));
 
         NguoiDungAdminService nguoiDungAdmins= new NguoiDungAdminService();
-        NguoiDung nd=null;
         try {
             nguoiDungAdmins.modify(nguoiDung);
+            nguoiDungAdmins.DoiMatKhau(nguoiDung);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
