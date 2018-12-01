@@ -220,7 +220,7 @@
                                 <form action="" method="post" class="last">
                                     <input type="hidden" name="cmd" value="_cart">
                                     <input type="hidden" name="display" value="1">
-                                    <p style="display:inline-block"><strong><a href="#!">GIỎ HÀNG</a></strong></p>
+                                    <p style="display:inline-block"><strong><a href="/ShoppingCart">GIỎ HÀNG</a></strong></p>
                                     <button class="top_toys_cart" type="submit" name="submit" onclick="window.location.href='Cart.jsp'">
                                         <span class="fas fa-cart-arrow-down"></span>
                                     </button>
@@ -250,7 +250,7 @@
                                 Sản phẩm
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <c:forEach var="danhMuc" items="${requestScope.danhMucs}">
+                                <c:forEach var="danhMuc" items="${sessionScope.danhMucs}">
                                     <a class="nav-link" href="/Products?idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
                                 </c:forEach>
                             </div>
@@ -435,7 +435,7 @@
                             <div class="desc">
                                 <p>${sanPhamca.tenSP}</p>
                                 <p>${sanPhamca.giaSP}<em>/kg</em></p>
-                                <p><button class="button buttonred">Thêm</button></p>
+                                <p><a class="button buttonred" href="/ShoppingCart?idSP=${sanPhamca.maSP}&action=order">Thêm</a></p>
                             </div>
                         </div>
                     </c:forEach>
@@ -465,7 +465,7 @@
                             <div class="desc">
                                 <p>${SanPhamtom.tenSP}</p>
                                 <p>${SanPhamtom.giaSP}<em>/kg</em></p>
-                                <p><button class="button buttonred">Thêm</button></p>
+                                <p><a class="button buttonred" href="/ShoppingCart?idSP=${SanPhamtom.maSP}&action=order">Thêm</a></p>
                             </div>
                         </div>
                     </c:forEach>
@@ -496,7 +496,7 @@
                             <div class="desc">
                                 <p>${sanPhamcua.tenSP}</p>
                                 <p>${sanPhamcua.giaSP}<em>/kg</em></p>
-                                <p><button class="button buttonred">Thêm</button></p>
+                                <p><a class="button buttonred" href="/ShoppingCart?idSP=${sanPhamcua.maSP}&action=order">Thêm</a></p>
                             </div>
                         </div>
                     </c:forEach>
@@ -527,7 +527,7 @@
                             <div class="desc">
                                 <p>${sanPhamMuc.tenSP}</p>
                                 <p>${sanPhamMuc.giaSP}<em>/kg</em></p>
-                                <p><button class="button buttonred">Thêm</button></p>
+                                <p><a class="button buttonred" href="/ShoppingCart?idSP=${sanPhamMuc.maSP}&action=order">Thêm</a></p>
                             </div>
                         </div>
                     </c:forEach>
@@ -558,7 +558,7 @@
                             <div class="desc">
                                 <p>${sanPhamNgaosooc.tenSP}</p>
                                 <p>${sanPhamNgaosooc.giaSP}<em>/kg</em></p>
-                                <p><button class="button buttonred">Thêm</button></p>
+                                <p><a class="button buttonred" href="/ShoppingCart?idSP=${sanPhamNgaosooc.maSP}&action=order">Thêm</a></p>
                             </div>
                         </div>
                     </c:forEach>

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> -->
 <!DOCTYPE html>
 <html lang="vi">
@@ -69,121 +70,6 @@
     <!--bootstrap working-->
     <script src="resources/js/bootstrap.min.js"></script>
     <!-- //bootstrap working-->
-    <script>
-        $('.btn_plus').on('click', function () {
-            var quan = $(this).siblings('.quantity').val();
-            quan++;
-            $(this).siblings('.quantity').val(quan);
-
-            var item_price = $(this).siblings('.quantity').attr('data-price');
-            var item_id = $(this).siblings('.quantity').attr('data-id');
-            var total = quan * item_price;
-            var alert = "Đảo Hải Sản chỉ chấp nhận cho đơn hàng 200,000đ trở lên. Giỏ hàng bạn hiện chưa đạt mức tối thiểu để giao hàng";
-            $(this).parents('.line_item').find('.item-price').html(Haravan.formatMoney(total, "{{amount}} đ"));
-            var params = {
-                type: 'POST',
-                url: '/cart/change.js',
-                data: 'quantity=' + quan + '&id=' + item_id,
-                dataType: 'json',
-                success: function (cart) {
-                    $.getJSON('/cart.js', function (cart, textStatus) {
-                        $('.cart-count').html('' + cart.item_count + '');
-                        if (cart.total_price < 19900000) {
-                            $("#modal-checkout-button").attr("disabled", "disabled");
-                            $('.button-default').addClass("disabled");
-                            $('.item-total').html(Haravan.formatMoney('' + cart.total_price + '', "{{amount}} đ"));
-                            $('.row_alert_warning').html("<div class='alert-warning'>" + alert + "</div>");
-                        } else {
-                            $("#modal-checkout-button").removeAttr("disabled");
-                            $('.button-default').removeClass("disabled");
-                            $('.item-total').html(Haravan.formatMoney('' + cart.total_price + '', "{{amount}} đ"));
-                            $('.row_alert_warning').html('');
-                        }
-                    });
-                },
-                error: function (XMLHttpRequest, textStatus) {
-                    Haravan.onError(XMLHttpRequest, textStatus);
-                }
-            };
-            jQuery.ajax(params);
-        })
-        $('.btn_minus').on('click', function () {
-            var quan = $(this).siblings('.quantity').val();
-            quan--;
-            (quan <= 0) ? quan = 1 : quan;
-            $(this).siblings('.quantity').val(quan);
-
-            var item_price = $(this).siblings('.quantity').attr('data-price');
-            var item_id = $(this).siblings('.quantity').attr('data-id');
-            var total = quan * item_price;
-            var alert = "Đảo Hải Sản chỉ chấp nhận cho đơn hàng 200,000đ trở lên. Giỏ hàng bạn hiện chưa đạt mức tối thiểu để giao hàng";
-            $(this).parents('.line_item').find('.item-price').html(Haravan.formatMoney(total, "{{amount}} đ"));
-            var params = {
-                type: 'POST',
-                url: '/cart/change.js',
-                data: 'quantity=' + quan + '&id=' + item_id,
-                dataType: 'json',
-                success: function (cart) {
-                    $.getJSON('/cart.js', function (cart, textStatus) {
-                        $('.cart-count').html('' + cart.item_count + '');
-                        if (cart.total_price < 19900000) {
-                            $("#modal-checkout-button").attr("disabled", "disabled");
-                            $('.button-default').addClass("disabled");
-                            $('.item-total').html(Haravan.formatMoney('' + cart.total_price + '', "{{amount}} đ"));
-                            $('.row_alert_warning').html("<div class='alert-warning'>" + alert + "</div>");
-                        } else {
-                            $("#modal-checkout-button").removeAttr("disabled");
-                            $('.button-default').removeClass("disabled");
-                            $('.item-total').html(Haravan.formatMoney('' + cart.total_price + '', "{{amount}} đ"));
-                            $('.row_alert_warning').html('');
-                        }
-                    });
-                },
-                error: function (XMLHttpRequest, textStatus) {
-                    Haravan.onError(XMLHttpRequest, textStatus);
-                }
-            };
-            jQuery.ajax(params);
-        })
-        $('input.quantity').change(function () {
-            var q = $(this).val();
-            console.log(q);
-            var item_price = $(this).attr('data-price');
-            var item_id = $(this).attr('data-id');
-            console.log(item_price);
-            var total = q * item_price;
-            console.log(total);
-            var alert = "Đảo Hải Sản chỉ chấp nhận cho đơn hàng 200,000đ trở lên. Giỏ hàng bạn hiện chưa đạt mức tối thiểu để giao hàng";
-            $(this).parents('.line_item').find('.item-price').html(Haravan.formatMoney(total, "{{amount}} đ"));
-            var params = {
-                type: 'POST',
-                url: '/cart/change.js',
-                data: 'quantity=' + q + '&id=' + item_id,
-                dataType: 'json',
-                success: function (cart) {
-                    $.getJSON('/cart.js', function (cart, textStatus) {
-                        $('.cart-count').html('' + cart.item_count + '');
-                        if (cart.total_price < 19900000) {
-                            $("#modal-checkout-button").attr("disabled", "disabled");
-                            $('.button-default').addClass("disabled");
-                            $('.item-total').html(Haravan.formatMoney('' + cart.total_price + '', "{{amount}} đ"));
-                            $('.row_alert_warning').html("<div class='alert-warning'>" + alert + "</div>");
-                        } else {
-                            $("#modal-checkout-button").removeAttr("disabled");
-                            $('.button-default').removeClass("disabled");
-                            $('.item-total').html(Haravan.formatMoney('' + cart.total_price + '', "{{amount}} đ"));
-                            $('.row_alert_warning').html('');
-                        }
-                    });
-                },
-                error: function (XMLHttpRequest, textStatus) {
-                    Haravan.onError(XMLHttpRequest, textStatus);
-                }
-            };
-            jQuery.ajax(params);
-        });
-
-    </script>
 </head>
 
 <body>
@@ -205,7 +91,7 @@
                                 <span class="fas fa-user"></span>
                                 <p><a data-toggle="modal" href="#LoginModal">Đăng nhập</a></p>
                                 <p>|</p>
-                                <p><a href="DangKi.jsp">Đăng ký</a></p>
+                                <p><a href="/DangKyThanhVien">Đăng ký</a></p>
                             </li>
                         </ul>
                     </div>
@@ -214,10 +100,10 @@
                     <div class="hedder-up row">
                         <div style="width:70%" class="col-lg-3 col-md-3 logo-head">
                             <li>
-                                <a class="navbar-brand" href="TrangChu.jsp" style="margin-left: 31%">
+                                <a class="navbar-brand" href="/Index" style="margin-left: 31%">
                                     <div class="logo"><img src="resources/images/CrabICO.png" alt=""> </div>
                                 </a>
-                                <h4 style="display:inline-block"><strong><a href="TrangChu.jsp">Tiêu Dân Seafood</strong></a></h4>
+                                <h4 style="display:inline-block"><strong><a href="/Index">Tiêu Dân Seafood</a></strong></h4>
                             </li>
                         </div>
                         <div class="col-lg-5 col-md-6 search-right">
@@ -232,11 +118,11 @@
                                     <li style="padding-right: 15pt">
                                         <p style="padding-bottom: 15pt"><strong><a href="tel:+01269220162">0168 xxxx
                                                     xxx</a></strong></p>
-                                        <p>Tổng đài miễn phí</a></p>
+                                        <p>Tổng đài miễn phí</p>
                                     </li>
                                     <li style="padding-right: 15pt">
-                                        <p style="padding-bottom: 15pt"><strong><a href="#">CÔNG THỨC</a></strong></p>
-                                        <p>Đảm đang - Khéo léo</a></p>
+                                        <p style="padding-bottom: 15pt"><strong><a href="/DSBaiViet">CÔNG THỨC</a></strong></p>
+                                        <p>Đảm đang - Khéo léo</p>
                                     </li>
                                     <li style="position:relative" class="toyscart toyscart2 cart cart box_1">
                                         <form action="#" method="post" class="last">
@@ -261,10 +147,10 @@
                     <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                         <ul class="navbar-nav ">
                             <li class="nav-item active">
-                                <a class="nav-link" href="TrangChu.jsp">Trang chủ <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="/Index">Trang chủ <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a href="about.jsp" class="nav-link">Giới thiệu</a>
+                                <a href="GioiThieu" class="nav-link">Giới thiệu</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -272,23 +158,22 @@
                                     Sản phẩm
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="nav-link" href="Products.jsp">Cá</a>
-                                    <a class="nav-link " href="#!">Tôm</a>
-                                    <a class="nav-link " href="#!">Mực</a>
-                                    <a class="nav-link " href="#!">Cua - ghẹ</a>
-                                    <a class="nav-link " href="#!">Ngao - Sò - Ốc</a>
+                                    <c:forEach var="danhMuc" items="${sessionScope.danhMucs}">
+                                        <a class="nav-link" href="/Products?idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
+                                    </c:forEach>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#!" class="nav-link">Công thức chế biến</a>
+                                <a href="/DSBaiViet" class="nav-link">Công thức chế biến</a>
                             </li>
                             <li class="nav-item">
-                                <a href="LienHe.jsp" class="nav-link">Liên hệ</a>
+                                <a href="/LienHe" class="nav-link">Liên hệ</a>
                             </li>
                         </ul>
                     </div>
                 </nav>
             </div>
+        </div>
     </header>
     <!-- Banner -->
     <div class="inner_page-banner one-img">
@@ -355,7 +240,7 @@
     <!-- //Modal 1-->
     <ul class="breadcrumb">
         <div class="container">
-            <li><a href="TrangChu.jsp">Trang chủ</a></li>
+            <li><a href="/Index">Trang chủ</a></li>
             <li>Giỏ hàng</li>
         </div>
     </ul>
@@ -386,17 +271,19 @@
                                                 <th class="text-center" width="100px">Số lượng</th>
                                                 <th class="text-center" width="100px">Tổng</th>
                                             </tr>
-
+                                            <c:set var="s" value="0"></c:set>
+                                            <c:forEach var="it" items="${sessionScope.cart}">
+                                                <c:set var="s" value="${s+ it.sp.giaSP * it.slSanPham}"></c:set>
                                             <tr class="line_item" style="">
                                                 <td class="item-image" colspan="2">
-                                                    <img src="resources/images/Cuttle/ghe-xanh-01.jpg">
+                                                    <img src=${it.sp.urlHinhAnh}>
                                                     <div class="item-title">
-                                                        <a href="!#">
-                                                            <strong>Crawfish Sống (Tôm Hùm Đất)</strong>
+                                                        <a href=/Products?idSP=${it.sp.maSP}>
+                                                            <strong>${it.sp.tenSP}</strong>
 
                                                         </a>
                                                         <p class="item-delete">
-                                                            <a href="/cart/change?line=1&amp;quantity=0">
+                                                            <a href="/ShoppingCart?idSP=${it.sp.maSP}&action=delete" onclick="return confirm('Bạn có chắc chứ?')">
                                                                 <img class="delete-cart" src="resources/images/icon-delelte.png">
                                                                 Bỏ sản phẩm
                                                             </a>
@@ -404,44 +291,17 @@
                                                     </div>
                                                 </td>
                                                 <td class="text-center">
-                                                    <div class="item-one-price">670,000 đ</div>
+                                                    <div class="item-one-price">${it.sp.giaSP}</div>
                                                 </td>
                                                 <td class="text-center">
                                                     <span class="btn_quan btn_minus">-</span>
-                                                    <input type="text" min="1" data-price="67000000" data-id="1033641790"
-                                                        class="quantity" name="updates[]" id="updates_1033641790" value="1">
+                                                    <input type="text" min="1" data-price="${it.sp.giaSP}" data-id="1033641790"
+                                                        class="quantity" name="updates[]" id="updates_1033641790" value="${it.slSanPham}">
                                                     <span class="btn_quan btn_plus">+</span>
                                                 </td>
-                                                <td class="item-price">670,000 đ</td>
+                                                <td class="item-price">${it.sp.giaSP * it.slSanPham}</td>
                                             </tr>
-
-                                            <tr class="line_item" style="border-bottom: 1px solid #ccc;">
-                                                <td class="item-image" colspan="2">
-                                                    <img src="resources/images/Shrmip/tom-cang-xanh01.jpg">
-                                                    <div class="item-title">
-                                                        <a href="/products/tom-hum-canada">
-                                                            <strong>Tôm Hùm Alaska Sống</strong>
-                                                        </a>
-                                                        <p class="item-delete">
-                                                            <a href="/cart/change?line=2&amp;quantity=0">
-                                                                <img class="delete-cart" src="resources/images/icon-delelte.png">
-                                                                Bỏ sản phẩm
-                                                            </a>
-                                                        </p>
-                                                    </div>
-                                                </td>
-                                                <td class="text-center">
-                                                    <div class="item-one-price">1,090,000 đ</div>
-                                                </td>
-                                                <td class="text-center">
-                                                    <span class="btn_quan btn_minus">-</span>
-                                                    <input type="text" min="1" data-price="109000000" data-id="1004258118"
-                                                        class="quantity" name="updates[]" id="updates_1004258118" value="1">
-                                                    <span class="btn_quan btn_plus">+</span>
-                                                </td>
-                                                <td class="item-price">1,090,000 đ</td>
-                                            </tr>
-
+                                            </c:forEach>
                                         </tbody>
                                     </table>
                                     <div class="clearfix">
@@ -453,7 +313,7 @@
                                         </div>
                                         <div class="col-sm-6 pull-right">
                                             <div class="total-price-modal text-right">
-                                                Thành tiền : <span class="item-total">1,760,000 đ</span>
+                                                Thành tiền : <span class="item-total">${s}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -466,7 +326,7 @@
                                     <div class="clearfix">
                                         <div class="col-lg-6 col-xs-12">
                                             <div class="comeback pull-left">
-                                                <a href="TrangChu.jsp">
+                                                <a href="/Index">
                                                     <i class="fa fa-caret-left" aria-hidden="true"></i>Tiếp tục mua
                                                     hàng
                                                 </a>
@@ -513,16 +373,16 @@
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                     <h6 class="text-uppercase mb-4 font-weight-bold">MENU</h6>
                     <p>
-                        <a href="TrangChu.jsp">Trang chủ</a>
+                        <a href="/Index">Trang chủ</a>
                     </p>
                     <p>
-                        <a href="About.jsp">Giới thiệu</a>
+                        <a href="/GioiThieu">Giới thiệu</a>
                     </p>
                     <p>
-                        <a href="LienHe.jsp">Liên hệ</a>
+                        <a href="/LienHe">Liên hệ</a>
                     </p>
                     <p>
-                        <a href="DSCongthucchebien.jsp">Món ngon</a>
+                        <a href="/DSBaiViet">Món ngon</a>
                     </p>
                 </div>
                 <!-- Grid column -->

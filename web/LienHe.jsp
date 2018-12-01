@@ -97,7 +97,7 @@
                     <span class="fas fa-user"></span>
                     <p><a data-toggle="modal" href="#LoginModal">Đăng nhập</a></p>
                     <p>|</p>
-                    <p><a href="#">Đăng ký</a></p>
+                    <p><a href="/DangKyThanhVien">Đăng ký</a></p>
                   </li>
                 </c:when>
                 <c:otherwise>
@@ -173,7 +173,7 @@
                   Sản phẩm
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <c:forEach var="danhMuc" items="${requestScope.danhMucs}">
+                  <c:forEach var="danhMuc" items="${sessionScope.danhMucs}">
                     <a class="nav-link" href="/Products?idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
                   </c:forEach>
                 </div>

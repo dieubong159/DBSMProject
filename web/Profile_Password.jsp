@@ -110,7 +110,7 @@
                                 <span class="fas fa-user"></span>
                                 <p>Chào <a href="/Profile">Diêu</a></p>
                                 <p>|</p>
-                                <p><a href="/Logout">Thoát</a></p>
+                                <p><a href="/LogoutAdmin">Thoát</a></p>
                             </li>
                         </ul>
                     </div>
@@ -177,7 +177,7 @@
                                     Sản phẩm
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <c:forEach var="danhMuc" items="${requestScope.danhMucs}">
+                                    <c:forEach var="danhMuc" items="${sessionScope.danhMucs}">
                                         <a class="nav-link" href="/Products?idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
                                     </c:forEach>
                                 </div>
@@ -198,64 +198,6 @@
     <div class="inner_page-banner one-img">
     </div>
     <!-- banner -->
-    <!-- Modal 1-->
-    <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="LoginModalLabel">Đăng nhập</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="register-form">
-                        <form action="#" method="post" onsubmit="return checkForm(this)">
-                            <div class="fields-grid">
-                                <div class="styled-input">
-                                    <input type="email" placeholder="Email của bạn" name="email" required="">
-                                </div>
-                                <div class="styled-input">
-                                    <input type="password" placeholder="Nhập password" name="password" required="">
-                                </div>
-                                <button type="submit" class="btn subscrib-btnn">Đăng nhập</button>
-                            </div>
-                        </form>
-                        <label>
-                            <input type="checkbox" checked="checked" name="remember"> Remember me
-                        </label>
-                    </div>
-                </div>
-                <div class="container" style="padding: 11px; background-color:beige">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <span style="padding-top: 5px; float: right">Forgot <a data-toggle="modal" data-target="#ForgetPasswordModal">password?</a></span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="ForgetPasswordModal" role="dialog" aria-labelledby="ForgetPasswordModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-                <form action="#" method="post">
-                    <div class="modal-header" style="display: block;">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h2 class="modal-title" id="ForgetPasswordModalLabel">Quên mật khẩu?</h2>
-                        <span>Vui lòng cung cấp email hoặc số điện thoại đăng nhập để lấy lại mật khẩu.</span>
-                    </div>
-                    <div class="modal-body">
-                        <input type="email" name="email" id="email-forgot" class="form-control" value="" placeholder="Nhập email hoặc số điện thoại"
-                            data-bv-field="email" required>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-secondary">Gửi</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- //Modal 1-->
     <ul class="breadcrumb">
         <div class="container">
             <li><a href="/Index">Trang chủ</a></li>
