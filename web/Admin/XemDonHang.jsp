@@ -1,11 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+         pageEncoding="utf-8" %>
 <!DOCTYPE html>
 <html lang="vi">
 
 <head>
-	<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Xem Đơn hàng</title>
@@ -18,103 +18,172 @@
 </head>
 
 <body>
-    <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container-fluid">
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-                <a class="brand" href="/Admin/TrangChuAdmin">TieuDanSeaFood</a>
-                <div class="nav-collapse collapse">
-                    <ul class="nav pull-right">
-                        <li class="dropdown">
-                            <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="icon-user"></i>${currentSessionAdmin.hoTen}<i class="caret"></i>
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="/Admin/TrangChuAdmin">TieuDanSeaFood</a>
+            <div class="nav-collapse collapse">
+                <ul class="nav pull-right">
+                    <li class="dropdown">
+                        <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="icon-user"></i>${currentSessionAdmin.hoTen}<i class="caret"></i>
 
-                            </a>
-                            <ul class="dropdown-menu">
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a tabindex="-1" href="/Admin/Profile">Thông tin cá nhân</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a tabindex="-1" href="/LogoutAdmin">Đăng xuất</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav">
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Quản lý Người dùng <b
+                                class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu" id="menu2">
+                            <li>
+                                <a href="/Admin/NguoiDungThongThuong">Người dùng thông thường</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="/Admin/NguoiDungAdmin">Admin</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="/Admin/QLSanPham" data-toggle="dropdown" class="dropdown-toggle">Quản lý Sản phẩm
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu" id="menu1">
+                            <c:forEach var="danhMuc" items="${requestScope.danhMucs}">
                                 <li>
-                                    <a tabindex="-1" href="/Admin/Profile">Thông tin cá nhân</a>
+                                    <a href="QLSanPham?idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
                                 </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a tabindex="-1" href="/LogoutAdmin">Đăng xuất</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class="nav">
-                        <li class="dropdown">
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Quản lý Người dùng <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu" id="menu2">
-                                <li>
-                                    <a href="/Admin/NguoiDungThongThuong">Người dùng thông thường</a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a href="/Admin/NguoiDungAdmin">Admin</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="dropdown">
-                            <a href="/Admin/QLSanPham" data-toggle="dropdown" class="dropdown-toggle">Quản lý Sản phẩm
-                                <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu" id="menu1">
-                                <c:forEach var="danhMuc" items="${requestScope.danhMucs}">
-                                    <li>
-                                        <a href="QLSanPham?idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
-                                    </li>
-                                </c:forEach>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="/Admin/QlyBaiViet">Quản lý Bài Viết</a>
-                        </li>
-                        <li>
-                            <a href="/Admin/QLDanhMuc">Quản lý Danh mục</a>
-                        </li>
-                        <li>
-                            <a href="/Admin/QLDonHang">Quản lý Đơn hàng</a>
-                        </li>
-                    </ul>
-                </div>
+                            </c:forEach>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/Admin/QlyBaiViet">Quản lý Bài Viết</a>
+                    </li>
+                    <li>
+                        <a href="/Admin/QLDanhMuc">Quản lý Danh mục</a>
+                    </li>
+                    <li>
+                        <a href="/Admin/QLDonHang">Quản lý Đơn hàng</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
-    <div class="container-fluid">
-        <div class="container">
-            <div class="row-fluid">
-                <!-- block -->
-                <div class="block">
-                    <div class="navbar navbar-inner block-header" style="text-align:center">
-                        <div class="muted pull-left">QUẢN LÍ ĐƠN HÀNG</div>
-                    </div>
-                    <div class="block-content collapse in">
-                        <div class="span12">
-                            <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered"
-                                id="example2">
+</div>
+<div class="container-fluid">
+    <div class="container">
+        <div class="row-fluid">
+            <!-- block -->
+            <div class="block">
+                <div class="navbar navbar-inner block-header" style="text-align:center">
+                    <div class="muted pull-left">QUẢN LÍ ĐƠN HÀNG</div>
+                </div>
+                <div class="block-content collapse in">
+                    <div class="span12">
+                        <form id="form_sample_1" class="form-horizontal" style="width:80%;margin:0 auto;"
+                              method="post">
+                            <div class="control-group">
+                                <div style="float:left;width:50%;">
+                                    <label class="control-label">Tình trạng:</label>
+                                    <div class="controls">
+                                        <input readonly id="txt-tinh-trang" type="text" name="txt-tinh-trang"
+                                               data-required="1" class="span6 m-wrap"
+                                               style="width:285px !important;"
+                                               value="<c:choose><c:when test="${requestScope.donHangs.tinhTrang}">Đã xong</c:when><c:otherwise>Đang tiến hành</c:otherwise></c:choose>"/>
+                                    </div>
+                                </div>
+                                <div style="float: right;width:50%;">
+                                    <label class="control-label">Ngày đặt hàng:</label>
+                                    <div class="controls">
+                                        <input readonly id="txt-ngay-dat-hang" type="text" name="txt-ngay-dat-hang"
+                                               data-required="1" class="span6 m-wrap"
+                                               style="width:250px !important;" value="${donHangs.ngayDatHang} "/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div style="float:left;width:50%;">
+                                    <label class="control-label">Mã người mua:</label>
+                                    <div class="controls">
+                                        <input readonly id="txt-ma" type="text" name="txt-ma" data-required="1"
+                                               class="span6 m-wrap"
+                                               style="width:285px !important;" value="${donHangs.maNguoiDung} "/>
+                                    </div>
+                                </div>
+                                <div style="float: right;width:50%;">
+                                    <label class="control-label">Hình thức thanh toán:</label>
+                                    <div class="controls">
+                                        <input readonly id="txt-hinh-thuc" type="text" name="txt-hinh-thuc"
+                                               data-required="1" class="span6 m-wrap"
+                                               style="width:250px !important;"
+                                               value="<c:choose><c:when test="${requestScope.donHangs.hinhThucThanhToan}">Trả trước</c:when><c:otherwise>Thanh toán khi nhận hàng</c:otherwise></c:choose>"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div style="float:left;width:50%;">
+                                    <label class="control-label">Địa chỉ giao hàng:</label>
+                                    <div class="controls">
+                                        <input readonly id="txt-dia-chi" type="text" name="txt-dia-chi"
+                                               data-required="1" class="span6 m-wrap"
+                                               style="width:707px !important;" value="${donHangs.diaChiGiaoHang} "/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <div style="float:left;width:50%;">
+                                    <label class="control-label">Ghi chú:</label>
+                                    <div class="controls">
+                                        <textarea readonly id="ghi-chu" type="text" name="ghi-chu" data-required="1"
+                                                  class="span6 m-wrap"
+                                                  style="width:707px !important;" >${donHangs.ghiChu}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <h4 style="text-align:center">Danh sách sản phẩm đã đặt mua</h4>
+                            <table class="table" id="example">
+                                <thead>
                                 <tr>
-                                    <th>Mã đơn hàng</th>
-                                    <th>Mã sản phẩm</th>
                                     <th>Tên sản phẩm</th>
                                     <th>Số lượng</th>
-                                    <th>Đơn giá</th>
+                                    <th width="200px">Đơn giá</th>
                                 </tr>
+                                </thead>
                                 <c:forEach var="donHangs" items="${requestScope.donHang}">
-                                <tr>
-                                    <td>${donHangs.maDonHang}</td>
-                                    <td>${donHangs.maSP}</td>
-                                    <td>${donHangs.tenSP}</td>
-                                    <td>${donHangs.soLuong}</td>
-                                    <td>${donHangs.gia}</td>
-                                </tr>
+                                    <tr>
+                                        <td>${donHangs.tenSP}</td>
+                                        <td>${donHangs.soLuong}</td>
+                                        <td>${donHangs.gia} VND</td>
+                                    </tr>
                                 </c:forEach>
                             </table>
-                        </div>
+                            <div class="control-group">
+                                <div style="float: right;width:43%;">
+                                    <label class="control-label">Tổng tiền:</label>
+                                    <div class="controls">
+                                        <input readonly id="txt-tong-tien" type="text" name="txt-tong-tien"
+                                               data-required="1" class="span6 m-wrap"
+                                               style="width:180px !important;" value="${requestScope.tongTien} VND"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                     <div style="text-align: center">
                         <a href="/Admin/QLDonHang" type="button" class="btn btn-success btn-large">Quay về trang chủ</a>
@@ -128,7 +197,7 @@
     <footer>
         <p>&copy; TieuDanSeaFood 2018</p>
     </footer>
-    </div>
+</div>
 
 
 </body>

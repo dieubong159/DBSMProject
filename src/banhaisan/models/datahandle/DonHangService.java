@@ -27,7 +27,7 @@ public class DonHangService extends ConnectDatabase implements Business<DonHang>
         while (resultSet.next())
         {
             DonHang donHang = new DonHang();
-            donHang.setTinhTrang(resultSet.getString(1));
+            donHang.setTinhTrang(resultSet.getBoolean(1));
             donHang.setMaDonHang(resultSet.getString(2));
             donHang.setMaNguoiDung(resultSet.getString(3));
             donHang.setTongTien(Double.parseDouble(resultSet.getString(4)));
@@ -43,7 +43,29 @@ public class DonHangService extends ConnectDatabase implements Business<DonHang>
 
     @Override
     public DonHang get(Object... keys) throws SQLException, ClassNotFoundException {
-        return null;
+        if(keys.length<=0){
+            return null;
+        }
+        openConnection();
+        String sql= "select * from ThongTinDonHang(?)";
+        PreparedStatement statement= connection.prepareStatement(sql);
+        statement.setEscapeProcessing(true);
+        statement.setQueryTimeout(90);
+        statement.setString(1, keys[0].toString());
+        ResultSet resultSet= statement.executeQuery();
+        DonHang donHang= null;
+        if(resultSet.next()){
+            donHang= new DonHang();
+            donHang.setMaDonHang(resultSet.getString(1));
+            donHang.setDiaChiGiaoHang(resultSet.getString(2));
+            donHang.setGhiChu(resultSet.getString(3));
+            donHang.setHinhThucThanhToan(resultSet.getBoolean(4));
+            donHang.setNgayDatHang(resultSet.getDate(5));
+            donHang.setTinhTrang(resultSet.getBoolean(6));
+            donHang.setMaNguoiDung(resultSet.getString(7));
+        }
+        closeConnection();
+        return donHang;
     }
     public ArrayList<DonHang> getDSDonHang(Object... keys) throws SQLException, ClassNotFoundException{
         if(keys.length<=0){

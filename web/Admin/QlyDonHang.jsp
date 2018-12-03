@@ -16,10 +16,10 @@
     <script src="/Admin/vendors/jquery-1.9.1.min.js"></script>
     <script src="/Admin/bootstrap/js/bootstrap.min.js"></script>
     <script>
-        $(document).ready(function(){
-            $("#myInput").on("keyup", function() {
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
                 var value = $(this).val().toLowerCase();
-                $("#myTable tr").filter(function() {
+                $("#myTable tr").filter(function () {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });
@@ -115,27 +115,41 @@
                         </div>
                         <table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered"
                                id="example2">
-                            <tr>
-                                <th>Tình trạng</th>
-                                <th>Mã đơn hàng</th>
-                                <th>Mã người dùng</th>
-                                <th>Tổng giá</th>
-                                <th>Địa chỉ giao hàng</th>
-                                <th>Hình thức thanh toán</th>
-                                <th>Ngày đặt hàng</th>
-                                <th width="75">Chi tiết</th>
-                                <th width="85">Xóa</th>
-                            </tr>
+                            <thead>
+                                <tr>
+                                    <th>Ngày đặt hàng</th>
+                                    <th>Mã đơn hàng</th>
+                                    <th>Mã người mua</th>
+                                    <th>Tổng tiền</th>
+                                    <%--<th>Địa chỉ giao hàng</th>--%>
+                                    <%--<th>Hình thức thanh toán</th>--%>
+                                    <th>Tình trạng</th>
+                                    <th width="75">Chi tiết</th>
+                                    <th width="85">Xóa</th>
+                                </tr>
+                            </thead>
+
                             <tbody id="myTable">
                             <c:forEach var="donHang" items="${requestScope.donHangs}">
-                                <tr>
-                                    <td>${donHang.tinhTrang}</td>
-                                    <td>${donHang.maDonHang}</td>
-                                    <td>${donHang.maNguoiDung}</td>
-                                    <td>${donHang.tongTien}</td>
-                                    <td>${donHang.diaChiGiaoHang}</td>
-                                    <td>${donHang.hinhThucThanhToan}</td>
+                                <tr class="odd gradeX">
                                     <td>${donHang.ngayDatHang}</td>
+                                    <td>${donHang.maDonHang}</td>
+                                    <td>${donHang.maNguoiDung} </td>
+                                    <td>${donHang.tongTien} VND</td>
+                                        <%--<td>${donHang.diaChiGiaoHang}</td>--%>
+                                        <%--<td>${donHang.hinhThucThanhToan}</td>--%>
+                                    <td>
+                                        <c:choose>
+                                            <c:when test="${requestScope.donHang.tinhTrang}">
+                                                Đã xong
+                                                <br/>
+                                            </c:when>
+                                            <c:otherwise>
+                                                Đang tiến hành
+                                                <br/>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
                                     <td>
                                         <a href="/Admin/XemCTDonHang?idDH=${donHang.maDonHang}" class="btn"><i
                                                 class="icon-eye-open"></i> View</a>
