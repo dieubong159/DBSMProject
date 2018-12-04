@@ -189,9 +189,9 @@
             </div>
             <!-- <div class="container-fluid"> -->
             <div class="hedder-up row">
-                <div style="width:70%" class="col-lg-3 col-md-3 col-xs-12 col-sm-12 logo-head">
+                <div style="max-width:19%" class="col-lg-3 col-md-3 col-xs-12 col-sm-12 logo-head">
                     <li>
-                        <a class="navbar-brand" href="/Index" style="margin-left: 31%">
+                        <a class="navbar-brand" href="/Index" style="margin-left: 23%">
                             <div class="logo"><img src="resources/images/CrabICO.png" alt=""> </div>
                         </a>
                         <h4 style="display:inline-block"><strong><a href="/Index">Tiêu Dân Seafood </a></strong></h4>
@@ -220,7 +220,7 @@
                                 <form action="" method="post" class="last">
                                     <input type="hidden" name="cmd" value="_cart">
                                     <input type="hidden" name="display" value="1">
-                                    <p style="display:inline-block"><strong><a href="/ShoppingCart">GIỎ HÀNG</a></strong></p>
+                                    <p style="display:inline-block"><strong><a href="/ShoppingCart?action=checkout">GIỎ HÀNG</a></strong></p>
                                     <button class="top_toys_cart" type="submit" name="submit" onclick="window.location.href='Cart.jsp'">
                                         <span class="fas fa-cart-arrow-down"></span>
                                     </button>

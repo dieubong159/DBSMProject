@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> -->
 <!DOCTYPE html>
 <html lang="en">
@@ -304,7 +305,7 @@
                     var id = $(this).attr('id');
 
                     if (id) {
-                        var sub = $('body').find('.content-box-row.content-box-row-secondary[for=' + id + ']')
+                        var sub = $('body').find('.content-box-row.content-box-row-secondary[for=' +    id + ']')
 
                         if (sub && sub.length > 0) {
                             $(sub).removeClass('hidden');
@@ -460,12 +461,12 @@
                                 <span class="fas fa-envelope"></span>
                                 <p><a href="mailto:info@example.com">tieudanseafood@gmail.com</a></p>
                             </li>
-                            <li class="float-md-right">
-                                <span class="fas fa-user"></span>
-                                <p>Chào <a href="Profile.jsp">Diêu</a></p>
-                                <p>|</p>
-                                <p><a href="TrangChu.jsp">Thoát</a></p>
-                            </li>
+                                    <li class="float-md-right">
+                                        <span class="fas fa-user"></span>
+                                        <p>Chào <a href="/Profile">${currentSessionUser.hoTen}</a></p>
+                                        <p>|</p>
+                                        <p><a href="/Logout">Thoát</a></p>
+                                    </li>
                         </ul>
                     </div>
                 </div>
@@ -473,10 +474,10 @@
                     <div class="hedder-up row">
                         <div style="max-width:20%" class="col-lg-3 col-md-3 logo-head">
                             <li>
-                                <a class="navbar-brand" href="TrangChu.jsp" style="margin-left: 31%">
+                                <a class="navbar-brand" href="/Index" style="margin-left: 31%">
                                     <div class="logo"><img src="resources/images/CrabICO.png" alt=""> </div>
                                 </a>
-                                <h4 style="display:inline-block"><strong><a href="TrangChu.jsp">Tiêu Dân Seafood</strong></a></h4>
+                                <h4 style="display:inline-block"><strong><a href="/Index">Tiêu Dân Seafood</a></strong></h4>
                             </li>
                         </div>
                         <div class="col-lg-5 col-md-6 search-right">
@@ -491,17 +492,17 @@
                                     <li style="padding-right: 15pt">
                                         <p style="padding-bottom: 15pt"><strong><a href="tel:+01269220162">0168 xxxx
                                                     xxx</a></strong></p>
-                                        <p>Tổng đài miễn phí</a></p>
+                                        <p>Tổng đài miễn phí</p>
                                     </li>
                                     <li style="padding-right: 15pt">
-                                        <p style="padding-bottom: 15pt"><strong><a href="#">CÔNG THỨC</a></strong></p>
-                                        <p>Đảm đang - Khéo léo</a></p>
+                                        <p style="padding-bottom: 15pt"><strong><a href="/DSBaiViet">CÔNG THỨC</a></strong></p>
+                                        <p>Đảm đang - Khéo léo</p>
                                     </li>
                                     <li style="position:relative" class="toyscart toyscart2 cart cart box_1">
                                         <form action="#" method="post" class="last">
                                             <input type="hidden" name="cmd" value="_cart">
                                             <input type="hidden" name="display" value="1">
-                                            <p style="display:inline-block"><strong><a href="#">GIỎ HÀNG</a></strong></p>
+                                            <p style="display:inline-block"><strong><a href="/ShoppingCart?action=checkout">GIỎ HÀNG</a></strong></p>
                                             <button class="top_toys_cart" type="submit" name="submit" value="">
                                                 <span class="fas fa-cart-arrow-down"></span>
                                             </button>
@@ -548,73 +549,16 @@
                     </div>
                 </nav>
             </div>
+        </div>
     </header>
     <!-- Banner -->
     <div class="inner_page-banner one-img">
     </div>
     <!-- Banner -->
-    <!-- Modal 1-->
-    <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="LoginModalLabel">Đăng nhập</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="register-form">
-                        <form action="#" method="post" onsubmit="return checkForm(this)">
-                            <div class="fields-grid">
-                                <div class="styled-input">
-                                    <input type="email" placeholder="Email của bạn" name="Your Email" required="">
-                                </div>
-                                <div class="styled-input">
-                                    <input type="password" placeholder="Nhập password" name="password" required="">
-                                </div>
-                                <button type="submit" class="btn subscrib-btnn">Đăng nhập</button>
-                            </div>
-                        </form>
-                        <label>
-                            <input type="checkbox" checked="checked" name="remember"> Remember me
-                        </label>
-                    </div>
-                </div>
-                <div class="container" style="padding: 11px; background-color:beige">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <span style="padding-top: 5px; float: right">Forgot <a data-toggle="modal" data-target="#ForgetPasswordModal">password?</a></span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="ForgetPasswordModal" role="dialog" aria-labelledby="ForgetPasswordModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-                <form action="#" method="post">
-                    <div class="modal-header" style="display: block;">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h2 class="modal-title" id="ForgetPasswordModalLabel">Quên mật khẩu?</h2>
-                        <span>Vui lòng cung cấp email hoặc số điện thoại đăng nhập để lấy lại mật khẩu.</span>
-                    </div>
-                    <div class="modal-body">
-                        <input type="email" name="email" id="email-forgot" class="form-control" value="" placeholder="Nhập email hoặc số điện thoại"
-                            data-bv-field="email" required>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-secondary">Gửi</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- //Modal 1-->
     <ul class="breadcrumb">
         <div class="container">
-            <li><a href="TrangChu.jsp">Trang chủ</a></li>
-            <li><a href="Cart.jsp">Giỏ hàng</a></li>
+            <li><a href="/Index">Trang chủ</a></li>
+            <li><a href="/ShoppingCart?action=checkout">Giỏ hàng</a></li>
             <li>Thông tin giao hàng</li>
         </div>
     </ul>
@@ -637,57 +581,33 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-
+                                    <c:set var="s" value="0"></c:set>
+                                    <c:forEach var="it" items="${sessionScope.cart}">
+                                    <c:set var="s" value="${s+ it.sp.giaSP * it.slSanPham}"></c:set>
                                         <tr class="product" data-product-id="1017420107" data-variant-id="1033641790">
                                             <td class="product-image">
                                                 <div class="product-thumbnail">
                                                     <div class="product-thumbnail-wrapper">
-                                                        <img class="product-thumbnail-image" alt="Crawfish Sống (Tôm Hùm Đất)"
-                                                            src="resources/images/Shrmip/Lobster/tom-hum-tre-01.jpg">
+                                                        <img class="product-thumbnail-image" alt="${it.sp.tenSP}"
+                                                            src="${it.sp.urlHinhAnh}">
                                                     </div>
-                                                    <span class="product-thumbnail-quantity" aria-hidden="true">1</span>
+                                                    <span class="product-thumbnail-quantity" aria-hidden="true">${it.slSanPham}</span>
                                                 </div>
                                             </td>
                                             <td class="product-description">
-                                                <span class="product-description-name order-summary-emphasis">Crawfish
-                                                    Sống (Tôm Hùm Đất)</span>
+                                                <span class="product-description-name order-summary-emphasis">${it.sp.tenSP}</span>
 
                                                 <span class="product-description-variant order-summary-small-text">
-                                                    1kg
+                                                    ${it.slSanPham}kg
                                                 </span>
 
                                             </td>
-                                            <td class="product-quantity visually-hidden">1</td>
+                                            <td class="product-quantity visually-hidden">${it.slSanPham}</td>
                                             <td class="product-price">
-                                                <span class="order-summary-emphasis">670,000 đ</span>
+                                                <span class="order-summary-emphasis">${s} đ</span>
                                             </td>
                                         </tr>
-
-                                        <tr class="product" data-product-id="1001098951" data-variant-id="1004258118">
-                                            <td class="product-image">
-                                                <div class="product-thumbnail">
-                                                    <div class="product-thumbnail-wrapper">
-                                                        <img class="product-thumbnail-image" alt="Tôm Hùm Alaska Sống"
-                                                            src="resources/images/Shrmip/Lobster/tom-hum-bong01.jpg">
-                                                    </div>
-                                                    <span class="product-thumbnail-quantity" aria-hidden="true">1</span>
-                                                </div>
-                                            </td>
-                                            <td class="product-description">
-                                                <span class="product-description-name order-summary-emphasis">Tôm Hùm
-                                                    Alaska Sống</span>
-
-                                                <span class="product-description-variant order-summary-small-text">
-                                                    1Kg (Size&gt;600g/con)
-                                                </span>
-
-                                            </td>
-                                            <td class="product-quantity visually-hidden">1</td>
-                                            <td class="product-price">
-                                                <span class="order-summary-emphasis">1,090,000 đ</span>
-                                            </td>
-                                        </tr>
-
+                                    </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -706,8 +626,8 @@
                                             <td class="total-line-name">Tạm tính</td>
                                             <td class="total-line-price">
                                                 <span class="order-summary-emphasis"
-                                                    data-checkout-subtotal-price-target="176000000">
-                                                    1,760,000 đ
+                                                    data-checkout-subtotal-price-target="${s}">
+                                                    ${s} đ
                                                 </span>
                                             </td>
                                         </tr>
@@ -715,10 +635,18 @@
                                         <tr class="total-line total-line-shipping">
                                             <td class="total-line-name">Phí vận chuyển</td>
                                             <td class="total-line-price">
+                                                <c:if test="${s>=500000}">
                                                 <span class="order-summary-emphasis"
                                                     data-checkout-total-shipping-target="0">
                                                     Miễn phí
                                                 </span>
+                                                </c:if>
+                                                <c:if test="${s<500000}">
+                                                <span class="order-summary-emphasis"
+                                                      data-checkout-total-shipping-target="50000">
+                                                    50000 đ
+                                                </span>
+                                                </c:if>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -729,9 +657,16 @@
                                             </td>
                                             <td class="total-line-name payment-due">
                                                 <span class="payment-due-currency">VND</span>
-                                                <span class="payment-due-price" data-checkout-payment-due-target="176000000">
-                                                    1,760,000 đ
+                                                <c:if test="${s>=500000}">
+                                                <span class="payment-due-price" data-checkout-payment-due-target="${s}">
+                                                    ${s} đ
                                                 </span>
+                                                </c:if>
+                                                <c:if test="${s<500000}">
+                                                <span class="payment-due-price" data-checkout-payment-due-target="${s+50000}">
+                                                    ${s+50000} đ
+                                                </span>
+                                                </c:if>
                                             </td>
                                         </tr>
                                     </tfoot>
@@ -756,7 +691,7 @@
                                                 <label class="field-label" for="billing_address_full_name">Họ và tên</label>
                                                 <input placeholder="Họ và tên" autocapitalize="off" spellcheck="false"
                                                     class="field-input" size="30" type="text" id="billing_address_full_name"
-                                                    name="billing_address[full_name]" value="Jaxkie Phạm" disabled>
+                                                    name="billing_address[full_name]" value="${nguoiDung.hoTen}" readonly>
                                             </div>
                                         </div>
                                         <div class="field  field-two-thirds   field-show-floating-label">
@@ -764,7 +699,7 @@
                                                 <label class="field-label" for="checkout_user_email">Email</label>
                                                 <input placeholder="Email" autocapitalize="off" spellcheck="false"
                                                     class="field-input" size="30" type="email" id="checkout_user_email"
-                                                    name="checkout_user[email]" value="16110291@student.hcmute.edu.vn" disabled>
+                                                    name="checkout_user[email]" value="${nguoiDung.email}" readonly>
                                             </div>
                                         </div>
                                         <div class="field field-required field-third   field-show-floating-label">
@@ -772,7 +707,7 @@
                                                 <label class="field-label" for="billing_address_phone">Số điện thoại</label>
                                                 <input placeholder="Số điện thoại" autocapitalize="off" spellcheck="false"
                                                     class="field-input" size="30" maxlength="11" type="tel" id="billing_address_phone"
-                                                    name="billing_address[phone]" value="0586060734" disabled>
+                                                    name="billing_address[phone]" value="${nguoiDung.sdt}" readonly>
                                             </div>
                                         </div>
                                         <div class="field field-required   field-show-floating-label">
@@ -780,64 +715,11 @@
                                                 <label class="field-label" for="billing_address_address1">Địa chỉ</label>
                                                 <input placeholder="Địa chỉ" autocapitalize="off" spellcheck="false"
                                                     class="field-input" size="30" type="text" id="billing_address_address1"
-                                                    name="billing_address[address1]" value="">
+                                                    name="billing_address[address1]" value="${nguoiDung.diaChi}">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="section-content">
-                                    <div class="fieldset">
-                                        <form id="form_update_location" class="clearfix" accept-charset="UTF-8" method="post">
-                                            <input name="selected_customer_shipping_province" type="hidden" value="">
-                                            <input name="selected_customer_shipping_district" type="hidden" value="">
-                                            <input name="selected_customer_shipping_ward" type="hidden" value="">
-                                            <input name="utf8" type="hidden" value="✓">
-                                            <div class="field field-show-floating-label field-required field-half ">
-                                                <div class="field-input-wrapper field-input-wrapper-select">
-                                                    <label class="field-label" for="customer_shipping_province"> Tỉnh /
-                                                        thành </label>
-                                                    <select class="field-input" id="customer_shipping_province" name="customer_shipping_province">
-                                                        <option data-code="null" value="null"> Chọn tỉnh / thành
-                                                        </option>
-                                                        <option data-code="HC" value="50" selected="">Hồ Chí Minh</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="field field-show-floating-label field-required field-half ">
-                                                <div class="field-input-wrapper field-input-wrapper-select">
-                                                    <label class="field-label" for="customer_shipping_district">Quận /
-                                                        huyện</label>
-                                                    <select class="field-input" id="customer_shipping_district" name="customer_shipping_district">
-                                                        <option data-code="null" value="null">Chọn quận / huyện</option>
-                                                        <option data-code="HC466" value="466">Quận 1</option>
-                                                        <option data-code="HC467" value="467">Quận 2</option>
-                                                        <option data-code="HC468" value="468">Quận 3</option>
-                                                        <option data-code="HC469" value="469">Quận 4</option>
-                                                        <option data-code="HC470" value="470">Quận 5</option>
-                                                        <option data-code="HC471" value="471">Quận 6</option>
-                                                        <option data-code="HC472" value="472" selected="">Quận 7</option>
-                                                        <option data-code="HC473" value="473">Quận 8</option>
-                                                        <option data-code="HC474" value="474">Quận 9</option>
-                                                        <option data-code="HC475" value="475">Quận 10</option>
-                                                        <option data-code="HC476" value="476">Quận 11</option>
-                                                        <option data-code="HC477" value="477">Quận 12</option>
-                                                        <option data-code="HC478" value="478">Quận Gò Vấp</option>
-                                                        <option data-code="HC479" value="479">Quận Tân Bình</option>
-                                                        <option data-code="HC480" value="480">Quận Bình Thạnh</option>
-                                                        <option data-code="HC481" value="481">Quận Phú Nhuận</option>
-                                                        <option data-code="HC482" value="482">Quận Thủ Đức</option>
-                                                        <option data-code="HC483" value="483">Huyện Củ Chi</option>
-                                                        <option data-code="HC484" value="484">Huyện Hóc Môn</option>
-                                                        <option data-code="HC485" value="485">Huyện Bình Chánh</option>
-                                                        <option data-code="HC486" value="486">Huyện Nhà Bè</option>
-                                                        <option data-code="HC487" value="487">Huyện Cần Giờ</option>
-                                                        <option data-code="HC679" value="679">Quận Bình Tân</option>
-                                                        <option data-code="HC680" value="680">Quận Tân Phú</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
                                     <div class="section-content section-customer-information fieldset" id="div_country_not_vietnam"
                                         style="display: none;">
                                         <div class="field field-two-thirds">
@@ -851,7 +733,7 @@
                                     </div>
                                 </div>
                                 <div id="change_pick_location_or_shipping">
-                                    <div id="section-shipping-rate">
+                                    <div id="section-shipping-rate" style="padding-top: 3em">
                                         <div class="section-header">
                                             <h2 class="section-title">Phương thức vận chuyển</h2>
                                         </div>
@@ -859,17 +741,32 @@
                                             <div class="content-box">
                                                 <div class="content-box-row">
                                                     <div class="radio-wrapper">
-                                                        <label class="radio-label" for="shipping_rate_id_429651">
+                                                        <label class="radio-label" for="shipping_rate">
+                                                            <c:if test="${s >=500000}">
                                                             <div class="radio-input">
-                                                                <input id="shipping_rate_id_429651" class="input-radio"
-                                                                    type="radio" name="shipping_rate_id" value="429651"
-                                                                    checked="">
+                                                                <input id="shipping_rate" class="input-radio"
+                                                                    type="radio" name="shipping_rate"
+                                                                       checked="" disabled value="0">
                                                             </div>
+                                                            </c:if>
+                                                            <c:if test="${s < 500000}">
+                                                                <div class="radio-input">
+                                                                    <input id="shipping_rate" class="input-radio"
+                                                                           type="radio" name="shipping_rate" disabled value="50000">
+                                                                </div>
+                                                            </c:if>
                                                             <span class="radio-label-primary">Freeship từ 500,000đ. Nội
                                                                 thành &amp; giờ hành chính</span>
+                                                            <c:if test="${s >=500000}">
                                                             <span class="radio-accessory content-box-emphasis">
                                                                 0 đ
                                                             </span>
+                                                            </c:if>
+                                                            <c:if test="${s <500000}">
+                                                            <span class="radio-accessory content-box-emphasis">
+                                                                50000 đ
+                                                            </span>
+                                                            </c:if>
                                                         </label>
                                                     </div>
                                                 </div>
@@ -883,18 +780,18 @@
                                         <div class="section-content">
                                             <div class="content-box">
                                                 <div class="radio-wrapper content-box-row">
-                                                    <label class="radio-label" for="payment_method_id_79912">
+                                                    <label class="radio-label" for="payment_method_direct">
                                                         <div class="radio-input">
-                                                            <input id="payment_method_id_79912" class="input-radio"
-                                                                name="payment_method_id" type="radio" value="79912"
-                                                                checked="">
+                                                            <input id="payment_method_direct" class="input-radio"
+                                                                   name="payment_method_id" type="radio" value="1"
+                                                                   checked="">
                                                         </div>
                                                         <span class="radio-label-primary">Thanh toán khi giao hàng
                                                             (COD)</span>
                                                     </label>
                                                 </div>
                                                 <div class="radio-wrapper content-box-row content-box-row-secondary"
-                                                    for="payment_method_id_79912">
+                                                     for="payment_method_direct">
                                                     <div class="blank-slate">
                                                         Tiêu Dân Seafood sẽ giao hàng và thu tiền tận nơi ngay khi bạn
                                                         nhận
@@ -902,17 +799,17 @@
                                                     </div>
                                                 </div>
                                                 <div class="radio-wrapper content-box-row">
-                                                    <label class="radio-label" for="payment_method_id_79913">
+                                                    <label class="radio-label" for="payment_method_banking">
                                                         <div class="radio-input">
-                                                            <input id="payment_method_id_79913" class="input-radio"
-                                                                name="payment_method_id" type="radio" value="79913">
+                                                            <input id="payment_method_banking" class="input-radio"
+                                                                   name="payment_method_id" type="radio" value="0">
                                                         </div>
                                                         <span class="radio-label-primary">Chuyển khoản qua ngân hàng</span>
                                                     </label>
                                                 </div>
 
                                                 <div class="radio-wrapper content-box-row content-box-row-secondary hidden"
-                                                    for="payment_method_id_79913">
+                                                     for="payment_method_banking">
                                                     <div class="blank-slate">
                                                         Nếu bạn muốn thanh toán trước có thể chuyển khoản cho Tiêu Dân
                                                         Seafood qua tài khoản:
@@ -933,12 +830,12 @@
                         <div class="step-footer">
                             <form id="form_next_step" accept-charset="UTF-8" method="post">
                                 <input name="utf8" type="hidden" value="✓">
-                                <button type="submit" class="step-footer-continue-btn btn" onclick="window.location.href='Hoadon.jsp'">
+                                <a href="" type="submit" class="step-footer-continue-btn btn">
                                     <span class="btn-content">Hoàn tất đơn hàng</span>
                                     <i class="btn-spinner icon icon-button-spinner"></i>
-                                </button>
+                                </a>
                             </form>
-                            <a class="step-footer-previous-link" href="Cart.jsp">
+                            <a class="step-footer-previous-link" href="/ShoppingCart?action=checkout">
                                 <svg class="previous-link-icon icon-chevron icon" xmlns="http://www.w3.org/2000/svg"
                                     width="6.7" height="11.3" viewBox="0 0 6.7 11.3">
                                     <path d="M6.7 1.1l-1-1.1-4.6 4.6-1.1 1.1 1.1 1 4.6 4.6 1-1-4.6-4.6z"></path>
@@ -977,16 +874,16 @@
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                     <h6 class="text-uppercase mb-4 font-weight-bold">MENU</h6>
                     <p>
-                        <a href="TrangChu.jsp">Trang chủ</a>
+                        <a href="/Index">Trang chủ</a>
                     </p>
                     <p>
-                        <a href="About.jsp">Giới thiệu</a>
+                        <a href="/GioiThieu">Giới thiệu</a>
                     </p>
                     <p>
-                        <a href="LienHe.jsp">Liên hệ</a>
+                        <a href="/LienHe">Liên hệ</a>
                     </p>
                     <p>
-                        <a href="DSCongthucchebien.jsp">Món ngon</a>
+                        <a href="/DSBaiViet">Món ngon</a>
                     </p>
                 </div>
                 <!-- Grid column -->

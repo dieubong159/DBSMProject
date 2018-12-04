@@ -24,6 +24,7 @@ public class ShoppingCartServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         HttpSession session = request.getSession();
+        String backrefresh = request.getHeader("referer");
         if(action.equals("order"))
         {
             try {
@@ -47,14 +48,20 @@ public class ShoppingCartServlet extends HttpServlet {
             {
                 e.printStackTrace();
             }
-            request.getRequestDispatcher("Cart.jsp").forward(request,response);
+            response.sendRedirect(getServletContext().getContextPath()+backrefresh);
         }
         else if (action.equals("delete"))
         {
             List<SanPham_GioHang> cart = (List<SanPham_GioHang>) session.getAttribute("cart");
+            cart.size();
             int index = isExisting(request.getParameter("idSP"),cart);
             cart.remove(index);
             session.setAttribute("cart", cart);
+            request.getRequestDispatcher("Cart.jsp").forward(request,response);
+        }
+        else if(action.equals("checkout")){
+            List<SanPham_GioHang> cart = (List<SanPham_GioHang>)session.getAttribute("cart");
+            session.setAttribute("cart",cart);
             request.getRequestDispatcher("Cart.jsp").forward(request,response);
         }
     }

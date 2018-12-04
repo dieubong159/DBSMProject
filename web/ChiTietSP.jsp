@@ -364,8 +364,8 @@
                                 <div class="gap-element" style="display:block; height:auto; padding-top:30px"></div>
                                 <form>
                                     <input type="number" min="1" value="1" style="width:50px">
-                                    <button class="button buttonorange" style="vertical-align:middle"><span>THÊM VÀO
-                                            GIỎ </span></button>
+                                    <a class="button buttonorange" style="vertical-align:middle" href="/ShoppingCart?idSP=${sanPham.maSP}&action=order"><span>THÊM VÀO
+                                            GIỎ </span></a>
                                 </form>
                             </div>
                             <hr>

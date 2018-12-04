@@ -133,7 +133,7 @@
                     <div class="hedder-up row">
                         <div style="width:70%" class="col-lg-3 col-md-3 logo-head">
                             <li>
-                                <a class="navbar-brand" href="TrangChu.jsp" style="margin-left: 31%">
+                                <a class="navbar-brand" href="/Index" style="margin-left: 31%">
                                     <div class="logo"><img src="resources/images/CrabICO.png" alt=""> </div>
                                 </a>
                                 <h4 style="display:inline-block"><strong><a href="/Index">Tiêu Dân Seafood </a></strong></h4>
@@ -369,9 +369,9 @@
                                         </em>
                                     </div>
                                     <div class="addcart">
-                                        <button class="addtocart">
+                                        <a class="addtocart" href="/ShoppingCart?idSP=${sanPhams.maSP}&action=order">
                                             THÊM VÀO GIỎ
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

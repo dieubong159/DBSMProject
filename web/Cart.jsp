@@ -1,3 +1,6 @@
+<%@ page import="banhaisan.models.datamodels.SanPham_GioHang" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Vector" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> -->
 <!DOCTYPE html>
@@ -87,18 +90,30 @@
                                 <span class="fas fa-envelope"></span>
                                 <p><a href="mailto:info@example.com">tieudanseafood@gmail.com</a></p>
                             </li>
-                            <li class="float-md-right">
-                                <span class="fas fa-user"></span>
-                                <p><a data-toggle="modal" href="#LoginModal">Đăng nhập</a></p>
-                                <p>|</p>
-                                <p><a href="/DangKyThanhVien">Đăng ký</a></p>
-                            </li>
+                            <c:choose>
+                                <c:when test="${currentSessionUser == null}">
+                                    <li class="float-md-right">
+                                        <span class="fas fa-user"></span>
+                                        <p><a data-toggle="modal" href="#LoginModal">Đăng nhập</a></p>
+                                        <p>|</p>
+                                        <p><a href="/DangKyThanhVien">Đăng ký</a></p>
+                                    </li>
+                                </c:when>
+                                <c:otherwise>
+                                    <li class="float-md-right">
+                                        <span class="fas fa-user"></span>
+                                        <p>Chào <a href="/Profile">${currentSessionUser.hoTen}</a></p>
+                                        <p>|</p>
+                                        <p><a href="/Logout">Thoát</a></p>
+                                    </li>
+                                </c:otherwise>
+                            </c:choose>
                         </ul>
                     </div>
                 </div>
                 <div class="container-fluid">
                     <div class="hedder-up row">
-                        <div style="width:70%" class="col-lg-3 col-md-3 logo-head">
+                        <div style="max-width:18%" class="col-lg-3 col-md-3 logo-head">
                             <li>
                                 <a class="navbar-brand" href="/Index" style="margin-left: 31%">
                                     <div class="logo"><img src="resources/images/CrabICO.png" alt=""> </div>
@@ -191,10 +206,10 @@
                 </div>
                 <div class="modal-body">
                     <div class="register-form">
-                        <form action="#" method="post" onsubmit="return checkForm(this)">
+                        <form action="/Login" onsubmit="return checkForm(this)">
                             <div class="fields-grid">
                                 <div class="styled-input">
-                                    <input type="email" placeholder="Email của bạn" name="Your Email" required="">
+                                    <input type="email" placeholder="Email của bạn" name="email" required="">
                                 </div>
                                 <div class="styled-input">
                                     <input type="password" placeholder="Nhập password" name="password" required="">
@@ -256,92 +271,107 @@
                         </div>
                         <div class="row user-wrapper">
                             <!--Form cart-->
+                            <%List<SanPham_GioHang> cart = (List<SanPham_GioHang>) session.getAttribute("cart");
+                            if (cart == null) {
+                                out.println("");
+                            }
+                            %>
+                            <c:choose>
+                                <c:when test="${sessionScope.cart.size()==0 or sessionScope.cart ==null}">
+                                    <p>Bạn chưa có sản phẩm nào trong giỏ hàng! <a href="/Index">Tiếp tục mua hàng</a></p>
+                                </c:when>
+                                <c:otherwise>
+                                    <form action="/ThanhToanDonHang" method="post">
+                                        <div class="table-responsive">
+                                            <table class="cart table">
+                                                <tbody>
+                                                <tr>
+                                                    <th colspan="2">Tên sản phẩm</th>
+                                                    <th class="text-center" width="150px">Giá</th>
+                                                    <th class="text-center" width="100px">Số lượng</th>
+                                                    <th class="text-center" width="100px">Tổng</th>
+                                                </tr>
+                                                <c:set var="s" value="0"></c:set>
+                                                <c:forEach var="it" items="${sessionScope.cart}">
+                                                    <c:set var="s" value="${s+ it.sp.giaSP * it.slSanPham}"></c:set>
+                                                    <tr class="line_item" style="">
+                                                        <td class="item-image" colspan="2">
+                                                            <img src=${it.sp.urlHinhAnh}>
+                                                            <div class="item-title">
+                                                                <a href=/Products?idSP=${it.sp.maSP}>
+                                                                    <strong>${it.sp.tenSP}</strong>
 
-                            <form action="/cart" method="post">
-                                <div class="table-responsive">
-                                    <p class="cart_freeship">
-                                        <img src="resources/images/icon_free.png" width="50">
-                                        <span>MIỄN PHÍ giao hàng nội thành TPHCM cho đơn hàng 500,000đ.</span>
-                                    </p>
-                                    <table class="cart table">
-                                        <tbody>
-                                            <tr>
-                                                <th colspan="2">Tên sản phẩm</th>
-                                                <th class="text-center" width="150px">Giá</th>
-                                                <th class="text-center" width="100px">Số lượng</th>
-                                                <th class="text-center" width="100px">Tổng</th>
-                                            </tr>
-                                            <c:set var="s" value="0"></c:set>
-                                            <c:forEach var="it" items="${sessionScope.cart}">
-                                                <c:set var="s" value="${s+ it.sp.giaSP * it.slSanPham}"></c:set>
-                                            <tr class="line_item" style="">
-                                                <td class="item-image" colspan="2">
-                                                    <img src=${it.sp.urlHinhAnh}>
-                                                    <div class="item-title">
-                                                        <a href=/Products?idSP=${it.sp.maSP}>
-                                                            <strong>${it.sp.tenSP}</strong>
-
-                                                        </a>
-                                                        <p class="item-delete">
-                                                            <a href="/ShoppingCart?idSP=${it.sp.maSP}&action=delete" onclick="return confirm('Bạn có chắc chứ?')">
-                                                                <img class="delete-cart" src="resources/images/icon-delelte.png">
-                                                                Bỏ sản phẩm
-                                                            </a>
-                                                        </p>
+                                                                </a>
+                                                                <p class="item-delete">
+                                                                    <a href="/ShoppingCart?idSP=${it.sp.maSP}&action=delete" onclick="return confirm('Bạn có chắc chứ?')">
+                                                                        <img class="delete-cart" src="resources/images/icon-delelte.png">
+                                                                        Bỏ sản phẩm
+                                                                    </a>
+                                                                </p>
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <div class="item-one-price">${it.sp.giaSP}</div>
+                                                        </td>
+                                                        <td class="text-center">
+                                                            <span class="btn_quan btn_minus">-</span>
+                                                            <input type="text" min="1" data-price="${it.sp.giaSP}" data-id="1033641790"
+                                                                   class="quantity" name="updates[]" id="updates_1033641790" value="${it.slSanPham}">
+                                                            <span class="btn_quan btn_plus">+</span>
+                                                        </td>
+                                                        <td class="item-price">${it.sp.giaSP * it.slSanPham}</td>
+                                                    </tr>
+                                                </c:forEach>
+                                                </tbody>
+                                            </table>
+                                            <c:if test="${s >= 500000}">
+                                                <p class="cart_freeship">
+                                                    <img src="resources/images/icon_free.png" width="50">
+                                                    <span>MIỄN PHÍ giao hàng nội thành TPHCM cho đơn hàng 500,000đ.</span>
+                                                </p>
+                                            </c:if>
+                                            <div class="clearfix">
+                                                <div class="col-lg-6 col-xs-12">
+                                                    <div class="cart_note text-left">
+                                                        <label class="control-label" for="note">Chú Thích</label>
+                                                        <textarea name="note" id="note" placeholder="Viết ghi chú" class="form-control"></textarea>
                                                     </div>
-                                                </td>
-                                                <td class="text-center">
-                                                    <div class="item-one-price">${it.sp.giaSP}</div>
-                                                </td>
-                                                <td class="text-center">
-                                                    <span class="btn_quan btn_minus">-</span>
-                                                    <input type="text" min="1" data-price="${it.sp.giaSP}" data-id="1033641790"
-                                                        class="quantity" name="updates[]" id="updates_1033641790" value="${it.slSanPham}">
-                                                    <span class="btn_quan btn_plus">+</span>
-                                                </td>
-                                                <td class="item-price">${it.sp.giaSP * it.slSanPham}</td>
-                                            </tr>
-                                            </c:forEach>
-                                        </tbody>
-                                    </table>
-                                    <div class="clearfix">
-                                        <div class="col-lg-6 col-xs-12">
-                                            <div class="cart_note text-left">
-                                                <label class="control-label" for="note">Chú Thích</label>
-                                                <textarea name="note" id="note" placeholder="Viết ghi chú" class="form-control"></textarea>
+                                                </div>
+                                                <div class="col-sm-6 pull-right">
+                                                    <div class="total-price-modal text-right">
+                                                        Thành tiền : <span class="item-total">${s}</span>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-6 pull-right">
-                                            <div class="total-price-modal text-right">
-                                                Thành tiền : <span class="item-total">${s}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row_alert_warning" style="margin-top: 10px">
+                                            <div class="row_alert_warning" style="margin-top: 10px">
 
-                                        <p class="note_cart alert-info">Tiêu Dân Seafood chỉ nhận đơn hàng có địa chỉ tại
-                                            TPHCM. Nếu khách hàng ở các tỉnh thành khác vui lòng liên hệ số Hotline
-                                            1900.0098 để được phục vụ!</p>
-                                    </div>
-                                    <div class="clearfix">
-                                        <div class="col-lg-6 col-xs-12">
-                                            <div class="comeback pull-left">
-                                                <a href="/Index">
-                                                    <i class="fa fa-caret-left" aria-hidden="true"></i>Tiếp tục mua
-                                                    hàng
-                                                </a>
+                                                <p class="note_cart alert-info">Tiêu Dân Seafood chỉ nhận đơn hàng có địa chỉ tại
+                                                    TPHCM. Nếu khách hàng ở các tỉnh thành khác vui lòng liên hệ số Hotline
+                                                    1900.0098 để được phục vụ!</p>
+                                            </div>
+                                            <div class="clearfix">
+                                                <div class="col-lg-6 col-xs-12">
+                                                    <div class="col-lg-6 col-xs-12">
+                                                        <div class="comeback pull-left">
+                                                            <a href="/Index">
+                                                                <i class="fa fa-caret-left" aria-hidden="true"></i>Tiếp tục mua
+                                                                hàng
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-xs-12">
+                                                        <div class="buttons btn-modal-cart">
+                                                            <a type="button" class="buttonorange"
+                                                               id="modal-checkout-button" name="checkout" style="float:right"
+                                                               href="/ThanhToanDonHang">Tiến hành thanh toán</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 col-xs-12">
-                                            <div class="buttons btn-modal-cart">
-                                                <input value="Tiến hành thanh toán" type="button" class="buttonorange"
-                                                    id="modal-checkout-button" name="checkout" style="float:right"
-                                                    onclick="window.location.href='Thanhtoandonhang.jsp'">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
+                                    </form>
+                                </c:otherwise>
+                            </c:choose>
                             <!--/Form cart-->
                             <div class="gap-element" style="display:block; height:auto; padding-top:30px"></div>
                         </div>
