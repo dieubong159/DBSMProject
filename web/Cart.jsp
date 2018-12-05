@@ -271,17 +271,12 @@
                         </div>
                         <div class="row user-wrapper">
                             <!--Form cart-->
-                            <%List<SanPham_GioHang> cart = (List<SanPham_GioHang>) session.getAttribute("cart");
-                            if (cart == null) {
-                                out.println("");
-                            }
-                            %>
                             <c:choose>
                                 <c:when test="${sessionScope.cart.size()==0 or sessionScope.cart ==null}">
                                     <p>Bạn chưa có sản phẩm nào trong giỏ hàng! <a href="/Index">Tiếp tục mua hàng</a></p>
                                 </c:when>
                                 <c:otherwise>
-                                    <form action="/ThanhToanDonHang" method="post">
+                                    <form action="" method="post">
                                         <div class="table-responsive">
                                             <table class="cart table">
                                                 <tbody>
@@ -361,9 +356,9 @@
                                                     </div>
                                                     <div class="col-lg-6 col-xs-12">
                                                         <div class="buttons btn-modal-cart">
-                                                            <a type="button" class="buttonorange"
+                                                            <input type="submit" class="buttonorange"
                                                                id="modal-checkout-button" name="checkout" style="float:right"
-                                                               href="/ThanhToanDonHang">Tiến hành thanh toán</a>
+                                                                value="Tiến hành thanh toán">
                                                         </div>
                                                     </div>
                                                 </div>

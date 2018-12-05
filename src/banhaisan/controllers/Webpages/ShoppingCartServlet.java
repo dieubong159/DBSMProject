@@ -18,7 +18,12 @@ import java.util.List;
 @WebServlet(name = "ShoppingCartServlet",urlPatterns = {"/ShoppingCart"})
 public class ShoppingCartServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=UTF-8");
+        String ghiChu = request.getParameter("note");
+        HttpSession session = request.getSession();
+        session.setAttribute("deliverynote",ghiChu);
+        response.sendRedirect("/ThanhToanDonHang");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

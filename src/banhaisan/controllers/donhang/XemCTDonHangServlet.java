@@ -4,6 +4,7 @@ import banhaisan.models.datahandle.DanhMucService;
 import banhaisan.models.datahandle.DonHangService;
 import banhaisan.models.datamodels.DanhMuc;
 import banhaisan.models.datamodels.DonHang;
+import banhaisan.models.datamodels.DonHang_SanPham;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,7 +25,7 @@ public class XemCTDonHangServlet extends HttpServlet {
             response.setStatus(400);
             return;
         }
-        ArrayList<DonHang> dh = null;
+        ArrayList<DonHang_SanPham> dh = null;
         try {
             dh= DonHangService.getInstance().getDSDonHang(idDonHang);
             ArrayList<DanhMuc> danhMucs = DanhMucService.getInstance().getData();

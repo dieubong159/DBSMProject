@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> -->
 <!DOCTYPE html>
 <html lang="vi">
@@ -189,10 +190,10 @@
                     </div>
                     <div class="modal-body">
                         <div class="register-form">
-                            <form action="#" method="post" onsubmit="return checkForm(this)">
+                            <form action="#"  onsubmit="return checkForm(this)">
                                 <div class="fields-grid">
                                     <div class="styled-input">
-                                        <input type="email" placeholder="Email của bạn" name="Your Email" required="">
+                                        <input type="email" placeholder="Email của bạn" name="email" required="">
                                     </div>
                                     <div class="styled-input">
                                         <input type="password" placeholder="Nhập password" name="password" required="">
@@ -247,20 +248,28 @@
                 <div class="alert-success">
                     <h3>Đặt hàng thành công </h3>
                 </div>
-                <p>Cảm ơn anh <span id="customerName">Nguyễn Thanh Tân</span> đã đặt mua tại TieuDanSeafood.vn</p>
+                <p>Cảm ơn anh <span id="customerName">${currentSessionUser.hoTen}</span> đã đặt mua tại TieuDanSeafood.vn</p>
             </div>
             <div class="pull-left">
                 <h4>Thông tin giao hàng:</h4>
-                <p>*<span id="customerAddr">76/6 Trương Văn Hải, Quận 9, Tp. Hồ Chí Minh</span></p>
+                <p>*<span id="customerAddr">${donHang.diaChiGiaoHang}</span></p>
+                <c:if test="${donHang.hinhThucThanhToan == true}">
                 <p>*<span id="paymentType">Thanh toán khi nhận hàng</span></p>
-                <p>*Điện thoại: <span id="customPhoneNumb">0129 123 1125</span></p>
+                </c:if>
+                <c:if test="${donHang.hinhThucThanhToan == false}">
+                    <p>*<span id="paymentType">Thanh toán bằng chuyển khoản</span></p>
+                </c:if>
+                <p>*Điện thoại: <span id="customPhoneNumb">${nguoiDung.sdt}</span></p>
+                <input type="text" name="txtmaDonHang" id="invoice-id" hidden value="${donHang.maDonHang}">
             </div>
             <div class="clearfix"></div>
+            <form method="post" action="">
             <div class="text-center">
                 <p>TieuDanSeafood.vn sẽ nhắn tin hoặc gọi điện xác nhận đơn hàng trước 07:45 hôm sau</p>
-                <input type="button" value="OK! Về trang chủ" class="buttonorange" style="margin-top: 15px" onclick="window.location.href='Webpages.jsp'">
-                <p><a href="Hoadon-Abort.jsp">Hủy đơn hàng</a></p>
+                <input type="button" value="OK! Về trang chủ" class="buttonorange" style="margin-top: 15px" onclick="window.location.href='/Index'">
+                <p><input type="submit">Hủy đơn hàng</p>
             </div>
+            </form>
             <hr>
             <div class="text-center">
                 <h3 class="agileits-sear-head" style="margin-bottom: 10px">DANH SÁCH SẢN PHẨM</h3>
@@ -273,31 +282,39 @@
                     <th>Số lượng</th>
                     <th>Tổng cộng</th>
                 </tr>
+                <c:set var="tong" value="0"> </c:set>
+                <c:forEach var="sanPhams" items="${requestScope.sanPhams}">
+                    <c:set var="tong" value="${tong + sanPhams.gia}"></c:set>
                 <tr>
-                    <td><img src="resources/images/Shrmip/tom-cang-xanh01.jpg" width="70px" height="70px"></td>
-                    <td>Crawfish (<em>Tôm hùm đất</em>)</td>
-                    <td>1<em>/kg</em></td>
-                    <td>670,000 đ</td>
+                    <td><img src="${sanPhams.urlHinhAnh}" width="70px" height="70px"></td>
+                    <td>${sanPhams.tenSP}</td>
+                    <td>${sanPhams.soLuong}<em>/kg</em></td>
+                    <td>${sanPhams.gia}</td>
                 </tr>
-                <tr>
-                    <td><img src="resources/images/Shrmip/Lobster/tom-hum-bong01.jpg" width="70px" height="70px"></td>
-                    <td>Tôm hùm Alaska</td>
-                    <td>1<em>/kg</em></td>
-                    <td>1,090,000 đ</td>
-                </tr>
+                </c:forEach>
             </table>
             <table id="sums">
                 <tr>
                     <th>Tiền hàng</th>
-                    <th>1,760,000 đ</th>
+                    <th>${tong}</th>
                 </tr>
                 <tr>
                     <th>Phí giao hàng</th>
+                    <c:if test="${tong >=500000}">
                     <th>miễn phí</th>
+                    </c:if>
+                    <c:if test="${tong <500000}">
+                        <th>50000 đ</th>
+                    </c:if>
                 </tr>
                 <tr>
                     <th>Tổng tiền</th>
-                    <th>1,760,000 đ</th>
+                    <c:if test="${tong >= 500000}">
+                    <th>${tong} đ</th>
+                    </c:if>
+                    <c:if test="${tong < 500000}">
+                        <th>${tong + 50000} đ</th>
+                    </c:if>
                 </tr>
             </table>
         </div>

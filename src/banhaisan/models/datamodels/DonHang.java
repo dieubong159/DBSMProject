@@ -10,10 +10,10 @@ public class DonHang extends DonHang_SanPham{
     private Date ngayDatHang;
     private String maNguoiDung;
     private double tongTien;
-    private String tinhTrang;
+    private boolean tinhTrang;
 
 
-    public DonHang(String maDonHang, String diaChiGiaoHang, String ghiChu, boolean hinhThucThanhToan, Date ngayDatHang, String maNguoiDung, double tongTien, String tinhTrang, String maSP, int soLuong, String tenSP) {
+    public DonHang(String maDonHang, String diaChiGiaoHang, String ghiChu, boolean hinhThucThanhToan, Date ngayDatHang, String maNguoiDung, double tongTien, boolean tinhTrang, String maSP, int soLuong, String tenSP) {
         this.maDonHang = maDonHang;
         this.diaChiGiaoHang = diaChiGiaoHang;
         this.ghiChu = ghiChu;
@@ -82,11 +82,11 @@ public class DonHang extends DonHang_SanPham{
         this.tongTien = tongTien;
     }
 
-    public String getTinhTrang() {
+    public boolean getTinhTrang() {
         return tinhTrang;
     }
 
-    public void setTinhTrang(String tinhTrang) {
+    public void setTinhTrang(boolean tinhTrang) {
         this.tinhTrang = tinhTrang;
     }
 }

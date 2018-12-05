@@ -81,17 +81,9 @@
                 });
 
             return objURL;
-        }; 
+        };
     </script>
     <script type="text/javascript">
-        window.onpageshow = function (event) {
-            if (event.persisted) {
-                var currentUrl = '';
-                currentUrl = '/checkouts/b1ce2b39d36740a0a7cd7a3ef2078d73?step=1';
-                if (currentUrl)
-                    window.location = currentUrl;
-            }
-        };
         var isInit = false;
 
         function funcFormOnSubmit(e) {
@@ -110,7 +102,6 @@
                 var formData = this;
                 e.preventDefault();
             }
-            $(element).find('button:submit').addClass('btn-loading');
             var formId = $(element).attr('id'), replaceElement = [], funcCallback;
             if (formId == undefined || formId == null || formId == '')
                 return;
@@ -187,54 +178,6 @@
 
             }
 
-            $.ajax({
-                type: 'GET',
-                url: window.location.origin + window.location.pathname + '?' + inputurl + encodeURI('&form_name=' + formId),
-                success: function (html) {
-                    if ($(html).attr('id') == 'redirect-url') {
-                        window.location = $(html).val();
-                    } else {
-                        if (replaceElement.length > 0) {
-                            for (var i = 0; i < replaceElement.length; i++) {
-                                var tempElement = replaceElement[i];
-                                var newElement = $(html).find(tempElement);
-
-                                if (newElement.length > 0) {
-                                    if (tempElement == '.step-sections')
-                                        $(tempElement).attr('step', $(newElement).attr('step'));
-
-                                    var listTempElement = $(tempElement);
-
-                                    for (var j = 0; j < newElement.length; j++)
-                                        if (j < listTempElement.length)
-                                            $(listTempElement[j]).html($(newElement[j]).html());
-                                }
-                            }
-                        }
-                        $("#div_location_country_not_vietnam").hide();
-                        var is_vietnam = $("#is_vietnam").val();
-                        if (is_vietnam && is_vietnam == "true") {
-                            $("#div_country_not_vietnam").hide();
-                        }
-                        else {
-                            $("#div_country_not_vietnam").show();
-                        }
-
-                        $('body').attr('src', $(html).attr('src'));
-                        $(element).find('button:submit').removeClass('btn-loading');
-
-                        if (($('body').find('.field-error') && $('body').find('.field-error').length > 0)
-                            || ($('body').find('.has-error') && $('body').find('.has-error').length > 0)) {
-                            $("html, body").animate({ scrollTop: 0 }, "slow");
-                        }
-                        if (funcCallback)
-                            funcCallback();
-                    }
-                }
-            }).fail(function () {
-                $(element).find('button:submit').removeClass('btn-loading');
-            });
-
             return false;
         };
         function funcSetEvent() {
@@ -251,52 +194,7 @@
                 .on('keyup input paste', effectControlFieldClass, function () {
                     funcFieldHasValue($(this), false);
                 })
-                .on('submit', 'form', funcFormOnSubmit);
 
-            $("#div_location_country_not_vietnam").hide();
-            $("#is_vietnam").val("true");
-            $("#div_country_not_vietnam").hide();
-
-            $('body')
-                .on('change', '#form_update_location', function () {
-                    $(this).submit();
-                });
-
-            $('body')
-
-                .on('change', '#form_update_location select[name=customer_shipping_country]', function () {
-                    var currentCountry = $(this).val();
-                    if (currentCountry && currentCountry != "null" && currentCountry != 241) {
-                        $("#is_vietnam").val("false");
-                        $("#div_country_not_vietnam").show();
-                    }
-                    else {
-                        $("#is_vietnam").val("true");
-                        $("#div_country_not_vietnam").hide();
-                    }
-                })
-
-                .on('change', '#form_update_location select[name=customer_shipping_district]', function () {
-                    $('.section-customer-information input:hidden[name=customer_shipping_district]').val($(this).val());
-                })
-                .on('change', '#form_update_location select[name=customer_shipping_ward]', function () {
-                    $('.section-customer-information input:hidden[name=customer_shipping_ward]').val($(this).val());
-                });
-
-            $('body')
-                .on('change', '#form_update_shipping_method input:radio', function () {
-                    $('#form_update_shipping_method .content-box-row.content-box-row-secondary').addClass('hidden');
-
-                    var id = $(this).attr('id');
-
-                    if (id) {
-                        var sub = $('body').find('.content-box-row.content-box-row-secondary[for=' + id + ']')
-
-                        if (sub && sub.length > 0) {
-                            $(sub).removeClass('hidden');
-                        }
-                    }
-                });
 
             $('body')
                 .on('change', '#section-payment-method input:radio', function () {
@@ -311,12 +209,6 @@
                             $(sub).removeClass('hidden');
                         }
                     }
-                });
-
-
-            $('body')
-                .on('change', '#section-shipping-rate input:radio[name=shipping_rate_id]', function () {
-                    funcFormOnSubmit('#section-shipping-rate');
                 });
         };
         function funcFieldFocus(fieldInputElement, isFocus) {
@@ -356,19 +248,6 @@
                     $(fieldElement).removeClass('field-error');
             }
 
-            var fieldInputBtnWrapperElement = $(fieldInputElement).closest('.field-input-btn-wrapper');
-
-            if (value && value.trim() != '') {
-                $(fieldElement).addClass('field-show-floating-label');
-                $(fieldInputBtnWrapperElement).find('button:submit').removeClass('btn-disabled');
-            }
-            else if (isCheckRemove) {
-                $(fieldElement).removeClass('field-show-floating-label');
-                $(fieldInputBtnWrapperElement).find('button:submit').addClass('btn-disabled');
-            }
-            else {
-                $(fieldInputBtnWrapperElement).find('button:submit').addClass('btn-disabled');
-            }
         };
         function funcInit() {
             funcSetEvent();
@@ -377,73 +256,7 @@
             funcInit();
         });
     </script>
-    <script type="text/javascript">
-        var toggleShowOrderSummary = false;
-        $(document).ready(function () {
-            var currentUrl = '';
-            currentUrl = '/checkouts/b1ce2b39d36740a0a7cd7a3ef2078d73?step=1';
 
-            if ($('#reloadValue').val().length == 0) {
-                $('#reloadValue').val(currentUrl);
-                $('body').show();
-            }
-            else {
-                window.location = $('#reloadValue').val();
-                $('#reloadValue').val('');
-            }
-
-            $('body')
-                .on('click', '.order-summary-toggle', function () {
-                    toggleShowOrderSummary = !toggleShowOrderSummary;
-
-                    if (toggleShowOrderSummary) {
-                        $('.order-summary-toggle')
-                            .removeClass('order-summary-toggle-hide')
-                            .addClass('order-summary-toggle-show');
-
-                        $('.sidebar:not(".sidebar-second") .sidebar-content .order-summary')
-                            .removeClass('order-summary-is-collapsed')
-                            .addClass('order-summary-is-expanded');
-
-                        $('.sidebar.sidebar-second .sidebar-content .order-summary')
-                            .removeClass('order-summary-is-expanded')
-                            .addClass('order-summary-is-collapsed');
-                    } else {
-                        $('.order-summary-toggle')
-                            .removeClass('order-summary-toggle-show')
-                            .addClass('order-summary-toggle-hide');
-
-                        $('.sidebar:not(".sidebar-second") .sidebar-content .order-summary')
-                            .removeClass('order-summary-is-expanded')
-                            .addClass('order-summary-is-collapsed');
-
-                        $('.sidebar.sidebar-second .sidebar-content .order-summary')
-                            .removeClass('order-summary-is-collapsed')
-                            .addClass('order-summary-is-expanded');
-                    }
-                });
-        });
-    </script>
-    <script type="text/javascript">
-        //<![CDATA[
-        if ((typeof Haravan) === 'undefined') {
-            Haravan = {};
-        }
-        Haravan.culture = 'vi-VN';
-        Haravan.shop = 'daohaisan.myharavan.com';
-        Haravan.theme = { "name": "update 02/07/2018__daohaisan", "id": 1000382425, "role": "main" };
-        Haravan.domain = 'daohaisan.vn';
-        //]]>
-    </script>
-    <script type="text/javascript">
-        window.HaravanAnalytics = window.HaravanAnalytics || {};
-        window.HaravanAnalytics.meta = window.HaravanAnalytics.meta || {};
-        window.HaravanAnalytics.meta.currency = 'VND';
-        var meta = { "page": { "pageType": "checkout", "resourceType": "checkout", "resourceId": "b1ce2b39d36740a0a7cd7a3ef2078d73" }, "cart": { "products": [{ "variantId": 1033641790, "productId": 1017420107, "price": 67000000.0, "name": "Crawfish Sống (Tôm Hùm Đất) - 1kg", "vendor": "Khác", "variant": "1kg", "type": "Khác", "quantity": 1 }, { "variantId": 1004258118, "productId": 1001098951, "price": 109000000.0, "name": "Tôm Hùm Alaska Sống - 1Kg (Size>600g/con)", "vendor": "Khác", "variant": "1Kg (Size>600g/con)", "type": "Khác", "quantity": 1 }], "item_count": 2, "total_price": 176000000.0 } };
-        for (var attr in meta) {
-            window.HaravanAnalytics.meta[attr] = meta[attr];
-        }
-    </script>
 </head>
 
 <body>
@@ -564,6 +377,7 @@
     </ul>
     <div class="content">
         <div class="wrap">
+            <form id="form_next_step" accept-charset="UTF-8" method="post" action="">
             <div class="sidebar">
                 <div class="sidebar-content">
                     <div class="order-summary order-summary-is-collapsed">
@@ -629,6 +443,7 @@
                                                     data-checkout-subtotal-price-target="${s}">
                                                     ${s} đ
                                                 </span>
+                                                <input value="${s}" name="txtTongTien" id="TongTien" hidden>
                                             </td>
                                         </tr>
 
@@ -715,22 +530,11 @@
                                                 <label class="field-label" for="billing_address_address1">Địa chỉ</label>
                                                 <input placeholder="Địa chỉ" autocapitalize="off" spellcheck="false"
                                                     class="field-input" size="30" type="text" id="billing_address_address1"
-                                                    name="billing_address[address1]" value="${nguoiDung.diaChi}">
+                                                    name="billing_address" value="${nguoiDung.diaChi}">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                    <div class="section-content section-customer-information fieldset" id="div_country_not_vietnam"
-                                        style="display: none;">
-                                        <div class="field field-two-thirds">
-                                            <div class="field-input-wrapper">
-                                                <label class="field-label" for="billing_address_city">Thành phố</label>
-                                                <input placeholder="Thành phố" autocapitalize="off" spellcheck="false"
-                                                    class="field-input" size="30" type="text" id="billing_address_city"
-                                                    name="billing_address[city]" value="">
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div id="change_pick_location_or_shipping">
                                     <div id="section-shipping-rate" style="padding-top: 3em">
@@ -828,13 +632,9 @@
                             </div>
                         </div>
                         <div class="step-footer">
-                            <form id="form_next_step" accept-charset="UTF-8" method="post">
                                 <input name="utf8" type="hidden" value="✓">
-                                <a href="" type="submit" class="step-footer-continue-btn btn">
-                                    <span class="btn-content">Hoàn tất đơn hàng</span>
+                                <input type="submit" class="btn step-footer-continue-btn btn" value="Hoàn tất đơn hàng">
                                     <i class="btn-spinner icon icon-button-spinner"></i>
-                                </a>
-                            </form>
                             <a class="step-footer-previous-link" href="/ShoppingCart?action=checkout">
                                 <svg class="previous-link-icon icon-chevron icon" xmlns="http://www.w3.org/2000/svg"
                                     width="6.7" height="11.3" viewBox="0 0 6.7 11.3">
@@ -843,10 +643,12 @@
                                 Giỏ hàng
                             </a>
                         </div>
+
                     </div>
                 </div>
                 <div class="main-footer">
                 </div>
+            </form>
             </div>
         </div>
     </div>
