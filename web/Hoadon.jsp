@@ -89,9 +89,9 @@
                             </li>
                             <li class="float-md-right">
                                 <span class="fas fa-user"></span>
-                                <p><a data-toggle="modal" href="#LoginModal">Đăng nhập</a></p>
+                                <p>Chào <a href="/Profile">${currentSessionUser.hoTen}</a></p>
                                 <p>|</p>
-                                <p><a href="DangKi.jsp">Đăng ký</a></p>
+                                <p><a href="/LogoutAdmin">Thoát</a></p>
                             </li>
                         </ul>
                     </div>
@@ -100,10 +100,10 @@
                     <div class="hedder-up row">
                         <div style="width:70%" class="col-lg-3 col-md-3 logo-head">
                             <li>
-                                <a class="navbar-brand" href="TrangChu.jsp" style="margin-left: 31%">
+                                <a class="navbar-brand" href="/Index" style="margin-left: 31%">
                                     <div class="logo"><img src="resources/images/CrabICO.png" alt=""> </div>
                                 </a>
-                                <h4 style="display:inline-block"><strong><a href="TrangChu.jsp">Tiêu Dân Seafood </a></strong></h4>
+                                <h4 style="display:inline-block"><strong><a href="/Index">Tiêu Dân Seafood </a></strong></h4>
                             </li>
                         </div>
                         <div class="col-lg-5 col-md-6 search-right">
@@ -121,14 +121,12 @@
                                         <p>Tổng đài miễn phí</p>
                                     </li>
                                     <li style="padding-right: 15pt">
-                                        <p style="padding-bottom: 15pt"><strong><a href="#">CÔNG THỨC</a></strong></p>
+                                        <p style="padding-bottom: 15pt"><strong><a href="/DSBaiViet">CÔNG THỨC</a></strong></p>
                                         <p>Đảm đang - Khéo léo</p>
                                     </li>
                                     <li style="position:relative" class="toyscart toyscart2 cart cart box_1">
                                         <form action="#" method="post" class="last">
-                                            <input type="hidden" name="cmd" value="_cart">
-                                            <input type="hidden" name="display" value="1">
-                                            <p style="display:inline-block"><strong><a href="#">GIỎ HÀNG</a></strong></p>
+                                            <p style="display:inline-block"><strong><a href="/ShoppingCart?action=checkout">GIỎ HÀNG</a></strong></p>
                                             <button class="top_toys_cart" type="submit" name="submit" value="">
                                                 <span class="fas fa-cart-arrow-down"></span>
                                             </button>
@@ -146,11 +144,11 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                         <ul class="navbar-nav ">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="TrangChu.jsp">Trang chủ <span class="sr-only">(current)</span></a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Index">Trang chủ <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a href="about.jsp" class="nav-link">Giới thiệu</a>
+                                <a href="/GioiThieu" class="nav-link">Giới thiệu</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -158,18 +156,16 @@
                                     Sản phẩm
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="nav-link" href="Products.jsp">Cá</a>
-                                    <a class="nav-link " href="#!">Tôm</a>
-                                    <a class="nav-link " href="#!">Mực</a>
-                                    <a class="nav-link " href="#!">Cua - ghẹ</a>
-                                    <a class="nav-link " href="#!">Ngao - Sò - Ốc</a>
+                                    <c:forEach var="danhMuc" items="${sessionScope.danhMucs}">
+                                        <a class="nav-link" href="/Products?idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
+                                    </c:forEach>
                                 </div>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a href="#!" class="nav-link">Công thức chế biến</a>
+                            <li class="nav-item ">
+                                <a href="/DSBaiViet" class="nav-link">Công thức chế biến</a>
                             </li>
                             <li class="nav-item">
-                                <a href="LienHe.jsp" class="nav-link">Liên hệ</a>
+                                <a href="/LienHe" class="nav-link">Liên hệ</a>
                             </li>
                         </ul>
                     </div>
@@ -177,66 +173,6 @@
             </div>
         </div>
     </header>
-
-    <!-- Modal 1-->
-    <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="LoginModalLabel">Đăng nhập</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="register-form">
-                            <form action="#"  onsubmit="return checkForm(this)">
-                                <div class="fields-grid">
-                                    <div class="styled-input">
-                                        <input type="email" placeholder="Email của bạn" name="email" required="">
-                                    </div>
-                                    <div class="styled-input">
-                                        <input type="password" placeholder="Nhập password" name="password" required="">
-                                    </div>
-                                    <button type="submit" class="btn subscrib-btnn">Đăng nhập</button>
-                                </div>
-                            </form>
-                            <label>
-                                <input type="checkbox" checked="checked" name="remember"> Remember me
-                            </label>
-                        </div>
-                    </div>
-                    <div class="container" style="padding: 11px; background-color:beige">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <span style="padding-top: 5px; float: right">Forgot <a data-toggle="modal" data-target="#ForgetPasswordModal">password?</a></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
-        <div class="modal fade" id="ForgetPasswordModal" role="dialog" aria-labelledby="ForgetPasswordModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-sm" role="document">
-                <div class="modal-content">
-                    <form action="#" method="post">
-                        <div class="modal-header" style="display: block;">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h2 class="modal-title" id="ForgetPasswordModalLabel">Quên mật khẩu?</h2>
-                            <span>Vui lòng cung cấp email hoặc số điện thoại đăng nhập để lấy lại mật khẩu.</span>
-                        </div>
-                        <div class="modal-body">
-                            <input type="email" name="email" id="email-forgot" class="form-control" value="" placeholder="Nhập email hoặc số điện thoại"
-                                data-bv-field="email" required>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-secondary">Gửi</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    
-        <!-- //Modal 1-->
     <!-- banner -->
     <div class="inner_page-banner one-img">
     </div>
@@ -283,7 +219,7 @@
                     <th>Tổng cộng</th>
                 </tr>
                 <c:set var="tong" value="0"> </c:set>
-                <c:forEach var="sanPhams" items="${requestScope.sanPhams}">
+                <c:forEach var="sanPhams" items="${sessionScope.sanPhams}">
                     <c:set var="tong" value="${tong + sanPhams.gia}"></c:set>
                 <tr>
                     <td><img src="${sanPhams.urlHinhAnh}" width="70px" height="70px"></td>
@@ -296,7 +232,7 @@
             <table id="sums">
                 <tr>
                     <th>Tiền hàng</th>
-                    <th>${tong}</th>
+                    <th>${tong} đ</th>
                 </tr>
                 <tr>
                     <th>Phí giao hàng</th>
@@ -343,16 +279,16 @@
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                     <h6 class="text-uppercase mb-4 font-weight-bold">MENU</h6>
                     <p>
-                        <a href="TrangChu.jsp">Trang chủ</a>
+                        <a href="/Index">Trang chủ</a>
                     </p>
                     <p>
-                        <a href="About.jsp">Giới thiệu</a>
+                        <a href="/GioiThieu">Giới thiệu</a>
                     </p>
                     <p>
-                        <a href="LienHe.jsp">Liên hệ</a>
+                        <a href="/LienHe">Liên hệ</a>
                     </p>
                     <p>
-                        <a href="DSCongthucchebien.jsp">Món ngon</a>
+                        <a href="/DSBaiViet">Món ngon</a>
                     </p>
                 </div>
                 <!-- Grid column -->

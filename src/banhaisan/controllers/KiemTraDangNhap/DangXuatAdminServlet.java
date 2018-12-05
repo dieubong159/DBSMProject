@@ -12,7 +12,8 @@ import java.io.IOException;
 public class DangXuatAdminServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        session.invalidate();
+        session.removeAttribute("idcurrentSession");
+        session.removeAttribute("currentSessionUser");
         response.sendRedirect("/Index");
     }
 }

@@ -16,7 +16,8 @@ public class DangXuatServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String url = request.getHeader("referer");
         HttpSession session = request.getSession();
-        session.invalidate();
+        session.removeAttribute("idcurrentSession");
+        session.removeAttribute("currentSessionUser");
         response.sendRedirect(request.getContextPath()+url);
     }
 }

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> -->
 <!DOCTYPE html>
 <html lang="vi">
@@ -88,9 +89,9 @@
                             </li>
                             <li class="float-md-right">
                                 <span class="fas fa-user"></span>
-                                <p><a data-toggle="modal" href="#LoginModal">Đăng nhập</a></p>
+                                <p>Chào <a href="/Profile">${currentSessionUser.hoTen}</a></p>
                                 <p>|</p>
-                                <p><a href="DangKi.jsp">Đăng ký</a></p>
+                                <p><a href="/LogoutAdmin">Thoát</a></p>
                             </li>
                         </ul>
                     </div>
@@ -99,10 +100,10 @@
                     <div class="hedder-up row">
                         <div style="width:70%" class="col-lg-3 col-md-3 logo-head">
                             <li>
-                                <a class="navbar-brand" href="TrangChu.jsp" style="margin-left: 31%">
+                                <a class="navbar-brand" href="/Index" style="margin-left: 31%">
                                     <div class="logo"><img src="resources/images/CrabICO.png" alt=""> </div>
                                 </a>
-                                <h4 style="display:inline-block"><strong><a href="TrangChu.jsp">Tiêu Dân Seafood </a></strong></h4>
+                                <h4 style="display:inline-block"><strong><a href="/Index">Tiêu Dân Seafood </a></strong></h4>
                             </li>
                         </div>
                         <div class="col-lg-5 col-md-6 search-right">
@@ -120,14 +121,12 @@
                                         <p>Tổng đài miễn phí</p>
                                     </li>
                                     <li style="padding-right: 15pt">
-                                        <p style="padding-bottom: 15pt"><strong><a href="#">CÔNG THỨC</a></strong></p>
+                                        <p style="padding-bottom: 15pt"><strong><a href="/DSBaiViet">CÔNG THỨC</a></strong></p>
                                         <p>Đảm đang - Khéo léo</p>
                                     </li>
                                     <li style="position:relative" class="toyscart toyscart2 cart cart box_1">
                                         <form action="#" method="post" class="last">
-                                            <input type="hidden" name="cmd" value="_cart">
-                                            <input type="hidden" name="display" value="1">
-                                            <p style="display:inline-block"><strong><a href="#">GIỎ HÀNG</a></strong></p>
+                                            <p style="display:inline-block"><strong><a href="/ShoppingCart?action=checkout">GIỎ HÀNG</a></strong></p>
                                             <button class="top_toys_cart" type="submit" name="submit" value="">
                                                 <span class="fas fa-cart-arrow-down"></span>
                                             </button>
@@ -145,11 +144,11 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                         <ul class="navbar-nav ">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="TrangChu.jsp">Trang chủ <span class="sr-only">(current)</span></a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Index">Trang chủ <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a href="about.jsp" class="nav-link">Giới thiệu</a>
+                                <a href="/GioiThieu" class="nav-link">Giới thiệu</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -157,18 +156,16 @@
                                     Sản phẩm
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="nav-link" href="Products.jsp">Cá</a>
-                                    <a class="nav-link " href="#!">Tôm</a>
-                                    <a class="nav-link " href="#!">Mực</a>
-                                    <a class="nav-link " href="#!">Cua - ghẹ</a>
-                                    <a class="nav-link " href="#!">Ngao - Sò - Ốc</a>
+                                    <c:forEach var="danhMuc" items="${sessionScope.danhMucs}">
+                                        <a class="nav-link" href="/Products?idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
+                                    </c:forEach>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#!" class="nav-link">Công thức chế biến</a>
+                                <a href="/DSBaiViet" class="nav-link">Công thức chế biến</a>
                             </li>
                             <li class="nav-item">
-                                <a href="LienHe.jsp" class="nav-link">Liên hệ</a>
+                                <a href="/LienHe" class="nav-link">Liên hệ</a>
                             </li>
                         </ul>
                     </div>
@@ -177,65 +174,6 @@
         </div>
     </header>
 
-    <!-- Modal 1-->
-    <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="LoginModalLabel">Đăng nhập</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="register-form">
-                        <form action="#" method="post" onsubmit="return checkForm(this)">
-                            <div class="fields-grid">
-                                <div class="styled-input">
-                                    <input type="email" placeholder="Email của bạn" name="Your Email" required="">
-                                </div>
-                                <div class="styled-input">
-                                    <input type="password" placeholder="Nhập password" name="password" required="">
-                                </div>
-                                <button type="submit" class="btn subscrib-btnn">Đăng nhập</button>
-                            </div>
-                        </form>
-                        <label>
-                            <input type="checkbox" checked="checked" name="remember"> Remember me
-                        </label>
-                    </div>
-                </div>
-                <div class="container" style="padding: 11px; background-color:beige">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <span style="padding-top: 5px; float: right">Forgot <a data-toggle="modal" data-target="#ForgetPasswordModal">password?</a></span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="ForgetPasswordModal" role="dialog" aria-labelledby="ForgetPasswordModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-                <form action="#" method="post">
-                    <div class="modal-header" style="display: block;">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h2 class="modal-title" id="ForgetPasswordModalLabel">Quên mật khẩu?</h2>
-                        <span>Vui lòng cung cấp email hoặc số điện thoại đăng nhập để lấy lại mật khẩu.</span>
-                    </div>
-                    <div class="modal-body">
-                        <input type="email" name="email" id="email-forgot" class="form-control" value="" placeholder="Nhập email hoặc số điện thoại"
-                            data-bv-field="email" required>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-secondary">Gửi</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- //Modal 1-->
     <!-- banner -->
     <div class="inner_page-banner one-img">
     </div>
@@ -247,18 +185,23 @@
                 <div class="alert-danger">
                     <h3>Đã hủy đơn hàng </h3>
                 </div>
-                <p>Rất tiếc anh <span id="customerName">Nguyễn Thanh Tân</span> đã hủy đặt mua tại TieuDanSeafood.vn</p>
+                <p>Rất tiếc anh <span id="customerName">${currentSessionUser.hoTen}</span> đã hủy đặt mua tại TieuDanSeafood.vn</p>
             </div>
             <div class="pull-left">
                 <h4>Thông tin giao hàng:</h4>
-                <p>*<span id="customerAddr">76/6 Trương Văn Hải, Quận 9, Tp. Hồ Chí Minh</span></p>
-                <p>*<span id="paymentType">Thanh toán khi nhận hàng</span></p>
-                <p>*Điện thoại: <span id="customPhoneNumb">0129 123 1125</span></p>
+                <p>*<span id="customerAddr">${donHang.diaChiGiaoHang}</span></p>
+                <c:if test="${donHang.hinhThucThanhToan == true}">
+                    <p>*<span id="paymentType">Thanh toán khi nhận hàng</span></p>
+                </c:if>
+                <c:if test="${donHang.hinhThucThanhToan == false}">
+                    <p>*<span id="paymentType">Thanh toán bằng chuyển khoản</span></p>
+                </c:if>
+                <p>*Điện thoại: <span id="customPhoneNumb">${nguoiDung.sdt}</span></p>
             </div>
             <div class="clearfix"></div>
             <div class="text-center">
                 <p>TieuDanSeafood.vn sẽ nhắn tin hoặc gọi điện xác nhận đơn hàng trước 07:45 hôm sau</p>
-                <input type="button" value="OK! Về trang chủ" class="buttonorange" style="margin-top: 15px" onclick="window.location.href='Webpages.jsp'">
+                <input type="button" value="OK! Về trang chủ" class="buttonorange" style="margin-top: 15px" onclick="window.location.href='/Index'">
             </div>
             <hr>
             <div class="disabled" style="color:#cccccc">
@@ -274,31 +217,39 @@
                         <th>Số lượng</th>
                         <th>Tổng cộng</th>
                     </tr>
-                    <tr>
-                        <td><img src="resources/images/Shrmip/tom-cang-xanh01.jpg" width="70px" height="70px"></td>
-                        <td>Crawfish (<em>Tôm hùm đất</em>)</td>
-                        <td>1<em>/kg</em></td>
-                        <td>670,000 đ</td>
-                    </tr>
-                    <tr>
-                        <td><img src="resources/images/Shrmip/Lobster/tom-hum-bong01.jpg" width="70px" height="70px"></td>
-                        <td>Tôm hùm Alaska</td>
-                        <td>1<em>/kg</em></td>
-                        <td>1,090,000 đ</td>
-                    </tr>
+                    <c:set var="tong" value="0"> </c:set>
+                    <c:forEach var="sanPhams" items="${sessionScope.sanPhams}">
+                        <c:set var="tong" value="${tong + sanPhams.gia}"></c:set>
+                        <tr>
+                            <td><img src="${sanPhams.urlHinhAnh}" width="70px" height="70px"></td>
+                            <td>${sanPhams.tenSP}</td>
+                            <td>${sanPhams.soLuong}<em>/kg</em></td>
+                            <td>${sanPhams.gia}</td>
+                        </tr>
+                    </c:forEach>
                 </table>
                 <table id="sums">
                     <tr>
                         <th>Tiền hàng</th>
-                        <th>1,760,000 đ</th>
+                        <th>${tong} đ</th>
                     </tr>
                     <tr>
                         <th>Phí giao hàng</th>
-                        <th>miễn phí</th>
+                        <c:if test="${tong >=500000}">
+                            <th>miễn phí</th>
+                        </c:if>
+                        <c:if test="${tong <500000}">
+                            <th>50000 đ</th>
+                        </c:if>
                     </tr>
                     <tr>
                         <th>Tổng tiền</th>
-                        <th>1,760,000 đ</th>
+                        <c:if test="${tong >= 500000}">
+                            <th>${tong} đ</th>
+                        </c:if>
+                        <c:if test="${tong < 500000}">
+                            <th>${tong + 50000} đ</th>
+                        </c:if>
                     </tr>
                 </table>
             </div>
@@ -328,16 +279,16 @@
                 <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                     <h6 class="text-uppercase mb-4 font-weight-bold">MENU</h6>
                     <p>
-                        <a href="TrangChu.jsp">Trang chủ</a>
+                        <a href="/Index">Trang chủ</a>
                     </p>
                     <p>
-                        <a href="About.jsp">Giới thiệu</a>
+                        <a href="/GioiThieu">Giới thiệu</a>
                     </p>
                     <p>
-                        <a href="LienHe.jsp">Liên hệ</a>
+                        <a href="/LienHe">Liên hệ</a>
                     </p>
                     <p>
-                        <a href="DSCongthucchebien.jsp">Món ngon</a>
+                        <a href="/DSBaiViet">Món ngon</a>
                     </p>
                 </div>
                 <!-- Grid column -->

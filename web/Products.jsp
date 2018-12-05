@@ -159,8 +159,6 @@
                                     </li>
                                     <li style="position:relative" class="toyscart toyscart2 cart cart box_1">
                                         <form action="#" method="post" class="last">
-                                            <input type="hidden" name="cmd" value="_cart">
-                                            <input type="hidden" name="display" value="1">
                                             <p style="display:inline-block"><strong><a href="#">GIỎ HÀNG</a></strong></p>
                                             <button class="top_toys_cart" type="submit" name="submit" value="">
                                                 <span class="fas fa-cart-arrow-down"></span>
@@ -186,7 +184,7 @@
                                 <a href="/GioiThieu" class="nav-link">Giới thiệu</a>
                             </li>
                             <li class="nav-item dropdown active">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                <a class="nav-link dropdown-toggle" href="/ShoppingCart?action=checkout" id="navbarDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Sản phẩm
                                 </a>

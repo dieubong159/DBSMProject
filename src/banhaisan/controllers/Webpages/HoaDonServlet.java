@@ -21,6 +21,7 @@ import java.util.ArrayList;
 @WebServlet(name = "HoaDonServlet",urlPatterns = {"/HoaDon"})
 public class HoaDonServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session =request.getSession();
         try {
             DonHang donHang = DonHangService.getInstance().getDonHangMoiNhat();
             DonHangService.getInstance().delete(donHang);
@@ -30,17 +31,20 @@ public class HoaDonServlet extends HttpServlet {
         }
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Hoadon-Abort.jsp");
         dispatcher.forward(request,response);
+        session.removeAttribute("donHang");
+        session.removeAttribute("sanPhams");
+        session.removeAttribute("nguoiDung");
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        HttpSession session = request.getSession();
         try {
             DonHang donHang = DonHangService.getInstance().getDonHangMoiNhat();
             ArrayList<DonHang_SanPham> sanphams = DonHangService.getInstance().getDSDonHang(donHang.getMaDonHang());
             NguoiDung nguoiDung = NguoiDungThongThuongService.getInstance().get(donHang.getMaNguoiDung());
 
-            request.setAttribute("donHang",donHang);
-            request.setAttribute("sanPhams",sanphams);
-            request.setAttribute("nguoiDung",nguoiDung);
+            session.setAttribute("donHang",donHang);
+            session.setAttribute("sanPhams",sanphams);
+            session.setAttribute("nguoiDung",nguoiDung);
         }catch (SQLException | ClassNotFoundException e)
         {
             e.printStackTrace();

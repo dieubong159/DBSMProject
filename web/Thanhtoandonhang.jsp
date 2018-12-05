@@ -278,7 +278,7 @@
                                         <span class="fas fa-user"></span>
                                         <p>Chào <a href="/Profile">${currentSessionUser.hoTen}</a></p>
                                         <p>|</p>
-                                        <p><a href="/Logout">Thoát</a></p>
+                                        <p><a href="/LogoutAdmin">Thoát</a></p>
                                     </li>
                         </ul>
                     </div>
@@ -313,8 +313,6 @@
                                     </li>
                                     <li style="position:relative" class="toyscart toyscart2 cart cart box_1">
                                         <form action="#" method="post" class="last">
-                                            <input type="hidden" name="cmd" value="_cart">
-                                            <input type="hidden" name="display" value="1">
                                             <p style="display:inline-block"><strong><a href="/ShoppingCart?action=checkout">GIỎ HÀNG</a></strong></p>
                                             <button class="top_toys_cart" type="submit" name="submit" value="">
                                                 <span class="fas fa-cart-arrow-down"></span>
@@ -333,11 +331,11 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                         <ul class="navbar-nav ">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="TrangChu.jsp">Trang chủ <span class="sr-only">(current)</span></a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Index">Trang chủ <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a href="about.jsp" class="nav-link">Giới thiệu</a>
+                                <a href="/GioiThieu" class="nav-link">Giới thiệu</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -345,18 +343,16 @@
                                     Sản phẩm
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="nav-link" href="Products.jsp">Cá</a>
-                                    <a class="nav-link " href="#!">Tôm</a>
-                                    <a class="nav-link " href="#!">Mực</a>
-                                    <a class="nav-link " href="#!">Cua - ghẹ</a>
-                                    <a class="nav-link " href="#!">Ngao - Sò - Ốc</a>
+                                    <c:forEach var="danhMuc" items="${sessionScope.danhMucs}">
+                                        <a class="nav-link" href="/Products?idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
+                                    </c:forEach>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#!" class="nav-link">Công thức chế biến</a>
+                                <a href="/DSBaiViet" class="nav-link">Công thức chế biến</a>
                             </li>
                             <li class="nav-item">
-                                <a href="LienHe.jsp" class="nav-link">Liên hệ</a>
+                                <a href="/LienHe" class="nav-link">Liên hệ</a>
                             </li>
                         </ul>
                     </div>

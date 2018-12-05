@@ -167,9 +167,7 @@
                                     </li>
                                     <li style="position:relative" class="toyscart toyscart2 cart cart box_1">
                                         <form action="#" method="post" class="last">
-                                            <input type="hidden" name="cmd" value="_cart">
-                                            <input type="hidden" name="display" value="1">
-                                            <p style="display:inline-block"><strong><a href="Cart.jsp">GIỎ HÀNG</a></strong></p>
+                                            <p style="display:inline-block"><strong><a href="/ShoppingCart?action=checkout">GIỎ HÀNG</a></strong></p>
                                             <button class="top_toys_cart" type="submit" name="submit" value="">
                                                 <span class="fas fa-cart-arrow-down"></span>
                                             </button>

@@ -1,6 +1,3 @@
-<%@ page import="banhaisan.models.datamodels.SanPham_GioHang" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.Vector" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> -->
 <!DOCTYPE html>
@@ -141,9 +138,7 @@
                                     </li>
                                     <li style="position:relative" class="toyscart toyscart2 cart cart box_1">
                                         <form action="#" method="post" class="last">
-                                            <input type="hidden" name="cmd" value="_cart">
-                                            <input type="hidden" name="display" value="1">
-                                            <p style="display:inline-block"><strong><a href="#">GIỎ HÀNG</a></strong></p>
+                                            <p style="display:inline-block"><strong><a href="/ShoppingCart?action=checkout">GIỎ HÀNG</a></strong></p>
                                             <button class="top_toys_cart" type="submit" name="submit" value="">
                                                 <span class="fas fa-cart-arrow-down"></span>
                                             </button>
@@ -161,7 +156,7 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                         <ul class="navbar-nav ">
-                            <li class="nav-item active">
+                            <li class="nav-item">
                                 <a class="nav-link" href="/Index">Trang chủ <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
@@ -276,7 +271,7 @@
                                     <p>Bạn chưa có sản phẩm nào trong giỏ hàng! <a href="/Index">Tiếp tục mua hàng</a></p>
                                 </c:when>
                                 <c:otherwise>
-                                    <form action="" method="post">
+                                    <form action="/ThanhToanDonHang" method="post">
                                         <div class="table-responsive">
                                             <table class="cart table">
                                                 <tbody>
