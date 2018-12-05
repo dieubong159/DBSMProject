@@ -30,11 +30,9 @@ public class SanPhamUserServlet extends HttpServlet {
         ArrayList<SanPham> sanPhams = null;
         try {
             sanPhams = SanPhamService.getInstance().getDataCategory(idDanhMuc);
-            ArrayList<DanhMuc> danhMucs = DanhMucService.getInstance().getData();
             ArrayList<BaiViet> baiViets = BaiVietService.getInstance().getData();
             Double giaCaoNhat = SanPhamService.getInstance().layGiaCaoNhat(idDanhMuc);
             request.setAttribute("giaCaoNhat",giaCaoNhat);
-            request.setAttribute("danhMucs",danhMucs);
             request.setAttribute("baiViets",baiViets);
         }catch (SQLException | ClassNotFoundException e)
         {

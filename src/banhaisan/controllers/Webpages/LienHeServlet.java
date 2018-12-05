@@ -16,13 +16,6 @@ import java.util.ArrayList;
 @WebServlet(name = "LienHeServlet",urlPatterns = {"/LienHe"})
 public class LienHeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            ArrayList<DanhMuc> danhMucs = DanhMucService.getInstance().getData();
-            request.setAttribute("danhMucs",danhMucs);
-        }catch (SQLException | ClassNotFoundException e)
-        {
-            e.printStackTrace();
-        }
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/LienHe.jsp");
         dispatcher.forward(request,response);
     }

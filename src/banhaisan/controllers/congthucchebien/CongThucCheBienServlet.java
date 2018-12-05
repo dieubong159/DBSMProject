@@ -20,10 +20,8 @@ public class CongThucCheBienServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       try {
           ArrayList<BaiViet> baiViets = BaiVietService.getInstance().getData();
-          ArrayList<DanhMuc> danhMucs = DanhMucService.getInstance().getData();
           ArrayList<BaiViet> baiVietNoiBat = BaiVietService.getInstance().getTop4BaiViet();
           request.setAttribute("baiViets",baiViets);
-          request.setAttribute("danhMucs",danhMucs);
           request.setAttribute("baiVietNoiBat",baiVietNoiBat);
       }catch (SQLException | ClassNotFoundException e)
       {

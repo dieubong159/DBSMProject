@@ -29,7 +29,7 @@ public class XemCTDonHangServlet extends HttpServlet {
         try {
             double tongTien = 0;
             dh= DonHangService.getInstance().getDSDonHang(idDonHang);
-            for (DonHang item : dh) {
+            for (DonHang_SanPham item : dh) {
                 tongTien += item.getGia();
             }
             request.setAttribute("tongTien", tongTien);

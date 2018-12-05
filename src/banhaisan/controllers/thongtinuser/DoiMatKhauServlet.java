@@ -53,13 +53,6 @@ public class DoiMatKhauServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            ArrayList<DanhMuc> danhMucs = DanhMucService.getInstance().getData();
-            request.setAttribute("danhMucs",danhMucs);
-        }catch (SQLException | ClassNotFoundException e)
-        {
-            e.printStackTrace();
-        }
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Profile_Password.jsp");
         dispatcher.forward(request,response);
     }
