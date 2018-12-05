@@ -168,7 +168,6 @@
                                     </div>
                                 </div>
                             </form>
-
                             <!-- END FORM-->
                         </div>
                     </div>

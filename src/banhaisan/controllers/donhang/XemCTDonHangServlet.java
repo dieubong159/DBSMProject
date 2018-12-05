@@ -27,9 +27,17 @@ public class XemCTDonHangServlet extends HttpServlet {
         }
         ArrayList<DonHang_SanPham> dh = null;
         try {
+            double tongTien = 0;
             dh= DonHangService.getInstance().getDSDonHang(idDonHang);
+            for (DonHang item : dh) {
+                tongTien += item.getGia();
+            }
+            request.setAttribute("tongTien", tongTien);
+
+            DonHang donHangs = DonHangService.getInstance().get(idDonHang);
             ArrayList<DanhMuc> danhMucs = DanhMucService.getInstance().getData();
             request.setAttribute("danhMucs",danhMucs);
+            request.setAttribute("donHangs",donHangs);
         }catch (SQLException | ClassNotFoundException e)
         {
             e.printStackTrace();
