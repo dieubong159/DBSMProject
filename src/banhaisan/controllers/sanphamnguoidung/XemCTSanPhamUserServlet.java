@@ -33,9 +33,7 @@ public class XemCTSanPhamUserServlet extends HttpServlet {
         try {
             sp= SanPhamService.getInstance().get(idSanPham);
             ArrayList<SanPham> sanPhamLQ = SanPhamService.getInstance().getDataCategoryIndex(sp.getMaDanhMuc());
-            ArrayList<BaiViet> baiViets= BaiVietService.getInstance().getData();
             request.setAttribute("sanPhamLQ",sanPhamLQ);
-            request.setAttribute("baiViets",baiViets);
         }catch (SQLException | ClassNotFoundException e)
         {
             e.printStackTrace();

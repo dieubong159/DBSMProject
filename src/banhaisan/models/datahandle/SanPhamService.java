@@ -208,5 +208,61 @@ public class SanPhamService extends ConnectDatabase implements Business<SanPham>
         closeConnection();
         return rowAffected;
     }
+    public ArrayList<SanPham> timkiemSanPham(String keyword) throws SQLException,ClassNotFoundException{
+        openConnection();
+        ArrayList<SanPham> sanPhams = new ArrayList<>();
+        String query = "select * from TimKiemSPTheo_Ten (?)";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setEscapeProcessing(true);
+        statement.setQueryTimeout(90);
+        statement.setString(1,keyword);
 
+        ResultSet resultSet = statement.executeQuery();
+        while(resultSet.next())
+        {
+            SanPham sanPham = new SanPham();
+            sanPham.setMaDanhMuc(resultSet.getString(1));
+            sanPham.setMaSP(resultSet.getString(2));
+            sanPham.setTenSP(resultSet.getString(3));
+            sanPham.setGiaSP(Double.parseDouble(resultSet.getString(4)));
+            sanPham.setPhanTramKhuyenMai(Float.parseFloat(resultSet.getString(5)));
+            sanPham.setXuatXu(resultSet.getString(6));
+            sanPham.setNgayNhap(resultSet.getDate(7));
+            sanPham.setUrlHinhAnh(resultSet.getString(8));
+
+            sanPhams.add(sanPham);
+        }
+        closeConnection();
+        return sanPhams;
+    }
+    public ArrayList<SanPham> locSanPham(Double max, String maDanhMuc) throws SQLException,ClassNotFoundException{
+        openConnection();
+        ArrayList<SanPham> sanPhams = new ArrayList<>();
+        String query = "select * from dbo.LocSanPhamTheoGia (?,?,?)";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setEscapeProcessing(true);
+        statement.setQueryTimeout(90);
+        statement.setDouble(1,0);
+        statement.setDouble(2,max);
+        statement.setString(3,maDanhMuc);
+
+
+        ResultSet resultSet = statement.executeQuery();
+        while(resultSet.next())
+        {
+            SanPham sanPham = new SanPham();
+            sanPham.setMaSP(resultSet.getString(1));
+            sanPham.setTenSP(resultSet.getString(2));
+            sanPham.setGiaSP(Double.parseDouble(resultSet.getString(3)));
+            sanPham.setPhanTramKhuyenMai(Float.parseFloat(resultSet.getString(4)));
+            sanPham.setXuatXu(resultSet.getString(5));
+            sanPham.setMaDanhMuc(resultSet.getString(6));
+            sanPham.setNgayNhap(resultSet.getDate(7));
+            sanPham.setUrlHinhAnh(resultSet.getString(8));
+
+            sanPhams.add(sanPham);
+        }
+        closeConnection();
+        return sanPhams;
+    }
 }

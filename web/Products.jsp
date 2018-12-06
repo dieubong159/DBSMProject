@@ -141,8 +141,8 @@
                         </div>
                         <div class="col-lg-5 col-md-6 search-right">
                             <form style="padding-top:6%" class="form-inline my-lg-0">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Bạn muốn tìm kiếm...">
-                                <button class="btn" type="submit">Search</button>
+                                <input name="product-search" id="product-search" class="form-control mr-sm-2" type="search" placeholder="Bạn muốn tìm kiếm...">
+                                <a href="" onclick="this.href='/TimKiem?search='+document.getElementById('product-search').value" class="btn">Search</a>
                             </form>
                         </div>
                         <div class="col-lg-4 col-md-3 right-side-cart">
@@ -159,7 +159,7 @@
                                     </li>
                                     <li style="position:relative" class="toyscart toyscart2 cart cart box_1">
                                         <form action="#" method="post" class="last">
-                                            <p style="display:inline-block"><strong><a href="#">GIỎ HÀNG</a></strong></p>
+                                            <p style="display:inline-block"><strong><a href="/ShoppingCart?action=checkout">GIỎ HÀNG</a></strong></p>
                                             <button class="top_toys_cart" type="submit" name="submit" value="">
                                                 <span class="fas fa-cart-arrow-down"></span>
                                             </button>
@@ -184,7 +184,7 @@
                                 <a href="/GioiThieu" class="nav-link">Giới thiệu</a>
                             </li>
                             <li class="nav-item dropdown active">
-                                <a class="nav-link dropdown-toggle" href="/ShoppingCart?action=checkout" id="navbarDropdown" role="button"
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Sản phẩm
                                 </a>
@@ -327,9 +327,12 @@
                     <!-- Price range -->
                     <div class="gap-element" style="display:block; height:auto; padding-top:30px"></div>
                     <div class="slidecontainer">
+                        <form method="post" action="/Products">
                         <h3 class="agileits-sear-head">LỌC GIÁ SẢN PHẨM</h3>
                         <input oninput="run()" type="range" min="1" max="${giaCaoNhat}" value="50" class="slider" id="myRange">
                         <p>Value: <input id="demo" value="" readonly style="border: none;background-color: #F9F9F9;"></p>
+                        <a type="submit" class="btn-danger" onclick="this.href='/Products?action=filter&max='+document.getElementById('myRange').value">LỌC</a>
+                        </form>
                     </div>
 
                     <!-- Price range -->
@@ -338,7 +341,7 @@
                     <div class="left-side">
                         <h3 class="agileits-sear-head">BÀI VIẾT NỔI BẬT</h3>
                         <ul>
-                            <c:forEach var="baiViet" items="${requestScope.baiViets}">
+                            <c:forEach var="baiViet" items="${sessionScope.baiVietNoiBat}">
                                 <li>
                                     <a href="/XemCTBaiViet?idBV=${baiViet.maBaiViet}">
                                         <img src="${baiViet.urlHinhAnh}" width="70px" height="70px">

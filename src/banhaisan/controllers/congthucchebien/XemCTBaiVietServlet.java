@@ -27,8 +27,6 @@ public class XemCTBaiVietServlet extends HttpServlet {
         BaiViet bv = null;
         try {
             bv = BaiVietService.getInstance().get(idBaiViet);
-            ArrayList<BaiViet> baiVietNoiBat = BaiVietService.getInstance().getTop4BaiViet();
-            request.setAttribute("baiVietNoiBat",baiVietNoiBat);
         }catch (SQLException | ClassNotFoundException e)
         {
             e.printStackTrace();

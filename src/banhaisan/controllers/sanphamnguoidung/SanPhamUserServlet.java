@@ -21,6 +21,9 @@ import java.util.ArrayList;
 @WebServlet(name = "SanPhamUserServlet", urlPatterns = {"/Products"})
 public class SanPhamUserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+        if(action.equals("checkout"))
+        {
         String idDanhMuc = request.getParameter("idDM");
         if(idDanhMuc==null)
         {
@@ -30,10 +33,8 @@ public class SanPhamUserServlet extends HttpServlet {
         ArrayList<SanPham> sanPhams = null;
         try {
             sanPhams = SanPhamService.getInstance().getDataCategory(idDanhMuc);
-            ArrayList<BaiViet> baiViets = BaiVietService.getInstance().getData();
             Double giaCaoNhat = SanPhamService.getInstance().layGiaCaoNhat(idDanhMuc);
             request.setAttribute("giaCaoNhat",giaCaoNhat);
-            request.setAttribute("baiViets",baiViets);
         }catch (SQLException | ClassNotFoundException e)
         {
             e.printStackTrace();
@@ -48,5 +49,31 @@ public class SanPhamUserServlet extends HttpServlet {
         session.setAttribute("maDanhMuc",idDanhMuc);
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Products.jsp");
         dispatcher.forward(request,response);
+        }
+        else {
+            Double maxGia = Double.parseDouble(request.getParameter("max"));
+            HttpSession session = request.getSession();
+            String maDanhMuc = session.getAttribute("maDanhMuc").toString();
+            if (maxGia == null)
+            {
+                response.setStatus(400);
+                return;
+            }
+            ArrayList<SanPham> sanPhams = null;
+            try {
+                sanPhams = SanPhamService.getInstance().locSanPham(maxGia,maDanhMuc);
+            }catch (SQLException | ClassNotFoundException e)
+            {
+                e.printStackTrace();
+            }
+            if(sanPhams==null)
+            {
+                response.setStatus(400);
+                return;
+            }
+            request.setAttribute("sanPhams",sanPhams);
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Products.jsp");
+            dispatcher.forward(request,response);
+        }
     }
 }

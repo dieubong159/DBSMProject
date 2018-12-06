@@ -1,30 +1,32 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!--
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
--->
+<!-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> -->
+<!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> -->
 <!DOCTYPE html>
 <html lang="vi">
 
 <head>
-    <title>Tài khoản của tôi - Tiêu Dân Seafood</title>
+    <title>Cá - Tiêu Dân Seafood</title>
     <!--meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!--//meta tags ends here-->
+    <link href="resources/css/jquery-ui1.css" rel="stylesheet" type="text/css" media="all">
+    <!--booststrap-->
     <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
     <!--  -->
     <!--//booststrap end-->
     <!-- font-awesome icons -->
     <link href="resources/css/fontawesome-all.min.css" rel="stylesheet" type="text/css" media="all">
     <!-- //font-awesome icons -->
+    <!-- For Clients slider -->
+    <link rel="stylesheet" href="resources/css/flexslider.css" type="text/css" media="all" />
+    <!--flexs slider-->
+    <link href="resources/css/JiSlider.css" rel="stylesheet">
     <!--Shoping cart-->
-    <link rel="stylesheet" href="resources/css/shop.css" type="text/css"/>
+    <link rel="stylesheet" href="resources/css/shop.css" type="text/css" />
     <!--//Shoping cart-->
     <!--stylesheets-->
     <link href="resources/css/style.css" rel='stylesheet' type='text/css' media="all">
-    <link rel="stylesheet" href="resources/css/account.css" type="text/css" media="all">
     <!--//stylesheets-->
     <link href="//fonts.googleapis.com/css?family=Sunflower:500,700" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
@@ -38,6 +40,19 @@
     <!--bootstrap working-->
     <script src="resources/js/bootstrap.min.js"></script>
     <!-- //bootstrap working-->
+    <script>
+        toys.render();
+
+        toys.cart.on('toys_checkout', function (evt) {
+            var items, len, i;
+
+            if (this.subtotal() > 0) {
+                items = this.items();
+
+                for (i = 0, len = items.length; i < len; i++) { }
+            }
+        });
+    </script>
     <!-- //cart-js -->
     <!-- start-smoth-scrolling -->
     <script src="resources/js/move-top.js"></script>
@@ -70,9 +85,15 @@
         });
     </script>
     <!-- //here ends scrolling icon -->
+    <script>
+        function run(){
+            document.getElementById("demo").value= document.getElementById("myRange").value;
+        }
+    </script>
+    <!-- Price Filtering -->
 </head>
 
-<body class="account">
+<body>
 <header>
     <div class="header-outs" id="home">
         <div class="header-bar">
@@ -113,16 +134,15 @@
                     <div style="width:70%" class="col-lg-3 col-md-3 logo-head">
                         <li>
                             <a class="navbar-brand" href="/Index" style="margin-left: 31%">
-                                <div class="logo"><img src="resources/images/CrabICO.png" alt=""></div>
+                                <div class="logo"><img src="resources/images/CrabICO.png" alt=""> </div>
                             </a>
-                            <h4 style="display:inline-block"><strong><a href="/Index">Tiêu Dân Seafood </a></strong>
-                            </h4>
+                            <h4 style="display:inline-block"><strong><a href="/Index">Tiêu Dân Seafood </a></strong></h4>
                         </li>
                     </div>
                     <div class="col-lg-5 col-md-6 search-right">
                         <form style="padding-top:6%" class="form-inline my-lg-0">
                             <input name="product-search" id="product-search" class="form-control mr-sm-2" type="search" placeholder="Bạn muốn tìm kiếm...">
-                            <a href="" onclick="this.href='/TimKiem?search='+document.getElementById('product-search').value" class="btn">Search</a>
+                            <a href="" onclick="this.href='/TimKiem?search='+document.getElementById('product-search').value" class="btn" style="background: ">Search</a>
                         </form>
                     </div>
                     <div class="col-lg-4 col-md-3 right-side-cart">
@@ -134,8 +154,7 @@
                                     <p>Tổng đài miễn phí</p>
                                 </li>
                                 <li style="padding-right: 15pt">
-                                    <p style="padding-bottom: 15pt"><strong><a href="/DSBaiViet">CÔNG THỨC</a></strong>
-                                    </p>
+                                    <p style="padding-bottom: 15pt"><strong><a href="/DSBaiViet">CÔNG THỨC</a></strong></p>
                                     <p>Đảm đang - Khéo léo</p>
                                 </li>
                                 <li style="position:relative" class="toyscart toyscart2 cart cart box_1">
@@ -152,28 +171,26 @@
                 </div>
             </div>
             <nav class="navbar navbar-expand-lg navbar-light">
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent"
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                     <ul class="navbar-nav ">
                         <li class="nav-item">
-                            <a class="nav-link" href="/Index">Trang chủ <span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="/Index">Trang chủ</a>
                         </li>
                         <li class="nav-item">
                             <a href="/GioiThieu" class="nav-link">Giới thiệu</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="/ShoppingCart?action=checkout" id="navbarDropdown" role="button"
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Sản phẩm
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <c:forEach var="danhMuc" items="${sessionScope.danhMucs}">
-                                    <a class="nav-link"
-                                       href="/Products?idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
+                                    <a class="nav-link" href="/Products?idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
                                 </c:forEach>
                             </div>
                         </li>
@@ -193,145 +210,193 @@
 <div class="inner_page-banner one-img">
 </div>
 <!-- banner -->
-<ul class="breadcrumb">
-    <div class="container">
-        <li><a href="/Index">Trang chủ</a></li>
-        <li>Thông tin tài khoản</li>
-    </div>
-</ul>
-
-<div class="gap-element" style="display:block; height:auto; padding-top:15px"></div>
-<div class="wrap">
-    <div class="container">
-        <div class="row">
-            <div class="side-bar col-md-3">
-                <div class="menu-left">
-                    <div class="profiles">
-                        <p class="image"><img src="resources/images/userICO.png" alt="" width="45" height="45"></p>
-                        <p class="name" style="text-align: left">Tài khoản của</p>
-                        <strong>
-                            <h6>${currentSessionUser.hoTen}</h6>
-                        </strong>
-                    </div>
-                    <ul class="list-group margin-bottom-25 sidebar-menu">
-                        <li class="list-group-item clearfix"><a href="/Profile"><i class="fa fa-angle-right"></i>
-                            Thông
-                            tin tài khoản</a></li>
-                        <li class="list-group-item clearfix"><a href="/DoiMatKhau"><i class="fa fa-angle-right"></i>
-                            Đổi mật
-                            khẩu</a></li>
-                        <li class="list-group-item clearfix"><a href="Profile_BillManagement.jsp"><i
-                                class="fa fa-angle-right"></i>
-                            Quản lý
-                            đơn
-                            hàng</a></li>
-                        <li class="list-group-item clearfix"><a href="#"><i class="fa fa-angle-right"></i> Nhận xét
-                            sản
-                            phẩm đã mua</a></li>
-                        <li class="list-group-item clearfix"><a href="#"><i class="fa fa-angle-right"></i> Nhận xét
-                            của
-                            tôi</a></li>
-                        <li class="list-group-item clearfix"><a href="/LogoutAdmin"><i class="fa fa-angle-right"></i>
-                            Thoát
-                            tài
-                            khoản</a></li>
-                    </ul>
+<!-- Modal 1-->
+<div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="LoginModalLabel">Đăng nhập</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="register-form">
+                    <form action="/Login" onsubmit="return checkForm(this)">
+                        <div class="fields-grid">
+                            <div class="styled-input">
+                                <input type="email" placeholder="Email của bạn" name="email" required="">
+                            </div>
+                            <div class="styled-input">
+                                <input type="password" placeholder="Nhập password" name="password" required="">
+                            </div>
+                            <button type="submit" class="btn subscrib-btnn">Đăng nhập</button>
+                        </div>
+                    </form>
+                    <label>
+                        <input type="checkbox" checked="checked" name="remember"> Remember me
+                    </label>
                 </div>
             </div>
-            <div class="col-md-9">
-                <!-- <div class="alert alert-success">Thông tin tài khoản của bạn đã được cập nhật.</div> -->
-                <h1 class="have-margin">Thông tin tài khoản</h1>
-                <div class="account-profile">
-                    <form class="content" method="post" action="" id="edit-account">
-
-                        <div class="form-group">
-                            <label class="control-label" for="full_name">Họ tên </label>
-                            <div class="input-wrap">
-                                <input type="text" name="txt-hoten" class="form-control" id="full_name"
-                                       value="${nguoiDung.hoTen}"
-                                       placeholder="Họ tên">
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label" for="phone_number">Số điện thoại</label>
-                            <div class="input-wrap">
-                                <input type="text" readonly="" value="${nguoiDung.sdt}" class="form-control"
-                                       name="txt-phone"
-                                       id="phone_number" placeholder="Số điện thoại">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="control-label" for="form_email">Email</label>
-                            <div class="input-wrap">
-                                <input type="email" readonly="" value="${nguoiDung.email}" class="form-control"
-                                       name="txt-email" id="form_email" placeholder="Email">
-                            </div>
-                        </div>
-
-                        <div class="form-group gender-select-wrap" id="register_name">
-                            <label class="control-label" for="gender">Giới tính</label>
-                            <div class="input-wrap">
-                                <div class="row" id="gender">
-                                    <c:choose>
-                                        <c:when test="${nguoiDung.gioiTinh==true}">
-                                            <label class="radio-inline">
-                                                <input type="radio" name="gender" value="1" id="gender_male"
-                                                       class="gender"
-                                                       checked="">Nam
-                                            </label>
-                                            <label class="radio-inline">
-                                                <input type="radio" name="gender" value="0" id="gender_female"
-                                                       class="gender">Nữ
-                                            </label>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <label class="radio-inline">
-                                                <input type="radio" name="gender" value="1" id="gender_male"
-                                                       class="gender"
-                                                >Nam
-                                            </label>
-                                            <label class="radio-inline">
-                                                <input type="radio" name="gender" value="0" id="gender_female"
-                                                       class="gender" checked="">Nữ
-                                            </label>
-                                        </c:otherwise>
-                                    </c:choose>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="date01">Ngày sinh</label>
-                            <div class="input-wrap">
-                                <input name="customer_birthdate" type="date" class="input-xlarge datepicker" id="date01"
-                                       value="${nguoiDung.ngaySinh}"
-                                       style="width:120px !important;">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="input-wrap margin">
-                                <input type="hidden" name="txtMaNguoiDung" value="${nguoiDung.maNguoiDung}">
-                                <input type="hidden" name="txt-dia-chi" value="${nguoiDung.diaChi}">
-                                <input type="hidden" name="txt-mat-khau" value="${nguoiDung.matKhau}">
-                                <button type="submit" class="btn btn-info btn-block btn-update">Cập nhật</button>
-                            </div>
-                        </div>
-
-                    </form>
-                </div>
+            <div class="container" style="padding: 11px; background-color:beige">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <span style="padding-top: 5px; float: right">Forgot <a data-toggle="modal" data-target="#ForgetPasswordModal">password?</a></span>
             </div>
         </div>
     </div>
 </div>
-<script>
-    $(document).ready(function () {
-        $("form").submit(function () {
-            alert("Thông tin tài khoản của bạn đã được cập nhật!");
-        });
-    });
-</script>
+
+<div class="modal fade" id="ForgetPasswordModal" role="dialog" aria-labelledby="ForgetPasswordModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <form action="#" method="post">
+                <div class="modal-header" style="display: block;">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title" id="ForgetPasswordModalLabel">Quên mật khẩu?</h2>
+                    <span>Vui lòng cung cấp email hoặc số điện thoại đăng nhập để lấy lại mật khẩu.</span>
+                </div>
+                <div class="modal-body">
+                    <input type="email" name="email" id="email-forgot" class="form-control" value="" placeholder="Nhập email hoặc số điện thoại"
+                           data-bv-field="email" required>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-secondary">Gửi</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- //Modal 1-->
+<ul class="breadcrumb">
+    <div class="container">
+        <li><a href="/Index">Trang chủ</a></li>
+        <li>KẾT QUẢ TÌM KIẾM CHO TỪ KHÓA "${keyword}"</li>
+        <div class="pull-right">
+            <label>Sắp xếp theo </label>
+            <select>
+                <option value="price-ascending">Giá tăng dần</option>
+                <option value="price-descending">Giá giảm dần</option>
+                <option value="created-descending">Mới nhất</option>
+            </select>
+        </div>
+    </div>
+</ul>
+
+<div class="gap-element" style="display:block; height:auto; padding-top:15px"></div>
+
+<main class="page-content">
+    <div class="container">
+        <div class="row">
+            <div class="side-bar col-md-3">
+                <div class="left-side">
+                    <h3 class="agileits-sear-head">DANH MỤC SẢN PHẨM</h3>
+                    <ul>
+                        <li>
+                            <a href="/Products?idDM=ca">
+                                <img src="resources/images/FISHICO.png" class="category">
+                                <span class="span">Cá</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Products?idDM=tom">
+                                <img src="resources/images/SHRIMPICO.png" class="category">
+                                <span class="span">Tôm</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Products?idDM=muc">
+                                <img src="resources/images/CuttleFishICO.png" class="category">
+                                <span class="span">Mực</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Products?idDM=cua">
+                                <img src="resources/images/CrabICO.gif" class="category">
+                                <span class="span">Cua ghẹ</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/Products?idDM=ngao-so-oc">
+                                <img src="resources/images/clamICO.png" class="category">
+                                <span class="span">Ngao - Sò - Ốc</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Price range -->
+                <div class="gap-element" style="display:block; height:auto; padding-top:30px"></div>
+                <div class="slidecontainer">
+                    <h3 class="agileits-sear-head">LỌC GIÁ SẢN PHẨM</h3>
+                    <input oninput="run()" type="range" min="1" max="${giaCaoNhat}" value="50" class="slider" id="myRange">
+                    <p>Value: <input id="demo" value="" readonly style="border: none;background-color: #F9F9F9;"></p>
+                </div>
+
+                <!-- Price range -->
+                <!-- Bai Viet Noi Bat -->
+                <div class="gap-element" style="display:block; height:auto; padding-top:30px"></div>
+                <div class="left-side">
+                    <h3 class="agileits-sear-head">BÀI VIẾT NỔI BẬT</h3>
+                    <ul>
+                        <c:forEach var="baiViet" items="${sessionScope.baiVietNoiBat}">
+                            <li>
+                                <a href="/XemCTBaiViet?idBV=${baiViet.maBaiViet}">
+                                    <img src="${baiViet.urlHinhAnh}" width="70px" height="70px">
+                                    <p>${baiViet.tieuDe}</p>
+                                </a>
+                            </li>
+                        </c:forEach>
+                    </ul>
+                </div>
+                <!-- Bai Viet Noi Bat -->
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+                    <c:forEach var="sanPhams" items="${requestScope.sanPhams}">
+                        <div class="col-lg-20 col-md-4 col-sm-4 col-xs-6">
+                            <div class="product-item">
+                                <div class="image" style="height:auto">
+                                    <a href=/CTSanPham?idSP=${sanPhams.maSP}> <img src="${sanPhams.urlHinhAnh}"></a></div>
+                                <div class="name">
+                                    <a href="/CTSanPham?idSP=${sanPhams.maSP}">${sanPhams.tenSP}</a>
+                                </div>
+                                <div class="price">
+                                    <em>
+                                            ${sanPhams.giaSP}
+                                        <span class="variant_title">/kg</span>
+                                    </em>
+                                </div>
+                                <div class="addcart">
+                                    <a class="addtocart" href="/ShoppingCart?idSP=${sanPhams.maSP}&action=order">
+                                        THÊM VÀO GIỎ
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </c:forEach>
+
+                    <hr>
+                    <%--<!-- <div class="row"> -->--%>
+                    <%--<div class="col-md-4 col-sm-4 items-info">Items 1 to 9 of 10 total</div>--%>
+                    <%--<div class="col-md-8 col-sm-8">--%>
+                    <%--<div class="pagination pull-right">--%>
+                    <%--<a href="#">&laquo;</a>--%>
+                    <%--<a class="active" href="#">1</a>--%>
+                    <%--<a href="#">2</a>--%>
+                    <%--<a href="#">3</a>--%>
+                    <%--<a href="#">4</a>--%>
+                    <%--<a href="#">5</a>--%>
+                    <%--<a href="#">6</a>--%>
+                    <%--<a href="#">&raquo;</a>--%>
+                    <%--</div>--%>
+                    <%--</div>--%>
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
 
 <!-- footer -->
 <div class="gap-element" style="display:block; height:auto; padding-top:15px"></div>

@@ -167,8 +167,8 @@
                         </div>
                         <div class="col-lg-5 col-md-6 search-right">
                             <form style="padding-top:6%" class="form-inline my-lg-0">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Bạn muốn tìm kiếm...">
-                                <button class="btn" type="submit">Search</button>
+                                <input name="product-search" id="product-search" class="form-control mr-sm-2" type="search" placeholder="Bạn muốn tìm kiếm...">
+                                <a href="" onclick="this.href='/TimKiem?search='+document.getElementById('product-search').value" class="btn" style="background: ">Search</a>
                             </form>
                         </div>
                         <div class="col-lg-4 col-md-3 right-side-cart">
@@ -297,7 +297,7 @@
 
     <ul class="breadcrumb">
         <div class="container">
-            <li><a href="TrangChu.jsp">Trang chủ</a></li>
+            <li><a href="/Index">Trang chủ</a></li>
             <li>${sanPham.maDanhMuc}</li>
         </div>
     </ul>
@@ -333,7 +333,7 @@
                     <div class="left-side">
                         <h3 class="agileits-sear-head">BÀI VIẾT NỔI BẬT</h3>
                         <ul>
-                            <c:forEach var="baiViet" items="${requestScope.baiViets}">
+                            <c:forEach var="baiViet" items="${requestScope.baiVietNoiBat}">
                             <li>
                                 <a href="/XemCTBaiViet?iDBV=${baiViet.maBaiViet}">
                                     <img src="${baiViet.urlHinhAnh}" width="70px" height="70px">
