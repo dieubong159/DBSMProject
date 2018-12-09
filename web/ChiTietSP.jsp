@@ -168,7 +168,7 @@
                         <div class="col-lg-5 col-md-6 search-right">
                             <form style="padding-top:6%" class="form-inline my-lg-0">
                                 <input name="product-search" id="product-search" class="form-control mr-sm-2" type="search" placeholder="Bạn muốn tìm kiếm...">
-                                <a href="" onclick="this.href='/TimKiem?search='+document.getElementById('product-search').value" class="btn" style="background: ">Search</a>
+                                <a href="" onclick="this.href='/TimKiem?search='+document.getElementById('product-search').value" class="btn">Search</a>
                             </form>
                         </div>
                         <div class="col-lg-4 col-md-3 right-side-cart">
@@ -333,7 +333,7 @@
                     <div class="left-side">
                         <h3 class="agileits-sear-head">BÀI VIẾT NỔI BẬT</h3>
                         <ul>
-                            <c:forEach var="baiViet" items="${requestScope.baiVietNoiBat}">
+                            <c:forEach var="baiViet" items="${sessionScope.baiVietNoiBat}">
                             <li>
                                 <a href="/XemCTBaiViet?iDBV=${baiViet.maBaiViet}">
                                     <img src="${baiViet.urlHinhAnh}" width="70px" height="70px">
@@ -386,124 +386,83 @@
                     <div id="comment" class="tabcontent">
                         <div class="comment">
                             <h3>Comments</h3>
+                            <c:forEach var="danhGia" items="${requestScope.danhGias}">
                             <a href="#" class="pull-left">
                                 <img alt="" src="resources/images/Oyster/hausua01.png">
                             </a>
                             <div class="comment-body">
-                                <h4 class="comment-heading">Anh Hàu
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
+                                <h4 class="comment-heading">${danhGia.tenNguoiDung}
+                                    <c:forEach begin="1" end="${danhGia.danhGia}">
+                                        <span class="fa fa-star checked"></span>
+                                    </c:forEach>
+                                    <c:forEach begin="1" end="${5 - danhGia.danhGia}">
+                                        <span class="fa fa-star"></span>
+                                    </c:forEach>
                                 </h4>
                                 <p>
-                                    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus
-                                    commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-                                    Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+                                    ${danhGia.binhLuan}
                                 </p>
                                 <hr>
                                 <!-- Nested media object -->
                             </div>
+                            </c:forEach>
                         </div>
-                        <div class="comment">
-                            <a href="#" class="pull-left">
-                                <img alt="" src="resources/images/Oyster/hausua01.png">
-                            </a>
-                            <div class="comment-body">
-                                <h4 class="comment-heading">comment heading
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    </span>
-                                </h4>
-                                <p>
-                                    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac
-                                    cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
-                                    sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed
-                                    odio dui.
-                                </p>
-                            </div>
-                        </div>
-                        <!--end comment-->
-                        <hr>
-                        <div class="comment">
-                            <a href="#" class="pull-left">
-                                <img alt="" src="resources/images/Oyster/hausua01.png">
-                            </a>
-                            <div class="comment-body">
-                                <h4 class="comment-heading">comment heading
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                </h4>
-                                <p>
-                                    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac
-                                    cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
-                                    sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed
-                                    odio dui.
-                                </p>
-                            </div>
-                        </div>
-                        <!--end comment-->
-                        <div class="comment">
-                            <a href="#" class="pull-left">
-                                <img alt="" src="resources/images/Shrmip/tôm-sú01.jpg">
-                            </a>
-                            <div class="comment-body">
-                                <h4 class="comment-heading">Anh tôm sú
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                </h4>
-                                <p>
-                                    Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac
-                                    cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit
-                                    amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-                                </p>
-                            </div>
-                        </div>
-                        <hr>
+                        <c:choose>
+                            <c:when test="${currentSessionUser==null}">
+                                <label>Xin vui lòng <a data-toggle="modal" href="#LoginModal">Đăng nhập</a> để đánh giá !</label>
+                            </c:when>
+                            <c:otherwise>
                         <div class="post-comment">
                             <h3>Leave a Comment</h3>
-                            <form role="form" action="#">
-                                <div class="form-group">
-                                    <label class="control-label">Name <span class="required">
-                                            * </span>
-                                    </label>
-                                    <input type="text" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label">Email <span class="required">
-                                            * </span>
-                                    </label>
-                                    <input type="text" class="form-control">
-                                </div>
+                            <form role="form" action="" method="post">
                                 <div class="form-group">
                                     <label class="control-label">Đánh giá <span class="required">
                                             * </span>
                                     </label>
-                                        <div class="stars">
-                                            <div class="rating">
-                                                <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-                                            </div>
-                                        </div>
+                                    <form class="rating">
+                                        <label>
+                                            <input type="radio" name="stars" value="1" />
+                                            <span class="icon">★</span>
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="stars" value="2" />
+                                            <span class="icon">★</span>
+                                            <span class="icon">★</span>
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="stars" value="3" />
+                                            <span class="icon">★</span>
+                                            <span class="icon">★</span>
+                                            <span class="icon">★</span>
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="stars" value="4" />
+                                            <span class="icon">★</span>
+                                            <span class="icon">★</span>
+                                            <span class="icon">★</span>
+                                            <span class="icon">★</span>
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="stars" value="5" />
+                                            <span class="icon">★</span>
+                                            <span class="icon">★</span>
+                                            <span class="icon">★</span>
+                                            <span class="icon">★</span>
+                                            <span class="icon">★</span>
+                                        </label>
+                                    </form>
                                         <div class="form-group">
                                             <label class="control-label">Message <span class="required">
                                                     * </span>
                                             </label>
-                                            <textarea class="col-md-10 form-control" rows="8"></textarea>
+                                            <textarea class="col-md-10 form-control" rows="8" name="txtBinhLuan"></textarea>
                                         </div>
-                                        <button class="margin-top-20 btn blue" type="submit">Post a Comment</button>
+                                        <input class="margin-top-20 btn blue" type="submit" value="Post a Comment">
                                 </div>
                             </form>
                         </div>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                 </div>
             </div>
@@ -639,6 +598,11 @@
         <!-- Footer Links -->
     </footer>
     <!-- footer -->
+    <script>
+    $(':radio').change(function() {
+    console.log('New star rating: ' + this.value);
+    });
+    </script>
 </body>
 
 </html>

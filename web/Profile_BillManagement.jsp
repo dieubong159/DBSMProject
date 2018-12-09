@@ -116,24 +116,12 @@
                                 <span class="fas fa-envelope"></span>
                                 <p><a href="mailto:info@example.com">tieudanseafood@gmail.com</a></p>
                             </li>
-                            <c:choose>
-                                <c:when test="${currentSessionUser == null}">
-                                    <li class="float-md-right">
-                                        <span class="fas fa-user"></span>
-                                        <p><a data-toggle="modal" href="#LoginModal">Đăng nhập</a></p>
-                                        <p>|</p>
-                                        <p><a href="/DangKyThanhVien">Đăng ký</a></p>
-                                    </li>
-                                </c:when>
-                                <c:otherwise>
                                     <li class="float-md-right">
                                         <span class="fas fa-user"></span>
                                         <p>Chào <a href="/Profile">${currentSessionUser.hoTen}</a></p>
                                         <p>|</p>
-                                        <p><a href="/Logout">Thoát</a></p>
+                                        <p><a href="/LogoutAdmin">Thoát</a></p>
                                     </li>
-                                </c:otherwise>
-                            </c:choose>
                         </ul>
                     </div>
                 </div>
@@ -148,10 +136,10 @@
                             </li>
                         </div>
                         <div class="col-lg-5 col-md-6 search-right">
-                            <form style="padding-top:6%" class="form-inline my-lg-0">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Bạn muốn tìm kiếm...">
-                                <button class="btn" type="submit">Search</button>
-                            </form>
+                                <form style="padding-top:6%" class="form-inline my-lg-0">
+                                    <input name="product-search" id="product-search" class="form-control mr-sm-2" type="search" placeholder="Bạn muốn tìm kiếm...">
+                                    <a href="" onclick="this.href='/TimKiem?search='+document.getElementById('product-search').value" class="btn">Search</a>
+                                </form>
                         </div>
                         <div class="col-lg-4 col-md-3 right-side-cart">
                             <div style="margin-top:2%" class="cart-icons">
@@ -169,7 +157,7 @@
                                         <form action="#" method="post" class="last">
                                             <input type="hidden" name="cmd" value="_cart">
                                             <input type="hidden" name="display" value="1">
-                                            <p style="display:inline-block"><strong><a href="/ShoppingCart">GIỎ HÀNG</a></strong></p>
+                                            <p style="display:inline-block"><strong><a href="/ShoppingCart?action=checkout">GIỎ HÀNG</a></strong></p>
                                             <button class="top_toys_cart" type="submit" name="submit" value="">
                                                 <span class="fas fa-cart-arrow-down"></span>
                                             </button>
@@ -250,7 +238,7 @@
                             <li class="list-group-item clearfix"><a href="/DoiMatKhau"><i class="fa fa-angle-right"></i>
                                     Đổi mật
                                     khẩu</a></li>
-                            <li class="list-group-item clearfix"><a href="#"><i class="fa fa-angle-right"></i>
+                            <li class="list-group-item clearfix"><a href="/QuanLyDonHangCaNhan"><i class="fa fa-angle-right"></i>
                                     Quản lý
                                     đơn
                                     hàng</a></li>
@@ -271,6 +259,11 @@
                     <!-- <div class="alert alert-success">Thông tin tài khoản của bạn đã được cập nhật.</div> -->
                     <h1 class="have-margin">Quản lý đơn hàng</h1>
                     <div class="dashboard-order have-margin">
+                        <c:choose>
+                            <c:when test="${requestScope.DonHangCaNhan == null}">
+                                <p>Bạn chưa có đơn hàng nào cả <!doctype html></p>
+                            </c:when>
+                            <c:otherwise>
                         <table class="table-responsive-2 list">
                             <thead>
                                 <tr>
@@ -288,138 +281,36 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            <c:forEach var="donHangCaNhan" items="${requestScope.DonHangCaNhan}">
                                 <tr>
-                                    <td><a href="#">390412659</a></td>
-                                    <td>16/10/2018</td>
-                                    <td>Cua Cà Mau</td>
-                                    <td>1.390.000&nbsp;₫</td>
+                                    <td>${donHangCaNhan.maDonHang}</td>
+                                    <td>${donHangCaNhan.ngayDatHang}</td>
+                                    <c:if test="${donHangCaNhan.soLuong == 1}">
+                                    <td>${donHangCaNhan.tenSP}</td>
+                                    </c:if>
+                                    <c:if test="${donHangCaNhan.soLuong > 1}">
+                                        <td>${donHangCaNhan.tenSP} và ${donHangCaNhan.soLuong} sản phẩm khác...</td>
+                                    </c:if>
+                                    <td>${donHangCaNhan.tongTien}&nbsp;₫</td>
                                     <!--                                <td><span class="color--->
                                     <!--">-->
                                     <!--</span></td>-->
                                     <td>
+                                        <c:if test="${donHangCaNhan.tinhTrang == false}">
                                         <span class="order-status">
-                                            Giao hàng thành công </span>
+                                            Chưa xác nhận </span>
+                                    </c:if>
+                                        <c:if test="${donHangCaNhan.tinhTrang == true}">
+                                        <span class="order-status">
+                                            Đã xác nhận </span>
+                                        </c:if>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td><a href="#">609717465</a></td>
-                                    <td>14/10/2018</td>
-                                    <td>Cá mú nghệ</td>
-                                    <td>180.520&nbsp;₫</td>
-                                    <!--                                <td><span class="color--->
-                                    <!--">-->
-                                    <!--</span></td>-->
-                                    <td>
-                                        <span class="order-status">
-                                            Giao hàng thành công </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">790273678</a></td>
-                                    <td>24/08/2018</td>
-                                    <td>Tôm càng xanh</td>
-                                    <td>59.662&nbsp;₫</td>
-                                    <!--                                <td><span class="color--->
-                                    <!--">-->
-                                    <!--</span></td>-->
-                                    <td>
-                                        <span class="order-status">
-                                            Giao hàng thành công </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">442055082</a></td>
-                                    <td>24/08/2018</td>
-                                    <td>Tôm hùm Alaska</td>
-                                    <td>126.718&nbsp;₫</td>
-                                    <!--                                <td><span class="color--->
-                                    <!--">-->
-                                    <!--</span></td>-->
-                                    <td>
-                                        <span class="order-status">
-                                            Giao hàng thành công </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">395372680</a></td>
-                                    <td>24/05/2018</td>
-                                    <td>Tôm sú</td>
-                                    <td>95.000&nbsp;₫</td>
-                                    <!--                                <td><span class="color--->
-                                    <!--">-->
-                                    <!--</span></td>-->
-                                    <td>
-                                        <span class="order-status">
-                                            Giao hàng thành công </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">596878797</a></td>
-                                    <td>19/04/2018</td>
-                                    <td>Cá chim</td>
-                                    <td>64.000&nbsp;₫</td>
-                                    <!--                                <td><span class="color--->
-                                    <!--">-->
-                                    <!--</span></td>-->
-                                    <td>
-                                        <span class="order-status">
-                                            Giao hàng thành công </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">474416233</a></td>
-                                    <td>03/03/2018</td>
-                                    <td>Cua lột</td>
-                                    <td>120.690&nbsp;₫</td>
-                                    <!--                                <td><span class="color--->
-                                    <!--">-->
-                                    <!--</span></td>-->
-                                    <td>
-                                        <span class="order-status">
-                                            Giao hàng thành công </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">862718600</a></td>
-                                    <td>03/03/2018</td>
-                                    <td>Cua gạch son</td>
-                                    <td>129.310&nbsp;₫</td>
-                                    <!--                                <td><span class="color--->
-                                    <!--">-->
-                                    <!--</span></td>-->
-                                    <td>
-                                        <span class="order-status">
-                                            Giao hàng thành công </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">314342657</a></td>
-                                    <td>08/02/2018</td>
-                                    <td>Ốc móng tay</td>
-                                    <td>139.000&nbsp;₫</td>
-                                    <!--                                <td><span class="color--->
-                                    <!--">-->
-                                    <!--</span></td>-->
-                                    <td>
-                                        <span class="order-status">
-                                            Đã hủy </span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#">396397010</a></td>
-                                    <td>28/01/2018</td>
-                                    <td>Ốc môi đỏ</td>
-                                    <td>194.000&nbsp;₫</td>
-                                    <!--                                <td><span class="color--->
-                                    <!--">-->
-                                    <!--</span></td>-->
-                                    <td>
-                                        <span class="order-status">
-                                            Giao hàng thành công </span>
-                                    </td>
-                                </tr>
+                            </c:forEach>
                             </tbody>
                         </table>
+                            </c:otherwise>
+                        </c:choose>
                         <div class="col-md-8 col-sm-8">
                             <div class="pagination pull-right">
                                 <a href="#">«</a>
