@@ -220,7 +220,7 @@
                         <li class="list-group-item clearfix"><a href="/DoiMatKhau"><i class="fa fa-angle-right"></i>
                             Đổi mật
                             khẩu</a></li>
-                        <li class="list-group-item clearfix"><a href="Profile_BillManagement.jsp"><i
+                        <li class="list-group-item clearfix"><a href="/QuanLyDonHangCaNhan"><i
                                 class="fa fa-angle-right"></i>
                             Quản lý
                             đơn

@@ -128,7 +128,7 @@
                         <div class="col-lg-5 col-md-6 search-right">
                             <form style="padding-top:6%" class="form-inline my-lg-0">
                                 <input name="product-search" id="product-search" class="form-control mr-sm-2" type="search" placeholder="Bạn muốn tìm kiếm...">
-                                <a href="" onclick="this.href='/TimKiem?search='+document.getElementById('product-search').value" class="btn" style="background: ">Search</a>
+                                <a href="" onclick="this.href='/TimKiem?search='+document.getElementById('product-search').value" class="btn">Search</a>
                             </form>
                         </div>
                         <div class="col-lg-4 col-md-3 right-side-cart">
@@ -223,7 +223,7 @@
                             <li class="list-group-item clearfix"><a href="/DoiMatKhau"><i class="fa fa-angle-right"></i>
                                     Đổi mật
                                     khẩu</a></li>
-                            <li class="list-group-item clearfix"><a href="Profile_BillManagement.jsp"><i class="fa fa-angle-right"></i>
+                            <li class="list-group-item clearfix"><a href="/QuanLyDonHangCaNhan"><i class="fa fa-angle-right"></i>
                                     Quản lý
                                     đơn
                                     hàng</a></li>

@@ -2,6 +2,7 @@ package banhaisan.models.datahandle;
 
 import banhaisan.models.datamodels.DonHang;
 import banhaisan.models.datamodels.DonHang_SanPham;
+import banhaisan.models.datamodels.NguoiDung;
 import banhaisan.models.datamodels.SanPham_GioHang;
 
 import java.sql.PreparedStatement;
@@ -177,5 +178,30 @@ public class DonHangService extends ConnectDatabase implements Business<DonHang>
     public int modify(DonHang model) throws SQLException, ClassNotFoundException {
         return 0;
     }
+    public ArrayList<DonHang> LayDanhSachDonHangCaNhan (String maNguoiDung) throws SQLException, ClassNotFoundException{
+        openConnection();
+        ArrayList<DonHang> donHangs = new ArrayList<>();
+        String query = "exec LayDanhSachDonHangCaNhan ?";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setQueryTimeout(90);
+        statement.setEscapeProcessing(true);
+        statement.setString(1,maNguoiDung);
 
+
+        ResultSet resultSet = statement.executeQuery();
+        if(resultSet.next())
+        {
+            DonHang donHang = new DonHang();
+            donHang.setMaDonHang(resultSet.getString(1));
+            donHang.setNgayDatHang(resultSet.getDate(2));
+            donHang.setTenSP(resultSet.getString(3));
+            donHang.setTongTien(resultSet.getDouble(4));
+            donHang.setTinhTrang(resultSet.getBoolean(5));
+            donHang.setSoLuong(resultSet.getInt(6));
+
+            donHangs.add(donHang);
+        }
+        closeConnection();
+        return donHangs;
+    }
 }
