@@ -21,15 +21,17 @@ public class HinhAnhService extends ConnectDatabase implements Business<HinhAnh>
 
     @Override
     public int add(HinhAnh hinhAnh) throws SQLException, ClassNotFoundException {
+        if (hinhAnh == null) {
+            return 0;
+        }
         openConnection();
 
-        String query = "EXEC ThemHinhAnh ?,?,?";
+        String query = "exec ThemHinhAnhSanPham ?,?";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setQueryTimeout(90);
         statement.setEscapeProcessing(true);
-        statement.setString(1, hinhAnh.getMaSP_BV());
-        statement.setString(2,String.valueOf(hinhAnh.isLoai()));
-        statement.setString(3,hinhAnh.getUrl());
+        statement.setString(1, hinhAnh.getMaSp());
+        statement.setString(2,hinhAnh.getUrl());
 
         int rowAffected = statement.executeUpdate();
         closeConnection();
