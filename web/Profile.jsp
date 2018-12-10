@@ -29,46 +29,7 @@
     <link href="//fonts.googleapis.com/css?family=Sunflower:500,700" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
     <!--js working-->
-    <script src="resources/js/jquery.js"></script>
-    <script src="resources/js/woocommerce.js"></script>
-    <script src="resources/js/minicart.js"></script>
-    <script src="resources/js/jquery-3.3.1.min.js"></script>
-    <script src="resources/js/jquery-ui.js"></script>
-    <script type="text/javascript" src="resources/js/widget.js"></script>
-    <!--bootstrap working-->
-    <script src="resources/js/bootstrap.min.js"></script>
-    <!-- //bootstrap working-->
-    <!-- //cart-js -->
-    <!-- start-smoth-scrolling -->
-    <script src="resources/js/move-top.js"></script>
-    <script src="resources/js/easing.js"></script>
-    <script>
-        jQuery(document).ready(function ($) {
-            $(".scroll").click(function (event) {
-                event.preventDefault();
-                $('html,body').animate({
-                    scrollTop: $(this.hash).offset().top
-                }, 900);
-            });
-        });
-    </script>
-    <!-- start-smoth-scrolling -->
-    <!-- here stars scrolling icon -->
-    <script>
-        $(document).ready(function () {
 
-            var defaults = {
-                containerID: 'toTop', // fading element id
-                containerHoverID: 'toTopHover', // fading element hover id
-                scrollSpeed: 1200,
-                easingType: 'linear'
-            };
-            $().UItoTop({
-                easingType: 'easeOutQuart'
-            });
-
-        });
-    </script>
     <!-- //here ends scrolling icon -->
 </head>
 
@@ -462,6 +423,46 @@
     <!-- Footer Links -->
 </footer>
 <!-- footer -->
+<script src="resources/js/jquery.js"></script>
+<script src="resources/js/woocommerce.js"></script>
+<script src="resources/js/minicart.js"></script>
+<script src="resources/js/jquery-3.3.1.min.js"></script>
+<script src="resources/js/jquery-ui.js"></script>
+<script type="text/javascript" src="resources/js/widget.js"></script>
+<!--bootstrap working-->
+<script src="resources/js/bootstrap.min.js"></script>
+<!-- //bootstrap working-->
+<!-- //cart-js -->
+<!-- start-smoth-scrolling -->
+<script src="resources/js/move-top.js"></script>
+<script src="resources/js/easing.js"></script>
+<script>
+    jQuery(document).ready(function ($) {
+        $(".scroll").click(function (event) {
+            event.preventDefault();
+            $('html,body').animate({
+                scrollTop: $(this.hash).offset().top
+            }, 900);
+        });
+    });
+</script>
+<!-- start-smoth-scrolling -->
+<!-- here stars scrolling icon -->
+<script>
+    $(document).ready(function () {
+
+        var defaults = {
+            containerID: 'toTop', // fading element id
+            containerHoverID: 'toTopHover', // fading element hover id
+            scrollSpeed: 1200,
+            easingType: 'linear'
+        };
+        $().UItoTop({
+            easingType: 'easeOutQuart'
+        });
+
+    });
+</script>
 </body>
 
 </html>
