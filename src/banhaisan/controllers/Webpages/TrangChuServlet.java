@@ -2,9 +2,11 @@ package banhaisan.controllers.Webpages;
 
 import banhaisan.models.datahandle.BaiVietService;
 import banhaisan.models.datahandle.DanhMucService;
+import banhaisan.models.datahandle.HinhAnhService;
 import banhaisan.models.datahandle.SanPhamService;
 import banhaisan.models.datamodels.BaiViet;
 import banhaisan.models.datamodels.DanhMuc;
+import banhaisan.models.datamodels.HinhAnh;
 import banhaisan.models.datamodels.SanPham;
 
 import javax.servlet.RequestDispatcher;
@@ -32,6 +34,7 @@ public class TrangChuServlet extends HttpServlet {
         ArrayList<SanPham> sanPhamMuc = null;
         ArrayList<SanPham> sanPhamCua = null;
         ArrayList<SanPham> sanPhamNgaoSoOc = null;
+        ArrayList<HinhAnh> hinhAnhs = null;
         try {
             ArrayList<DanhMuc> danhMucs = DanhMucService.getInstance().getData();
             ArrayList<BaiViet> baiViets = BaiVietService.getInstance().getTop4BaiViet();

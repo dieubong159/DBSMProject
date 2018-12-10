@@ -2,12 +2,10 @@ package banhaisan.models.datamodels;
 
 public class HinhAnh {
     private String maSP_BV;
-    private boolean loai;
     private String url;
 
-    public HinhAnh(String maSP_BV, boolean loai, String url) {
+    public HinhAnh(String maSP_BV, String url) {
         this.maSP_BV = maSP_BV;
-        this.loai = loai;
         this.url = url;
     }
     public HinhAnh(){}
@@ -18,14 +16,6 @@ public class HinhAnh {
 
     public void setMaSP_BV(String maSP_BV) {
         this.maSP_BV = maSP_BV;
-    }
-
-    public boolean isLoai() {
-        return loai;
-    }
-
-    public void setLoai(boolean loai) {
-        this.loai = loai;
     }
 
     public String getUrl() {

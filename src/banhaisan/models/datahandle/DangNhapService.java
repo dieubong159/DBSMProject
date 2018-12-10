@@ -45,4 +45,23 @@ public class DangNhapService extends ConnectDatabase {
         closeConnection();
         return dangNhap_ketNoi;
     }
+
+    public DangNhap_KetNoi IsExisting (String email) throws SQLException, ClassNotFoundException{
+        openConnection();
+        String query = "select * from dbo.fc_KiemTraEmail (?)";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setQueryTimeout(90);
+        statement.setEscapeProcessing(true);
+        statement.setString(1,email);
+
+        ResultSet resultSet = statement.executeQuery();
+        DangNhap_KetNoi dangNhap_ketNoi1 = null;
+        if(resultSet.next())
+        {
+            dangNhap_ketNoi1 = new DangNhap_KetNoi();
+            dangNhap_ketNoi1.setEmail(resultSet.getString(1));
+        }
+        closeConnection();
+        return dangNhap_ketNoi1;
+    }
 }

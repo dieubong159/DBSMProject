@@ -3,6 +3,7 @@ package banhaisan.models.datahandle;
 
 
 import banhaisan.models.datamodels.BaiViet;
+import banhaisan.models.datamodels.HinhAnh;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -33,7 +34,7 @@ public class BaiVietService extends ConnectDatabase implements Business<BaiViet>
             baiViet.setNgayDang(resultSet.getDate(2));
             baiViet.setTieuDe(resultSet.getString(3));
             baiViet.setNoiDung(resultSet.getString(4));
-            baiViet.setUrlHinhAnh(resultSet.getString(5));
+            baiViet.setUrlHinhAnh(HinhAnhService.getInstance().LayMotHinhAnhBaiViet(baiViet.getMaBaiViet()).getUrl());
 
             baiViets.add(baiViet);
         }
@@ -57,7 +58,7 @@ public class BaiVietService extends ConnectDatabase implements Business<BaiViet>
             baiViet.setNgayDang(resultSet.getDate(2));
             baiViet.setTieuDe(resultSet.getString(3));
             baiViet.setNoiDung(resultSet.getString(4));
-            baiViet.setUrlHinhAnh(resultSet.getString(5));
+            baiViet.setUrlHinhAnh(HinhAnhService.getInstance().LayMotHinhAnhBaiViet(baiViet.getMaBaiViet()).getUrl());
 
             baiViets.add(baiViet);
         }

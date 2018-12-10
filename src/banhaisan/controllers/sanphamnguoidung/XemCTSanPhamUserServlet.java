@@ -26,6 +26,7 @@ public class XemCTSanPhamUserServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
+
         DanhGia danhGia = new DanhGia();
         danhGia.setDanhGia(Integer.parseInt(request.getParameter("stars")));
         danhGia.setBinhLuan(request.getParameter("txtBinhLuan"));

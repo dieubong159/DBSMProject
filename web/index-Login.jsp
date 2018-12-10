@@ -363,18 +363,23 @@
          aria-hidden="true">
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
-                <form action="#" method="post">
+                <form action="">
                     <div class="modal-header" style="display: block;">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h2 class="modal-title" id="ForgetPasswordModalLabel">Quên mật khẩu?</h2>
                         <span>Vui lòng cung cấp email hoặc số điện thoại đăng nhập để lấy lại mật khẩu.</span>
                     </div>
                     <div class="modal-body">
-                        <input type="email" name="email" id="email-forgot" class="form-control" value=""
+                        <input type="email" name="email-forgot" id="email-forgot" class="form-control" value=""
                                placeholder="Nhập email hoặc số điện thoại" data-bv-field="email" required>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-secondary">Gửi</button>
+                        <a onclick="location.href='/QuenMatKhau?email='+document.getElementById('email-forgot').value"><button type="button" class="btn btn-secondary" onclick="forgotPW()">Gửi</button></a>
+                        <script>
+                            function forgotPW() {
+                                alert("Vui lòng check mail để nhận mật khẩu mới!");
+                            }
+                        </script>
                     </div>
                 </form>
             </div>
@@ -394,7 +399,7 @@
                         <li style="display:inline-block">
                             <h2>Sản phẩm hot</h2>
                         </li>
-                        <li style="float:right"><a class="XMlink" href="/Products?idDM=cua">>>XEM THÊM</a></li>
+                        <li style="float:right"><a class="XMlink" href="/Products?action=checkout&idDM=tom">>>XEM THÊM</a></li>
                     </ul>
                 </div>
             </div>
@@ -419,7 +424,7 @@
                         <li style="display:inline-block">
                             <h2>Cá</h2>
                         </li>
-                        <li style="float:right"><a class="XMlink" href="/Products?idDM=ca">>>XEM THÊM</a></li>
+                        <li style="float:right"><a class="XMlink" href="/Products?action=checkout&idDM=ca">>>XEM THÊM</a></li>
                     </ul>
                 </div>
             </div>
@@ -449,7 +454,7 @@
                         <li style="display:inline-block">
                             <h2>Tôm</h2>
                         </li>
-                        <li style="float:right"><a class="XMlink" href="/Products?idDM=tom">>>XEM THÊM</a></li>
+                        <li style="float:right"><a class="XMlink" href="/Products?action=checkout&idDM=tom">>>XEM THÊM</a></li>
                     </ul>
                 </div>
             </div>
@@ -479,7 +484,7 @@
                         <li style="display:inline-block">
                             <h2>Cua - Ghẹ</h2>
                         </li>
-                        <li style="float:right"><a class="XMlink" href="/Products?idDM=cua">>>XEM THÊM</a></li>
+                        <li style="float:right"><a class="XMlink" href="/Products?action=checkout&idDM=cua">>>XEM THÊM</a></li>
                     </ul>
                 </div>
             </div>
@@ -510,7 +515,7 @@
                         <li style="display:inline-block">
                             <h2>Mực</h2>
                         </li>
-                        <li style="float:right"><a class="XMlink" href="/Products?idDM=muc">>>XEM THÊM</a></li>
+                        <li style="float:right"><a class="XMlink" href="/Products?action=checkout&idDM=muc">>>XEM THÊM</a></li>
                     </ul>
                 </div>
             </div>
@@ -541,7 +546,7 @@
                         <li style="display:inline-block">
                             <h2>Ngao - Sò - Ốc</h2>
                         </li>
-                        <li style="float:right"><a class="XMlink" href="/Products?idDM=ngao-so-oc">>>XEM THÊM</a></li>
+                        <li style="float:right"><a class="XMlink" href="/Products?action=checkout&idDM=ngao-so-oc">>>XEM THÊM</a></li>
                     </ul>
                 </div>
             </div>

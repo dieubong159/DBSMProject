@@ -101,7 +101,7 @@
                                     <span class="fas fa-user"></span>
                                     <p>Chào <a href="/Profile">${currentSessionUser.hoTen}</a></p>
                                     <p>|</p>
-                                    <p><a href="/Logout">Thoát</a></p>
+                                    <p><a href="/LogoutAdmin">Thoát</a></p>
                                 </li>
                             </c:otherwise>
                         </c:choose>

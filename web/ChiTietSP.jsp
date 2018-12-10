@@ -216,7 +216,7 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <c:forEach var="danhMuc" items="${sessionScope.danhMucs}">
-                                        <a class="nav-link" href="/Products?idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
+                                        <a class="nav-link" href="/Products?action=checkout&idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
                                     </c:forEach>
                                 </div>
                             </li>
@@ -361,13 +361,13 @@
                                 <em>${sanPham.giaSP}<span>đ/kg</span></em>
                                 <div class="gap-element" style="display:block; height:auto; padding-top:30px"></div>
                                 <form>
-                                    <input type="number" min="1" value="1" style="width:50px">
-                                    <a class="button buttonorange" style="vertical-align:middle" href="/ShoppingCart?idSP=${sanPham.maSP}&action=order"><span>THÊM VÀO
+                                    <input id="numsoluong" name="numsoluong" type="number" min="1" value="1" style="width:50px">
+                                    <a class="button buttonorange" style="vertical-align:middle" onclick="this.href='/ShoppingCart?idSP=${sanPham.maSP}&action=order&quantity='+document.getElementById('numsoluong').value"><span>THÊM VÀO
                                             GIỎ </span></a>
                                 </form>
                             </div>
                             <hr>
-                            <h3>Danh mục:<a href="/Products?idDM=${sanPham.maDanhMuc}"><span id="danhmuc">${sanPham.maDanhMuc}</span></a></h3>
+                            <h3>Danh mục:<a href="/Products?action=checkout&idDM=${sanPham.maDanhMuc}"><span id="danhmuc">${sanPham.maDanhMuc}</span></a></h3>
                         </div>
                     </div>
                     <div class="gap-element" style="display:block; height:auto; padding-top:5px"></div>
