@@ -25,7 +25,21 @@ public class HinhAnhService extends ConnectDatabase implements Business<HinhAnh>
 
     @Override
     public int add(HinhAnh hinhAnh) throws SQLException, ClassNotFoundException {
-        return 0;
+        if (hinhAnh == null) {
+            return 0;
+        }
+        openConnection();
+
+        String query = "exec ThemHinhAnhSanPham ?,?";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setQueryTimeout(90);
+        statement.setEscapeProcessing(true);
+        statement.setString(1, hinhAnh.getMaSp());
+        statement.setString(2,hinhAnh.getUrl());
+
+        int rowAffected = statement.executeUpdate();
+        closeConnection();
+        return rowAffected;
     }
 
     @Override
@@ -50,7 +64,7 @@ public class HinhAnhService extends ConnectDatabase implements Business<HinhAnh>
         while (resultSet.next())
         {
             HinhAnh hinhAnh = new HinhAnh();
-            hinhAnh.setMaSP_BV(resultSet.getString(1));
+            hinhAnh.setMaSp(resultSet.getString(1));
             hinhAnh.setUrl(resultSet.getString(2));
 
             hinhAnhs.add(hinhAnh);
@@ -71,7 +85,7 @@ public class HinhAnhService extends ConnectDatabase implements Business<HinhAnh>
         while (resultSet.next())
         {
             HinhAnh hinhAnh = new HinhAnh();
-            hinhAnh.setMaSP_BV(resultSet.getString(1));
+            hinhAnh.setMaSp(resultSet.getString(1));
             hinhAnh.setUrl(resultSet.getString(2));
 
             hinhAnhs.add(hinhAnh);
@@ -93,7 +107,7 @@ public class HinhAnhService extends ConnectDatabase implements Business<HinhAnh>
         if (resultSet.next())
         {
             hinhAnh = new HinhAnh();
-            hinhAnh.setMaSP_BV(resultSet.getString(1));
+            hinhAnh.setMaSp(resultSet.getString(1));
             hinhAnh.setUrl(resultSet.getString(2));
         }
         closeConnection();
@@ -112,7 +126,7 @@ public class HinhAnhService extends ConnectDatabase implements Business<HinhAnh>
         if (resultSet.next())
         {
             hinhAnh = new HinhAnh();
-            hinhAnh.setMaSP_BV(resultSet.getString(1));
+            hinhAnh.setMaSp(resultSet.getString(1));
             hinhAnh.setUrl(resultSet.getString(2));
         }
         closeConnection();

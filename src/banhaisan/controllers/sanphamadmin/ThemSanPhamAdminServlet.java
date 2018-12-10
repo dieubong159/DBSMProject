@@ -80,8 +80,7 @@ public class ThemSanPhamAdminServlet extends HttpServlet {
                     HinhAnh hinhAnh= new HinhAnh();
                     hinhAnh.setUrl("/UploadFile/"+fileName);
                     hinhAnh.setMaSp(masp);
-                    HinhAnhService hinh= new HinhAnhService();
-                    hinh.add(hinhAnh);
+                    HinhAnhService.getInstance().add(hinhAnh);
 //                    ThongTinCaNhanDAL.CapNhatAnhDaiDien((int)request.getSession().getAttribute("MaNguoiDung"), fileName);
 //                    out.write("./UploadFile/"+fileName);
 //                    out.flush();
