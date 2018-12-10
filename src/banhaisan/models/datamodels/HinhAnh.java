@@ -1,21 +1,23 @@
 package banhaisan.models.datamodels;
 
 public class HinhAnh {
-    private String maSP_BV;
+    private String maSp;
     private String url;
 
-    public HinhAnh(String maSP_BV, String url) {
-        this.maSP_BV = maSP_BV;
+    public HinhAnh(String maSp, String url) {
+        this.maSp = maSp;
         this.url = url;
     }
-    public HinhAnh(){}
 
-    public String getMaSP_BV() {
-        return maSP_BV;
+    public HinhAnh() {
     }
 
-    public void setMaSP_BV(String maSP_BV) {
-        this.maSP_BV = maSP_BV;
+    public String getMaSp() {
+        return maSp;
+    }
+
+    public void setMaSp(String maSp) {
+        this.maSp = maSp;
     }
 
     public String getUrl() {

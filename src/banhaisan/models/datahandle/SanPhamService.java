@@ -155,6 +155,10 @@ public class SanPhamService extends ConnectDatabase implements Business<SanPham>
 
     @Override
     public int add(SanPham sanPham) throws SQLException, ClassNotFoundException {
+        return 0;
+    }
+
+    public String ThemSanPham(SanPham sanPham) throws SQLException, ClassNotFoundException {
         openConnection();
 
         String query = "EXEC ThemSanPham ?,?,?,?,?,?";
@@ -168,9 +172,10 @@ public class SanPhamService extends ConnectDatabase implements Business<SanPham>
         statement.setString(5,sanPham.getMoTa());
         statement.setString(6,sanPham.getMaDanhMuc());
 
-        int rowAffected = statement.executeUpdate();
+        ResultSet res = statement.executeQuery();
+        String masp = res.next() ? res.getString(1) : null;
         closeConnection();
-        return rowAffected;
+        return masp;
     }
 
     @Override
@@ -265,4 +270,5 @@ public class SanPhamService extends ConnectDatabase implements Business<SanPham>
         closeConnection();
         return sanPhams;
     }
+
 }
