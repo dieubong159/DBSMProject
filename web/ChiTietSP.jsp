@@ -260,7 +260,7 @@
                 <div class="col-md-9 col-lg-9 col-sm-12 col-xs-12">
                     <div class="row">
                         <div class="col-md-8 col-sm-12 col-xs-12">
-                            <div class="w3-content" style="max-width:1200px">
+                            <div class="w3-content" style="max-width:600px">
                                 <c:set var="show" value="0"></c:set>
                                 <c:forEach var="hinhAnhSP" items="${requestScope.hinhAnhSP}">
                                     <c:set var="show" value="${show+1}"></c:set>

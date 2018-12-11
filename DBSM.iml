@@ -21,5 +21,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 9.0.12" level="application_server_libraries" />
     <orderEntry type="library" name="CKFinder-2.3" level="project" />
+    <orderEntry type="library" name="mail-1.5.0-b01" level="project" />
   </component>
 </module>
