@@ -30,30 +30,19 @@ public class ShoppingCartServlet extends HttpServlet {
         String action = request.getParameter("action");
         HttpSession session = request.getSession();
         String backrefresh = request.getHeader("referer");
-        if(action.equals("order"))
+        Integer soluong;
+        if(request.getParameter("quantity")==null)
         {
-            try {
-                if (session.getAttribute("cart") == null) {
-                    List<SanPham_GioHang> cart = new ArrayList<SanPham_GioHang>();
-                    cart.add(new SanPham_GioHang(SanPhamService.getInstance().get(request.getParameter("idSP")), 1));
-                    session.setAttribute("cart", cart);
-                } else {
-                    List<SanPham_GioHang> cart = (List<SanPham_GioHang>) session.getAttribute("cart");
-                    int index = isExisting(request.getParameter("idSP"),cart);
-                    if(index==-1)
-                    cart.add(new SanPham_GioHang(SanPhamService.getInstance().get(request.getParameter("idSP")), 1));
-                    else
-                    {
-                        int soLuong = cart.get(index).getSlSanPham() +1;
-                        cart.get(index).setSlSanPham(soLuong);
-                    }
-                    session.setAttribute("cart", cart);
-                }
-            }catch (SQLException | ClassNotFoundException e)
-            {
-                e.printStackTrace();
-            }
-            response.sendRedirect(getServletContext().getContextPath()+backrefresh);
+            soluong=1;
+        }
+        else {
+            soluong=Integer.parseInt(request.getParameter("quantity"));
+        }
+        if(action.equals("checkout"))
+        {
+            List<SanPham_GioHang> cart = (List<SanPham_GioHang>)session.getAttribute("cart");
+            session.setAttribute("cart",cart);
+            request.getRequestDispatcher("Cart.jsp").forward(request,response);
         }
         else if (action.equals("delete"))
         {
@@ -64,10 +53,29 @@ public class ShoppingCartServlet extends HttpServlet {
             session.setAttribute("cart", cart);
             request.getRequestDispatcher("Cart.jsp").forward(request,response);
         }
-        else if(action.equals("checkout")){
-            List<SanPham_GioHang> cart = (List<SanPham_GioHang>)session.getAttribute("cart");
-            session.setAttribute("cart",cart);
-            request.getRequestDispatcher("Cart.jsp").forward(request,response);
+        else if(action.equals("order")){
+            try {
+                if (session.getAttribute("cart") == null) {
+                    List<SanPham_GioHang> cart = new ArrayList<SanPham_GioHang>();
+                    cart.add(new SanPham_GioHang(SanPhamService.getInstance().get(request.getParameter("idSP")), soluong));
+                    session.setAttribute("cart", cart);
+                } else {
+                    List<SanPham_GioHang> cart = (List<SanPham_GioHang>) session.getAttribute("cart");
+                    int index = isExisting(request.getParameter("idSP"),cart);
+                    if(index==-1)
+                        cart.add(new SanPham_GioHang(SanPhamService.getInstance().get(request.getParameter("idSP")), soluong));
+                    else
+                    {
+                        int soLuong = cart.get(index).getSlSanPham() +soluong;
+                        cart.get(index).setSlSanPham(soLuong);
+                    }
+                    session.setAttribute("cart", cart);
+                }
+            }catch (SQLException | ClassNotFoundException e)
+            {
+                e.printStackTrace();
+            }
+            response.sendRedirect(getServletContext().getContextPath()+backrefresh);
         }
     }
     private int isExisting (String idSP,List<SanPham_GioHang> cart)

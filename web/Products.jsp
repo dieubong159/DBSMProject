@@ -4,7 +4,7 @@
 <html lang="vi">
 
 <head>
-    <title>Cá - Tiêu Dân Seafood</title>
+    <title>${maDanhMuc} - Tiêu Dân Seafood</title>
     <!--meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -190,7 +190,7 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <c:forEach var="danhMuc" items="${sessionScope.danhMucs}">
-                                        <a class="nav-link" href="/Products?idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
+                                        <a class="nav-link" href="/Products?action=checkout&idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
                                     </c:forEach>
                                 </div>
                             </li>
@@ -270,7 +270,7 @@
     <!-- //Modal 1-->
     <ul class="breadcrumb">
         <div class="container">
-            <li><a href="#">Trang chủ</a></li>
+            <li><a href="/Index">Trang chủ</a></li>
             <li>${maDanhMuc}</li>
             <div class="pull-right">
                 <label>Sắp xếp theo </label>
@@ -293,25 +293,25 @@
                         <h3 class="agileits-sear-head">DANH MỤC SẢN PHẨM</h3>
                         <ul>
                             <li>
-                                <a href="/Products?idDM=ca">
+                                <a href="/Products?action=checkout&idDM=ca">
                                     <img src="resources/images/FISHICO.png" class="category">
                                     <span class="span">Cá</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="/Products?idDM=tom">
+                                <a href="/Products?action=checkout&idDM=tom">
                                     <img src="resources/images/SHRIMPICO.png" class="category">
                                     <span class="span">Tôm</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="/Products?idDM=muc">
+                                <a href="/Products?action=checkout&idDM=muc">
                                     <img src="resources/images/CuttleFishICO.png" class="category">
                                     <span class="span">Mực</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="/Products?idDM=cua">
+                                <a href="/Products?action=checkout&idDM=cua">
                                     <img src="resources/images/CrabICO.gif" class="category">
                                     <span class="span">Cua ghẹ</span>
                                 </a>
@@ -327,11 +327,11 @@
                     <!-- Price range -->
                     <div class="gap-element" style="display:block; height:auto; padding-top:30px"></div>
                     <div class="slidecontainer">
-                        <form method="post" action="/Products">
+                        <form>
                         <h3 class="agileits-sear-head">LỌC GIÁ SẢN PHẨM</h3>
                         <input oninput="run()" type="range" min="1" max="${giaCaoNhat}" value="50" class="slider" id="myRange">
                         <p>Value: <input id="demo" value="" readonly style="border: none;background-color: #F9F9F9;"></p>
-                        <a type="submit" class="btn-danger" onclick="this.href='/Products?action=filter&max='+document.getElementById('myRange').value">LỌC</a>
+                        <a onclick="location.href='/Products?action=filter&max='+document.getElementById('myRange').value"><button type="button" class="btn-danger">LỌC</button></a>
                         </form>
                     </div>
 

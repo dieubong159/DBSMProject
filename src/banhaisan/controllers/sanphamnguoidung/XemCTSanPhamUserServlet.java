@@ -1,13 +1,7 @@
 package banhaisan.controllers.sanphamnguoidung;
 
-import banhaisan.models.datahandle.BaiVietService;
-import banhaisan.models.datahandle.DanhGiaService;
-import banhaisan.models.datahandle.DanhMucService;
-import banhaisan.models.datahandle.SanPhamService;
-import banhaisan.models.datamodels.BaiViet;
-import banhaisan.models.datamodels.DanhGia;
-import banhaisan.models.datamodels.DanhMuc;
-import banhaisan.models.datamodels.SanPham;
+import banhaisan.models.datahandle.*;
+import banhaisan.models.datamodels.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,6 +20,7 @@ public class XemCTSanPhamUserServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
+
         DanhGia danhGia = new DanhGia();
         danhGia.setDanhGia(Integer.parseInt(request.getParameter("stars")));
         danhGia.setBinhLuan(request.getParameter("txtBinhLuan"));
@@ -50,10 +45,12 @@ public class XemCTSanPhamUserServlet extends HttpServlet {
         SanPham sp = null;
         try {
             sp= SanPhamService.getInstance().get(idSanPham);
+            ArrayList<HinhAnh> hinhAnhsSP = HinhAnhService.getInstance().LayTatCaHinhAnhSanPham(idSanPham);
             ArrayList<SanPham> sanPhamLQ = SanPhamService.getInstance().getDataCategoryIndex(sp.getMaDanhMuc());
             ArrayList<DanhGia> danhGias = DanhGiaService.getInstance().LayDanhSachBinhLuanSP(sp);
             request.setAttribute("sanPhamLQ",sanPhamLQ);
             request.setAttribute("danhGias",danhGias);
+            request.setAttribute("hinhAnhSP",hinhAnhsSP);
         }catch (SQLException | ClassNotFoundException e)
         {
             e.printStackTrace();

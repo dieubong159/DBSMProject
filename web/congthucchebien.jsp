@@ -124,7 +124,7 @@
                         <div class="col-lg-5 col-md-6 search-right">
                             <form style="padding-top:6%" class="form-inline my-lg-0">
                                 <input name="product-search" id="product-search" class="form-control mr-sm-2" type="search" placeholder="Bạn muốn tìm kiếm...">
-                                <a href="" onclick="this.href='/TimKiem?search='+document.getElementById('product-search').value" class="btn" style="background: ">Search</a>
+                                <a href="" onclick="this.href='/TimKiem?search='+document.getElementById('product-search').value" class="btn">Search</a>
                             </form>
                         </div>
                         <div class="col-lg-4 col-md-3 right-side-cart">
@@ -172,7 +172,7 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <c:forEach var="danhMuc" items="${sessionScope.danhMucs}">
-                                        <a class="nav-link" href="/Products?idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
+                                        <a class="nav-link" href="/Products?action=checkout&idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
                                     </c:forEach>
                                 </div>
                             </li>

@@ -77,46 +77,7 @@
     <!--bootstrap working-->
     <script src="resources/js/bootstrap.min.js"></script>
     <!-- //bootstrap working-->
-    <!-- Slideshow Indicators -->
-    <script>
-        function currentDiv(n) {
-            showDivs(slideIndex = n);
-        }
 
-        function showDivs(n) {
-            var i;
-            var x = document.getElementsByClassName("mySlides");
-            var dots = document.getElementsByClassName("product");
-            if (n > x.length) { slideIndex = 1 }
-            if (n < 1) { slideIndex = x.length }
-            for (i = 0; i < x.length; i++) {
-                x[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
-            }
-            x[slideIndex - 1].style.display = "block";
-            dots[slideIndex - 1].className += " w3-opacity-off";
-        }
-    </script>
-    <!-- Slideshow Indicators -->
-    <!-- Tab Detail -->
-    <script>
-        function tabDetail(evt, delCom) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(delCom).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
-    </script>
-    <!-- Tab Detail -->
 </head>
 
 <body>
@@ -216,7 +177,7 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <c:forEach var="danhMuc" items="${sessionScope.danhMucs}">
-                                        <a class="nav-link" href="/Products?idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
+                                        <a class="nav-link" href="/Products?action=checkout&idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
                                     </c:forEach>
                                 </div>
                             </li>
@@ -349,8 +310,26 @@
                     <div class="row">
                         <div class="col-md-8 col-sm-12 col-xs-12">
                             <div class="w3-content" style="max-width:1200px">
-                                <img src="${sanPham.urlHinhAnh}">
+                                <c:set var="show" value="0"></c:set>
+                                <c:forEach var="hinhAnhSP" items="${requestScope.hinhAnhSP}">
+                                    <c:set var="show" value="${show+1}"></c:set>
+                                    <c:if test="${show==1}">
+                                <img class="mySlides" src="${hinhAnhSP.url}" style="width:100%;display:block">
+                                    </c:if>
+                                    <img class="mySlides" src="${hinhAnhSP.url}" style="width:100%;display:none">
+                                </c:forEach>
+
+                                <div class="w3-row-padding w3-section">
+                                    <c:set var="count" value="0"></c:set>
+                                    <c:forEach var="hinhAnh" items="${requestScope.hinhAnhSP}">
+                                        <c:set var="count" value="${count+1}"></c:set>
+                                    <div class="w3-col s4">
+                                        <img class="product w3-opacity w3-hover-opacity-off" src="${hinhAnh.url}"
+                                             style="width:100%;cursor:pointer" onclick="currentDiv(${count})">
+                                    </div>
+                                    </c:forEach>
                             </div>
+                        </div>
                         </div>
                         <div class="col-md-4 col-sm-12 col-xs-12">
                             <div class="name">
@@ -361,13 +340,13 @@
                                 <em>${sanPham.giaSP}<span>đ/kg</span></em>
                                 <div class="gap-element" style="display:block; height:auto; padding-top:30px"></div>
                                 <form>
-                                    <input type="number" min="1" value="1" style="width:50px">
-                                    <a class="button buttonorange" style="vertical-align:middle" href="/ShoppingCart?idSP=${sanPham.maSP}&action=order"><span>THÊM VÀO
+                                    <input id="numsoluong" name="numsoluong" type="number" min="1" value="1" style="width:50px">
+                                    <a class="button buttonorange" style="vertical-align:middle" onclick="this.href='/ShoppingCart?idSP=${sanPham.maSP}&action=order&quantity='+document.getElementById('numsoluong').value"><span>THÊM VÀO
                                             GIỎ </span></a>
                                 </form>
                             </div>
                             <hr>
-                            <h3>Danh mục:<a href="/Products?idDM=${sanPham.maDanhMuc}"><span id="danhmuc">${sanPham.maDanhMuc}</span></a></h3>
+                            <h3>Danh mục:<a href="/Products?action=checkout&idDM=${sanPham.maDanhMuc}"><span id="danhmuc">${sanPham.maDanhMuc}</span></a></h3>
                         </div>
                     </div>
                     <div class="gap-element" style="display:block; height:auto; padding-top:5px"></div>
@@ -603,6 +582,46 @@
     console.log('New star rating: ' + this.value);
     });
     </script>
+    <!-- Slideshow Indicators -->
+    <script>
+        function currentDiv(n) {
+            showDivs(slideIndex = n);
+        }
+
+        function showDivs(n) {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("product");
+            if (n > x.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = x.length }
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+            }
+            x[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " w3-opacity-off";
+        }
+    </script>
+    <!-- Slideshow Indicators -->
+    <!-- Tab Detail -->
+    <script>
+        function tabDetail(evt, delCom) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(delCom).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+    <!-- Tab Detail -->
 </body>
 
 </html>

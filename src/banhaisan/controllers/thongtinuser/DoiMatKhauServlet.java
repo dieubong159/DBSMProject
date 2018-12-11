@@ -15,6 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.math.BigInteger;
+import java.nio.charset.Charset;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -33,7 +37,8 @@ public class DoiMatKhauServlet extends HttpServlet {
             nguoiDung.setMatKhau(request.getParameter("old_password"));
 
             String CorrectPW = user.getPassWord().trim().replaceAll("[\uFEFF-\uFFFF]", "");
-            String InvalidPW = nguoiDung.getMatKhau().trim().replaceAll("[\uFEFF-\uFFFF]", "");
+            String InvalidPW = MD5Convert(nguoiDung.getMatKhau().trim().replaceAll("[\uFEFF-\uFFFF]", ""));
+
             if(CorrectPW.equals(InvalidPW)) {
                 nguoiDung.setMatKhau(request.getParameter("new_password"));
                 NguoiDungThongThuongService.getInstance().DoiMatKhau(nguoiDung);
@@ -46,7 +51,7 @@ public class DoiMatKhauServlet extends HttpServlet {
                 RequestDispatcher rd = request.getRequestDispatcher("/Profile_Password.jsp");
                 rd.forward(request,response);
             }
-        }catch (SQLException | ClassNotFoundException e)
+        }catch (SQLException | ClassNotFoundException | NoSuchAlgorithmException e)
         {
             e.printStackTrace();
         }
@@ -55,5 +60,15 @@ public class DoiMatKhauServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Profile_Password.jsp");
         dispatcher.forward(request,response);
+    }
+    public String MD5Convert (String string) throws NoSuchAlgorithmException{
+        MessageDigest messageDigest=MessageDigest.getInstance("MD5");
+        messageDigest.update(string.getBytes());
+        byte[] digest=messageDigest.digest();
+        StringBuffer sb = new StringBuffer();
+        for (byte b : digest) {
+            sb.append(Integer.toHexString((int) (b & 0xff)));
+        }
+        return sb.toString().toUpperCase();
     }
 }

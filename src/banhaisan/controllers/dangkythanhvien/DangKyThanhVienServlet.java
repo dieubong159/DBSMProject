@@ -48,7 +48,7 @@ public class DangKyThanhVienServlet extends HttpServlet {
             error.setAttribute("error", e.toString());
             e.printStackTrace();
         }
-
+        response.sendRedirect("/Index");
     }
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/DangKi.jsp");
