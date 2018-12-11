@@ -102,7 +102,7 @@
                                 <div style="float:left;width:50%;">
                                     <label class="control-label">Mã liên hệ:</label>
                                     <div class="controls">
-                                        <input readonly id="txt-tinh-trang" type="text" name="txt-tinh-trang"
+                                        <input readonly id="txt-ma-lien-he" type="text" name="txtmalienhe"
                                                data-required="1" class="span6 m-wrap"
                                                style="width:285px !important;" value="${CTLienHe.maLienHe}"/>
 
@@ -111,7 +111,7 @@
                                 <div style="float: right;width:50%;">
                                     <label class="control-label">Tên người dùng:</label>
                                     <div class="controls">
-                                        <input readonly id="txt-ngay-dat-hang" type="text" name="txt-ngay-dat-hang"
+                                        <input readonly id="txt-ten-nguoi-dung" type="text" name="txttennguoidung"
                                                data-required="1" class="span6 m-wrap"
                                                style="width:250px !important;" value="${CTLienHe.tenNguoiDung}"/>
                                     </div>
@@ -121,7 +121,7 @@
                                 <div style="float:left;width:50%;">
                                     <label class="control-label">Số điện thoại:</label>
                                     <div class="controls">
-                                        <input readonly id="txt-ma" type="text" name="txt-ma" data-required="1"
+                                        <input readonly id="txt-sdt" type="text" name="txtsdt" data-required="1"
                                                class="span6 m-wrap"
                                                style="width:285px !important;" value="${CTLienHe.sdt}"/>
                                     </div>
@@ -129,7 +129,7 @@
                                 <div style="float: right;width:50%;">
                                     <label class="control-label">Email người gửi:</label>
                                     <div class="controls">
-                                        <input readonly id="txt-hinh-thuc" type="text" name="txt-hinh-thuc"
+                                        <input readonly id="txt-eamil" type="text" name="txtemail"
                                                data-required="1" class="span6 m-wrap"
                                                style="width:250px !important;"
                                                value="${CTLienHe.email}"/>
@@ -140,17 +140,31 @@
                                 <div style="float:left;width:50%;">
                                     <label class="control-label">Nội dung:</label>
                                     <div class="controls">
-                                        <textarea readonly id="ghi-chu" type="text" name="ghi-chu" data-required="1"
+                                        <textarea readonly id="noi-dung" type="text" name="txtnoidung" data-required="1"
                                                   class="span6 m-wrap"
                                                   style="width:707px !important;">${CTLienHe.noiDung}</textarea>
                                     </div>
                                 </div>
                             </div>
 
+                            <div class="control-group">
+                                <div style="float:left;width:50%;">
+                                    <label class="control-label">Gửi phản hồi cho Người dùng:</label>
+                                    <div class="controls">
+                                        <textarea id="phan-hoi" type="text" name="txtphanhoi" data-required="1"
+                                                  class="span6 m-wrap"
+                                                  style="width:707px !important;"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="text-align: center">
+                                <button type="submit" class="btn btn-danger btn-large">Gửi</button>
+                            </div>
+
+                            <div style="text-align: center">
+                                <a href="/Admin/QLLienHe" type="button" class="btn btn-success btn-large">Quay về trang chủ</a>
+                            </div>
                         </form>
-                    </div>
-                    <div style="text-align: center">
-                        <a href="/Admin/QLLienHe" type="button" class="btn btn-success btn-large">Quay về trang chủ</a>
                     </div>
                 </div>
                 <!-- /block -->
