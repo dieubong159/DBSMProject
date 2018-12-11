@@ -4,7 +4,7 @@
 <html lang="vi">
 
 <head>
-    <title>Sản phẩm - Cá mặt quỷ</title>
+    <title>Sản phẩm - ${requestScope.sanPham.tenSP}</title>
     <!--meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">

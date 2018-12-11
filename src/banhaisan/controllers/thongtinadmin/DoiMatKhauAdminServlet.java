@@ -5,6 +5,7 @@ import banhaisan.models.datahandle.NguoiDungThongThuongService;
 import banhaisan.models.datamodels.DangNhap_KetNoi;
 import banhaisan.models.datamodels.DanhMuc;
 import banhaisan.models.datamodels.NguoiDung;
+import sun.security.provider.MD5;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -24,6 +27,7 @@ public class DoiMatKhauAdminServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
         DangNhap_KetNoi user = (DangNhap_KetNoi) session.getAttribute("currentSessionAdmin");
+
         String email = user.getEmail();
         try {
             NguoiDung nguoiDung = new NguoiDung();
@@ -31,7 +35,7 @@ public class DoiMatKhauAdminServlet extends HttpServlet {
             nguoiDung.setMatKhau(request.getParameter("txt-mk-cu"));
 
             String CorrectPW = user.getPassWord().trim().replaceAll("[\uFEFF-\uFFFF]", "");
-            String InvalidPW = nguoiDung.getMatKhau().trim().replaceAll("[\uFEFF-\uFFFF]", "");
+            String InvalidPW = MD5Convert(nguoiDung.getMatKhau().trim().replaceAll("[\uFEFF-\uFFFF]", ""));
             if(CorrectPW.equals(InvalidPW)) {
                 nguoiDung.setMatKhau(request.getParameter("txt-mk-moi"));
                 NguoiDungThongThuongService.getInstance().DoiMatKhau(nguoiDung);
@@ -44,7 +48,7 @@ public class DoiMatKhauAdminServlet extends HttpServlet {
                 RequestDispatcher rd = request.getRequestDispatcher("/Admin/DoiMatKhau.jsp");
                 rd.forward(request,response);
             }
-        }catch (SQLException | ClassNotFoundException e)
+        }catch (SQLException | ClassNotFoundException | NoSuchAlgorithmException e)
         {
             e.printStackTrace();
         }
@@ -60,5 +64,15 @@ public class DoiMatKhauAdminServlet extends HttpServlet {
         }
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Admin/DoiMatKhau.jsp");
         dispatcher.forward(request,response);
+    }
+    public String MD5Convert (String string) throws NoSuchAlgorithmException {
+        MessageDigest messageDigest=MessageDigest.getInstance("MD5");
+        messageDigest.update(string.getBytes());
+        byte[] digest=messageDigest.digest();
+        StringBuffer sb = new StringBuffer();
+        for (byte b : digest) {
+            sb.append(Integer.toHexString((int) (b & 0xff)));
+        }
+        return sb.toString().toUpperCase();
     }
 }
