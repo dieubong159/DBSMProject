@@ -3,6 +3,7 @@ package banhaisan.models.datahandle;
 import banhaisan.models.datamodels.LienHe;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -14,12 +15,54 @@ public class LienHeService extends ConnectDatabase implements Business<LienHe>{
     }
     @Override
     public ArrayList<LienHe> getData() throws SQLException, ClassNotFoundException {
-        return null;
+        openConnection();
+        String query = "select * from  LIENHE";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setEscapeProcessing(true);
+        statement.setQueryTimeout(90);
+        ArrayList<LienHe> lienHes = new ArrayList<>();
+
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next())
+        {
+            LienHe lienHe = new LienHe();
+            lienHe.setMaLienHe(resultSet.getString(1));
+            lienHe.setTenNguoiDung(resultSet.getString(2));
+            lienHe.setEmail(resultSet.getString(3));
+            lienHe.setSdt(resultSet.getString(4));
+            lienHe.setNoiDung(resultSet.getString(5));
+            lienHes.add(lienHe);
+        }
+        closeConnection();
+        return lienHes;
     }
 
     @Override
     public LienHe get(Object... keys) throws SQLException, ClassNotFoundException {
         return null;
+    }
+
+    public LienHe get(LienHe lienHe) throws SQLException, ClassNotFoundException {
+        openConnection();
+        String query = "select * from fc_XemCTLienHe (?)";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setEscapeProcessing(true);
+        statement.setQueryTimeout(90);
+        statement.setString(1,lienHe.getMaLienHe());
+
+        ResultSet resultSet = statement.executeQuery();
+        LienHe lh = null;
+        if(resultSet.next())
+        {
+            lh=new LienHe();
+            lh.setMaLienHe(resultSet.getString(1));
+            lh.setTenNguoiDung(resultSet.getString(2));
+            lh.setEmail(resultSet.getString(3));
+            lh.setSdt(resultSet.getString(4));
+            lh.setNoiDung(resultSet.getString(5));
+        }
+        closeConnection();
+        return lh;
     }
 
     @Override

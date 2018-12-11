@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Xem Đơn hàng</title>
+    <title>Xem Liên Hệ</title>
     <!-- Bootstrap -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
@@ -65,7 +65,7 @@
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu" id="menu1">
-                            <c:forEach var="danhMuc" items="${requestScope.danhMucs}">
+                            <c:forEach var="danhMuc" items="${sessionScope.danhMucs}">
                                 <li>
                                     <a href="QLSanPham?idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
                                 </li>
@@ -104,7 +104,7 @@
                                     <div class="controls">
                                         <input readonly id="txt-tinh-trang" type="text" name="txt-tinh-trang"
                                                data-required="1" class="span6 m-wrap"
-                                               style="width:285px !important;"/>
+                                               style="width:285px !important;" value="${CTLienHe.maLienHe}"/>
 
                                     </div>
                                 </div>
@@ -113,7 +113,7 @@
                                     <div class="controls">
                                         <input readonly id="txt-ngay-dat-hang" type="text" name="txt-ngay-dat-hang"
                                                data-required="1" class="span6 m-wrap"
-                                               style="width:250px !important;" value="# "/>
+                                               style="width:250px !important;" value="${CTLienHe.tenNguoiDung}"/>
                                     </div>
                                 </div>
                             </div>
@@ -123,7 +123,7 @@
                                     <div class="controls">
                                         <input readonly id="txt-ma" type="text" name="txt-ma" data-required="1"
                                                class="span6 m-wrap"
-                                               style="width:285px !important;" value="# "/>
+                                               style="width:285px !important;" value="${CTLienHe.sdt}"/>
                                     </div>
                                 </div>
                                 <div style="float: right;width:50%;">
@@ -132,7 +132,7 @@
                                         <input readonly id="txt-hinh-thuc" type="text" name="txt-hinh-thuc"
                                                data-required="1" class="span6 m-wrap"
                                                style="width:250px !important;"
-                                               value="#"/>
+                                               value="${CTLienHe.email}"/>
                                     </div>
                                 </div>
                             </div>
@@ -142,7 +142,7 @@
                                     <div class="controls">
                                         <textarea readonly id="ghi-chu" type="text" name="ghi-chu" data-required="1"
                                                   class="span6 m-wrap"
-                                                  style="width:707px !important;" >${donHangs.ghiChu}</textarea>
+                                                  style="width:707px !important;">${CTLienHe.noiDung}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -150,7 +150,7 @@
                         </form>
                     </div>
                     <div style="text-align: center">
-                        <a href="/Admin/QLDonHang" type="button" class="btn btn-success btn-large">Quay về trang chủ</a>
+                        <a href="/Admin/QLLienHe" type="button" class="btn btn-success btn-large">Quay về trang chủ</a>
                     </div>
                 </div>
                 <!-- /block -->

@@ -8,23 +8,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Đơn hàng</title>
+    <title>Liên Hệ</title>
     <!-- Bootstrap -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
     <link href="assets/styles.css" rel="stylesheet" media="screen">
-    <script src="/Admin/vendors/jquery-1.9.1.min.js"></script>
-    <script src="/Admin/bootstrap/js/bootstrap.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#myInput").on("keyup", function () {
-                var value = $(this).val().toLowerCase();
-                $("#myTable tr").filter(function () {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-        });
-    </script>
 </head>
 
 <body>
@@ -75,7 +63,7 @@
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu" id="menu1">
-                            <c:forEach var="danhMuc" items="${requestScope.danhMucs}">
+                            <c:forEach var="danhMuc" items="${sessionScope.danhMucs}">
                                 <li>
                                     <a href="QLSanPham?idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
                                 </li>
@@ -122,25 +110,19 @@
                                 <th>Email</th>
                                 <th>Số điện thoại</th>
                                 <th width="75">Chi tiết</th>
-                                <th width="85">Xóa</th>
                             </tr>
                             </thead>
 
                             <tbody id="myTable">
-                            <c:forEach var="donHang" items="${requestScope.donHangs}">
+                            <c:forEach var="lienHe" items="${requestScope.lienHes}">
                                 <tr class="odd gradeX">
-                                    <td>${donHang.ngayDatHang}</td>
-                                    <td>${donHang.maDonHang}</td>
-                                    <td>${donHang.maNguoiDung} </td>
-                                    <td>${donHang.tongTien} VND</td>
+                                    <td>${lienHe.maLienHe}</td>
+                                    <td>${lienHe.tenNguoiDung}</td>
+                                    <td>${lienHe.email} </td>
+                                    <td>${lienHe.sdt}</td>
                                     <td>
-                                        <a href="#" class="btn"><i
+                                        <a href="/Admin/XemCTLienHe?idLH=${lienHe.maLienHe}" class="btn"><i
                                                 class="icon-eye-open"></i> View</a>
-                                    </td>
-                                    <td>
-                                        <a href="#"
-                                           onclick="return confirm('Are you sure?')" class="btn btn-danger"><i
-                                                class="icon-remove icon-white"></i> Delete</a>
                                     </td>
                                 </tr>
                             </c:forEach>
@@ -172,5 +154,17 @@
 
 
 </body>
+<script src="/Admin/vendors/jquery-1.9.1.min.js"></script>
+<script src="/Admin/bootstrap/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
 
 </html>
