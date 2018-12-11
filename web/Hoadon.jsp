@@ -8,16 +8,6 @@
     <!--meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="resources/js/jquery-2.2.3.min.js"></script>
-    <script>
-        addEventListener("load", function () {
-            setTimeout(hideURLbar, 0);
-        }, false);
-
-        function hideURLbar() {
-            window.scrollTo(0, 1);
-        }
-    </script>
     <!--//meta tags ends here-->
     <!--booststrap-->
     <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
@@ -33,42 +23,6 @@
     <!--//stylesheets-->
     <link href="//fonts.googleapis.com/css?family=Sunflower:500,700" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
-    <!--js working-->
-
-    <!-- start-smoth-scrolling -->
-    <script src="resources/js/move-top.js"></script>
-    <script src="resources/js/easing.js"></script>
-    <script>
-        jQuery(document).ready(function ($) {
-            $(".scroll").click(function (event) {
-                event.preventDefault();
-                $('html,body').animate({
-                    scrollTop: $(this.hash).offset().top
-                }, 900);
-            });
-        });
-    </script>
-    <!-- start-smoth-scrolling -->
-    <!-- here stars scrolling icon -->
-    <script>
-        $(document).ready(function () {
-
-            var defaults = {
-                containerID: 'toTop', // fading element id
-                containerHoverID: 'toTopHover', // fading element hover id
-                scrollSpeed: 1200,
-                easingType: 'linear'
-            };
-            $().UItoTop({
-                easingType: 'easeOutQuart'
-            });
-
-        });
-    </script>
-    <!-- //here ends scrolling icon -->
-    <!--bootstrap working-->
-    <script src="resources/js/bootstrap.min.js"></script>
-    <!-- //bootstrap working-->
 
 </head>
 
@@ -387,6 +341,52 @@
     <!-- footer -->
     </footer>
     <!-- footer -->
+    <script src="resources/js/jquery-2.2.3.min.js"></script>
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!--js working-->
+
+    <!-- start-smoth-scrolling -->
+    <script src="resources/js/move-top.js"></script>
+    <script src="resources/js/easing.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 900);
+            });
+        });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- here stars scrolling icon -->
+    <script>
+        $(document).ready(function () {
+
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+            };
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        });
+    </script>
+    <!-- //here ends scrolling icon -->
+    <!--bootstrap working-->
+    <script src="resources/js/bootstrap.min.js"></script>
+    <!-- //bootstrap working-->
 </body>
 
 </html>

@@ -200,7 +200,7 @@
                             data-bv-field="email" required>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-secondary">Gửi</button>
+                        <a onclick="location.href='/QuenMatKhau?email='+document.getElementById('email-forgot').value"><button type="button" class="btn btn-secondary" onclick="forgotPW()">Gửi</button></a>
                     </div>
                 </form>
             </div>
@@ -528,6 +528,11 @@
         }
     </script>
     <!-- Price Filtering -->
+    <script>
+        function forgotPW() {
+            alert("Vui lòng check mail để nhận mật khẩu mới!");
+        }
+    </script>
 </body>
 
 </html>

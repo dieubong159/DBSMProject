@@ -8,16 +8,6 @@
     <!--meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="resources/js/jquery-2.2.3.min.js"></script>
-    <script>
-        addEventListener("load", function () {
-            setTimeout(hideURLbar, 0);
-        }, false);
-
-        function hideURLbar() {
-            window.scrollTo(0, 1);
-        }
-    </script>
     <!--//meta tags ends here-->
     <!--booststrap-->
     <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
@@ -38,66 +28,6 @@
     <!--//stylesheets-->
     <link href="//fonts.googleapis.com/css?family=Sunflower:500,700" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
-    <!--js working-->
-
-    <!-- //cart-js -->
-    <!--responsiveslides banner-->
-    <script src="resources/js/responsiveslides.min.js"></script>
-    <script>
-        // You can also use "$(window).load(function() {"
-        $(function () {
-            // Slideshow 4
-            $("#slider4").responsiveSlides({
-                auto: true,
-                pager: false,
-                nav: true,
-                speed: 900,
-                namespace: "callbacks",
-                before: function () {
-                    $('.events').append("<li>before event fired.</li>");
-                },
-                after: function () {
-                    $('.events').append("<li>after event fired.</li>");
-                }
-            });
-
-        });
-    </script>
-    <!--// responsiveslides banner-->
-    <!-- start-smoth-scrolling -->
-    <script src="resources/js/move-top.js"></script>
-    <script src="resources/js/easing.js"></script>
-    <script>
-        jQuery(document).ready(function ($) {
-            $(".scroll").click(function (event) {
-                event.preventDefault();
-                $('html,body').animate({
-                    scrollTop: $(this.hash).offset().top
-                }, 900);
-            });
-        });
-    </script>
-    <!-- start-smoth-scrolling -->
-    <!-- here stars scrolling icon -->
-    <script>
-        $(document).ready(function () {
-
-            var defaults = {
-                containerID: 'toTop', // fading element id
-                containerHoverID: 'toTopHover', // fading element hover id
-                scrollSpeed: 1200,
-                easingType: 'linear'
-            };
-            $().UItoTop({
-                easingType: 'easeOutQuart'
-            });
-
-        });
-    </script>
-    <!-- //here ends scrolling icon -->
-    <!--bootstrap working-->
-    <script src="resources/js/bootstrap.min.js"></script>
-    <!-- //bootstrap working-->
 
 </head>
 
@@ -269,7 +199,7 @@
                             data-bv-field="email" required>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-secondary">Gửi</button>
+                        <a onclick="location.href='/QuenMatKhau?email='+document.getElementById('email-forgot').value"><button type="button" class="btn btn-secondary" onclick="forgotPW()">Gửi</button></a>
                     </div>
                 </form>
             </div>
@@ -494,6 +424,81 @@
                 <!-- Footer Links -->
             </footer>
             <!-- footer -->
+    <!--js working-->
+
+    <!-- //cart-js -->
+    <!--responsiveslides banner-->
+    <script src="resources/js/responsiveslides.min.js"></script>
+    <script>
+        // You can also use "$(window).load(function() {"
+        $(function () {
+            // Slideshow 4
+            $("#slider4").responsiveSlides({
+                auto: true,
+                pager: false,
+                nav: true,
+                speed: 900,
+                namespace: "callbacks",
+                before: function () {
+                    $('.events').append("<li>before event fired.</li>");
+                },
+                after: function () {
+                    $('.events').append("<li>after event fired.</li>");
+                }
+            });
+
+        });
+    </script>
+    <!--// responsiveslides banner-->
+    <!-- start-smoth-scrolling -->
+    <script src="resources/js/move-top.js"></script>
+    <script src="resources/js/easing.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 900);
+            });
+        });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- here stars scrolling icon -->
+    <script>
+        $(document).ready(function () {
+
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+            };
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        });
+    </script>
+    <!-- //here ends scrolling icon -->
+    <!--bootstrap working-->
+    <script src="resources/js/bootstrap.min.js"></script>
+    <!-- //bootstrap working-->
+    <script src="resources/js/jquery-2.2.3.min.js"></script>
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <script>
+        function forgotPW() {
+            alert("Vui lòng check mail để nhận mật khẩu mới!");
+        }
+    </script>
 </body>
 
 </html>

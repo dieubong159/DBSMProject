@@ -156,7 +156,7 @@
                                         </div>
                                         <div style="text-align: right">
                                             <button type="submit" id="btn-them" class="btn btn-primary">Hoàn tất</button>
-                                            <button type="button" class="btn">Hủy bỏ</button>
+                                            <a href="Admin/TrangChuAdmin"><button type="button" class="btn">Hủy bỏ</button></a>
                                         </div>
                                     </form>
 

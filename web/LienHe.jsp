@@ -9,15 +9,6 @@
   <!--meta tags -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script>
-    addEventListener("load", function () {
-      setTimeout(hideURLbar, 0);
-    }, false);
-
-    function hideURLbar() {
-      window.scrollTo(0, 1);
-    }
-  </script>
   <!--//meta tags ends here-->
   <!--booststrap-->
   <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
@@ -46,34 +37,6 @@
   <link rel="stylesheet" href="resources/css/global.css">
   <link rel="stylesheet" href="resources/css/style.trang-chu.css">
   <link rel="stylesheet" href="resources/style.lien-he.css">
-  <script>
-    // just for the demos, avoids form submit
-    jQuery.validator.setDefaults({
-      debug: true,
-      success: "valid"
-    });
-    $("#ContactForm").validate({
-      rules: {
-        field: {
-          required: true,
-          email: true,
-          phonenumber: true
-        }
-      }
-    });
-  </script>
-  <script>
-    function phonenumber(inputtxt) {
-      var phoneno = /(09|01[2|6|8|9])+([0-9]{8})\b/g;
-      if (inputtxt.value.match(phoneno)) {
-        return true;
-      }
-      else {
-        alert("Vui lòng nhập lại số điện thoại");
-        return false;
-      }
-    }
-  </script>
 </head>
 
 <body>
@@ -231,21 +194,21 @@
                     có thể</legend>
                   <div class="form-group">
                     <label for="name">Tên (Điền ít nhất 2 ký tự)</label>
-                    <input id="name" type="text" class="form-control" placeholder="Tên của bạn" required>
+                    <input id="name" name="name" type="text" class="form-control" placeholder="Tên của bạn" required>
                   </div>
                   <div class="form-group">
                     <label for="email">Địa chỉ Email</label>
-                    <input id="email" type="email" class="form-control" placeholder="Email của bạn" required>
+                    <input id="email" name="email" type="email" class="form-control" placeholder="Email của bạn" required>
                   </div>
                   <div class="form-group">
                     <label for="phone">Số điện thoại</label>
-                    <input id="phone" type="tel" class="form-control" placeholder="Số điện thoại" name="phone" required>
+                    <input id="phone" name="phone" type="tel" class="form-control" placeholder="Số điện thoại" name="phone" required>
                   </div>
                   <div class="form-group">
                     <label for="message">Nội dung</label>
-                    <textarea id="message" class="form-control" rows="4" placeholder="Viết bình luận" required></textarea>
+                    <textarea id="message" name="message" class="form-control" rows="4" placeholder="Viết bình luận" required></textarea>
                   </div>
-                  <input type="submit" value="Gửi liên hệ" class="btn btn-danger" id="submit" value="send" onclick="phonenumber(document.ContactForm.phone)">
+                  <a onclick="return (phonenumber(document.ContactForm.phone))"><input onsubmit="sendContact()" type="submit" value="Gửi liên hệ" class="btn btn-danger" id="submit"></a>
                 </fieldset>
               </form>
             </div>
@@ -305,7 +268,7 @@
               data-bv-field="email" required>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-secondary">Gửi</button>
+            <a onclick="location.href='/QuenMatKhau?email='+document.getElementById('email-forgot').value"><button type="button" class="btn btn-secondary" onclick="forgotPW()">Gửi</button></a>
           </div>
         </form>
       </div>
@@ -443,7 +406,53 @@
     <!-- Footer Links -->
   </footer>
   <!-- footer -->
-  </header>
+  <script>
+      addEventListener("load", function () {
+          setTimeout(hideURLbar, 0);
+      }, false);
+
+      function hideURLbar() {
+          window.scrollTo(0, 1);
+      }
+  </script>
+  <script>
+      // just for the demos, avoids form submit
+      jQuery.validator.setDefaults({
+          debug: true,
+          success: "valid"
+      });
+      $("#ContactForm").validate({
+          rules: {
+              field: {
+                  required: true,
+                  email: true,
+                  phonenumber: true
+              }
+          }
+      });
+  </script>
+  <script>
+      function phonenumber(inputtxt) {
+          var phoneno = /(09|01[2|6|8|9])+([0-9]{8})\b/g;
+          if (inputtxt.value.match(phoneno)) {
+              return true;
+          }
+          else {
+              alert("Vui lòng nhập lại số điện thoại");
+              return false;
+          }
+      }
+  </script>
+  <script>
+      function forgotPW() {
+          alert("Vui lòng check mail để nhận mật khẩu mới!");
+      }
+  </script>
+  <script>
+      function sendContact() {
+          alert("Cảm ơn bạn đã phản hồi về shop, bạn sẽ nhận được trả lời sớm nhất có thể!");
+      }
+  </script>
 </body>
 
 </html>

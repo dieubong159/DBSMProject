@@ -26,68 +26,6 @@
   <!--//stylesheets-->
   <link href="//fonts.googleapis.com/css?family=Sunflower:500,700" rel="stylesheet">
   <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
-  <!--js working-->
-  <script src="resources/js/jquery.js"></script>
-  <script src="resources/js/woocommerce.js"></script>
-  <script src="resources/js/jquery-2.2.3.min.js"></script>
-  <script src="resources/js/jquery-ui.js"></script>
-  <script type="text/javascript" src="resources/js/widget.js"></script>
-  <!-- start-smoth-scrolling -->
-  <script src="resources/js/move-top.js"></script>
-  <script src="resources/js/easing.js"></script>
-  <script>
-    jQuery(document).ready(function ($) {
-      $(".scroll").click(function (event) {
-        event.preventDefault();
-        $('html,body').animate({
-          scrollTop: $(this.hash).offset().top
-        }, 900);
-      });
-    });
-  </script>
-  <!-- start-smoth-scrolling -->
-  <!-- here stars scrolling icon -->
-  <script>
-    $(document).ready(function () {
-
-      var defaults = {
-        containerID: 'toTop', // fading element id
-        containerHoverID: 'toTopHover', // fading element hover id
-        scrollSpeed: 1200,
-        easingType: 'linear'
-      };
-      $().UItoTop({
-        easingType: 'easeOutQuart'
-      });
-
-    });
-  </script>
-  <!-- //here ends scrolling icon -->
-  <!--bootstrap working-->
-  <script src="resources/js/bootstrap.min.js"></script>
-  <!-- //bootstrap working-->
-  <!-- Password validation -->
-  <script type="text/javascript">
-    function checkPassword(str) {
-      var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
-      return re.test(str);
-    }
-    function checkForm(form) {
-      if (form.password.value != "" && form.password.value == form.re_password.value) {
-        if (!checkPassword(form.password.value)) {
-          alert("Mật khẩu bạn nhập không hợp lệ!");
-          form.password.focus();
-          return false;
-        }
-      } else {
-        alert("Mật khẩu và nhập lại không khớp, vui lòng nhập lại!");
-        form.password.focus();
-        return false;
-      }
-      return true;
-    }
-  </script>
-  <!-- Password validation -->
 </head>
 
 <body>
@@ -257,8 +195,8 @@
               data-bv-field="email" required>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-secondary">Gửi</button>
-          </div>
+          <a onclick="location.href='/QuenMatKhau?email='+document.getElementById('email-forgot').value"><button type="button" class="btn btn-secondary" onclick="forgotPW()">Gửi</button></a>
+        </div>
         </form>
       </div>
     </div>
@@ -316,9 +254,6 @@
                 <option value="0">Nữ</option>
               </select>
               <input name="gioitinh" id="gender" name="cbGender" type="hidden">
-                  <script>function run() {
-                      document.getElementById("gender").value = document.getElementById("inputgender").value;
-                  }</script>
             </div>
           </div>
           <button type="submit" class="btn btn-primary" id="btn-dang-ky">Đăng ký</button>
@@ -456,6 +391,78 @@
     <!-- Footer Links -->
   </footer>
   <!-- footer -->
+  <!--js working-->
+  <script src="resources/js/jquery.js"></script>
+  <script src="resources/js/woocommerce.js"></script>
+  <script src="resources/js/jquery-2.2.3.min.js"></script>
+  <script src="resources/js/jquery-ui.js"></script>
+  <script type="text/javascript" src="resources/js/widget.js"></script>
+  <!-- start-smoth-scrolling -->
+  <script src="resources/js/move-top.js"></script>
+  <script src="resources/js/easing.js"></script>
+  <script>
+      jQuery(document).ready(function ($) {
+          $(".scroll").click(function (event) {
+              event.preventDefault();
+              $('html,body').animate({
+                  scrollTop: $(this.hash).offset().top
+              }, 900);
+          });
+      });
+  </script>
+  <!-- start-smoth-scrolling -->
+  <!-- here stars scrolling icon -->
+  <script>
+      $(document).ready(function () {
+
+          var defaults = {
+              containerID: 'toTop', // fading element id
+              containerHoverID: 'toTopHover', // fading element hover id
+              scrollSpeed: 1200,
+              easingType: 'linear'
+          };
+          $().UItoTop({
+              easingType: 'easeOutQuart'
+          });
+
+      });
+  </script>
+  <!-- //here ends scrolling icon -->
+  <!--bootstrap working-->
+  <script src="resources/js/bootstrap.min.js"></script>
+  <!-- //bootstrap working-->
+  <!-- Password validation -->
+  <script type="text/javascript">
+      function checkPassword(str) {
+          var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+          return re.test(str);
+      }
+      function checkForm(form) {
+          if (form.password.value != "" && form.password.value == form.re_password.value) {
+              if (!checkPassword(form.password.value)) {
+                  alert("Mật khẩu bạn nhập không hợp lệ!");
+                  form.password.focus();
+                  return false;
+              }
+          } else {
+              alert("Mật khẩu và nhập lại không khớp, vui lòng nhập lại!");
+              form.password.focus();
+              return false;
+          }
+          return true;
+      }
+  </script>
+  <!-- Password validation -->
+  <%--Radio Giới tính--%>
+  <script>function run() {
+      document.getElementById("gender").value = document.getElementById("inputgender").value;
+  }</script>
+  <%--Radio Giới tính--%>
+  <script>
+      function forgotPW() {
+          alert("Vui lòng check mail để nhận mật khẩu mới!");
+      }
+  </script>
 </body>
 
 </html>

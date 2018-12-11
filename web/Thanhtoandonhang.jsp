@@ -8,16 +8,6 @@
     <!--meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script>
-        addEventListener("load", function () {
-            setTimeout(hideURLbar, 0);
-        }, false);
-
-        function hideURLbar() {
-            window.scrollTo(0, 1);
-        }
-    </script>
-
     <!--//meta tags ends here-->
     <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
     <link href="resources/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
@@ -27,235 +17,6 @@
     <!--//Shoping cart-->
     <link rel="stylesheet" href="resources/css/checkout.css" type="text/css" />
     <link rel="stylesheet" href="resources/css/style.css" type="text/css" />
-    <!--js working-->
-    <script src="resources/js/jquery-2.2.3.min.js"></script>
-    <script src="resources/js/jquery-ui.js"></script>
-    <!-- start-smoth-scrolling -->
-    <script src="resources/js/move-top.js"></script>
-    <script src="resources/js/easing.js"></script>
-    <!--bootstrap working-->
-    <script src="resources/js/bootstrap.min.js"></script>
-    <!-- //bootstrap working-->
-    <script>
-        jQuery(document).ready(function ($) {
-            $(".scroll").click(function (event) {
-                event.preventDefault();
-                $('html,body').animate({
-                    scrollTop: $(this.hash).offset().top
-                }, 900);
-            });
-        });
-    </script>
-    <!-- start-smoth-scrolling -->
-    <!-- here stars scrolling icon -->
-    <script>
-        $(document).ready(function () {
-
-            var defaults = {
-                containerID: 'toTop', // fading element id
-                containerHoverID: 'toTopHover', // fading element hover id
-                scrollSpeed: 1200,
-                easingType: 'linear'
-            };
-            $().UItoTop({
-                easingType: 'easeOutQuart'
-            });
-
-        });
-    </script>
-    <!-- //here ends scrolling icon -->
-    <script type="text/javascript">
-        var parseQueryString = function (url) {
-
-            var str = url;
-            var objURL = {};
-
-            str.replace(
-                new RegExp("([^?=&]+)(=([^&]*))?", "g"),
-                function ($0, $1, $2, $3) {
-
-                    if ($3 != undefined && $3 != null)
-                        objURL[$1] = decodeURIComponent($3);
-                    else
-                        objURL[$1] = $3;
-                });
-
-            return objURL;
-        };
-    </script>
-    <script type="text/javascript">
-        var isInit = false;
-
-        function funcFormOnSubmit(e) {
-            if (!isInit) {
-                isInit = true;
-
-                $.fn.tagName = function () {
-                    return this.prop("tagName").toLowerCase();
-                };
-            }
-            if (typeof (e) == 'string') {
-                var element = $(e);
-                var formData = e;
-            } else {
-                var element = this;
-                var formData = this;
-                e.preventDefault();
-            }
-            var formId = $(element).attr('id'), replaceElement = [], funcCallback;
-            if (formId == undefined || formId == null || formId == '')
-                return;
-
-            if (formId == 'form_next_step') {
-                formData = '.step-sections';
-                replaceElement.push('.step-sections');
-            }
-
-            else if (
-                formId == 'form_discount_add'
-                || formId == 'form_discount_remove'
-                || formId == 'form_update_location'
-                || formId == 'section-shipping-rate'
-            ) {
-                replaceElement.push('#form_update_location');
-                replaceElement.push('#change_pick_location_or_shipping');
-                replaceElement.push('.inventory_location_data');
-                replaceElement.push('.order-summary-toggle-inner .order-summary-toggle-total-recap');
-                replaceElement.push('.order-summary-sections');
-                replaceElement.push('#section-shipping-rate');
-            }
-
-            if (!$(formData) || $(formData).length == 0) {
-                window.location.reload();
-                return false;
-            }
-
-            var inputurl = '';
-
-            if (($(formData).tagName() != 'form' && $(formData).tagName() != 'input' && $(formData).tagName() != 'div')
-                || ($(formData).tagName() == 'input' || $(formData).tagName() == 'div')) {
-
-                formData += ' :input';
-            }
-            try {
-                var listparameters = new URLSearchParams($(formData).serialize());
-                var provincetmp = $('body').find('input[name$="selected_customer_shipping_province"]').val();
-                if (provincetmp != '') listparameters.set('customer_shipping_province', provincetmp);
-
-                var districttmp = $('body').find('input[name$="selected_customer_shipping_district"]').val();
-                if (districttmp != '') listparameters.set('customer_shipping_district', districttmp);
-
-                var wardtmp = $('body').find('input[name$="selected_customer_shipping_ward"]').val();
-                if (wardtmp != '') listparameters.set('customer_shipping_ward', wardtmp);
-
-                listparameters.delete('selected_customer_shipping_province');
-                listparameters.delete('selected_customer_shipping_district');
-                listparameters.delete('selected_customer_shipping_ward');
-                inputurl = listparameters.toString();
-
-            } catch (err) {
-
-                // Older Browser URLSearchParams not support
-                var listparameters = parseQueryString($(formData).serialize());
-                var provincetmp = $('body').find('input[name$="selected_customer_shipping_province"]').val();
-                if (provincetmp != '' && listparameters.customer_shipping_province) listparameters.customer_shipping_province = provincetmp;
-
-                var districttmp = $('body').find('input[name$="selected_customer_shipping_district"]').val();
-                if (districttmp != '' && listparameters.customer_shipping_district) listparameters.customer_shipping_district = districttmp;
-
-                var wardtmp = $('body').find('input[name$="selected_customer_shipping_ward"]').val();
-                if (wardtmp != '' && listparameters.customer_shipping_ward) listparameters.customer_shipping_ward = wardtmp;
-
-                delete listparameters.selected_customer_shipping_province;
-                delete listparameters.selected_customer_shipping_district;
-                delete listparameters.selected_customer_shipping_ward;
-
-                var listObject = '';
-                for (var key in listparameters) {
-                    listObject += '&' + key + '=' + encodeURIComponent(listparameters[key]);
-                };
-                inputurl = listObject.substring(1);
-
-            }
-
-            return false;
-        };
-        function funcSetEvent() {
-            var effectControlFieldClass = '.field input, .field select, .field textarea';
-
-            $('body')
-                .on('focus', effectControlFieldClass, function () {
-                    funcFieldFocus($(this), true);
-                })
-                .on('blur', effectControlFieldClass, function () {
-                    funcFieldFocus($(this), false);
-                    funcFieldHasValue($(this), true);
-                })
-                .on('keyup input paste', effectControlFieldClass, function () {
-                    funcFieldHasValue($(this), false);
-                })
-
-
-            $('body')
-                .on('change', '#section-payment-method input:radio', function () {
-                    $('#section-payment-method .content-box-row.content-box-row-secondary').addClass('hidden');
-
-                    var id = $(this).attr('id');
-
-                    if (id) {
-                        var sub = $('body').find('.content-box-row.content-box-row-secondary[for=' +    id + ']')
-
-                        if (sub && sub.length > 0) {
-                            $(sub).removeClass('hidden');
-                        }
-                    }
-                });
-        };
-        function funcFieldFocus(fieldInputElement, isFocus) {
-            if (fieldInputElement == undefined)
-                return;
-
-            var fieldElement = $(fieldInputElement).closest('.field');
-
-            if (fieldElement == undefined)
-                return;
-
-            if (isFocus)
-                $(fieldElement).addClass('field-active');
-            else
-                $(fieldElement).removeClass('field-active');
-        };
-        function funcFieldHasValue(fieldInputElement, isCheckRemove) {
-            if (fieldInputElement == undefined)
-                return;
-
-            var fieldElement = $(fieldInputElement).closest('.field');
-
-            if (fieldElement == undefined)
-                return;
-
-            if ($(fieldElement).find('.field-input-wrapper-select').length > 0) {
-                var value = $(fieldInputElement).find(':selected').val();
-
-                if (value == 'null')
-                    value = undefined;
-            } else {
-                var value = $(fieldInputElement).val();
-            }
-
-            if (!isCheckRemove) {
-                if (value != $(fieldInputElement).attr('value'))
-                    $(fieldElement).removeClass('field-error');
-            }
-
-        };
-        function funcInit() {
-            funcSetEvent();
-        }
-        $(document).ready(function () {
-            funcInit();
-        });
-    </script>
 
 </head>
 
@@ -296,7 +57,7 @@
                         <div class="col-lg-5 col-md-6 search-right">
                             <form style="padding-top:6%" class="form-inline my-lg-0">
                                 <input name="product-search" id="product-search" class="form-control mr-sm-2" type="search" placeholder="Bạn muốn tìm kiếm...">
-                                <a href="" onclick="this.href='/TimKiem?search='+document.getElementById('product-search').value" class="btn" style="background: ">Search</a>
+                                <a href="" onclick="this.href='/TimKiem?search='+document.getElementById('product-search').value" class="btn">Search</a>
                             </form>
                         </div>
                         <div class="col-lg-4 col-md-3 right-side-cart">
@@ -778,6 +539,244 @@
         <!-- Footer Links -->
     </footer>
     <!-- footer -->
+    <!--js working-->
+    <script src="resources/js/jquery-2.2.3.min.js"></script>
+    <script src="resources/js/jquery-ui.js"></script>
+    <!-- start-smoth-scrolling -->
+    <script src="resources/js/move-top.js"></script>
+    <script src="resources/js/easing.js"></script>
+    <!--bootstrap working-->
+    <script src="resources/js/bootstrap.min.js"></script>
+    <!-- //bootstrap working-->
+    <script>
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 900);
+            });
+        });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- here stars scrolling icon -->
+    <script>
+        $(document).ready(function () {
+
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+            };
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        });
+    </script>
+    <!-- //here ends scrolling icon -->
+    <script type="text/javascript">
+        var parseQueryString = function (url) {
+
+            var str = url;
+            var objURL = {};
+
+            str.replace(
+                new RegExp("([^?=&]+)(=([^&]*))?", "g"),
+                function ($0, $1, $2, $3) {
+
+                    if ($3 != undefined && $3 != null)
+                        objURL[$1] = decodeURIComponent($3);
+                    else
+                        objURL[$1] = $3;
+                });
+
+            return objURL;
+        };
+    </script>
+    <script type="text/javascript">
+        var isInit = false;
+
+        function funcFormOnSubmit(e) {
+            if (!isInit) {
+                isInit = true;
+
+                $.fn.tagName = function () {
+                    return this.prop("tagName").toLowerCase();
+                };
+            }
+            if (typeof (e) == 'string') {
+                var element = $(e);
+                var formData = e;
+            } else {
+                var element = this;
+                var formData = this;
+                e.preventDefault();
+            }
+            var formId = $(element).attr('id'), replaceElement = [], funcCallback;
+            if (formId == undefined || formId == null || formId == '')
+                return;
+
+            if (formId == 'form_next_step') {
+                formData = '.step-sections';
+                replaceElement.push('.step-sections');
+            }
+
+            else if (
+                formId == 'form_discount_add'
+                || formId == 'form_discount_remove'
+                || formId == 'form_update_location'
+                || formId == 'section-shipping-rate'
+            ) {
+                replaceElement.push('#form_update_location');
+                replaceElement.push('#change_pick_location_or_shipping');
+                replaceElement.push('.inventory_location_data');
+                replaceElement.push('.order-summary-toggle-inner .order-summary-toggle-total-recap');
+                replaceElement.push('.order-summary-sections');
+                replaceElement.push('#section-shipping-rate');
+            }
+
+            if (!$(formData) || $(formData).length == 0) {
+                window.location.reload();
+                return false;
+            }
+
+            var inputurl = '';
+
+            if (($(formData).tagName() != 'form' && $(formData).tagName() != 'input' && $(formData).tagName() != 'div')
+                || ($(formData).tagName() == 'input' || $(formData).tagName() == 'div')) {
+
+                formData += ' :input';
+            }
+            try {
+                var listparameters = new URLSearchParams($(formData).serialize());
+                var provincetmp = $('body').find('input[name$="selected_customer_shipping_province"]').val();
+                if (provincetmp != '') listparameters.set('customer_shipping_province', provincetmp);
+
+                var districttmp = $('body').find('input[name$="selected_customer_shipping_district"]').val();
+                if (districttmp != '') listparameters.set('customer_shipping_district', districttmp);
+
+                var wardtmp = $('body').find('input[name$="selected_customer_shipping_ward"]').val();
+                if (wardtmp != '') listparameters.set('customer_shipping_ward', wardtmp);
+
+                listparameters.delete('selected_customer_shipping_province');
+                listparameters.delete('selected_customer_shipping_district');
+                listparameters.delete('selected_customer_shipping_ward');
+                inputurl = listparameters.toString();
+
+            } catch (err) {
+
+                // Older Browser URLSearchParams not support
+                var listparameters = parseQueryString($(formData).serialize());
+                var provincetmp = $('body').find('input[name$="selected_customer_shipping_province"]').val();
+                if (provincetmp != '' && listparameters.customer_shipping_province) listparameters.customer_shipping_province = provincetmp;
+
+                var districttmp = $('body').find('input[name$="selected_customer_shipping_district"]').val();
+                if (districttmp != '' && listparameters.customer_shipping_district) listparameters.customer_shipping_district = districttmp;
+
+                var wardtmp = $('body').find('input[name$="selected_customer_shipping_ward"]').val();
+                if (wardtmp != '' && listparameters.customer_shipping_ward) listparameters.customer_shipping_ward = wardtmp;
+
+                delete listparameters.selected_customer_shipping_province;
+                delete listparameters.selected_customer_shipping_district;
+                delete listparameters.selected_customer_shipping_ward;
+
+                var listObject = '';
+                for (var key in listparameters) {
+                    listObject += '&' + key + '=' + encodeURIComponent(listparameters[key]);
+                };
+                inputurl = listObject.substring(1);
+
+            }
+
+            return false;
+        };
+        function funcSetEvent() {
+            var effectControlFieldClass = '.field input, .field select, .field textarea';
+
+            $('body')
+                .on('focus', effectControlFieldClass, function () {
+                    funcFieldFocus($(this), true);
+                })
+                .on('blur', effectControlFieldClass, function () {
+                    funcFieldFocus($(this), false);
+                    funcFieldHasValue($(this), true);
+                })
+                .on('keyup input paste', effectControlFieldClass, function () {
+                    funcFieldHasValue($(this), false);
+                })
+
+
+            $('body')
+                .on('change', '#section-payment-method input:radio', function () {
+                    $('#section-payment-method .content-box-row.content-box-row-secondary').addClass('hidden');
+
+                    var id = $(this).attr('id');
+
+                    if (id) {
+                        var sub = $('body').find('.content-box-row.content-box-row-secondary[for=' +    id + ']')
+
+                        if (sub && sub.length > 0) {
+                            $(sub).removeClass('hidden');
+                        }
+                    }
+                });
+        };
+        function funcFieldFocus(fieldInputElement, isFocus) {
+            if (fieldInputElement == undefined)
+                return;
+
+            var fieldElement = $(fieldInputElement).closest('.field');
+
+            if (fieldElement == undefined)
+                return;
+
+            if (isFocus)
+                $(fieldElement).addClass('field-active');
+            else
+                $(fieldElement).removeClass('field-active');
+        };
+        function funcFieldHasValue(fieldInputElement, isCheckRemove) {
+            if (fieldInputElement == undefined)
+                return;
+
+            var fieldElement = $(fieldInputElement).closest('.field');
+
+            if (fieldElement == undefined)
+                return;
+
+            if ($(fieldElement).find('.field-input-wrapper-select').length > 0) {
+                var value = $(fieldInputElement).find(':selected').val();
+
+                if (value == 'null')
+                    value = undefined;
+            } else {
+                var value = $(fieldInputElement).val();
+            }
+
+            if (!isCheckRemove) {
+                if (value != $(fieldInputElement).attr('value'))
+                    $(fieldElement).removeClass('field-error');
+            }
+
+        };
+        function funcInit() {
+            funcSetEvent();
+        }
+        $(document).ready(function () {
+            funcInit();
+        });
+    </script>
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
 </body>
 
 </html>

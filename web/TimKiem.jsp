@@ -30,67 +30,6 @@
     <!--//stylesheets-->
     <link href="//fonts.googleapis.com/css?family=Sunflower:500,700" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
-    <!--js working-->
-    <script src="resources/js/jquery.js"></script>
-    <script src="resources/js/woocommerce.js"></script>
-    <script src="resources/js/minicart.js"></script>
-    <script src="resources/js/jquery-3.3.1.min.js"></script>
-    <script src="resources/js/jquery-ui.js"></script>
-    <script type="text/javascript" src="resources/js/widget.js"></script>
-    <!--bootstrap working-->
-    <script src="resources/js/bootstrap.min.js"></script>
-    <!-- //bootstrap working-->
-    <script>
-        toys.render();
-
-        toys.cart.on('toys_checkout', function (evt) {
-            var items, len, i;
-
-            if (this.subtotal() > 0) {
-                items = this.items();
-
-                for (i = 0, len = items.length; i < len; i++) { }
-            }
-        });
-    </script>
-    <!-- //cart-js -->
-    <!-- start-smoth-scrolling -->
-    <script src="resources/js/move-top.js"></script>
-    <script src="resources/js/easing.js"></script>
-    <script>
-        jQuery(document).ready(function ($) {
-            $(".scroll").click(function (event) {
-                event.preventDefault();
-                $('html,body').animate({
-                    scrollTop: $(this.hash).offset().top
-                }, 900);
-            });
-        });
-    </script>
-    <!-- start-smoth-scrolling -->
-    <!-- here stars scrolling icon -->
-    <script>
-        $(document).ready(function () {
-
-            var defaults = {
-                containerID: 'toTop', // fading element id
-                containerHoverID: 'toTopHover', // fading element hover id
-                scrollSpeed: 1200,
-                easingType: 'linear'
-            };
-            $().UItoTop({
-                easingType: 'easeOutQuart'
-            });
-
-        });
-    </script>
-    <!-- //here ends scrolling icon -->
-    <script>
-        function run(){
-            document.getElementById("demo").value= document.getElementById("myRange").value;
-        }
-    </script>
-    <!-- Price Filtering -->
 </head>
 
 <body>
@@ -261,7 +200,7 @@
                            data-bv-field="email" required>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-secondary">Gửi</button>
+                    <a onclick="location.href='/QuenMatKhau?email='+document.getElementById('email-forgot').value"><button type="button" class="btn btn-secondary" onclick="forgotPW()">Gửi</button></a>
                 </div>
             </form>
         </div>
@@ -527,6 +466,72 @@
     <!-- Footer Links -->
 </footer>
 <!-- footer -->
+<!--js working-->
+<script src="resources/js/jquery.js"></script>
+<script src="resources/js/woocommerce.js"></script>
+<script src="resources/js/minicart.js"></script>
+<script src="resources/js/jquery-3.3.1.min.js"></script>
+<script src="resources/js/jquery-ui.js"></script>
+<script type="text/javascript" src="resources/js/widget.js"></script>
+<!--bootstrap working-->
+<script src="resources/js/bootstrap.min.js"></script>
+<!-- //bootstrap working-->
+<script>
+    toys.render();
+
+    toys.cart.on('toys_checkout', function (evt) {
+        var items, len, i;
+
+        if (this.subtotal() > 0) {
+            items = this.items();
+
+            for (i = 0, len = items.length; i < len; i++) { }
+        }
+    });
+</script>
+<!-- //cart-js -->
+<!-- start-smoth-scrolling -->
+<script src="resources/js/move-top.js"></script>
+<script src="resources/js/easing.js"></script>
+<script>
+    jQuery(document).ready(function ($) {
+        $(".scroll").click(function (event) {
+            event.preventDefault();
+            $('html,body').animate({
+                scrollTop: $(this.hash).offset().top
+            }, 900);
+        });
+    });
+</script>
+<!-- start-smoth-scrolling -->
+<!-- here stars scrolling icon -->
+<script>
+    $(document).ready(function () {
+
+        var defaults = {
+            containerID: 'toTop', // fading element id
+            containerHoverID: 'toTopHover', // fading element hover id
+            scrollSpeed: 1200,
+            easingType: 'linear'
+        };
+        $().UItoTop({
+            easingType: 'easeOutQuart'
+        });
+
+    });
+</script>
+<!-- //here ends scrolling icon -->
+<script>
+    function run(){
+        document.getElementById("demo").value= document.getElementById("myRange").value;
+    }
+</script>
+<!-- Price Filtering -->
+<script>
+    function forgotPW() {
+        alert("Vui lòng check mail để nhận mật khẩu mới!");
+    }
+</script>
 </body>
 
 </html>

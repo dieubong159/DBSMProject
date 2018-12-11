@@ -26,79 +26,7 @@
     <!--//stylesheets-->
     <link href="//fonts.googleapis.com/css?family=Sunflower:500,700" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
-    <!--js working-->
-    <script src="resources/js/jquery.js"></script>
-    <script src="resources/js/woocommerce.js"></script>
-    <script src="resources/js/minicart.js"></script>
-    <script src="resources/js/jquery-3.3.1.min.js"></script>
-    <script src="resources/js/jquery-ui.js"></script>
-    <script type="text/javascript" src="resources/js/widget.js"></script>
-    <!--bootstrap working-->
-    <script src="resources/js/bootstrap.min.js"></script>
-    <!-- //bootstrap working-->
-    <!-- //cart-js -->
-    <!-- start-smoth-scrolling -->
-    <script src="resources/js/move-top.js"></script>
-    <script src="resources/js/easing.js"></script>
-    <script>
-        jQuery(document).ready(function ($) {
-            $(".scroll").click(function (event) {
-                event.preventDefault();
-                $('html,body').animate({
-                    scrollTop: $(this.hash).offset().top
-                }, 900);
-            });
-        });
-    </script>
-    <!-- start-smoth-scrolling -->
-    <!-- here stars scrolling icon -->
-    <script>
-        $(document).ready(function () {
 
-            var defaults = {
-                containerID: 'toTop', // fading element id
-                containerHoverID: 'toTopHover', // fading element hover id
-                scrollSpeed: 1200,
-                easingType: 'linear'
-            };
-            $().UItoTop({
-                easingType: 'easeOutQuart'
-            });
-
-        });
-    </script>
-    <!-- //here ends scrolling icon -->
-    <script type="text/javascript">
-        function checkPassword(str) {
-            var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
-            return re.test(str);
-        }
-        function checkForm(form) {
-            // if (form.username.value == "") {
-            //     alert("Error: Username cannot be blank!");
-            //     form.username.focus();
-            //     return false;
-            // }
-            // re = /^\w+$/;
-            // if (!re.test(form.username.value)) {
-            //     alert("Error: Username must contain only letters, numbers and underscores!");
-            //     form.username.focus();
-            //     return false;
-            // }
-            if (form.new_password.value != "" && form.re_new_password.value == form.new_password.value) {
-                if (!checkPassword(form.new_password.value)) {
-                    alert("Mật khảo bạn nhập không hợp lệ!");
-                    form.new_password.focus();
-                    return false;
-                }
-            } else {
-                alert("Mật khẩu và nhập lại không khớp, vui lòng nhập lại!");
-                form.new_password.focus();
-                return false;
-            }
-            return true;
-        }
-    </script>
 </head>
 
 <body class="account">
@@ -454,6 +382,79 @@
         <!-- Footer Links -->
     </footer>
     <!-- footer -->
+    <!--js working-->
+    <script src="resources/js/jquery.js"></script>
+    <script src="resources/js/woocommerce.js"></script>
+    <script src="resources/js/minicart.js"></script>
+    <script src="resources/js/jquery-3.3.1.min.js"></script>
+    <script src="resources/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="resources/js/widget.js"></script>
+    <!--bootstrap working-->
+    <script src="resources/js/bootstrap.min.js"></script>
+    <!-- //bootstrap working-->
+    <!-- //cart-js -->
+    <!-- start-smoth-scrolling -->
+    <script src="resources/js/move-top.js"></script>
+    <script src="resources/js/easing.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 900);
+            });
+        });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- here stars scrolling icon -->
+    <script>
+        $(document).ready(function () {
+
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+            };
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        });
+    </script>
+    <!-- //here ends scrolling icon -->
+    <script type="text/javascript">
+        function checkPassword(str) {
+            var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+            return re.test(str);
+        }
+        function checkForm(form) {
+            // if (form.username.value == "") {
+            //     alert("Error: Username cannot be blank!");
+            //     form.username.focus();
+            //     return false;
+            // }
+            // re = /^\w+$/;
+            // if (!re.test(form.username.value)) {
+            //     alert("Error: Username must contain only letters, numbers and underscores!");
+            //     form.username.focus();
+            //     return false;
+            // }
+            if (form.new_password.value != "" && form.re_new_password.value == form.new_password.value) {
+                if (!checkPassword(form.new_password.value)) {
+                    alert("Mật khảo bạn nhập không hợp lệ!");
+                    form.new_password.focus();
+                    return false;
+                }
+            } else {
+                alert("Mật khẩu và nhập lại không khớp, vui lòng nhập lại!");
+                form.new_password.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
 </body>
 
 </html>

@@ -8,16 +8,6 @@
     <!--meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="resources/js/jquery-2.2.3.min.js"></script>
-    <script>
-        addEventListener("load", function () {
-            setTimeout(hideURLbar, 0);
-        }, false);
-
-        function hideURLbar() {
-            window.scrollTo(0, 1);
-        }
-    </script>
     <!--//meta tags ends here-->
     <!--booststrap-->
     <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" id="bootstrap-css">
@@ -38,45 +28,6 @@
     <link href="//fonts.googleapis.com/css?family=Sunflower:500,700" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
     <link rel="stylesheet" href="resources/css/w3.css">
-    <!--js working-->
-
-    <script src="resources/js/minicart.js"></script>
-    <!-- //cart-js -->
-
-    <!-- start-smoth-scrolling -->
-    <script src="resources/js/move-top.js"></script>
-    <script src="resources/js/easing.js"></script>
-    <script>
-        jQuery(document).ready(function ($) {
-            $(".scroll").click(function (event) {
-                event.preventDefault();
-                $('html,body').animate({
-                    scrollTop: $(this.hash).offset().top
-                }, 900);
-            });
-        });
-    </script>
-    <!-- start-smoth-scrolling -->
-    <!-- here stars scrolling icon -->
-    <script>
-        $(document).ready(function () {
-
-            var defaults = {
-                containerID: 'toTop', // fading element id
-                containerHoverID: 'toTopHover', // fading element hover id
-                scrollSpeed: 1200,
-                easingType: 'linear'
-            };
-            $().UItoTop({
-                easingType: 'easeOutQuart'
-            });
-
-        });
-    </script>
-    <!-- //here ends scrolling icon -->
-    <!--bootstrap working-->
-    <script src="resources/js/bootstrap.min.js"></script>
-    <!-- //bootstrap working-->
 
 </head>
 
@@ -248,7 +199,7 @@
                             data-bv-field="email" required>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-secondary">Gửi</button>
+                        <a onclick="location.href='/QuenMatKhau?email='+document.getElementById('email-forgot').value"><button type="button" class="btn btn-secondary" onclick="forgotPW()">Gửi</button></a>
                     </div>
                 </form>
             </div>
@@ -296,7 +247,7 @@
                         <ul>
                             <c:forEach var="baiViet" items="${sessionScope.baiVietNoiBat}">
                             <li>
-                                <a href="/XemCTBaiViet?iDBV=${baiViet.maBaiViet}">
+                                <a href="/XemCTBaiViet?idBV=${baiViet.maBaiViet}">
                                     <img src="${baiViet.urlHinhAnh}" width="70px" height="70px">
                                     <p>${baiViet.tieuDe}</p>
                                 </a>
@@ -622,6 +573,60 @@
         }
     </script>
     <!-- Tab Detail -->
+    <!--js working-->
+
+    <script src="resources/js/minicart.js"></script>
+    <!-- //cart-js -->
+
+    <!-- start-smoth-scrolling -->
+    <script src="resources/js/move-top.js"></script>
+    <script src="resources/js/easing.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 900);
+            });
+        });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- here stars scrolling icon -->
+    <script>
+        $(document).ready(function () {
+
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+            };
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        });
+    </script>
+    <!-- //here ends scrolling icon -->
+    <!--bootstrap working-->
+    <script src="resources/js/bootstrap.min.js"></script>
+    <!-- //bootstrap working-->
+    <script src="resources/js/jquery-2.2.3.min.js"></script>
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <script>
+        function forgotPW() {
+            alert("Vui lòng check mail để nhận mật khẩu mới!");
+        }
+    </script>
 </body>
 
 </html>
