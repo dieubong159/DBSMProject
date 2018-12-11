@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DonHangService extends ConnectDatabase implements Business<DonHang>{
     private static final DonHangService instance = new DonHangService();
@@ -44,6 +45,46 @@ public class DonHangService extends ConnectDatabase implements Business<DonHang>
         return donHangs;
     }
 
+    public List<DonHang> getDonHang(int offset) throws SQLException, ClassNotFoundException {
+        List<DonHang> donHangs = new ArrayList<>();
+        openConnection();
+
+        String query = "select TinhTrang,ctdh.MaDonHang,MaNguoiDung,TongTien,DiaChiDonHang,HinhThucThanhToan,NgayDatHang " +
+                "from CHITIET_DONHANG ctdh, (select dh.MaDonHang,SUM(Gia) as TongTien from DONHANG dh, CHITIET_DONHANG where dh.MaDonHang=CHITIET_DONHANG.MaDonHang group by dh.MaDonHang) tonggiatri, DONHANG " +
+                "where tonggiatri.MaDonHang=ctdh.MaDonHang and DONHANG.MaDonHang=ctdh.MaDonHang " +
+                "ORDER BY MaDonHang OFFSET " + offset +" ROWS FETCH NEXT 10 ROWS ONLY;";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setQueryTimeout(90);
+        statement.setEscapeProcessing(true);
+
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next())
+        {
+            DonHang donHang = new DonHang();
+            donHang.setTinhTrang(resultSet.getBoolean(1));
+            donHang.setMaDonHang(resultSet.getString(2));
+            donHang.setMaNguoiDung(resultSet.getString(3));
+            donHang.setTongTien(Double.parseDouble(resultSet.getString(4)));
+            donHang.setDiaChiGiaoHang(resultSet.getString(5));
+            donHang.setHinhThucThanhToan(resultSet.getBoolean(6));
+            donHang.setNgayDatHang(resultSet.getDate(7));
+
+            donHangs.add(donHang);
+        }
+        closeConnection();
+        return donHangs;
+    }
+
+    public int getNumOfRecord()throws SQLException, ClassNotFoundException{
+        openConnection();
+        String query = "Select count(MaDonHang) as sl from DONHANG";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setQueryTimeout(90);
+        statement.setEscapeProcessing(true);
+        ResultSet rs = statement.executeQuery();
+        rs.next();
+        return rs.getInt("sl");
+    }
     @Override
     public DonHang get(Object... keys) throws SQLException, ClassNotFoundException {
         if(keys.length<=0){

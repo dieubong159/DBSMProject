@@ -49,10 +49,12 @@ public class ThemSanPhamAdminServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         try {
             // Đường dẫn tuyệt đối tới thư mục gốc của web app.
-            String appPath = "D:\\DATA-HK1-3\\LTWeb\\thietke\\FINAL-PROJECT-NHOM4-DBMS\\DBSMProject\\web\\";
+            String Path = "D:\\DATA-HK1-3\\LTWeb\\thietke\\FINAL-PROJECT-NHOM4-DBMS\\DBSMProject\\web\\";
+            String appPath = request.getServletContext().getRealPath(""); //Lưu vào file out
             //String appPath = System.getProperty("user.dir");
             //String appPath=new File(".").getCanonicalPath();
             appPath = appPath.replace('\\', '/');
+            Path = Path.replace('\\', '/');
 
             // Thư mục để save file tải lên.
             String fullSavePath = null;
@@ -62,10 +64,23 @@ public class ThemSanPhamAdminServlet extends HttpServlet {
                 fullSavePath = appPath + "/" + SAVE_DIRECTORY;
             }
 
+
+            String fullPath=null;
+            if(Path.endsWith("/")){
+                fullPath=Path+SAVE_DIRECTORY;
+            }else {
+                fullPath= Path + "/" + SAVE_DIRECTORY;
+            }
+
             // Tạo thư mục nếu nó không tồn tại.
             File fileSaveDir = new File(fullSavePath);
             if (!fileSaveDir.exists()) {
                 fileSaveDir.mkdir();
+            }
+
+            File fileNew= new File(fullPath);
+            if (!fileNew.exists()) {
+                fileNew.mkdir();
             }
 
             // Danh mục các phần đã upload lên (Có thể là nhiều file).
@@ -73,17 +88,19 @@ public class ThemSanPhamAdminServlet extends HttpServlet {
                 String fileName = extractFileName(part);
                 if (fileName != null && fileName.length() > 0) {
                     String filePath = fullSavePath + File.separator + fileName;
+
+                    String fileoutPath= fullPath + File.separator + fileName;  //Luu vào file out
                     System.out.println("Write attachment to file: " + filePath);
+                    request.setAttribute("link", fileName);
+                    System.out.println("Write attachment to file: " + fileoutPath);
                     request.setAttribute("link", fileName);
                     // Ghi vào file.
                     part.write(filePath);
+                    part.write(fileoutPath);
                     HinhAnh hinhAnh= new HinhAnh();
                     hinhAnh.setUrl("/UploadFile/"+fileName);
                     hinhAnh.setMaSp(masp);
                     HinhAnhService.getInstance().add(hinhAnh);
-//                    ThongTinCaNhanDAL.CapNhatAnhDaiDien((int)request.getSession().getAttribute("MaNguoiDung"), fileName);
-//                    out.write("./UploadFile/"+fileName);
-//                    out.flush();
                 }
             }
             // Upload thành công.

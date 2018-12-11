@@ -15,21 +15,28 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(name = "SanPhamAdminServlet", urlPatterns = {"/Admin/QLSanPham"})
 public class SanPhamAdminServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idDanhMuc = request.getParameter("idDM");
+        String page = request.getParameter("page");
+        int ipage = Integer.parseInt(page);
         if(idDanhMuc==null)
         {
             response.setStatus(400);
             return;
         }
-        ArrayList<SanPham> sanPhams = null;
+        //ArrayList<SanPham> sanPhams = null;
+        List<SanPham> sanPhams = null;
         try {
-            sanPhams = SanPhamService.getInstance().getDataCategory(idDanhMuc);
+            //sanPhams = SanPhamService.getInstance().getDataCategory(idDanhMuc);
+            sanPhams = SanPhamService.getInstance().getSanPham((ipage-1)*10, idDanhMuc);
             ArrayList<DanhMuc> danhMucs = DanhMucService.getInstance().getData();
             request.setAttribute("danhMucs",danhMucs);
+            int numRecord = SanPhamService.getInstance().getNumOfRecord(idDanhMuc);
+            request.setAttribute("numOfRecord",numRecord);
         }catch (SQLException | ClassNotFoundException e)
         {
             e.printStackTrace();
@@ -42,7 +49,7 @@ public class SanPhamAdminServlet extends HttpServlet {
         request.setAttribute("sanPhams",sanPhams);
         HttpSession session = request.getSession();
         session.setAttribute("maDanhMuc",idDanhMuc);
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Admin/QLySanPham.jsp");
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Admin/QLySanPham.jsp?idDM=" + idDanhMuc + "&page=" + ipage);
         dispatcher.forward(request,response);
     }
 }

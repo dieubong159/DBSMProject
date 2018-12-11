@@ -1,6 +1,7 @@
 package banhaisan.models.datahandle;
 
 import banhaisan.models.datamodels.HinhAnh;
+import banhaisan.models.datamodels.HinhAnhBV;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,6 +37,26 @@ public class HinhAnhService extends ConnectDatabase implements Business<HinhAnh>
         statement.setEscapeProcessing(true);
         statement.setString(1, hinhAnh.getMaSp());
         statement.setString(2,hinhAnh.getUrl());
+
+        int rowAffected = statement.executeUpdate();
+        closeConnection();
+        return rowAffected;
+    }
+
+
+
+    public int addBaiViet(HinhAnhBV hinhAnhBV) throws SQLException, ClassNotFoundException {
+        if (hinhAnhBV == null) {
+            return 0;
+        }
+        openConnection();
+
+        String query = "exec ThemHinhAnhBaiViet ?,?";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setQueryTimeout(90);
+        statement.setEscapeProcessing(true);
+        statement.setString(1, hinhAnhBV.getMaBV());
+        statement.setString(2,hinhAnhBV.getUrl());
 
         int rowAffected = statement.executeUpdate();
         closeConnection();

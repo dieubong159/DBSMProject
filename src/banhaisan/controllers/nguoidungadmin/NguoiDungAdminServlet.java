@@ -14,14 +14,20 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(name = "NguoiDungAdminServlet", urlPatterns = { "/Admin/NguoiDungAdmin" })
 public class NguoiDungAdminServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String page = request.getParameter("page");
+        int ipage = Integer.parseInt(page);
         try {
             NguoiDungAdminService service= new NguoiDungAdminService();
-            ArrayList<NguoiDung> nguoiDungs= service.getData();
+            //ArrayList<NguoiDung> nguoiDungs= service.getData();
+            List<NguoiDung> nguoiDungs= service.getNguoiDungAdmin((ipage-1)*10);
+            int numRecord = service.getNumOfRecord();
+            request.setAttribute("numOfRecord",numRecord);
 
             request.setAttribute("nguoiDungs" , nguoiDungs);
 
@@ -33,7 +39,7 @@ public class NguoiDungAdminServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/Admin/QlyAdmin.jsp");
+        RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/Admin/QlyAdmin.jsp?page=" + ipage);
         dispatcher.forward(request,response);
     }
 }
