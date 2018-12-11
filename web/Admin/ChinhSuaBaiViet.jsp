@@ -13,6 +13,8 @@
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="assets/styles.css" rel="stylesheet" media="screen">
     <script src="vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <script src="/libraries/ckeditor/ckeditor.js"></script>
+    <script src="/libraries/ckfinder/ckfinder.js"></script>
 </head>
 
 <body>
@@ -127,7 +129,7 @@
                                     <label class="control-label">Nội dung(bắt buộc)<span class="required">*</span></label>
                                     <div class="controls" style="margin-top: -25px;">
                                         <div class="block-content collapse in">
-                                            <textarea id="bootstrap-editor" placeholder="Enter text ..." style="width:670px;height:500px;" name="text-noi-dung">${baiViet.noiDung}</textarea>
+                                            <textarea id="editor" placeholder="Enter text ..." style="width:670px;height:500px;" name="text-noi-dung">${baiViet.noiDung}</textarea>
                                             <br><small class="text-danger" id="validate-bootstrap-editor"></small>
                                         </div>
                                     </div>
@@ -151,7 +153,10 @@
         <p>&copy; TieuDanSeaFood 2018</p>
     </footer>
     </div>
-
+    <script>
+        var editor= CKEDITOR.replace('editor');
+        CKFinder.setupCKEditor(editor, '<%=request.getContextPath()%>/libraries/ckfinder/');
+    </script>
     <!--/.fluid-container-->
     <script src="vendors/bootstrap-wysihtml5/lib/js/wysihtml5-0.3.0.js"></script>
     <script src="vendors/jquery-1.9.1.min.js"></script>
