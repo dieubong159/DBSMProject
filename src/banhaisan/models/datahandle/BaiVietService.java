@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class BaiVietService extends ConnectDatabase implements Business<BaiViet> {
     private static final BaiVietService instance = new BaiVietService();
@@ -41,6 +42,37 @@ public class BaiVietService extends ConnectDatabase implements Business<BaiViet>
 
         closeConnection();
         return baiViets;
+    }
+
+    public List<BaiViet> getBaiViet(int offset)throws SQLException, ClassNotFoundException{
+        List<BaiViet> list = new ArrayList<BaiViet>();
+        openConnection();
+        String query = "SELECT * FROM BAIVIET ORDER BY MaBaiViet OFFSET " + offset + " ROWS FETCH NEXT 10 ROWS ONLY;";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setQueryTimeout(90);
+        statement.setEscapeProcessing(true);
+
+        ResultSet rs = statement.executeQuery();
+        while(rs.next()){
+            BaiViet baiViet= new BaiViet();
+            baiViet.setMaBaiViet(rs.getString(1));
+            baiViet.setTieuDe(rs.getString(2));
+            baiViet.setNgayDang(rs.getDate(4));
+            list.add(baiViet);
+        }
+
+        return list;
+    }
+
+    public int getNumOfRecord()throws SQLException, ClassNotFoundException{
+        openConnection();
+        String query = "Select count(MaBaiViet) as sl from BAIVIET";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setQueryTimeout(90);
+        statement.setEscapeProcessing(true);
+        ResultSet rs = statement.executeQuery();
+        rs.next();
+        return rs.getInt("sl");
     }
 
     public ArrayList<BaiViet> getTop4BaiViet() throws SQLException, ClassNotFoundException {
@@ -97,8 +129,11 @@ public class BaiVietService extends ConnectDatabase implements Business<BaiViet>
 
     @Override
     public int add(BaiViet model) throws SQLException, ClassNotFoundException {
-        if (model == null) {
-            return 0;
+        return 0;
+    }
+    public String ThemBaiViet(BaiViet baiViet) throws SQLException, ClassNotFoundException {
+        if (baiViet == null) {
+            return null;
         }
         openConnection();
 
@@ -106,16 +141,17 @@ public class BaiVietService extends ConnectDatabase implements Business<BaiViet>
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setEscapeProcessing(true);
         statement.setQueryTimeout(90);
-        statement.setString(1, model.getMaBaiViet());
-        statement.setString(2,model.getTieuDe());
-        statement.setString(3,model.getNoiDung());
-        statement.setDate(4, (Date) model.getNgayDang());
-        statement.setString(5,model.getMaDanhMuc());
+        statement.setString(1, baiViet.getMaBaiViet());
+        statement.setString(2,baiViet.getTieuDe());
+        statement.setString(3,baiViet.getNoiDung());
+        statement.setDate(4, (Date) baiViet.getNgayDang());
+        statement.setString(5,baiViet.getMaDanhMuc());
 
 
-        int rowAffected = statement.executeUpdate();
+        ResultSet res = statement.executeQuery();
+        String mabv = res.next() ? res.getString(1) : null;
         closeConnection();
-        return rowAffected;
+        return mabv;
     }
 
     @Override

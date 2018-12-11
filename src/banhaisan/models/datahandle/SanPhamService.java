@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class SanPhamService extends ConnectDatabase implements Business<SanPham> {
@@ -42,6 +43,44 @@ public class SanPhamService extends ConnectDatabase implements Business<SanPham>
         }
         closeConnection();
         return sanPhams;
+    }
+
+    public List<SanPham> getSanPham(int offset, String danhmuc) throws SQLException, ClassNotFoundException {
+        List<SanPham> sanPhams = new ArrayList<>();
+        openConnection();
+
+        String query = "select sp.MaDanhMuc,sp.MaSP,TenSP,GiaSP,PhanTramKhuyenMai*100,XuatXu,NgayNhap from SANPHAM sp left join HINHANH ha on sp.MaSP=ha.MaSP where sp.MaDanhMuc= '" + danhmuc + "' ORDER BY MaSP OFFSET " + offset + " ROWS FETCH NEXT 10 ROWS ONLY;";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setEscapeProcessing(true);
+        statement.setQueryTimeout(90);
+
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()){
+            SanPham sanPham = new SanPham();
+            sanPham.setMaDanhMuc(resultSet.getString(1));
+            sanPham.setMaSP(resultSet.getString(2));
+            sanPham.setTenSP(resultSet.getString(3));
+            sanPham.setGiaSP(Double.parseDouble(resultSet.getString(4)));
+            sanPham.setPhanTramKhuyenMai(Float.parseFloat(resultSet.getString(5)));
+            sanPham.setXuatXu(resultSet.getString(6));
+            sanPham.setNgayNhap(resultSet.getDate(7));
+            sanPham.setUrlHinhAnh(HinhAnhService.getInstance().LayMotHinhAnhSanPham(sanPham.getMaSP()).getUrl());
+
+            sanPhams.add(sanPham);
+        }
+        closeConnection();
+        return sanPhams;
+    }
+
+    public int getNumOfRecord(String danhmuc)throws SQLException, ClassNotFoundException{
+        openConnection();
+        String query = "select count(sp.MaSP) as sl from SANPHAM sp left join HINHANH ha on sp.MaSP=ha.MaSP where sp.MaDanhMuc='" + danhmuc + "';";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setQueryTimeout(90);
+        statement.setEscapeProcessing(true);
+        ResultSet rs = statement.executeQuery();
+        rs.next();
+        return rs.getInt("sl");
     }
 
     public ArrayList<SanPham> getDataCategory(Object... keys) throws SQLException, ClassNotFoundException{

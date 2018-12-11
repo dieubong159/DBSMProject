@@ -14,15 +14,22 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(name = "NguoiDungThongThuongServlet", urlPatterns = { "/Admin/NguoiDungThongThuong" })
 public class NguoiDungThongThuongServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String page = request.getParameter("page");
+        int ipage = Integer.parseInt(page);
         try {
-            ArrayList<NguoiDung> nguoiDungs= NguoiDungThongThuongService.getInstance().getData();
+            //ArrayList<NguoiDung> nguoiDungs= NguoiDungThongThuongService.getInstance().getData();
+            List<NguoiDung> nguoiDungs= NguoiDungThongThuongService.getInstance().getData();
 
             request.setAttribute("nguoiDungs" , nguoiDungs);
+
+            int numRecord = NguoiDungThongThuongService.getInstance().getNumOfRecord();
+            request.setAttribute("numOfRecord",numRecord);
 
             ArrayList<DanhMuc> danhMucs = DanhMucService.getInstance().getData();
             request.setAttribute("danhMucs",danhMucs);
@@ -32,7 +39,7 @@ public class NguoiDungThongThuongServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/Admin/QlyNguoiDungThongThuong.jsp");
+        RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/Admin/QlyNguoiDungThongThuong.jsp?page=" + ipage);
         dispatcher.forward(request,response);
     }
 }

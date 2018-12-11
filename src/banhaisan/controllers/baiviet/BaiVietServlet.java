@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(name = "BaiVietServlet" , urlPatterns = "/Admin/QlyBaiViet")
 public class BaiVietServlet extends HttpServlet {
@@ -22,16 +23,23 @@ public class BaiVietServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String page = request.getParameter("page");
+        int ipage = Integer.parseInt(page);
         try {
             ArrayList<DanhMuc> danhMucs = DanhMucService.getInstance().getData();
             request.setAttribute("danhMucs",danhMucs);
 
-            ArrayList<BaiViet> baiViets= BaiVietService.getInstance().getData();
+            //ArrayList<BaiViet> baiViets= BaiVietService.getInstance().getData();
+            List<BaiViet> baiViets= BaiVietService.getInstance().getBaiViet((ipage-1)*10);
+
             request.setAttribute("baiViet", baiViets);
+
+            int numRecord = BaiVietService.getInstance().getNumOfRecord();
+            request.setAttribute("numOfRecord",numRecord);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/Admin/QlyBaiViet.jsp");
+        RequestDispatcher dispatcher=getServletContext().getRequestDispatcher("/Admin/QlyBaiViet.jsp?page=" + ipage);
         dispatcher.forward(request,response);
 
 

@@ -112,6 +112,17 @@
                                     </div>
                                 </div>
                                 <div class="control-group">
+                                    <label class="control-label" for="fileInput">Hình ảnh hiển thị</label>
+                                    <div class="controls">
+                                        <div id="uniform-fileInput">
+                                            <input id="fileInput" type="file" name="fileTest" value="Upload">
+                                            <%--<span class="filename" style="user-select: none;;">Không có file</span>--%>
+                                            <%--<span class="action" style="user-select: none;">Chọn File</span>--%>
+                                            <img id="showImg" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="control-group">
                                     <label class="control-label">Danh mục<span class="required">*</span></label>
                                     <div class="controls">
                                         <select class="span6 m-wrap" id="cb-danh-muc" name="cbdanhmuc" style="width:500px !important;" onchange="run()">

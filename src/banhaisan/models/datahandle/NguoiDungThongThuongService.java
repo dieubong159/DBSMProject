@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class NguoiDungThongThuongService extends ConnectDatabase implements Business<NguoiDung> {
     private static final NguoiDungThongThuongService instance = new NguoiDungThongThuongService();
@@ -43,6 +44,46 @@ public class NguoiDungThongThuongService extends ConnectDatabase implements Busi
         }
         closeConnection();
         return nguoiDungs;
+    }
+
+    public List<NguoiDung> getNguoiDung(int offset) throws SQLException, ClassNotFoundException {
+        List<NguoiDung> nguoiDungs = new ArrayList<>();
+        openConnection();
+
+        String sql = "SELECT * FROM NGUOIDUNG Where NGUOIDUNG.Admin=0 ORDER BY MaNguoiDung OFFSET 10 ROWS FETCH NEXT 10 ROWS ONLY;";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setEscapeProcessing(true);
+        statement.setQueryTimeout(90);
+
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()) {
+            NguoiDung nguoiDung = new NguoiDung();
+            nguoiDung.setMaNguoiDung(resultSet.getString(1));
+            nguoiDung.setEmail(resultSet.getString(2));
+            nguoiDung.setMatKhau(resultSet.getString(3));
+            nguoiDung.setHoTen(resultSet.getString(4));
+            nguoiDung.setDiaChi(resultSet.getString(5));
+            nguoiDung.setSdt(resultSet.getString(6));
+            nguoiDung.setGioiTinh(resultSet.getBoolean(7));
+            nguoiDung.setNgaySinh(resultSet.getDate(8));
+            nguoiDung.setAdmin(resultSet.getBoolean(9));
+            nguoiDung.setKichHoat(resultSet.getBoolean(10));
+
+            nguoiDungs.add(nguoiDung);
+        }
+        closeConnection();
+        return nguoiDungs;
+    }
+
+    public int getNumOfRecord()throws SQLException, ClassNotFoundException{
+        openConnection();
+        String query = "Select count(MaNguoiDung) as sl from NguoiDung where NGUOIDUNG.Admin=0";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setQueryTimeout(90);
+        statement.setEscapeProcessing(true);
+        ResultSet rs = statement.executeQuery();
+        rs.next();
+        return rs.getInt("sl");
     }
 
     @Override
@@ -162,4 +203,20 @@ public class NguoiDungThongThuongService extends ConnectDatabase implements Busi
         closeConnection();
         return rowAffected;
     }
+    public int KichHoat(String ma, boolean kichHoat) throws SQLException, ClassNotFoundException {
+        openConnection();
+
+        String sql= "exec dbo.KichHoatTaiKhoan ?,?";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.setEscapeProcessing(true);
+        statement.setQueryTimeout(90);
+        statement.setString(1,ma);
+        statement.setBoolean(2,kichHoat);
+
+        int rowAffected = statement.executeUpdate();
+        closeConnection();
+        return rowAffected;
+
+    }
+
 }

@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
 <!DOCTYPE html>
@@ -9,25 +8,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Người Dùng</title>
+    <title>Đơn hàng</title>
     <!-- Bootstrap -->
-    <link href="/Admin/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="/Admin/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
-    <link href="/Admin/assets/styles.css" rel="stylesheet" media="screen">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+    <link href="assets/styles.css" rel="stylesheet" media="screen">
     <script src="/Admin/vendors/jquery-1.9.1.min.js"></script>
     <script src="/Admin/bootstrap/js/bootstrap.min.js"></script>
     <script>
-        function confirmDelete(obj) {
-            if (confirm("Bạn có chắc chắn muốn xóa người dùng này không?")) {
-                $.post("/Admin/XoaNguoiDung",{ txtMaNguoiDung : $(obj).attr("manguoidung").trim() }, content => location.href="/Admin/NguoiDungThongThuong");
-            }
-        }
-    </script>
-    <script>
-        $(document).ready(function(){
-            $("#myInput").on("keyup", function() {
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
                 var value = $(this).val().toLowerCase();
-                $("#myTable tr").filter(function() {
+                $("#myTable tr").filter(function () {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });
@@ -65,7 +57,8 @@
                 </ul>
                 <ul class="nav">
                     <li class="dropdown">
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Quản lý Người dùng <b class="caret"></b>
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Quản lý Người dùng <b
+                                class="caret"></b>
                         </a>
                         <ul class="dropdown-menu" id="menu2">
                             <li>
@@ -109,18 +102,12 @@
             <!-- block -->
             <div class="block">
                 <div class="navbar navbar-inner block-header" style="text-align:center">
-                    <div class="muted pull-left">QUẢN LÍ NGƯỜI DÙNG</div>
+                    <div class="muted pull-left">QUẢN LÍ LIÊN HỆ</div>
                 </div>
                 <div class="block-content collapse in">
                     <div class="span12">
                         <div class="table-toolbar">
                             <div>
-                                <div style="float:left;">
-                                    <a href="/Admin/TMNguoiDung">
-                                        <button class="btn btn-success">Thêm mới <i class="icon-plus icon-white"></i>
-                                        </button>
-                                    </a>
-                                </div>
                                 <div style="float:right;">
                                     <label>Search: <input id="myInput" type="text" aria-controls="example2"></label>
                                 </div>
@@ -130,63 +117,44 @@
                                id="example2">
                             <thead>
                             <tr>
-                                <th width="75">Kích hoạt</th>
-                                <th >Mã</th>
-                                <th >Họ tên</th>
-                                <th >Email</th>
-                                <th >Số điện thoại</th>
+                                <th>Mã liên hệ</th>
+                                <th>Tên người dùng</th>
+                                <th>Email</th>
+                                <th>Số điện thoại</th>
                                 <th width="75">Chi tiết</th>
-                                <th width="70">Chỉnh sửa</th>
                                 <th width="85">Xóa</th>
                             </tr>
                             </thead>
+
                             <tbody id="myTable">
-                            <c:forEach var="nguoiDung" items="${requestScope.nguoiDungs}">
+                            <c:forEach var="donHang" items="${requestScope.donHangs}">
                                 <tr class="odd gradeX">
-                                    <td><input onchange="checkKichHoat('${nguoiDung.maNguoiDung}', this.checked)" type="checkbox" name="chkKichHoat" class="form-control"
-                                               <c:if test="${nguoiDung.kichHoat}">checked</c:if> /></td>
-                                    <td>${nguoiDung.maNguoiDung}</td>
-                                    <td>${nguoiDung.hoTen}</td>
-                                    <td class="center">${nguoiDung.email}</td>
-                                    <td class="center">${nguoiDung.sdt} </td>
-                                    <td><a href="/Admin/ChiTietNguoiDung?id=${nguoiDung.maNguoiDung}" class="btn"><i
-                                            class="icon-eye-open"></i>View</a></td>
+                                    <td>${donHang.ngayDatHang}</td>
+                                    <td>${donHang.maDonHang}</td>
+                                    <td>${donHang.maNguoiDung} </td>
+                                    <td>${donHang.tongTien} VND</td>
                                     <td>
-                                        <a href="/Admin/ChinhSuaNguoiDung?id=${nguoiDung.maNguoiDung}"
-                                           class="btn btn-primary"><i class="icon-pencil icon-white"></i>
-                                            Edit</a>
+                                        <a href="#" class="btn"><i
+                                                class="icon-eye-open"></i> View</a>
                                     </td>
                                     <td>
-                                        <button class="btn btn-danger" maNguoiDung="${nguoiDung.maNguoiDung}" onclick="confirmDelete(this);"><i
-                                                class="icon-remove icon-white"></i>
-                                            Delete</button>
+                                        <a href="#"
+                                           onclick="return confirm('Are you sure?')" class="btn btn-danger"><i
+                                                class="icon-remove icon-white"></i> Delete</a>
                                     </td>
                                 </tr>
                             </c:forEach>
                             </tbody>
                         </table>
-                        <fmt:formatNumber var = "totalPage" value = "${requestScope.numOfRecord/10}" minFractionDigits="0" maxFractionDigits="0"/>
-                        <c:if test="${(requestScope.numOfRecord mod 10) != 0}">
-
-                            <fmt:formatNumber var = "totalPage" type = "number" value = "${(requestScope.numOfRecord/10 + 1)- ((requestScope.numOfRecord/10 + 1) % 1 == 0 ? 0 : 0.5)}" minFractionDigits="0" maxFractionDigits="0"/>
-                        </c:if>
                         <div class="dataTables_paginate paging_bootstrap pagination" style="text-align:center">
                             <ul>
-                                <c:if test="${param.page != 1}">
-                                <li class="prev"><a href="/Admin/NguoiDungThongThuong?page=${param.page - 1}">← Previous</a></li>
-                                </c:if>
-                                <c:forEach var="j" begin="1" end="${totalPage}">
-                                    <c:if test="${param.page == j}">
-                                        <li class="active"><a href="/Admin/NguoiDungThongThuong?page=${j}">${j}</a></li>
-                                    </c:if>
-                                    <c:if test="${param.page != j}">
-                                        <li><a href="/Admin/NguoiDungThongThuong?page=${j}">${j}</a></li>
-                                    </c:if>
-                                </c:forEach>
-
-                                <c:if test="${param.page < totalPage}">
-                                    <li class="next"><a href="/Admin/NguoiDungThongThuong?page=${param.page + 1}">Next → </a></li>
-                                </c:if>
+                                <li class="prev"><a href="#">← Previous</a></li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li class="next"><a href="#">Next → </a></li>
                             </ul>
                         </div>
                     </div>
@@ -201,11 +169,7 @@
     <p>&copy; TieuDanSeaFood 2018</p>
 </footer>
 </div>
-<script>
-    function checkKichHoat(maNguoiDung, check) {
-        $.post("/Admin/KichHoat",{ txtMaNguoiDung : maNguoiDung, check : check });
-    }
-</script>
+
 
 </body>
 
