@@ -48,16 +48,15 @@
                 </ul>
                 <ul class="nav">
                     <li class="dropdown">
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Quản lý Người dùng <b
-                                class="caret"></b>
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Quản lý Người dùng <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu" id="menu2">
                             <li>
-                                <a href="/Admin/NguoiDungThongThuong">Người dùng thông thường</a>
+                                <a href="/Admin/NguoiDungThongThuong?page=1">Người dùng thông thường</a>
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="/Admin/NguoiDungAdmin">Admin</a>
+                                <a href="/Admin/NguoiDungAdmin?page=1">Admin</a>
                             </li>
                         </ul>
                     </li>
@@ -68,19 +67,39 @@
                         <ul class="dropdown-menu" id="menu1">
                             <c:forEach var="danhMuc" items="${requestScope.danhMucs}">
                                 <li>
-                                    <a href="QLSanPham?idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
+                                    <a href="/Admin/QLSanPham?idDM=${danhMuc.maDanhmuc}&page=1">${danhMuc.tenDanhmuc}</a>
                                 </li>
                             </c:forEach>
                         </ul>
                     </li>
                     <li>
-                        <a href="/Admin/QlyBaiViet">Quản lý Bài Viết</a>
+                        <a href="/Admin/QlyBaiViet?page=1">Quản lý Bài Viết</a>
                     </li>
                     <li>
-                        <a href="/Admin/QLDanhMuc">Quản lý Danh mục</a>
+                        <a href="/Admin/QLDanhMuc?page=1">Quản lý Danh mục</a>
                     </li>
                     <li>
-                        <a href="/Admin/QLDonHang">Quản lý Đơn hàng</a>
+                        <a href="/Admin/QLDonHang?page=1">Quản lý Đơn hàng</a>
+                    </li>
+                    <li>
+                        <a href="/Admin/QLLienHe?page=1">Quản lý Liên hệ</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Thống kê <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu" id="menu3">
+                            <li>
+                                <a href="ThongKeDoanhThu.jsp">Doanh thu</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="ThongKeDonHang.jsp">Đơn hàng</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="/Admin/XuatFilePdf">Xuất file Pdf</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -181,7 +200,7 @@
                             </div>
                             <div style="text-align:center;">
                                 <button type="submit" id="btn-them" class="btn btn-primary">Thêm người dùng</button>
-                                <a href="/Admin/NguoiDungThongThuong" type="button" class="btn">Hủy bỏ</a>
+                                <a href="/Admin/NguoiDungThongThuong?page=1" type="button" class="btn">Hủy bỏ</a>
                             </div>
                         </form>
 
@@ -289,7 +308,7 @@
         return true;
     }
 
-    $("#btn-them").click(() = > {
+    $("#btn-them").click(() => {
         let kq = kiemTraTxtTen() & kiemTraTxtEmail() & KiemTraTxtDienThoai() & kiemTraTxtNgaySinh() & kiemTraTxtMatKhau() & kiemTraTxtXacNhanMatKhau();
     if (kq === 0) {
         return false;

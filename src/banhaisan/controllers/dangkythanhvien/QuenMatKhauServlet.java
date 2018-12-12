@@ -28,8 +28,8 @@ public class QuenMatKhauServlet extends HttpServlet {
         try {
             if(DangNhapService.getInstance().IsExisting(toEmail)!=null) {
                 String newPassWord = generate_password(10).toString();
-                String username = "16110291@student.hcmute.edu.vn";
-                String password = "dieu01886060734";
+                final String username = "16110291@student.hcmute.edu.vn";
+                final String password = "dieu01886060734";
 
                 Properties props = new Properties();
                 props.put("mail.smtp.starttls.enable", "true");

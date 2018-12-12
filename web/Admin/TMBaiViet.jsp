@@ -51,11 +51,11 @@
                             </a>
                             <ul class="dropdown-menu" id="menu2">
                                 <li>
-                                    <a href="/Admin/NguoiDungThongThuong">Người dùng thông thường</a>
+                                    <a href="/Admin/NguoiDungThongThuong?page=1">Người dùng thông thường</a>
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a href="/Admin/NguoiDungAdmin">Admin</a>
+                                    <a href="/Admin/NguoiDungAdmin?page=1">Admin</a>
                                 </li>
                             </ul>
                         </li>
@@ -66,19 +66,39 @@
                             <ul class="dropdown-menu" id="menu1">
                                 <c:forEach var="danhMuc" items="${requestScope.danhMucs}">
                                     <li>
-                                        <a href="QLSanPham?idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
+                                        <a href="/Admin/QLSanPham?idDM=${danhMuc.maDanhmuc}&page=1">${danhMuc.tenDanhmuc}</a>
                                     </li>
                                 </c:forEach>
                             </ul>
                         </li>
                         <li>
-                            <a href="/Admin/QlyBaiViet">Quản lý Bài Viết</a>
+                            <a href="/Admin/QlyBaiViet?page=1">Quản lý Bài Viết</a>
                         </li>
                         <li>
-                            <a href="/Admin/QLDanhMuc">Quản lý Danh mục</a>
+                            <a href="/Admin/QLDanhMuc?page=1">Quản lý Danh mục</a>
                         </li>
                         <li>
-                            <a href="/Admin/QLDonHang">Quản lý Đơn hàng</a>
+                            <a href="/Admin/QLDonHang?page=1">Quản lý Đơn hàng</a>
+                        </li>
+                        <li>
+                            <a href="/Admin/QLLienHe?page=1">Quản lý Liên hệ</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Thống kê <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu" id="menu3">
+                                <li>
+                                    <a href="ThongKeDoanhThu.jsp">Doanh thu</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="ThongKeDonHang.jsp">Đơn hàng</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="/Admin/XuatFilePdf">Xuất file Pdf</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -96,7 +116,7 @@
                     <div class="block-content collapse in">
                         <div class="span12">
                             <!-- BEGIN FORM-->
-                            <form action="/Admin/TMBaiViet" id="form_sample_1" class="form-horizontal" style="width:100%;margin:0 auto;" method="post">
+                            <form action="/Admin/TMBaiViet" id="form_sample_1" class="form-horizontal" style="width:100%;margin:0 auto;" method="post" enctype="multipart/form-data">
                                 <div class="control-group">
                                     <label class="control-label">Mã bài viết(bắt buộc)<span class="required">*</span></label>
                                     <div class="controls">
@@ -112,10 +132,10 @@
                                     </div>
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label" for="fileInput">Hình ảnh hiển thị</label>
+                                    <label class="control-label" for="fileInput">Chọn hình ảnh</label>
                                     <div class="controls">
                                         <div id="uniform-fileInput">
-                                            <input id="fileInput" type="file" name="fileTest" value="Upload">
+                                            <input multiple id="fileInput" type="file" name="fileTest" value="Upload">
                                             <%--<span class="filename" style="user-select: none;;">Không có file</span>--%>
                                             <%--<span class="action" style="user-select: none;">Chọn File</span>--%>
                                             <img id="showImg" />
@@ -147,7 +167,7 @@
                                 </div>
                                 <div style="text-align:center;">
                                     <button id="btn-them" type="submit" class="btn btn-primary">Thêm bài viết</button>
-                                    <a href="/Admin/QlyBaiViet" type="button" class="btn">Hủy bỏ</a>
+                                    <a href="/Admin/QlyBaiViet?page=1" type="button" class="btn">Hủy bỏ</a>
                                 </div>
                             </form>
 

@@ -20,7 +20,10 @@ import java.util.List;
 public class DonHangServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String page = request.getParameter("page");
-        int ipage = Integer.parseInt(page);
+
+        int ipage = 1;
+        if(page != null)
+            ipage=Integer.parseInt(page);
         try{
             //ArrayList<DonHang> donHangs = DonHangService.getInstance().getData();
             List<DonHang> donHangs = DonHangService.getInstance().getDonHang((ipage-1)*10);

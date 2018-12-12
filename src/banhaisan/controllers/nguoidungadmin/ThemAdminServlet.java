@@ -25,11 +25,11 @@ public class ThemAdminServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=UTF-8");
         NguoiDung nguoiDung= new NguoiDung();
-        nguoiDung.setHoTen(request.getParameter("txt-ten"));
+        nguoiDung.setHoTen(request.getParameter("txt-ten").trim());
         nguoiDung.setGioiTinh(request.getParameter("txt-gioi-tinh").trim().equals("1"));
-        nguoiDung.setEmail(request.getParameter("txt-email"));
-        nguoiDung.setSdt(request.getParameter("txt-dien-thoai"));
-        nguoiDung.setDiaChi(request.getParameter("txt-dia-chi"));
+        nguoiDung.setEmail(request.getParameter("txt-email").trim());
+        nguoiDung.setSdt(request.getParameter("txt-dien-thoai").trim());
+        nguoiDung.setDiaChi(request.getParameter("txt-dia-chi").trim());
         Date ngaySinh = null;
         if (request.getParameter("dt-ngay-sinh") != null) {
             try {
@@ -39,7 +39,7 @@ public class ThemAdminServlet extends HttpServlet {
             }
         }
         nguoiDung.setNgaySinh(new java.sql.Date(ngaySinh.getTime()));
-        nguoiDung.setMatKhau(request.getParameter("txt-mat-khau"));
+        nguoiDung.setMatKhau(request.getParameter("txt-mat-khau").trim());
 
         NguoiDungAdminService nguoiDungAdmins= new NguoiDungAdminService();
         NguoiDung nd=null;

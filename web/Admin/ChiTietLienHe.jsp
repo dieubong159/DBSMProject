@@ -52,11 +52,11 @@
                         </a>
                         <ul class="dropdown-menu" id="menu2">
                             <li>
-                                <a href="/Admin/NguoiDungThongThuong">Người dùng thông thường</a>
+                                <a href="/Admin/NguoiDungThongThuong?page=1">Người dùng thông thường</a>
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="/Admin/NguoiDungAdmin">Admin</a>
+                                <a href="/Admin/NguoiDungAdmin?page=1">Admin</a>
                             </li>
                         </ul>
                     </li>
@@ -65,21 +65,41 @@
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu" id="menu1">
-                            <c:forEach var="danhMuc" items="${sessionScope.danhMucs}">
+                            <c:forEach var="danhMuc" items="${requestScope.danhMucs}">
                                 <li>
-                                    <a href="QLSanPham?idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
+                                    <a href="/Admin/QLSanPham?idDM=${danhMuc.maDanhmuc}&page=1">${danhMuc.tenDanhmuc}</a>
                                 </li>
                             </c:forEach>
                         </ul>
                     </li>
                     <li>
-                        <a href="/Admin/QlyBaiViet">Quản lý Bài Viết</a>
+                        <a href="/Admin/QlyBaiViet?page=1">Quản lý Bài Viết</a>
                     </li>
                     <li>
-                        <a href="/Admin/QLDanhMuc">Quản lý Danh mục</a>
+                        <a href="/Admin/QLDanhMuc?page=1">Quản lý Danh mục</a>
                     </li>
                     <li>
-                        <a href="/Admin/QLDonHang">Quản lý Đơn hàng</a>
+                        <a href="/Admin/QLDonHang?page=1">Quản lý Đơn hàng</a>
+                    </li>
+                    <li>
+                        <a href="/Admin/QLLienHe?page=1">Quản lý Liên hệ</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Thống kê <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu" id="menu3">
+                            <li>
+                                <a href="ThongKeDoanhThu.jsp">Doanh thu</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="ThongKeDonHang.jsp">Đơn hàng</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="/Admin/XuatFilePdf">Xuất file Pdf</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -152,18 +172,23 @@
                                     <label class="control-label">Gửi phản hồi cho Người dùng:</label>
                                     <div class="controls">
                                         <textarea id="phan-hoi" type="text" name="txtphanhoi" data-required="1"
-                                                  class="span6 m-wrap"
-                                                  style="width:707px !important;"></textarea>
+                                                  class="span6 m-wrap" style="width:707px !important;"></textarea>
+                                        <br><small class="text-danger" id="validate-phan-hoi"></small>
                                     </div>
                                 </div>
                             </div>
                             <div style="text-align: center">
-                                <button type="submit" class="btn btn-danger btn-large">Gửi</button>
+                                <button type="submit" id="btn-gui" class="btn btn-primary">Gửi phản hồi</button>
+                                <a href="/Admin/QLLienHe?page=1" type="button" class="btn btn-success">Hủy bỏ</a>
                             </div>
+                            <%--<div style="text-align: center">--%>
+                                <%--<button type="submit" class="btn btn-danger btn-large">Gửi</button>--%>
+                            <%--</div>--%>
 
-                            <div style="text-align: center">
-                                <a href="/Admin/QLLienHe" type="button" class="btn btn-success btn-large">Quay về trang chủ</a>
-                            </div>
+                            <%--<div style="text-align: center">--%>
+                                <%--<a href="/Admin/QLLienHe?page=1" type="button" class="btn btn-success btn-large">Quay về--%>
+                                    <%--trang chủ</a>--%>
+                            <%--</div>--%>
                         </form>
                     </div>
                 </div>
@@ -175,6 +200,25 @@
     <footer>
         <p>&copy; TieuDanSeaFood 2018</p>
     </footer>
+    <script>
+        function kiemTraGuiLienHe() {
+            let value = $("#phan-hoi").val();
+            if (value === "") {
+                $("#validate-phan-hoi").html("Bạn chưa nhập phản hồi cho người dùng");
+                $("#phan-hoi").css("border", "solid 1px red");
+                return false;
+            }
+            $("#validate-phan-hoi").html("");
+            $("#phan-hoi").css("border", "solid 1px #ccc");
+            return true;
+        }
+
+        $("#btn-gui").click(() => {
+            let kq = kiemTraGuiLienHe();
+            return kq !== false;
+
+        });
+    </script>
 </div>
 
 

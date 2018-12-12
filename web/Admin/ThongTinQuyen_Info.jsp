@@ -47,49 +47,53 @@
                         <li class="dropdown">
                             <a href="#" data-toggle="dropdown" class="dropdown-toggle">Quản lý Người dùng <b class="caret"></b>
                             </a>
-                            <ul class="dropdown-menu" id="menu1">
+                            <ul class="dropdown-menu" id="menu2">
                                 <li>
-                                    <a href="QlyNguoiDungThongThuong.jsp">Người dùng thông thường</a>
+                                    <a href="/Admin/NguoiDungThongThuong?page=1">Người dùng thông thường</a>
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a href="QlyAdmin.jsp">Admin</a>
+                                    <a href="/Admin/NguoiDungAdmin?page=1">Admin</a>
                                 </li>
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="QLySanPham.jsp" data-toggle="dropdown" class="dropdown-toggle">Quản lý Sản phẩm
+                            <a href="/Admin/QLSanPham" data-toggle="dropdown" class="dropdown-toggle">Quản lý Sản phẩm
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu" id="menu1">
-                                <li>
-                                    <a href="QLySanPham.jsp">Tôm</a>
-                                </li>
-                                <li>
-                                    <a href="QLySanPham.jsp">Cua</a>
-                                </li>
-                                <li>
-                                    <a href="QLySanPham.jsp">Cá</a>
-                                </li>
-                                <li>
-                                    <a href="QLySanPham.jsp">Mực</a>
-                                </li>
-                                <li>
-                                    <a href="QLySanPham.jsp">Ngao-Sò-Ốc</a>
-                                </li>
+                                <c:forEach var="danhMuc" items="${requestScope.danhMucs}">
+                                    <li>
+                                        <a href="/Admin/QLSanPham?idDM=${danhMuc.maDanhmuc}&page=1">${danhMuc.tenDanhmuc}</a>
+                                    </li>
+                                </c:forEach>
                             </ul>
                         </li>
                         <li>
-                            <a href="QlyBaiViet.jsp">Quản lý Bài Viết</a>
+                            <a href="/Admin/QlyBaiViet?page=1">Quản lý Bài Viết</a>
                         </li>
                         <li>
-                            <a href="QLyDanhMuc.jsp">Quản lý Danh mục</a>
+                            <a href="/Admin/QLDanhMuc?page=1">Quản lý Danh mục</a>
                         </li>
                         <li>
-                            <a href="QlyDonHang.jsp">Quản lý Đơn hàng</a>
+                            <a href="/Admin/QLDonHang?page=1">Quản lý Đơn hàng</a>
                         </li>
-                        <li>
-                            <a href="QlyQuyen.jsp">Quản lý quyền</a>
+                        <li class="dropdown">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Thống kê <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu" id="menu3">
+                                <li>
+                                    <a href="ThongKeDoanhThu.jsp">Doanh thu</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="ThongKeDonHang.jsp">Đơn hàng</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="/Admin/XuatFilePdf">Xuất file Pdf</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>

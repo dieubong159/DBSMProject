@@ -33,7 +33,7 @@ public class ThemSanPhamAdminServlet extends HttpServlet {
             SanPham sanPham = new SanPham();
             sanPham.setTenSP(request.getParameter("txtTenSP"));
             sanPham.setGiaSP(Double.parseDouble(request.getParameter("txtGiaSP")));
-            sanPham.setPhanTramKhuyenMai(Integer.parseInt(request.getParameter("txtPhanTramKhuyenMai")));
+            sanPham.setPhanTramKhuyenMai(Float.parseFloat(request.getParameter("txtPhanTramKhuyenMai")));
             sanPham.setXuatXu(request.getParameter("txtXuatXu"));
             sanPham.setMoTa(request.getParameter("txtMoTa"));
             sanPham.setMaDanhMuc(request.getParameter("txtMaDanhMuc"));
@@ -108,7 +108,7 @@ public class ThemSanPhamAdminServlet extends HttpServlet {
             e.printStackTrace();
         }
         HttpSession session = request.getSession();
-        response.sendRedirect("/Admin/QLSanPham?idDM="+session.getAttribute("maDanhMuc"));
+        response.sendRedirect("/Admin/QLSanPham?idDM="+session.getAttribute("maDanhMuc") + "&page=1");
     }
     private String extractFileName(Part part) {
         // form-data; name="file"; filename="C:\file1.zip"

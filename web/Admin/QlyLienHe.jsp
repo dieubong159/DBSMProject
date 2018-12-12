@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
 <!DOCTYPE html>
@@ -45,16 +46,15 @@
                 </ul>
                 <ul class="nav">
                     <li class="dropdown">
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Quản lý Người dùng <b
-                                class="caret"></b>
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Quản lý Người dùng <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu" id="menu2">
                             <li>
-                                <a href="/Admin/NguoiDungThongThuong">Người dùng thông thường</a>
+                                <a href="/Admin/NguoiDungThongThuong?page=1">Người dùng thông thường</a>
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="/Admin/NguoiDungAdmin">Admin</a>
+                                <a href="/Admin/NguoiDungAdmin?page=1">Admin</a>
                             </li>
                         </ul>
                     </li>
@@ -63,21 +63,41 @@
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu" id="menu1">
-                            <c:forEach var="danhMuc" items="${sessionScope.danhMucs}">
+                            <c:forEach var="danhMuc" items="${requestScope.danhMucs}">
                                 <li>
-                                    <a href="QLSanPham?idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
+                                    <a href="/Admin/QLSanPham?idDM=${danhMuc.maDanhmuc}&page=1">${danhMuc.tenDanhmuc}</a>
                                 </li>
                             </c:forEach>
                         </ul>
                     </li>
                     <li>
-                        <a href="/Admin/QlyBaiViet">Quản lý Bài Viết</a>
+                        <a href="/Admin/QlyBaiViet?page=1">Quản lý Bài Viết</a>
                     </li>
                     <li>
-                        <a href="/Admin/QLDanhMuc">Quản lý Danh mục</a>
+                        <a href="/Admin/QLDanhMuc?page=1">Quản lý Danh mục</a>
                     </li>
                     <li>
-                        <a href="/Admin/QLDonHang">Quản lý Đơn hàng</a>
+                        <a href="/Admin/QLDonHang?page=1">Quản lý Đơn hàng</a>
+                    </li>
+                    <li>
+                        <a href="/Admin/QLLienHe?page=1">Quản lý Liên hệ</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Thống kê <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu" id="menu3">
+                            <li>
+                                <a href="ThongKeDoanhThu.jsp">Doanh thu</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="ThongKeDonHang.jsp">Đơn hàng</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="/Admin/XuatFilePdf">Xuất file Pdf</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
@@ -128,15 +148,29 @@
                             </c:forEach>
                             </tbody>
                         </table>
+                        <fmt:formatNumber var = "totalPage" value = "${requestScope.numOfRecord/10}" minFractionDigits="0" maxFractionDigits="0"/>
+                        <c:if test="${(requestScope.numOfRecord mod 10) != 0}">
+
+                            <fmt:formatNumber var = "totalPage" type = "number" value = "${(requestScope.numOfRecord/10 + 1)- ((requestScope.numOfRecord/10 + 1) % 1 == 0 ? 0 : 0.5)}" minFractionDigits="0" maxFractionDigits="0"/>
+                        </c:if>
+
                         <div class="dataTables_paginate paging_bootstrap pagination" style="text-align:center">
                             <ul>
-                                <li class="prev"><a href="#">← Previous</a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li class="next"><a href="#">Next → </a></li>
+                                <c:if test="${param.page != 1}">
+                                    <li class="prev"><a href="/Admin/QLLienHe?page=${param.page - 1}">← Previous</a></li>
+                                </c:if>
+                                <c:forEach var="j" begin="1" end="${totalPage}">
+                                    <c:if test="${param.page == j}">
+                                        <li class="active"><a href="/Admin/QLLienHe?page=${j}">${j}</a></li>
+                                    </c:if>
+                                    <c:if test="${param.page != j}">
+                                        <li><a href="/Admin/QLLienHe?page=${j}">${j}</a></li>
+                                    </c:if>
+                                </c:forEach>
+
+                                <c:if test="${param.page < totalPage}">
+                                    <li class="next"><a href="/Admin/QLLienHe?page=${param.page + 1}">Next → </a></li>
+                                </c:if>
                             </ul>
                         </div>
                     </div>
