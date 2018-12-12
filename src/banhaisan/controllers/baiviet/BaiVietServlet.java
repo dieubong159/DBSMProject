@@ -24,7 +24,10 @@ public class BaiVietServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String page = request.getParameter("page");
-        int ipage = Integer.parseInt(page);
+
+        int ipage = 1;
+        if(page != null)
+            ipage=Integer.parseInt(page);
         try {
             ArrayList<DanhMuc> danhMucs = DanhMucService.getInstance().getData();
             request.setAttribute("danhMucs",danhMucs);

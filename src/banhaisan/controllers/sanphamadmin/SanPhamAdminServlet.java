@@ -22,7 +22,10 @@ public class SanPhamAdminServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String idDanhMuc = request.getParameter("idDM");
         String page = request.getParameter("page");
-        int ipage = Integer.parseInt(page);
+
+        int ipage = 1;
+        if(page != null)
+             ipage=Integer.parseInt(page);
         if(idDanhMuc==null)
         {
             response.setStatus(400);

@@ -77,7 +77,9 @@ public class DonHangService extends ConnectDatabase implements Business<DonHang>
 
     public int getNumOfRecord()throws SQLException, ClassNotFoundException{
         openConnection();
-        String query = "Select count(MaDonHang) as sl from DONHANG";
+        String query = "select count(DONHANG.MaDonHang) as sl " +
+                "from CHITIET_DONHANG ctdh, (select dh.MaDonHang,SUM(Gia) as TongTien from DONHANG dh, CHITIET_DONHANG where dh.MaDonHang=CHITIET_DONHANG.MaDonHang group by dh.MaDonHang) tonggiatri, DONHANG " +
+                "where tonggiatri.MaDonHang=ctdh.MaDonHang and DONHANG.MaDonHang=ctdh.MaDonHang;";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setQueryTimeout(90);
         statement.setEscapeProcessing(true);

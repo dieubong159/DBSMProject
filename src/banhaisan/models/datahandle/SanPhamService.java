@@ -34,7 +34,7 @@ public class SanPhamService extends ConnectDatabase implements Business<SanPham>
             sanPham.setMaSP(resultSet.getString(2));
             sanPham.setTenSP(resultSet.getString(3));
             sanPham.setGiaSP(Double.parseDouble(resultSet.getString(4)));
-            sanPham.setPhanTramKhuyenMai(Integer.parseInt(resultSet.getString(5)));
+            sanPham.setPhanTramKhuyenMai(Float.parseFloat(resultSet.getString(5)));
             sanPham.setXuatXu(resultSet.getString(6));
             sanPham.setNgayNhap(resultSet.getDate(7));
             sanPham.setUrlHinhAnh(HinhAnhService.getInstance().LayMotHinhAnhSanPham(sanPham.getMaSP()).getUrl());
@@ -104,7 +104,7 @@ public class SanPhamService extends ConnectDatabase implements Business<SanPham>
             sanPham.setMaSP(resultSet.getString(2));
             sanPham.setTenSP(resultSet.getString(3));
             sanPham.setGiaSP(Double.parseDouble(resultSet.getString(4)));
-            sanPham.setPhanTramKhuyenMai(Integer.parseInt(resultSet.getString(5)));
+            sanPham.setPhanTramKhuyenMai(Float.parseFloat(resultSet.getString(5)));
             sanPham.setXuatXu(resultSet.getString(6));
             sanPham.setNgayNhap(resultSet.getDate(7));
             sanPham.setUrlHinhAnh(HinhAnhService.getInstance().LayMotHinhAnhSanPham(sanPham.getMaSP()).getUrl());
