@@ -22,7 +22,9 @@
     <!--//stylesheets-->
     <link href="//fonts.googleapis.com/css?family=Sunflower:500,700" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
-
+    <script src="resources/js/jquery-2.2.3.min.js"></script>
+    <script src="resources/js/jquery-3.3.1.min.js"></script>
+    <script src="resources/js/move-top.js"></script>
 </head>
 
 <body>
@@ -224,7 +226,7 @@
                                     <p>Bạn chưa có sản phẩm nào trong giỏ hàng! <a href="/Index">Tiếp tục mua hàng</a></p>
                                 </c:when>
                                 <c:otherwise>
-                                    <form action="/ThanhToanDonHang" method="post">
+                                    <form action="" method="post">
                                         <div class="table-responsive">
                                             <table class="cart table">
                                                 <tbody>
@@ -490,7 +492,7 @@
     <!--bootstrap working-->
     <script src="resources/js/bootstrap.min.js"></script>
     <!-- //bootstrap working-->
-    <script src="resources/js/jquery-2.2.3.min.js"></script>
+
     <script>
         addEventListener("load", function () {
             setTimeout(hideURLbar, 0);

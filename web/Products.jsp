@@ -298,7 +298,7 @@
                         <c:forEach var="sanPhams" items="${requestScope.sanPhams}">
                             <div class="col-lg-20 col-md-4 col-sm-4 col-xs-6">
                                 <div class="product-item">
-                                    <div class="image" style="height:400px">
+                                    <div class="image" style="height:280px">
                                         <a href=/CTSanPham?idSP=${sanPhams.maSP}> <img src="${sanPhams.urlHinhAnh}" style="height: 100%"></a></div>
                                     <div class="name">
                                         <a href="/CTSanPham?idSP=${sanPhams.maSP}">${sanPhams.tenSP}</a>
@@ -478,6 +478,7 @@
     <script src="resources/js/woocommerce.js"></script>
     <script src="resources/js/minicart.js"></script>
     <script src="resources/js/jquery-3.3.1.min.js"></script>
+    <script src="resources/js/jquery-2.2.3.min.js"></script>
     <script src="resources/js/jquery-ui.js"></script>
     <script type="text/javascript" src="resources/js/widget.js"></script>
     <!--bootstrap working-->

@@ -460,17 +460,11 @@
                     <div class="card-deck">
                         <c:forEach var="baiViet" items="${requestScope.baiViets}">
                             <div class="card">
-                                <div class="card-body"><a href="">
-                                    <a href="/XemCTBaiViet?idBV=${baiViet.maBaiViet}"><img class="card-img-top" src="${baiViet.urlHinhAnh}" style="height: 50%" alt="Card image cap"> </a>
-                                    <h5 class="card-title">${baiViet.tieuDe}</h5>
-                                </a>
+                                <div class="card-body" style="padding-bottom: 50px">
+                                    <a href="/XemCTBaiViet?idBV=${baiViet.maBaiViet}"><img class="card-img-top" src="${baiViet.urlHinhAnh}" style="height: 100%" alt="ảnh ${baiViet.tieuDe}">
+                                    <h5 class="card-title" style="padding-top: 10px">${baiViet.tieuDe}</h5> </a>
                                     <%--<p class="card-text"> ${baiViet.noiDung}</p>--%>
-                                    <p class="card-text"> xcsdasdasssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                                    ssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                                    ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                                    dsassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-                                    wwwwwwwwwwwwwfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-                                    rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr</p>
+                                    <%--<p class="block-with-text"> ${baiViet.noiDung}</p>--%>
                                 </div>
                                 <div class="card-footer">
                                     <small class="text-muted">${baiViet.ngayDang}</small>

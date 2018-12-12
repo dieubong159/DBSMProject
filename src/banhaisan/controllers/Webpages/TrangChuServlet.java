@@ -20,6 +20,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(name = "TrangChuServlet",urlPatterns = {"/Index"})
 public class TrangChuServlet extends HttpServlet {
@@ -42,7 +43,6 @@ public class TrangChuServlet extends HttpServlet {
             session.setAttribute("danhMucs",danhMucs);
             session.setAttribute("baiVietNoiBat",baiVietNoiBat);
             request.setAttribute("baiViets",baiViets);
-
 
             sanPhamCa = SanPhamService.getInstance().getDataCategoryIndex(danhMucs.get(0).getMaDanhmuc());
             sanPhamCua = SanPhamService.getInstance().getDataCategoryIndex(danhMucs.get(1).getMaDanhmuc());

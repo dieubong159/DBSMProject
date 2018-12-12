@@ -157,7 +157,7 @@
             <div class="text-center">
                 <p>TieuDanSeafood.vn sẽ nhắn tin hoặc gọi điện xác nhận đơn hàng trước 07:45 hôm sau</p>
                 <input type="button" value="OK! Về trang chủ" class="buttonorange" style="margin-top: 15px" onclick="window.location.href='/Index'">
-                <p><input type="submit">Hủy đơn hàng</p>
+                <p><input type="submit" value="Hủy đơn hàng"></p>
             </div>
             </form>
             <hr>
@@ -173,7 +173,7 @@
                     <th>Tổng cộng</th>
                 </tr>
                 <c:set var="tong" value="0"> </c:set>
-                <c:forEach var="sanPhams" items="${sessionScope.sanPhams}">
+                <c:forEach var="sanPhams" items="${requestScope.sanPhams}">
                     <c:set var="tong" value="${tong + sanPhams.gia}"></c:set>
                 <tr>
                     <td><img src="${sanPhams.urlHinhAnh}" width="70px" height="70px"></td>
