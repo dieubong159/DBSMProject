@@ -17,16 +17,13 @@ public class DangNhapService extends ConnectDatabase {
     }
 
     public DangNhap_KetNoi IsLogin(DangNhap_KetNoi dangNhap_ketNoi) throws SQLException,ClassNotFoundException {
-        serverName = dangNhap_ketNoi.getEmail();
-        passWord = dangNhap_ketNoi.getPassWord();
-        IP = dangNhap_ketNoi.getIpAddress();
         openConnection();
         String query = "SELECT * FROM dbo.fc_KiemTraDangNhap(?,?)";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setEscapeProcessing(true);
         statement.setQueryTimeout(90);
-        statement.setString(1,serverName);
-        statement.setString(2,passWord);
+        statement.setString(1,dangNhap_ketNoi.getEmail());
+        statement.setString(2,dangNhap_ketNoi.getPassWord());
 
         ResultSet resultSet = statement.executeQuery();
         if(resultSet.next())
@@ -38,14 +35,19 @@ public class DangNhapService extends ConnectDatabase {
             dangNhap_ketNoi.setAdmin(resultSet.getBoolean(5));
             dangNhap_ketNoi.setValid(true);
         }
-        else{
-            System.out.println("Xin loi, hinh nhu ban chua co tai khoan!");
+        else {
             dangNhap_ketNoi.setValid(false);
         }
         closeConnection();
         return dangNhap_ketNoi;
     }
-
+    public void LoginDB (String email,String password, String ipaddress) throws SQLException, ClassNotFoundException {
+        serverName = email;
+        passWord = password;
+        IP = ipaddress;
+        openConnection();
+        closeConnection();
+    }
     public DangNhap_KetNoi IsExisting (String email) throws SQLException, ClassNotFoundException{
         openConnection();
         String query = "select * from dbo.fc_KiemTraEmail (?)";

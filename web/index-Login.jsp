@@ -464,7 +464,13 @@
                                     <a href="/XemCTBaiViet?idBV=${baiViet.maBaiViet}"><img class="card-img-top" src="${baiViet.urlHinhAnh}" style="height: 50%" alt="Card image cap"> </a>
                                     <h5 class="card-title">${baiViet.tieuDe}</h5>
                                 </a>
-                                    <p class="card-text"> ${baiViet.noiDung}</p>
+                                    <%--<p class="card-text"> ${baiViet.noiDung}</p>--%>
+                                    <p class="card-text"> xcsdasdasssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                                    ssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                                    ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                                    dsassssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
+                                    wwwwwwwwwwwwwfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+                                    rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr</p>
                                 </div>
                                 <div class="card-footer">
                                     <small class="text-muted">${baiViet.ngayDang}</small>

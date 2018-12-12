@@ -17,16 +17,17 @@ import java.sql.SQLException;
 @WebServlet(name = "DangNhapServlet", urlPatterns = "/Login")
 public class DangNhapServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String backrefresh = request.getHeader("referer");
         try {
             DangNhap_KetNoi user = new DangNhap_KetNoi();
             user.setEmail(request.getParameter("email"));
             user.setPassWord(request.getParameter("password"));
             user.setIpAddress(request.getParameter("ipaddress"));
-            String backrefresh = request.getHeader("referer");
             DangNhapService.getInstance().IsLogin(user);
 
             if(user.isValid())
             {
+                DangNhapService.getInstance().LoginDB(user.getEmail(),request.getParameter("password"),user.getIpAddress());
                 if(user.isAdmin())
                 {
                     HttpSession session = request.getSession(true);
@@ -45,12 +46,15 @@ public class DangNhapServlet extends HttpServlet {
                 }
             }
             else {
-                request.setAttribute("loginResult", false);
-                response.sendRedirect(request.getContextPath()+backrefresh);
+                DangNhapService.getInstance().LoginDB("sa","12345","localhost");
+                response.sendError(400);
+                return;
             }
         }catch (SQLException | ClassNotFoundException e)
         {
             e.printStackTrace();
+            response.sendError(500);
+            return;
         }
     }
 }
