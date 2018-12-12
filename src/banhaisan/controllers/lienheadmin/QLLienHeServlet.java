@@ -1,6 +1,8 @@
 package banhaisan.controllers.lienheadmin;
 
+import banhaisan.models.datahandle.DanhMucService;
 import banhaisan.models.datahandle.LienHeService;
+import banhaisan.models.datamodels.DanhMuc;
 import banhaisan.models.datamodels.LienHe;
 
 import javax.servlet.RequestDispatcher;
@@ -23,6 +25,8 @@ public class QLLienHeServlet extends HttpServlet {
             ipage=Integer.parseInt(page);
         try
         {
+            ArrayList<DanhMuc> danhMucs = DanhMucService.getInstance().getData();
+            request.setAttribute("danhMucs",danhMucs);
             //ArrayList lienHes = LienHeService.getInstance().getData();
             List<LienHe> lienHes = LienHeService.getInstance().getLienHe((ipage-1)*10);
             int numRecord = LienHeService.getInstance().getNumOfRecord();

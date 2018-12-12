@@ -1,7 +1,9 @@
 package banhaisan.controllers.lienheadmin;
 
+import banhaisan.models.datahandle.DanhMucService;
 import banhaisan.models.datahandle.LienHeService;
 import banhaisan.models.datahandle.NguoiDungThongThuongService;
+import banhaisan.models.datamodels.DanhMuc;
 import banhaisan.models.datamodels.LienHe;
 import banhaisan.models.datamodels.NguoiDung;
 
@@ -67,6 +69,8 @@ public class XemCTLienHeServlet extends HttpServlet {
         }
         lienHe.setMaLienHe(idLienHe);
         try {
+            ArrayList<DanhMuc> danhMucs = DanhMucService.getInstance().getData();
+            request.setAttribute("danhMucs",danhMucs);
             lienHe = LienHeService.getInstance().get(lienHe);
             request.setAttribute("CTLienHe", lienHe);
         } catch (SQLException | ClassNotFoundException e) {
