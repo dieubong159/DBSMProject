@@ -22,6 +22,7 @@ import java.util.ArrayList;
 public class SanPhamUserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
+        request.setAttribute("action",action);
         if(action.equals("checkout"))
         {
         String idDanhMuc = request.getParameter("idDM");
@@ -50,7 +51,7 @@ public class SanPhamUserServlet extends HttpServlet {
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Products.jsp");
         dispatcher.forward(request,response);
         }
-        else {
+        else if (action.equals("filter")){
             Double maxGia = Double.parseDouble(request.getParameter("max"));
             HttpSession session = request.getSession();
             String maDanhMuc = session.getAttribute("maDanhMuc").toString();
@@ -67,6 +68,40 @@ public class SanPhamUserServlet extends HttpServlet {
                 e.printStackTrace();
             }
             if(sanPhams==null)
+            {
+                response.setStatus(400);
+                return;
+            }
+            request.setAttribute("sanPhams",sanPhams);
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Products.jsp");
+            dispatcher.forward(request,response);
+        }
+        else if (action.equals("sorting")){
+            HttpSession session = request.getSession();
+            String maDanhMuc = session.getAttribute("maDanhMuc").toString();
+            String getsorttype = request.getParameter("type");
+            String sorttype;
+            String sortattribute;
+            if(getsorttype.equals("price-ascending")) {
+                sorttype = "ASC";
+                sortattribute = "giaSP";
+            }
+            else if(getsorttype.equals("price-descending")){
+                sorttype="DESC";
+                sortattribute="giaSP";
+            }
+            else {
+                sorttype="DESC";
+                sortattribute="ngayNhap";
+            }
+            ArrayList<SanPham> sanPhams = null;
+            try {
+                sanPhams = SanPhamService.getInstance().getSanPhamSorting(sorttype,sortattribute,maDanhMuc);
+            }catch (SQLException | ClassNotFoundException e)
+            {
+                e.printStackTrace();
+            }
+            if(sanPhams == null)
             {
                 response.setStatus(400);
                 return;

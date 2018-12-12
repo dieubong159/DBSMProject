@@ -309,5 +309,31 @@ public class SanPhamService extends ConnectDatabase implements Business<SanPham>
         closeConnection();
         return sanPhams;
     }
+    public ArrayList<SanPham> getSanPhamSorting(String sorttype, String sortattribute, String danhmuc) throws SQLException, ClassNotFoundException {
+        ArrayList<SanPham> sanPhams = new ArrayList<>();
+        openConnection();
 
+        String query = "select  * from dbo.fc_DanhSachSanPhamTheoDanhMuc(?) ORDER by"+" "+sortattribute+" "+sorttype;
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setEscapeProcessing(true);
+        statement.setQueryTimeout(90);
+        statement.setString(1,danhmuc);
+
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()){
+            SanPham sanPham = new SanPham();
+            sanPham.setMaDanhMuc(resultSet.getString(1));
+            sanPham.setMaSP(resultSet.getString(2));
+            sanPham.setTenSP(resultSet.getString(3));
+            sanPham.setGiaSP(Double.parseDouble(resultSet.getString(4)));
+            sanPham.setPhanTramKhuyenMai(Float.parseFloat(resultSet.getString(5)));
+            sanPham.setXuatXu(resultSet.getString(6));
+            sanPham.setNgayNhap(resultSet.getDate(7));
+            sanPham.setUrlHinhAnh(HinhAnhService.getInstance().LayMotHinhAnhSanPham(sanPham.getMaSP()).getUrl());
+
+            sanPhams.add(sanPham);
+        }
+        closeConnection();
+        return sanPhams;
+    }
 }
