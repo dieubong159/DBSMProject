@@ -221,31 +221,31 @@
                         <h3 class="agileits-sear-head">DANH MỤC SẢN PHẨM</h3>
                         <ul>
                             <li>
-                                <a href="/Products?idDM=ca">
+                                <a href="/Products?action=checkout&idDM=ca">
                                     <img src="resources/images/FISHICO.png" class="category">
                                     <span class="span">Cá</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="/Products?idDM=tom">
+                                <a href="/Products?action=checkoutidDM=tom">
                                     <img src="resources/images/SHRIMPICO.png" class="category">
                                     <span class="span">Tôm</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="/Products?idDM=muc">
+                                <a href="/Products?action=checkoutidDM=muc">
                                     <img src="resources/images/CuttleFishICO.png" class="category">
                                     <span class="span">Mực</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="/Products?idDM=cua">
+                                <a href="/Products?action=checkoutidDM=cua">
                                     <img src="resources/images/CrabICO.gif" class="category">
                                     <span class="span">Cua ghẹ</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="/Products?idDM=ngao-so-oc">
+                                <a href="/Products?action=checkoutidDM=ngao-so-oc">
                                     <img src="resources/images/clamICO.png" class="category">
                                     <span class="span">Ngao - Sò - Ốc</span>
                                 </a>

@@ -127,10 +127,10 @@
                                     Sản phẩm
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <c:forEach var="danhMuc" items="${sessionScope.danhMucs}">
-                                        <a class="nav-link" href="/Products?action=checkout&idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
-                                    </c:forEach>
-                                </div>
+                                <c:forEach var="danhMuc" items="${sessionScope.danhMucs}">
+                                    <a class="nav-link" href="/Products?action=checkout&idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
+                                </c:forEach>
+                            </div>
                             </li>
                             <li class="nav-item dropdown">
                                 <a href="/DSBaiViet" class="nav-link">Công thức chế biến</a>
@@ -223,31 +223,31 @@
                         <h3 class="agileits-sear-head">DANH MỤC SẢN PHẨM</h3>
                         <ul>
                             <li>
-                                <a href="/Products?idDM=ca">
+                                <a href="/Products?action=checkout&idDM=ca">
                                     <img src="resources/images/FISHICO.png" class="category">
                                     <span class="span">Cá</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="/Products?idDM=tom">
+                                <a href="/Products?action=checkout&idDM=tom">
                                     <img src="resources/images/SHRIMPICO.png" class="category">
                                     <span class="span">Tôm</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="/Products?idDM=muc">
+                                <a href="/Products?action=checkout&idDM=muc">
                                     <img src="resources/images/CuttleFishICO.png" class="category">
                                     <span class="span">Mực</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="/Products?idDM=cua">
+                                <a href="/Products?action=checkout&idDM=cua">
                                     <img src="resources/images/CrabICO.gif" class="category">
                                     <span class="span">Cua ghẹ</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="/Products?idDM=ngao-so-oc">
+                                <a href="/Products?action=checkout&x`idDM=ngao-so-oc">
                                     <img src="resources/images/clamICO.png" class="category">
                                     <span class="span">Ngao - Sò - Ốc</span>
                                 </a>

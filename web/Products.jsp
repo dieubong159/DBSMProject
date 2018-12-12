@@ -298,8 +298,8 @@
                         <c:forEach var="sanPhams" items="${requestScope.sanPhams}">
                             <div class="col-lg-20 col-md-4 col-sm-4 col-xs-6">
                                 <div class="product-item">
-                                    <div class="image" style="height:auto">
-                                        <a href=/CTSanPham?idSP=${sanPhams.maSP}> <img src="${sanPhams.urlHinhAnh}"></a></div>
+                                    <div class="image" style="height:400px">
+                                        <a href=/CTSanPham?idSP=${sanPhams.maSP}> <img src="${sanPhams.urlHinhAnh}" style="height: 100%"></a></div>
                                     <div class="name">
                                         <a href="/CTSanPham?idSP=${sanPhams.maSP}">${sanPhams.tenSP}</a>
                                     </div>
@@ -309,10 +309,15 @@
                                             <span class="variant_title">/kg</span>
                                         </em>
                                     </div>
-                                    <div class="addcart">
-                                        <a class="addtocart" href="/ShoppingCart?idSP=${sanPhams.maSP}&action=order">
-                                            THÊM VÀO GIỎ
-                                        </a>
+                                    <div class="row">
+                                        <%--<a class="addtocart" href="/ShoppingCart?idSP=${sanPhams.maSP}&action=order">--%>
+                                            <%--THÊM VÀO GIỎ--%>
+                                        <%--</a>--%>
+                                        <div class="col-7" style="margin-top:20px; margin-left: 60px">
+                                            <a class="addtocart" href="/ShoppingCart?idSP=${sanPhams.maSP}&action=order">
+                                                THÊM VÀO GIỎ
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -478,19 +483,6 @@
     <!--bootstrap working-->
     <script src="resources/js/bootstrap.min.js"></script>
     <!-- //bootstrap working-->
-    <script>
-        toys.render();
-
-        toys.cart.on('toys_checkout', function (evt) {
-            var items, len, i;
-
-            if (this.subtotal() > 0) {
-                items = this.items();
-
-                for (i = 0, len = items.length; i < len; i++) { }
-            }
-        });
-    </script>
     <!-- //cart-js -->
     <!-- start-smoth-scrolling -->
     <script src="resources/js/move-top.js"></script>

@@ -624,16 +624,6 @@
 <!--js working-->
 
 <script src="resources/js/minicart.js"></script>
-<script>
-    toys.render();
-    toys.cart.on('toys_checkout', function (evt) {
-        var items, len, i;
-        if (this.subtotal() > 0) {
-            items = this.items();
-            for (i = 0, len = items.length; i < len; i++) { }
-        }
-    });
-</script>
 <!-- //cart-js -->
 <!--responsiveslides banner-->
 <script src="resources/js/responsiveslides.min.js"></script>

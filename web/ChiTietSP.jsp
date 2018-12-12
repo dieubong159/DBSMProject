@@ -31,6 +31,7 @@
     <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
     <link rel="stylesheet" href="resources/css/w3.css">
 
+    <script src="resources/js/jquery-2.2.3.min.js"></script>
 </head>
 
 <body>
@@ -134,10 +135,9 @@
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Sản phẩm
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <div class="dropdown-menu" aria-labelled    by="navbarDropdown">
                                 <c:forEach var="danhMuc" items="${sessionScope.danhMucs}">
-                                    <a class="nav-link"
-                                       href="/Products?action=checkout&idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
+                                    <a class="nav-link" href="/Products?action=checkout&idDM=${danhMuc.maDanhmuc}">${danhMuc.tenDanhmuc}</a>
                                 </c:forEach>
                             </div>
                         </li>
@@ -274,16 +274,16 @@
             <div class="col-md-9 col-lg-9 col-sm-12 col-xs-12">
                 <div class="row">
                     <div class="col-md-8 col-sm-12 col-xs-12">
-                        <div class="w3-content">
+                        <div class="w3-content" style="width: 500px;height: 500px">
                             <c:set var="show" value="0"></c:set>
                             <c:forEach var="hinhAnhSP" items="${requestScope.hinhAnhSP}">
                                 <c:set var="show" value="${show+1}"></c:set>
                                 <c:if test="${show==1}">
                                     <img class="mySlides" src="${hinhAnhSP.url}"
-                                         style="width:100%;display:block;max-width: 600px;max-height: 400px">
+                                         style="width:100%;height: 100%;display:block">
                                 </c:if>
                                 <c:if test="${show!=1}">
-                                    <img class="mySlides" src="${hinhAnhSP.url}" style="width:100%;display:none">
+                                    <img class="mySlides" src="${hinhAnhSP.url}" style="width:100%;height: 100%;display:none;">
                                 </c:if>
                             </c:forEach>
 
@@ -291,7 +291,7 @@
                                 <c:set var="count" value="0"></c:set>
                                 <c:forEach var="hinhAnh" items="${requestScope.hinhAnhSP}">
                                     <c:set var="count" value="${count+1}"></c:set>
-                                    <div class="w3-col s4">
+                                    <div class="w3-col s3" style="width: 125px;height: 125px">
                                         <img class="product w3-opacity w3-hover-opacity-off" src="${hinhAnh.url}"
                                              style="width:100%;cursor:pointer" onclick="currentDiv(${count})">
                                     </div>
@@ -581,6 +581,8 @@
         dots[slideIndex - 1].className += " w3-opacity-off";
     }
 </script>
+<script src="resources/js/easing.js"></script>
+<script src="resources/js/minicart.js"></script>
 <!-- Slideshow Indicators -->
 <!-- Tab Detail -->
 <script>
@@ -638,7 +640,6 @@
 <!--bootstrap working-->
 <script src="resources/js/bootstrap.min.js"></script>
 <!-- //bootstrap working-->
-<script src="resources/js/jquery-2.2.3.min.js"></script>
 <script>
     addEventListener("load", function () {
         setTimeout(hideURLbar, 0);
