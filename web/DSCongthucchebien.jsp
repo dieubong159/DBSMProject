@@ -256,7 +256,7 @@
                     <div class="left-side">
                         <h3 class="agileits-sear-head">BÀI VIẾT NỔI BẬT</h3>
                         <ul>
-                            <c:forEach var="baiViet" items="${requestScope.baiVietNoiBat}">
+                            <c:forEach var="baiViet" items="${sessionScope.baiVietNoiBat}">
                                 <li>
                                     <a href="/XemCTBaiViet?idBV=${baiViet.maBaiViet}">
                                         <img src="${baiViet.urlHinhAnh}" width="70px" height="70px">

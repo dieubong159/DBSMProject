@@ -76,7 +76,9 @@ public class SanPhamUserServlet extends HttpServlet {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Products.jsp");
             dispatcher.forward(request,response);
         }
-        else {
+        else if (action.equals("sorting")){
+            HttpSession session = request.getSession();
+            String maDanhMuc = session.getAttribute("maDanhMuc").toString();
             String getsorttype = request.getParameter("type");
             String sorttype;
             String sortattribute;
@@ -94,7 +96,7 @@ public class SanPhamUserServlet extends HttpServlet {
             }
             ArrayList<SanPham> sanPhams = null;
             try {
-                sanPhams = SanPhamService.getInstance().getSanPhamSorting(sorttype,sortattribute);
+                sanPhams = SanPhamService.getInstance().getSanPhamSorting(sorttype,sortattribute,maDanhMuc);
             }catch (SQLException | ClassNotFoundException e)
             {
                 e.printStackTrace();
