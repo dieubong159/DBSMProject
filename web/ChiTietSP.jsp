@@ -413,10 +413,12 @@
                                                 <span class="icon">★</span>
                                             </label>
                                         </form>
-                                        <div class="form-group">
+                                        <div>
                                             <label class="control-label">Message <span class="required">
                                                     * </span>
                                             </label>
+                                        </div>
+                                        <div class="form-group">
                                             <textarea class="col-md-10 form-control" rows="8"
                                                       name="txtBinhLuan"></textarea>
                                         </div>
