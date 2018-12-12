@@ -2,10 +2,8 @@ package banhaisan.controllers.lienheadmin;
 
 import banhaisan.models.datahandle.DanhMucService;
 import banhaisan.models.datahandle.LienHeService;
-import banhaisan.models.datahandle.NguoiDungThongThuongService;
 import banhaisan.models.datamodels.DanhMuc;
 import banhaisan.models.datamodels.LienHe;
-import banhaisan.models.datamodels.NguoiDung;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;

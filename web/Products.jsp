@@ -259,7 +259,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="/Products?idDM=ngao-so-oc">
+                                <a href="/Products?action=checkout&idDM=ngao-so-oc">
                                     <img src="resources/images/clamICO.png" class="category">
                                     <span class="span">Ngao - Sò - Ốc</span>
                                 </a>

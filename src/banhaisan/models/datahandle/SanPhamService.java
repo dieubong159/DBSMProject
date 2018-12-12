@@ -49,7 +49,7 @@ public class SanPhamService extends ConnectDatabase implements Business<SanPham>
         List<SanPham> sanPhams = new ArrayList<>();
         openConnection();
 
-        String query = "select sp.MaDanhMuc,sp.MaSP,TenSP,GiaSP,PhanTramKhuyenMai*100,XuatXu,NgayNhap from SANPHAM sp left join HINHANH ha on sp.MaSP=ha.MaSP where sp.MaDanhMuc= '" + danhmuc + "' ORDER BY MaSP OFFSET " + offset + " ROWS FETCH NEXT 10 ROWS ONLY;";
+        String query = "select sp.MaDanhMuc,sp.MaSP,TenSP,GiaSP,PhanTramKhuyenMai*100,XuatXu,NgayNhap from SANPHAM sp where sp.MaDanhMuc= '" + danhmuc + "' ORDER BY MaSP OFFSET " + offset + " ROWS FETCH NEXT 10 ROWS ONLY;";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setEscapeProcessing(true);
         statement.setQueryTimeout(90);
@@ -74,7 +74,7 @@ public class SanPhamService extends ConnectDatabase implements Business<SanPham>
 
     public int getNumOfRecord(String danhmuc)throws SQLException, ClassNotFoundException{
         openConnection();
-        String query = "select count(sp.MaSP) as sl from SANPHAM sp left join HINHANH ha on sp.MaSP=ha.MaSP where sp.MaDanhMuc='" + danhmuc + "';";
+        String query = "select count(sp.MaSP) as sl from SANPHAM sp where sp.MaDanhMuc='" + danhmuc + "';";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setQueryTimeout(90);
         statement.setEscapeProcessing(true);
