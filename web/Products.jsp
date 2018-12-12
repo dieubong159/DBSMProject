@@ -213,7 +213,7 @@
             <li>${maDanhMuc}</li>
             <div class="pull-right">
                 <label>Sắp xếp theo </label>
-                <select>
+                <select id="sorting-list" name="sorting-list" onchange="location.href='/Products?action=sorting&type='+document.getElementById('sorting-list').value">
                     <option value="price-ascending">Giá tăng dần</option>
                     <option value="price-descending">Giá giảm dần</option>
                     <option value="created-descending">Mới nhất</option>
@@ -265,15 +265,16 @@
                     </div>
                     <!-- Price range -->
                     <div class="gap-element" style="display:block; height:auto; padding-top:30px"></div>
+                    <c:if test="${requestScope.action == 'checkout'}">
                     <div class="slidecontainer">
                         <form>
                         <h3 class="agileits-sear-head">LỌC GIÁ SẢN PHẨM</h3>
                         <input oninput="run()" type="range" min="1" max="${giaCaoNhat}" value="50" class="slider" id="myRange">
-                        <p>Value: <input id="demo" value="" readonly style="border: none;background-color: #F9F9F9;"></p>
+                        <p>Value: <input id="demo" value="0" readonly style="border: none;background-color: #F9F9F9;"></p>
                         <a onclick="location.href='/Products?action=filter&max='+document.getElementById('myRange').value"><button type="button" class="btn-danger">LỌC</button></a>
                         </form>
                     </div>
-
+                    </c:if>
                     <!-- Price range -->
                     <!-- Bai Viet Noi Bat -->
                     <div class="gap-element" style="display:block; height:auto; padding-top:30px"></div>
