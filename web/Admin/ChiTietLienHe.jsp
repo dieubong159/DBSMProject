@@ -172,13 +172,13 @@
                                     <label class="control-label">Gửi phản hồi cho Người dùng:</label>
                                     <div class="controls">
                                         <textarea id="phan-hoi" type="text" name="txtphanhoi" data-required="1"
-                                                  class="span6 m-wrap"
-                                                  style="width:707px !important;"></textarea>
+                                                  class="span6 m-wrap" style="width:707px !important;"></textarea>
+                                        <br><small class="text-danger" id="validate-phan-hoi"></small>
                                     </div>
                                 </div>
                             </div>
                             <div style="text-align: center">
-                                <button type="submit" id="btn-them" class="btn btn-primary">Gửi phản hồi</button>
+                                <button type="submit" id="btn-gui" class="btn btn-primary">Gửi phản hồi</button>
                                 <a href="/Admin/QLLienHe?page=1" type="button" class="btn btn-success">Hủy bỏ</a>
                             </div>
                             <%--<div style="text-align: center">--%>
@@ -200,6 +200,25 @@
     <footer>
         <p>&copy; TieuDanSeaFood 2018</p>
     </footer>
+    <script>
+        function kiemTraGuiLienHe() {
+            let value = $("#phan-hoi").val();
+            if (value === "") {
+                $("#validate-phan-hoi").html("Bạn chưa nhập phản hồi cho người dùng");
+                $("#phan-hoi").css("border", "solid 1px red");
+                return false;
+            }
+            $("#validate-phan-hoi").html("");
+            $("#phan-hoi").css("border", "solid 1px #ccc");
+            return true;
+        }
+
+        $("#btn-gui").click(() => {
+            let kq = kiemTraGuiLienHe();
+            return kq !== false;
+
+        });
+    </script>
 </div>
 
 
