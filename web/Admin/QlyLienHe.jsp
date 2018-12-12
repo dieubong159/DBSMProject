@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=utf-8"
          pageEncoding="utf-8" %>
 <!DOCTYPE html>
@@ -62,7 +63,7 @@
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu" id="menu1">
-                            <c:forEach var="danhMuc" items="${sessionScope.danhMucs}">
+                            <c:forEach var="danhMuc" items="${requestScope.danhMucs}">
                                 <li>
                                     <a href="/Admin/QLSanPham?idDM=${danhMuc.maDanhmuc}&page=1">${danhMuc.tenDanhmuc}</a>
                                 </li>
@@ -77,6 +78,9 @@
                     </li>
                     <li>
                         <a href="/Admin/QLDonHang?page=1">Quản lý Đơn hàng</a>
+                    </li>
+                    <li>
+                        <a href="/Admin/QLLienHe?page=1">Quản lý Liên hệ</a>
                     </li>
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle">Thống kê <b class="caret"></b>
@@ -144,15 +148,29 @@
                             </c:forEach>
                             </tbody>
                         </table>
+                        <fmt:formatNumber var = "totalPage" value = "${requestScope.numOfRecord/10}" minFractionDigits="0" maxFractionDigits="0"/>
+                        <c:if test="${(requestScope.numOfRecord mod 10) != 0}">
+
+                            <fmt:formatNumber var = "totalPage" type = "number" value = "${(requestScope.numOfRecord/10 + 1)- ((requestScope.numOfRecord/10 + 1) % 1 == 0 ? 0 : 0.5)}" minFractionDigits="0" maxFractionDigits="0"/>
+                        </c:if>
+
                         <div class="dataTables_paginate paging_bootstrap pagination" style="text-align:center">
                             <ul>
-                                <li class="prev"><a href="#">← Previous</a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li class="next"><a href="#">Next → </a></li>
+                                <c:if test="${param.page != 1}">
+                                    <li class="prev"><a href="/Admin/QLLienHe?page=${param.page - 1}">← Previous</a></li>
+                                </c:if>
+                                <c:forEach var="j" begin="1" end="${totalPage}">
+                                    <c:if test="${param.page == j}">
+                                        <li class="active"><a href="/Admin/QLLienHe?page=${j}">${j}</a></li>
+                                    </c:if>
+                                    <c:if test="${param.page != j}">
+                                        <li><a href="/Admin/QLLienHe?page=${j}">${j}</a></li>
+                                    </c:if>
+                                </c:forEach>
+
+                                <c:if test="${param.page < totalPage}">
+                                    <li class="next"><a href="/Admin/QLLienHe?page=${param.page + 1}">Next → </a></li>
+                                </c:if>
                             </ul>
                         </div>
                     </div>

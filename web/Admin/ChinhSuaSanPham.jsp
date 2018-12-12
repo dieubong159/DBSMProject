@@ -84,6 +84,9 @@
                         <li>
                             <a href="/Admin/QLDonHang?page=1">Quản lý Đơn hàng</a>
                         </li>
+                        <li>
+                            <a href="/Admin/QLLienHe?page=1">Quản lý Liên hệ</a>
+                        </li>
                         <li class="dropdown">
                             <a href="#" data-toggle="dropdown" class="dropdown-toggle">Thống kê <b class="caret"></b>
                             </a>
@@ -188,7 +191,7 @@
                                 </div>
                                 <div style="text-align:center;">
                                     <input href="/Admin/QLSanPham?idDM=${sanPham.maDanhMuc}" type="submit" id="btn-them" class="btn btn-primary" value="Hoàn tất">
-                                    <a href="/Admin/QLSanPham?idDM=${sanPham.maDanhMuc}" type="button" class="btn">Hủy bỏ</a>
+                                    <a href="/Admin/QLSanPham?idDM=${sanPham.maDanhMuc}&page=1" type="button" class="btn">Hủy bỏ</a>
                                 </div>
                             </form>
 

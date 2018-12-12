@@ -81,6 +81,9 @@
                     <li>
                         <a href="/Admin/QLDonHang?page=1">Quản lý Đơn hàng</a>
                     </li>
+                    <li>
+                        <a href="/Admin/QLLienHe?page=1">Quản lý Liên hệ</a>
+                    </li>
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle">Thống kê <b class="caret"></b>
                         </a>
@@ -197,7 +200,7 @@
                             </div>
                             <div style="text-align:center;">
                                 <button type="submit" id="btn-them" class="btn btn-primary">Thêm người dùng</button>
-                                <a href="/Admin/NguoiDungThongThuong" type="button" class="btn">Hủy bỏ</a>
+                                <a href="/Admin/NguoiDungThongThuong?page=1" type="button" class="btn">Hủy bỏ</a>
                             </div>
                         </form>
 
@@ -305,7 +308,7 @@
         return true;
     }
 
-    $("#btn-them").click(() = > {
+    $("#btn-them").click(() => {
         let kq = kiemTraTxtTen() & kiemTraTxtEmail() & KiemTraTxtDienThoai() & kiemTraTxtNgaySinh() & kiemTraTxtMatKhau() & kiemTraTxtXacNhanMatKhau();
     if (kq === 0) {
         return false;

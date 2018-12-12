@@ -47,7 +47,8 @@
                 </ul>
                 <ul class="nav">
                     <li class="dropdown">
-                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Quản lý Người dùng <b class="caret"></b>
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Quản lý Người dùng <b
+                                class="caret"></b>
                         </a>
                         <ul class="dropdown-menu" id="menu2">
                             <li>
@@ -64,7 +65,7 @@
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu" id="menu1">
-                            <c:forEach var="danhMuc" items="${sessionScope.danhMucs}">
+                            <c:forEach var="danhMuc" items="${requestScope.danhMucs}">
                                 <li>
                                     <a href="/Admin/QLSanPham?idDM=${danhMuc.maDanhmuc}&page=1">${danhMuc.tenDanhmuc}</a>
                                 </li>
@@ -79,6 +80,9 @@
                     </li>
                     <li>
                         <a href="/Admin/QLDonHang?page=1">Quản lý Đơn hàng</a>
+                    </li>
+                    <li>
+                        <a href="/Admin/QLLienHe?page=1">Quản lý Liên hệ</a>
                     </li>
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle">Thống kê <b class="caret"></b>
@@ -174,12 +178,17 @@
                                 </div>
                             </div>
                             <div style="text-align: center">
-                                <button type="submit" class="btn btn-danger btn-large">Gửi</button>
+                                <button type="submit" id="btn-them" class="btn btn-primary">Gửi phản hồi</button>
+                                <a href="/Admin/QLLienHe?page=1" type="button" class="btn btn-success">Hủy bỏ</a>
                             </div>
+                            <%--<div style="text-align: center">--%>
+                                <%--<button type="submit" class="btn btn-danger btn-large">Gửi</button>--%>
+                            <%--</div>--%>
 
-                            <div style="text-align: center">
-                                <a href="/Admin/QLLienHe" type="button" class="btn btn-success btn-large">Quay về trang chủ</a>
-                            </div>
+                            <%--<div style="text-align: center">--%>
+                                <%--<a href="/Admin/QLLienHe?page=1" type="button" class="btn btn-success btn-large">Quay về--%>
+                                    <%--trang chủ</a>--%>
+                            <%--</div>--%>
                         </form>
                     </div>
                 </div>

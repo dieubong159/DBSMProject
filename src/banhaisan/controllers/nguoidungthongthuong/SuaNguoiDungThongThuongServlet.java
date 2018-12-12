@@ -24,12 +24,12 @@ public class SuaNguoiDungThongThuongServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=UTF-8");
         NguoiDung nguoiDung= new NguoiDung();
-        nguoiDung.setMaNguoiDung(request.getParameter("txtMaNguoiDung"));
-        nguoiDung.setHoTen(request.getParameter("txt-ten"));
+        nguoiDung.setMaNguoiDung(request.getParameter("txtMaNguoiDung").trim());
+        nguoiDung.setHoTen(request.getParameter("txt-ten").substring(0,request.getParameter("txt-ten").length()-1));
         nguoiDung.setGioiTinh(request.getParameter("txt-gioi-tinh").trim().equals("1"));
-        nguoiDung.setEmail(request.getParameter("txt-email"));
-        nguoiDung.setSdt(request.getParameter("txt-dien-thoai"));
-        nguoiDung.setDiaChi(request.getParameter("txt-dia-chi"));
+        nguoiDung.setEmail(request.getParameter("txt-email").substring(0,request.getParameter("txt-email").length()-1));
+        nguoiDung.setSdt(request.getParameter("txt-dien-thoai").trim());
+        nguoiDung.setDiaChi(request.getParameter("txt-dia-chi").trim());
         Date ngaySinh = null;
         if (request.getParameter("dt-ngay-sinh") != null) {
             try {
@@ -39,7 +39,7 @@ public class SuaNguoiDungThongThuongServlet extends HttpServlet {
             }
         }
         nguoiDung.setNgaySinh(new java.sql.Date(ngaySinh.getTime()));
-        nguoiDung.setMatKhau(request.getParameter("txt-mat-khau"));
+        nguoiDung.setMatKhau(request.getParameter("txt-mat-khau").substring(0,request.getParameter("txt-mat-khau").length()-1));
 
         try {
             NguoiDungThongThuongService.getInstance().modify(nguoiDung);

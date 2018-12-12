@@ -85,6 +85,9 @@
                     <li>
                         <a href="/Admin/QLDonHang?page=1">Quản lý Đơn hàng</a>
                     </li>
+                    <li>
+                        <a href="/Admin/QLLienHe?page=1">Quản lý Liên hệ</a>
+                    </li>
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle">Thống kê <b class="caret"></b>
                         </a>
@@ -260,7 +263,7 @@
                 $("#showImg").attr("src", content);
                 alert(content);
             }
-        };
+        });
     //}
 
     function kiemTraKhuyenMai() {
@@ -347,7 +350,7 @@
         return true;
     }
 
-    $("#btn-them").click(() = > {
+    $("#btn-them").click(() => {
         let kq = kiemTraMaSanPham() & kiemTraTenSanPham() & KiemTraGiaSanPham() & kiemTraKhuyenMai() & kiemTraXuatXu() & kiemTraMoTa();
     if (kq === 0) {
         return false;

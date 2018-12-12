@@ -84,6 +84,9 @@
                         <li>
                             <a href="/Admin/QLDonHang?page=1">Quản lý Đơn hàng</a>
                         </li>
+                        <li>
+                            <a href="/Admin/QLLienHe?page=1">Quản lý Liên hệ</a>
+                        </li>
                         <li class="dropdown">
                             <a href="#" data-toggle="dropdown" class="dropdown-toggle">Thống kê <b class="caret"></b>
                             </a>
@@ -111,7 +114,7 @@
             <div class="span3" id="sidebar" style="width: 200px;">
                 <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
                     <li >
-                        <a href="ThongTinCaNhan.jsp"><i class="icon-chevron-right"></i>Hồ sơ</a>
+                        <a href="/Admin/Profile"><i class="icon-chevron-right"></i>Hồ sơ</a>
                     </li>
                     <li class="active">
                         <a href="/Admin/DoiMatKhau"><i class="icon-chevron-right"></i>Đổi mật khẩu</a>

@@ -80,6 +80,9 @@
                     <li>
                         <a href="/Admin/QLDonHang?page=1">Quản lý Đơn hàng</a>
                     </li>
+                    <li>
+                        <a href="/Admin/QLLienHe?page=1">Quản lý Liên hệ</a>
+                    </li>
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle">Thống kê <b class="caret"></b>
                         </a>
@@ -202,7 +205,7 @@
                         </form>
                     </div>
                     <div style="text-align: center">
-                        <a href="/Admin/QLDonHang" type="button" class="btn btn-success btn-large">Quay về trang chủ</a>
+                        <a href="/Admin/QLDonHang?page=1" type="button" class="btn btn-success btn-large">Quay về trang chủ</a>
                     </div>
                 </div>
                 <!-- /block -->
