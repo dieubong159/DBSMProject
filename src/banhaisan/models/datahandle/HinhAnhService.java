@@ -74,7 +74,7 @@ public class HinhAnhService extends ConnectDatabase implements Business<HinhAnh>
     }
     public ArrayList<HinhAnh> LayTatCaHinhAnhSanPham (String maSP) throws SQLException, ClassNotFoundException {
         openConnection();
-        String query = "select * from fc_LayTatCaHinhAnhSP (?)";
+        String query = "select top 4 * from fc_LayTatCaHinhAnhSP (?)";
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setEscapeProcessing(true);
         statement.setQueryTimeout(90);

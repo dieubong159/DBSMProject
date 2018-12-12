@@ -232,8 +232,8 @@
 <main class="page-content">
     <div class="container">
         <div class="row">
-            <div class="side-bar col-md-3 col-lg-3 col-sm-12 col col-xs-12">
-                <div class="left-side">
+            <div class="side-bar col-md-3 col-lg-3 col-sm-12 col col-xs-12" style="padding: 0; padding-left: 10px">
+                <div class="left-side" style="border:none">
                     <h3 class="agileits-sear-head">CÁC SẢN PHẨM LIÊN QUAN</h3>
                     <ul>
                         <c:forEach var="sanPhamLQ" items="${requestScope.sanPhamLQ}">
@@ -256,7 +256,7 @@
                 </div>
                 <hr>
                 <!-- Bai Viet Noi Bat -->
-                <div class="left-side">
+                <div class="left-side" style="border:none">
                     <h3 class="agileits-sear-head">BÀI VIẾT NỔI BẬT</h3>
                     <ul>
                         <c:forEach var="baiViet" items="${sessionScope.baiVietNoiBat}">
@@ -291,9 +291,9 @@
                                 <c:set var="count" value="0"></c:set>
                                 <c:forEach var="hinhAnh" items="${requestScope.hinhAnhSP}">
                                     <c:set var="count" value="${count+1}"></c:set>
-                                    <div class="w3-col s3" style="width: 125px;height: 125px">
+                                    <div class="w3-col s4" style="width: 125px;height: 125px">
                                         <img class="product w3-opacity w3-hover-opacity-off" src="${hinhAnh.url}"
-                                             style="width:100%;cursor:pointer" onclick="currentDiv(${count})">
+                                             style="width:100%;height:100%;cursor:pointer" onclick="currentDiv(${count})">
                                     </div>
                                 </c:forEach>
                             </div>
@@ -308,11 +308,19 @@
                             <em>${sanPham.giaSP}<span>đ/kg</span></em>
                             <div class="gap-element" style="display:block; height:auto; padding-top:30px"></div>
                             <form>
-                                <input id="numsoluong" name="numsoluong" type="number" min="1" value="1"
-                                       style="width:50px">
-                                <a class="button buttonorange" style="vertical-align:middle"
-                                   onclick="this.href='/ShoppingCart?idSP=${sanPham.maSP}&action=order&quantity='+document.getElementById('numsoluong').value"><span>THÊM VÀO
+                                <div class="row">
+                                    <div class="col-4">
+                                        <input id="numsoluong" name="numsoluong" type="number" min="1" value="1"
+                                               style="width:50px;margin-top: 8px">
+                                    </div>
+                                    <div class="col-8">
+                                        <a class="button buttonorange" style="vertical-align:middle; width: 190px;"
+                                           onclick="this.href='/ShoppingCart?idSP=${sanPham.maSP}&action=order&quantity='+document.getElementById('numsoluong').value"><span>THÊM VÀO
                                             GIỎ </span></a>
+                                    </div>
+
+                                </div>
+
                             </form>
                         </div>
                         <hr>

@@ -283,7 +283,7 @@
                     <c:forEach var="sanPhams" items="${requestScope.sanPhamTom}">
                         <div class="gallery">
                             <a target="_blank" href="/CTSanPham?idSP=${sanPhams.maSP}">
-                                <img src="${sanPhams.urlHinhAnh}" alt="Ca Mat Quy">
+                                <img src="${sanPhams.urlHinhAnh}" alt="Ca Mat Quy" style="height: 100%">
                             </a>
                         </div>
                     </c:forEach>
@@ -308,7 +308,7 @@
                     <c:forEach var="sanPhamca" items="${requestScope.sanPhamCa}">
                         <div class="gallery">
                             <a target="_blank" href="/CTSanPham?idSP=${sanPhamca.maSP}">
-                                <img src="${sanPhamca.urlHinhAnh}" alt="Cinque Terre" width="300" height="200">
+                                <img src="${sanPhamca.urlHinhAnh}" alt="Cinque Terre" width="300" style="height: 60%">
                             </a>
                             <div class="desc">
                                 <p>${sanPhamca.tenSP}</p>
@@ -338,7 +338,7 @@
                     <c:forEach var="SanPhamtom" items="${requestScope.sanPhamTom}">
                         <div class="gallery">
                             <a target="_blank" href="/CTSanPham?idSP=${SanPhamtom.maSP}">
-                                <img src="${SanPhamtom.urlHinhAnh}" alt="Cinque Terre" width="300" height="200">
+                                <img src="${SanPhamtom.urlHinhAnh}" alt="Cinque Terre" width="300" style="height: 60%">
                             </a>
                             <div class="desc">
                                 <p>${SanPhamtom.tenSP}</p>
@@ -369,7 +369,7 @@
                         <div class="gallery">
                             <a target="_blank" href="/CTSanPham?idSP=${sanPhamcua.maSP}">
                                 <img src="${sanPhamcua.urlHinhAnh}" alt="Cinque Terre" width="300"
-                                     height="200">
+                                     style="height: 60%">
                             </a>
                             <div class="desc">
                                 <p>${sanPhamcua.tenSP}</p>
@@ -400,7 +400,7 @@
                         <div class="gallery">
                             <a target="_blank" href="/CTSanPham?idSP=${sanPhamMuc.maSP}">
                                 <img src="${sanPhamMuc.urlHinhAnh}" alt="Cinque Terre" width="300"
-                                     height="200">
+                                     style="height: 60%">
                             </a>
                             <div class="desc">
                                 <p>${sanPhamMuc.tenSP}</p>
@@ -431,7 +431,7 @@
                         <div class="gallery">
                             <a target="_blank" href="/CTSanPham?idSP=${sanPhamNgaosooc.maSP}">
                                 <img src="${sanPhamNgaosooc.urlHinhAnh}" alt="Cinque Terre" width="300"
-                                     height="200">
+                                     style="height: 60%">
                             </a>
                             <div class="desc">
                                 <p>${sanPhamNgaosooc.tenSP}</p>
@@ -461,7 +461,7 @@
                         <c:forEach var="baiViet" items="${requestScope.baiViets}">
                             <div class="card">
                                 <div class="card-body"><a href="">
-                                    <a href="/XemCTBaiViet?idBV=${baiViet.maBaiViet}"><img class="card-img-top" src="${baiViet.urlHinhAnh}" alt="Card image cap"> </a>
+                                    <a href="/XemCTBaiViet?idBV=${baiViet.maBaiViet}"><img class="card-img-top" src="${baiViet.urlHinhAnh}" style="height: 50%" alt="Card image cap"> </a>
                                     <h5 class="card-title">${baiViet.tieuDe}</h5>
                                 </a>
                                     <p class="card-text"> ${baiViet.noiDung}</p>

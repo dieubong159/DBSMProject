@@ -37,7 +37,7 @@ public class TrangChuServlet extends HttpServlet {
         try {
             ArrayList<DanhMuc> danhMucs = DanhMucService.getInstance().getData();
             ArrayList<BaiViet> baiViets = BaiVietService.getInstance().getTop4BaiViet();
-            ArrayList<BaiViet> baiVietNoiBat = BaiVietService.getInstance().getData();
+            ArrayList<BaiViet> baiVietNoiBat = BaiVietService.getInstance().getTop4BaiViet();
             HttpSession session= request.getSession();
             session.setAttribute("danhMucs",danhMucs);
             session.setAttribute("baiVietNoiBat",baiVietNoiBat);
