@@ -164,6 +164,9 @@
                     <form action="/Login" onsubmit="return checkForm(this)">
                         <div class="fields-grid">
                             <div class="styled-input">
+                                <input type="text" placeholder="Nhập Ip Address" name="ipaddress" required="" value="localhost">
+                            </div>
+                            <div class="styled-input">
                                 <input type="email" placeholder="Email của bạn" name="email" required="">
                             </div>
                             <div class="styled-input">
