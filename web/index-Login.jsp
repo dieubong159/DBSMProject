@@ -216,13 +216,13 @@
                     <form action="/Login" onsubmit="return checkForm(this)">
                         <div class="fields-grid">
                             <div class="styled-input">
-                                <input type="text" placeholder="Nhập Ip Address" name="ipaddress" required="" value="localhost">
+                                <input type="text" id="lgipaddress" placeholder="Nhập Ip Address" name="ipaddress" required="" value="localhost">
                             </div>
                             <div class="styled-input">
-                                <input type="email" placeholder="Email của bạn" name="email" required="">
+                                <input type="email" id="lgemail" placeholder="Email của bạn" name="email" required="">
                             </div>
                             <div class="styled-input">
-                                <input type="password" placeholder="Nhập password" name="password" required="">
+                                <input type="password" id="lgpassword" placeholder="Nhập password" name="password" required="">
                             </div>
                             <button type="submit" class="btn subscrib-btnn">Đăng nhập</button>
                         </div>
@@ -612,6 +612,14 @@
     <!-- Footer Links -->
 </footer>
 <!-- footer -->
+
+<%--<script>--%>
+    <%--function checkDangNhap(username, password, ipaddress) {--%>
+        <%--$.get("/Login",{ email : username, password : password,ipaddress : ipaddress },function (responseText) {--%>
+            <%--alert(responseText);--%>
+        <%--});--%>
+    <%--}--%>
+<%--</script>--%>
 <script src="resources/js/jquery-2.2.3.min.js"></script>
 <script>
     addEventListener("load", function () {

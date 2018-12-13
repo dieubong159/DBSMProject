@@ -28,10 +28,9 @@
     <img src="/resources/images/Water-Bubbles-Wallpaper.jpg" class="img-responsive" alt="">
 </div>
 <div class="container error-404">
-    <h1>400</h1>
-    <h2>You did something wrong. Maybe your input was incorrect!!!</h2>
+    <h1>SAI TÀI KHOẢN HOẶC MẬT KHẨU</h1>
     <p>
-        Please try to make sure that you type that right !!
+        Xin vui lòng kiểm tra và nhập lại cho chính xác !!
     </p>
     <p>
         <a href="/Index">
