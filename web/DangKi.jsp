@@ -93,9 +93,9 @@
                     <p>Đảm đang - Khéo léo<</p>
                   </li>
                   <li style="position:relative" class="toyscart toyscart2 cart cart box_1">
-                    <form action="#" method="post" class="last">
+                    <form action="" class="last">
                       <p style="display:inline-block"><strong><a href="/ShoppingCart?action=checkout">GIỎ HÀNG</a></strong></p>
-                      <button class="top_toys_cart" type="submit" name="submit" value="">
+                      <button class="top_toys_cart" type="submit" name="submit" onclick="window.location.href='/ShoppingCart?action=checkout'">
                         <span class="fas fa-cart-arrow-down"></span>
                       </button>
                     </form>
