@@ -51,7 +51,8 @@ public class QuenMatKhauServlet extends HttpServlet {
                             InternetAddress.parse(toEmail));
                     ((MimeMessage) message).setSubject("Mật khẩu mới cho website Tiêu Dân Seafood!","UTF-8");
                     ((MimeMessage) message).setText("Mật khẩu mới của bạn là " + newPassWord
-                            + "\n\n Không gửi mật khẩu này cho bất kỳ ai, Cảm ơn!","UTF-8");
+                            + "\n\nGiá trên đã bao gồm phí ship, khi nhận hàng quý khách không cần thanh toán thêm bất cứ chi phí nào\n" +
+                            "Đây là mail tự động, vui lòng không reply mail này!" + "\n\n Không gửi mật khẩu này cho bất kỳ ai, Cảm ơn!","UTF-8");
 
                     Transport.send(message);
                     NguoiDung nguoiDung = new NguoiDung();
