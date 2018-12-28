@@ -25,7 +25,7 @@ public class DangKyThanhVienServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         NguoiDung nguoiDung= new NguoiDung();
         nguoiDung.setHoTen(request.getParameter("txt-ten"));
-        nguoiDung.setGioiTinh(request.getParameter("txt-gioi-tinh") =="1");
+        nguoiDung.setGioiTinh(request.getParameter("txt-gioi-tinh").trim().equals("1"));
         nguoiDung.setEmail(request.getParameter("txt-email"));
         nguoiDung.setSdt(request.getParameter("txt-dien-thoai"));
         nguoiDung.setDiaChi(request.getParameter("txt-dia-chi"));

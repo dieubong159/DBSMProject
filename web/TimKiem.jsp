@@ -4,7 +4,7 @@
 <html lang="vi">
 
 <head>
-    <title>Cá - Tiêu Dân Seafood</title>
+    <title>${maDanhMuc} - Tiêu Dân Seafood</title>
     <!--meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -213,15 +213,15 @@
 <ul class="breadcrumb">
     <div class="container">
         <li><a href="/Index">Trang chủ</a></li>
-        <li>KẾT QUẢ TÌM KIẾM CHO TỪ KHÓA "${keyword}"</li>
-        <div class="pull-right">
-            <label>Sắp xếp theo </label>
-            <select>
-                <option value="price-ascending">Giá tăng dần</option>
-                <option value="price-descending">Giá giảm dần</option>
-                <option value="created-descending">Mới nhất</option>
-            </select>
-        </div>
+        <li>${maDanhMuc}</li>
+        <%--<div class="pull-right">--%>
+            <%--<label>Sắp xếp theo </label>--%>
+            <%--<select id="sorting-list" name="sorting-list" onchange="location.href='/Products?action=sorting&type='+document.getElementById('sorting-list').value">--%>
+                <%--<option value="price-ascending">Giá tăng dần</option>--%>
+                <%--<option value="price-descending">Giá giảm dần</option>--%>
+                <%--<option value="created-descending">Mới nhất</option>--%>
+            <%--</select>--%>
+        <%--</div>--%>
     </div>
 </ul>
 
@@ -268,12 +268,16 @@
                 </div>
                 <!-- Price range -->
                 <div class="gap-element" style="display:block; height:auto; padding-top:30px"></div>
-                <div class="slidecontainer">
-                    <h3 class="agileits-sear-head">LỌC GIÁ SẢN PHẨM</h3>
-                    <input oninput="run()" type="range" min="1" max="${giaCaoNhat}" value="50" class="slider" id="myRange">
-                    <p>Value: <input id="demo" value="" readonly style="border: none;background-color: #F9F9F9;"></p>
-                </div>
-
+                <c:if test="${requestScope.action == 'checkout'}">
+                    <div class="slidecontainer">
+                        <form>
+                            <h3 class="agileits-sear-head">LỌC GIÁ SẢN PHẨM</h3>
+                            <input oninput="run()" type="range" min="1" max="${giaCaoNhat}" value="50" class="slider" id="myRange">
+                            <p>Value: <input id="demo" value="0" readonly style="border: none;background-color: #F9F9F9;"></p>
+                            <a onclick="location.href='/Products?action=filter&max='+document.getElementById('myRange').value"><button type="button" class="btn-danger">LỌC</button></a>
+                        </form>
+                    </div>
+                </c:if>
                 <!-- Price range -->
                 <!-- Bai Viet Noi Bat -->
                 <div class="gap-element" style="display:block; height:auto; padding-top:30px"></div>
@@ -297,8 +301,8 @@
                     <c:forEach var="sanPhams" items="${requestScope.sanPhams}">
                         <div class="col-lg-20 col-md-4 col-sm-4 col-xs-6">
                             <div class="product-item">
-                                <div class="image" style="height:auto">
-                                    <a href=/CTSanPham?idSP=${sanPhams.maSP}> <img src="${sanPhams.urlHinhAnh}"></a></div>
+                                <div class="image" style="height:280px">
+                                    <a href=/CTSanPham?idSP=${sanPhams.maSP}> <img src="${sanPhams.urlHinhAnh}" style="height: 100%"></a></div>
                                 <div class="name">
                                     <a href="/CTSanPham?idSP=${sanPhams.maSP}">${sanPhams.tenSP}</a>
                                 </div>
@@ -308,10 +312,15 @@
                                         <span class="variant_title">/kg</span>
                                     </em>
                                 </div>
-                                <div class="addcart">
-                                    <a class="addtocart" href="/ShoppingCart?idSP=${sanPhams.maSP}&action=order">
-                                        THÊM VÀO GIỎ
-                                    </a>
+                                <div class="row">
+                                        <%--<a class="addtocart" href="/ShoppingCart?idSP=${sanPhams.maSP}&action=order">--%>
+                                        <%--THÊM VÀO GIỎ--%>
+                                        <%--</a>--%>
+                                    <div class="col-7" style="margin-top:20px; margin-left: 60px">
+                                        <a class="addtocart" href="/ShoppingCart?idSP=${sanPhams.maSP}&action=order">
+                                            THÊM VÀO GIỎ
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -338,8 +347,6 @@
         </div>
     </div>
 </main>
-
-
 <!-- footer -->
 <div class="gap-element" style="display:block; height:auto; padding-top:15px"></div>
 <footer class="page-footer font-small mdb-color pt-4">
@@ -474,24 +481,12 @@
 <script src="resources/js/woocommerce.js"></script>
 <script src="resources/js/minicart.js"></script>
 <script src="resources/js/jquery-3.3.1.min.js"></script>
+<script src="resources/js/jquery-2.2.3.min.js"></script>
 <script src="resources/js/jquery-ui.js"></script>
 <script type="text/javascript" src="resources/js/widget.js"></script>
 <!--bootstrap working-->
 <script src="resources/js/bootstrap.min.js"></script>
 <!-- //bootstrap working-->
-<script>
-    toys.render();
-
-    toys.cart.on('toys_checkout', function (evt) {
-        var items, len, i;
-
-        if (this.subtotal() > 0) {
-            items = this.items();
-
-            for (i = 0, len = items.length; i < len; i++) { }
-        }
-    });
-</script>
 <!-- //cart-js -->
 <!-- start-smoth-scrolling -->
 <script src="resources/js/move-top.js"></script>

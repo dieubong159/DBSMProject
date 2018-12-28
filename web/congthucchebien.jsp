@@ -291,10 +291,10 @@
                     </div>
                     <div class="clearfix"></div>
                     <ul class="pager">
-                        <li class="previous"><a href="!#" title="">←
+                        <li class="previous"><a href="/XemCTBaiViet?idBV=${randomBaiViet}" title="">←
                             </a></li>
 
-                        <li class="next"><a href="!#"
+                        <li class="next"><a href="/XemCTBaiViet?idBV=${randomBaiViet}"
                                 title=""> →</a></li>
                     </ul>
                     <!-- </div> -->
@@ -333,7 +333,7 @@
                         <a href="/GioiThieu">Giới thiệu</a>
                     </p>
                     <p>
-                        <a href="LienHe.jsp">Liên hệ</a>
+                        <a href="/LienHe">Liên hệ</a>
                     </p>
                     <p>
                         <a href="/DSBaiViet">Món ngon</a>

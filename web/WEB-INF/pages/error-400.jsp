@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Lỗi - Page not found</title>
+    <title>Lỗi</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
@@ -28,10 +28,9 @@
     <img src="/resources/images/Water-Bubbles-Wallpaper.jpg" class="img-responsive" alt="">
 </div>
 <div class="container error-404">
-    <h1>400</h1>
-    <h2>You did something wrong. Maybe your input was incorrect!!!</h2>
+    <h2>Sai tên tài khoản hoặc mật khẩu!!!</h2>
     <p>
-        Please try to make sure that you type that right !!
+        Vui lòng đăng nhập lại !!
     </p>
     <p>
         <a href="/Index">
