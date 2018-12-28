@@ -1,23 +1,31 @@
 package banhaisan.controllers.KiemTraDangNhap;
 
+import banhaisan.models.datahandle.BaiVietService;
 import banhaisan.models.datahandle.DangNhapService;
-import banhaisan.models.datamodels.DangNhap_KetNoi;
-import banhaisan.models.datamodels.NguoiDung;
+import banhaisan.models.datahandle.DanhMucService;
+import banhaisan.models.datahandle.SanPhamService;
+import banhaisan.models.datamodels.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 @WebServlet(name = "DangNhapServlet", urlPatterns = "/Login")
 public class DangNhapServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String backrefresh = request.getHeader("referer");
+        response.setContentType("text/html;charset=utf-8");  // Set content type of the response so that jQuery knows what it can expect.
+        response.setCharacterEncoding("UTF-8"); // You want world domination, huh?
         try {
             DangNhap_KetNoi user = new DangNhap_KetNoi();
             user.setEmail(request.getParameter("email"));
@@ -54,7 +62,7 @@ public class DangNhapServlet extends HttpServlet {
         {
             e.printStackTrace();
             response.sendError(500);
-            return;
+           // return;
         }
     }
 }
