@@ -44,7 +44,6 @@ public class DangNhapService extends ConnectDatabase {
     public void LoginDB (String email,String password, String ipaddress) throws SQLException, ClassNotFoundException {
         serverName = email;
         passWord = password;
-        IP = ipaddress;
         openConnection();
         closeConnection();
     }

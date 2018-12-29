@@ -7,7 +7,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public abstract class ConnectDatabase {
-    protected static String IP="localhost";
     protected static String serverName="sa";
     protected static String passWord="12345";
 
@@ -16,7 +15,7 @@ public abstract class ConnectDatabase {
     protected Connection connection = null;
 
     public void openConnection() throws SQLException, ClassNotFoundException {
-            String connectionString = "jdbc:sqlserver://"+IP+":1433;database=WebHaiSanTuoiSong;username="+serverName+";password="+passWord;
+            String connectionString = "jdbc:sqlserver://buon-ban-hai-san.database.windows.net:1433;database=HaiSanTuoiSong;user=dieutan1998@buon-ban-hai-san;password=Dieu123456;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(connectionString);
     }

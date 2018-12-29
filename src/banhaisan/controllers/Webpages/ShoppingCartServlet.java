@@ -4,6 +4,7 @@ import banhaisan.models.datahandle.SanPhamService;
 import banhaisan.models.datamodels.SanPham;
 import banhaisan.models.datamodels.SanPham_GioHang;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,7 +24,11 @@ public class ShoppingCartServlet extends HttpServlet {
         String ghiChu = request.getParameter("note");
         HttpSession session = request.getSession();
         session.setAttribute("deliverynote",ghiChu);
+//        ThanhToanServlet thanhToanServlet = new ThanhToanServlet();
+//        thanhToanServlet.doGet(request,response);
         response.sendRedirect("/ThanhToanDonHang");
+//        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Thanhtoandonhang.jsp");
+//        dispatcher.forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

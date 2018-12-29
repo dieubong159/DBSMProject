@@ -165,6 +165,7 @@ public class DonHangService extends ConnectDatabase implements Business<DonHang>
             sanPham.setTenSP(resultSet.getString(3));
             sanPham.setSoLuong(Integer.parseInt(resultSet.getString(4)));
             sanPham.setGia(Double.parseDouble(resultSet.getString(5)));
+            sanPham.setUrlHinhAnh(HinhAnhService.getInstance().LayMotHinhAnhSanPham(sanPham.getMaSP()).getUrl());
 
             sanPhams.add(sanPham);
         }

@@ -40,10 +40,11 @@ public class HoaDonServlet extends HttpServlet {
         try {
             DonHang donHang = DonHangService.getInstance().getDonHangMoiNhat();
             ArrayList<DonHang_SanPham> sanphams = DonHangService.getInstance().getDSDonHang(donHang.getMaDonHang());
+
             NguoiDung nguoiDung = NguoiDungThongThuongService.getInstance().get(donHang.getMaNguoiDung());
 
             session.setAttribute("donHang",donHang);
-            session.setAttribute("sanPhams",sanphams);
+            session.setAttribute("sanPhamshd",sanphams);
             session.setAttribute("nguoiDung",nguoiDung);
         }catch (SQLException | ClassNotFoundException e)
         {

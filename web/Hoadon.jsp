@@ -173,7 +173,7 @@
                     <th>Tổng cộng</th>
                 </tr>
                 <c:set var="tong" value="0"> </c:set>
-                <c:forEach var="sanPhams" items="${requestScope.sanPhams}">
+                <c:forEach var="sanPhams" items="${sessionScope.sanPhamshd}">
                     <c:set var="tong" value="${tong + sanPhams.gia}"></c:set>
                 <tr>
                     <td><img src="${sanPhams.urlHinhAnh}" width="70px" height="70px"></td>

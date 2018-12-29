@@ -9,6 +9,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--//meta tags ends here-->
+    <link rel="shortcut icon" href="/resources/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/resources/images/favicon.ico" type="image/x-icon">
     <!--booststrap-->
     <link href="resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
     <!-- <script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->

@@ -53,8 +53,8 @@ public class ThanhToanServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        String idNguoiDung = session.getAttribute("idcurrentSession").toString();
         if (session.getAttribute("idcurrentSession") != null) {
+            String idNguoiDung = session.getAttribute("idcurrentSession").toString();
             NguoiDung nd = null;
             try {
                 nd = NguoiDungThongThuongService.getInstance().get(idNguoiDung);
@@ -66,10 +66,10 @@ public class ThanhToanServlet extends HttpServlet {
                 return;
             }
             request.setAttribute("nguoiDung", nd);
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Thanhtoandonhang.jsp");
+            dispatcher.forward(request,response);
         }else {
             response.sendRedirect("/ShoppingCart?action=checkout");
         }
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Thanhtoandonhang.jsp");
-        dispatcher.forward(request,response);
     }
 }
