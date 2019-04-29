@@ -2,12 +2,10 @@ package banhaisan.models.datahandle;
 
 import banhaisan.models.datahandle.ConnectDatabase;
 import banhaisan.models.datamodels.DangNhap_KetNoi;
-import banhaisan.models.datamodels.NguoiDung;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class DangNhapService extends ConnectDatabase {
     private static final DangNhapService instance = new DangNhapService();

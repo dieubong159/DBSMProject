@@ -3,7 +3,6 @@ package banhaisan.models.datahandle;
 
 
 import banhaisan.models.datamodels.BaiViet;
-import banhaisan.models.datamodels.HinhAnh;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;

@@ -2,7 +2,6 @@ package banhaisan.models.datahandle;
 
 import banhaisan.models.datamodels.DonHang;
 import banhaisan.models.datamodels.DonHang_SanPham;
-import banhaisan.models.datamodels.NguoiDung;
 import banhaisan.models.datamodels.SanPham_GioHang;
 
 import java.sql.PreparedStatement;

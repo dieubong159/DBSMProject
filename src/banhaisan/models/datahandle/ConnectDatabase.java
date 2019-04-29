@@ -8,14 +8,14 @@ import java.sql.SQLException;
 
 public abstract class ConnectDatabase {
     protected static String serverName="sa";
-    protected static String passWord="12345";
+    protected static String passWord="123456789";
 
 
 
     protected Connection connection = null;
 
     public void openConnection() throws SQLException, ClassNotFoundException {
-            String connectionString = "jdbc:sqlserver://buon-ban-hai-san.database.windows.net:1433;database=HaiSanTuoiSong;user=dieutan1998@buon-ban-hai-san;password=Dieu123456;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
+            String connectionString = "jdbc:sqlserver://buonbanhaisan-webapp.clpluyptqi3c.us-east-1.rds.amazonaws.com:1433;databaseName=WebHaiSanTuoiSong-Restore;user=sa;password=123456789;useUnicode=true;characterEncoding=UTF-8";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(connectionString);
     }
