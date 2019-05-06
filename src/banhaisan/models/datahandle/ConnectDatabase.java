@@ -15,7 +15,7 @@ public abstract class ConnectDatabase {
     protected Connection connection = null;
 
     public void openConnection() throws SQLException, ClassNotFoundException {
-            String connectionString = "jdbc:sqlserver://buonbanhaisan-webapp.clpluyptqi3c.us-east-1.rds.amazonaws.com:1433;databaseName=WebHaiSanTuoiSong-Restore;user=sa;password=123456789;useUnicode=true;characterEncoding=UTF-8";
+            String connectionString = "jdbc:sqlserver://den1.mssql8.gear.host:1433;databaseName=haisantuoisong;user=haisantuoisong;password=dieu.0291ute;useUnicode=true;characterEncoding=UTF-8";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(connectionString);
     }
