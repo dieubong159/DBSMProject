@@ -134,7 +134,7 @@ public class SanPhamService extends ConnectDatabase implements Business<SanPham>
             sanPham.setMaSP(resultSet.getString(1));
             sanPham.setTenSP(resultSet.getString(2));
             sanPham.setGiaSP(Double.parseDouble(resultSet.getString(3)));
-            sanPham.setUrlHinhAnh(HinhAnhService.getInstance().LayMotHinhAnhSanPham(sanPham.getMaSP()).getUrl());
+            sanPham.setUrlHinhAnh(resultSet.getString(4));
 
             sanPhams.add(sanPham);
         }
