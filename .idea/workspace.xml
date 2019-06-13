@@ -10,13 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eb522ea5-aa6e-47a4-aa25-f8e9350f2112" name="Default Changelist" comment="Dieu">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/DBSM_war_exploded/WEB-INF/classes/banhaisan/models/datahandle/BaiVietService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/DBSM_war_exploded/WEB-INF/classes/banhaisan/models/datahandle/BaiVietService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/DBSM_war_exploded/WEB-INF/classes/banhaisan/models/datahandle/SanPhamService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/DBSM_war_exploded/WEB-INF/classes/banhaisan/models/datahandle/SanPhamService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DBSM/banhaisan/models/datahandle/BaiVietService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DBSM/banhaisan/models/datahandle/BaiVietService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DBSM/banhaisan/models/datahandle/SanPhamService.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DBSM/banhaisan/models/datahandle/SanPhamService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/banhaisan/models/datahandle/BaiVietService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/banhaisan/models/datahandle/BaiVietService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/banhaisan/models/datahandle/SanPhamService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/banhaisan/models/datahandle/SanPhamService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/DBSM_war_exploded/WEB-INF/classes/banhaisan/controllers/Webpages/TimKiemServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/DBSM_war_exploded/WEB-INF/classes/banhaisan/controllers/Webpages/TimKiemServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/DBSM_war_exploded/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/DBSM_war_exploded/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DBSM/banhaisan/controllers/Webpages/TimKiemServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DBSM/banhaisan/controllers/Webpages/TimKiemServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/banhaisan/controllers/Webpages/TimKiemServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/banhaisan/controllers/Webpages/TimKiemServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/banhaisan/controllers/dangkythanhvien/DangKyThanhVienServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/banhaisan/controllers/dangkythanhvien/DangKyThanhVienServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,33 +29,82 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/banhaisan/controllers/Webpages/TrangChuServlet.java">
+        <entry file="file://$PROJECT_DIR$/src/banhaisan/models/datahandle/SanPhamService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="50">
-              <caret line="39" column="76" lean-forward="true" selection-start-line="39" selection-start-column="76" selection-end-line="39" selection-end-column="76" />
+            <state relative-caret-position="2667">
+              <caret line="136" column="55" selection-start-line="136" selection-start-column="55" selection-end-line="136" selection-end-column="55" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DBSM.iml">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/src/banhaisan/controllers/Webpages/TimKiemServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="462">
+              <caret line="35" selection-start-line="35" selection-end-line="35" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/banhaisan/models/datahandle/HinhAnhService.java">
+        <entry file="file://$PROJECT_DIR$/web/index-Login.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
-              <caret line="123" column="37" lean-forward="true" selection-start-line="123" selection-start-column="37" selection-end-line="123" selection-end-column="37" />
+            <state relative-caret-position="1764">
+              <caret line="84" column="140" selection-start-line="84" selection-start-column="134" selection-end-line="84" selection-end-column="140" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="640">
+              <caret line="40" selection-start-line="40" selection-end-line="40" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/banhaisan/models/datahandle/SanPhamService.java">
+        <entry file="file://$PROJECT_DIR$/src/banhaisan/controllers/dangkythanhvien/DangKyThanhVienServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="136" column="55" selection-start-line="136" selection-start-column="55" selection-end-line="136" selection-end-column="55" />
+            <state relative-caret-position="126">
+              <caret line="30" column="56" selection-start-line="30" selection-start-column="56" selection-end-line="30" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/ChiTietSP.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6699">
+              <caret line="319" column="166" selection-start-line="319" selection-start-column="166" selection-end-line="319" selection-end-column="166" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/banhaisan/controllers/Webpages/ShoppingCartServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="609">
+              <caret line="43" selection-start-line="43" selection-end-line="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/Profile_Password.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3696">
+              <caret line="176" column="116" selection-start-line="176" selection-start-column="116" selection-end-line="176" selection-end-column="116" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/DangKi.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3339">
+              <caret line="159" column="51" selection-start-line="159" selection-start-column="51" selection-end-line="159" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -64,6 +114,9 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>#</find>
+      <find>alert</find>
+      <find>num</find>
+      <find>search</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -84,6 +137,10 @@
         <option value="$PROJECT_DIR$/src/banhaisan/controllers/Webpages/TrangChuServlet.java" />
         <option value="$PROJECT_DIR$/src/banhaisan/models/datahandle/BaiVietService.java" />
         <option value="$PROJECT_DIR$/src/banhaisan/models/datahandle/SanPhamService.java" />
+        <option value="$PROJECT_DIR$/src/banhaisan/controllers/Webpages/TimKiemServlet.java" />
+        <option value="$PROJECT_DIR$/web/ChiTietSP.jsp" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/banhaisan/controllers/dangkythanhvien/DangKyThanhVienServlet.java" />
       </list>
     </option>
   </component>
@@ -126,6 +183,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -133,18 +191,64 @@
               <item name="DBSMProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="DBSMProject" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="DBSMProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DBSMProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DBSMProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DBSMProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="banhaisan" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DBSMProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DBSMProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="banhaisan" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DBSMProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DBSMProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="banhaisan" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="dangkythanhvien" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DBSMProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DBSMProject" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DBSMProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DBSMProject" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="Admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DBSMProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DBSMProject" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DBSMProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557458693239" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560357842747" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -289,6 +393,10 @@
       <workItem from="1557658766893" duration="1093000" />
       <workItem from="1557750968114" duration="5997000" />
       <workItem from="1557764791384" duration="2015000" />
+      <workItem from="1560157759589" duration="14249000" />
+      <workItem from="1560187255336" duration="478000" />
+      <workItem from="1560349983791" duration="3917000" />
+      <workItem from="1560412606659" duration="4693000" />
     </task>
     <task id="LOCAL-00001" summary="Dieu">
       <created>1543249520598</created>
@@ -301,12 +409,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30442000" />
+    <option name="totallyTimeSpent" value="53779000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20953101" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22163388" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -316,8 +425,8 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32861635" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.4606918" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39937106" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.2562893" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39937106" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -333,7 +442,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Maven Projects" order="5" weight="0.32980332" />
+      <window_info anchor="right" id="Maven Projects" order="5" visible="true" weight="0.21482602" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
@@ -359,13 +468,45 @@
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/banhaisan/controllers/Webpages/TrangChuServlet.java</url>
-          <line>32</line>
+          <url>file://$PROJECT_DIR$/src/banhaisan/controllers/Webpages/ShoppingCartServlet.java</url>
+          <line>43</line>
           <properties />
-          <option name="timeStamp" value="3" />
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/banhaisan/controllers/Webpages/TimKiemServlet.java</url>
+          <line>31</line>
+          <properties />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/banhaisan/controllers/Webpages/TimKiemServlet.java</url>
+          <line>34</line>
+          <properties />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/banhaisan/controllers/dangkythanhvien/DangKyThanhVienServlet.java</url>
+          <line>30</line>
+          <properties />
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
+        <watch expression="soluong" language="JAVA" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="watch">
+      <expression>
+        <expression-string>soluong</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/banhaisan/controllers/TrangChu/TrangChuServlet.java" />
@@ -393,27 +534,10 @@
     <entry file="file://$PROJECT_DIR$/src/banhaisan/controllers/nguoidungthongthuong/ThemNguoiDungThongThuongServlet.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/banhaisan/controllers/dangkythanhvien/DangKyThanhVienServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-462">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/banhaisan/controllers/KiemTraDangNhap/DangNhapServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="550">
           <caret line="53" column="59" selection-start-line="53" selection-start-column="59" selection-end-line="53" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/Profile_Password.jsp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/DangKi.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1365">
-          <caret line="65" column="26" lean-forward="true" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -487,12 +611,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/config.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="jar://$PROJECT_DIR$/web/WEB-INF/lib/mssql-jdbc-7.0.0.jre8.jar!/com/microsoft/sqlserver/jdbc/SQLServerConnection.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -504,20 +622,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-168">
           <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-          <folding>
-            <element signature="e#156#157#0" expanded="true" />
-            <element signature="e#188#189#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DBSM.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/banhaisan/controllers/Webpages/TrangChuServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="39" column="76" lean-forward="true" selection-start-line="39" selection-start-column="76" selection-end-line="39" selection-end-column="76" />
         </state>
       </provider>
     </entry>
@@ -525,24 +629,103 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="90" column="52" selection-start-line="90" selection-start-column="52" selection-end-line="90" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DBSM.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/banhaisan/models/datahandle/HinhAnhService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2415">
+          <caret line="123" column="37" selection-start-line="123" selection-start-column="37" selection-end-line="123" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/banhaisan/controllers/Webpages/TrangChuServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
           <folding>
-            <element signature="e#484#485#0" expanded="true" />
-            <element signature="e#515#516#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/banhaisan/models/datahandle/HinhAnhService.java">
+    <entry file="jar://C:/Program Files (x86)/Java/apache-tomcat-9.0.12/lib/servlet-api.jar!/javax/servlet/Filter.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="123" column="37" lean-forward="true" selection-start-line="123" selection-start-column="37" selection-end-line="123" selection-end-column="37" />
+        <state relative-caret-position="315">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="192" column="35" lean-forward="true" selection-start-line="192" selection-start-column="35" selection-end-line="192" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/banhaisan/models/datahandle/SanPhamService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
+        <state relative-caret-position="2667">
           <caret line="136" column="55" selection-start-line="136" selection-start-column="55" selection-end-line="136" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/banhaisan/controllers/Webpages/TimKiemServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index-Login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1764">
+          <caret line="84" column="140" selection-start-line="84" selection-start-column="134" selection-end-line="84" selection-end-column="140" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/ChiTietSP.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6699">
+          <caret line="319" column="166" selection-start-line="319" selection-start-column="166" selection-end-line="319" selection-end-column="166" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/banhaisan/controllers/Webpages/ShoppingCartServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="609">
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/Profile_Password.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3696">
+          <caret line="176" column="116" selection-start-line="176" selection-start-column="116" selection-end-line="176" selection-end-column="116" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/DangKi.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3339">
+          <caret line="159" column="51" selection-start-line="159" selection-start-column="51" selection-end-line="159" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="640">
+          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/banhaisan/controllers/dangkythanhvien/DangKyThanhVienServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="30" column="56" selection-start-line="30" selection-start-column="56" selection-end-line="30" selection-end-column="56" />
         </state>
       </provider>
     </entry>

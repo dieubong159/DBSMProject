@@ -39,4 +39,14 @@
         <url-pattern>/libraries/ckfinder/core/connector/java/connector.java</url-pattern>
     </servlet-mapping>
 
+    <!-- Turn off JSESSIONID -->
+    <session-config>
+        <cookie-config>
+            <http-only>true</http-only>
+            <secure>true</secure>
+        </cookie-config>
+        <!-- Disables URL-based sessions (no more 'jsessionid' in the URL using Tomcat) -->
+        <tracking-mode>COOKIE</tracking-mode>
+    </session-config>
+
 </web-app>

@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @WebServlet(name = "TimKiemServlet",urlPatterns = {"/TimKiem"})
 public class TimKiemServlet extends HttpServlet {
@@ -27,6 +29,9 @@ public class TimKiemServlet extends HttpServlet {
             return;
         }
         try {
+//            Pattern ptn = Pattern.compile("/[^a-z0-9\\s]/gi");
+//            Matcher matcher = ptn.matcher(keyword);
+//            keyword = matcher.replaceAll("");
             ArrayList<SanPham> sanPhams = SanPhamService.getInstance().timkiemSanPham(keyword);
             request.setAttribute("sanPhams",sanPhams);
             request.setAttribute("keyword",keyword);

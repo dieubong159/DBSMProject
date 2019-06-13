@@ -11,35 +11,59 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.xml.bind.ValidationException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.regex.Pattern;
 
 @WebServlet(name = "DangKyThanhVienServlet", urlPatterns = {"/DangKyThanhVien"})
 public class DangKyThanhVienServlet extends HttpServlet {
+
+    private static final Pattern inputPattern = Pattern.compile("[^A-Za-z0-9]+");
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=UTF-8");
-        NguoiDung nguoiDung= new NguoiDung();
-        nguoiDung.setHoTen(request.getParameter("txt-ten"));
-        nguoiDung.setGioiTinh(request.getParameter("txt-gioi-tinh").trim().equals("1"));
-        nguoiDung.setEmail(request.getParameter("txt-email"));
-        nguoiDung.setSdt(request.getParameter("txt-dien-thoai"));
-        nguoiDung.setDiaChi(request.getParameter("txt-dia-chi"));
-        java.util.Date ngaySinh = null;
-        if (request.getParameter("dt-ngay-sinh") != null) {
-            try {
-                ngaySinh = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dt-ngay-sinh"));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-        }
-        nguoiDung.setNgaySinh(new java.sql.Date(ngaySinh.getTime()));
-        nguoiDung.setMatKhau(request.getParameter("txt-mat-khau"));
+        String hoten, email, dienthoai, diachi, matkhau;
+        hoten = request.getParameter("txt-ten");
+        email = request.getParameter("txt-email");
+        dienthoai = request.getParameter("txt-dien-thoai");
+        diachi = request.getParameter("txt-dia-chi");
+        matkhau = request.getParameter("txt-mat-khau");
 
+        NguoiDung nguoiDung = new NguoiDung();
+        try {
+            if(!inputPattern.matcher(hoten).matches() ||
+                    !inputPattern.matcher(email).matches()||
+                    !inputPattern.matcher(dienthoai).matches()||
+                    !inputPattern.matcher(diachi).matches()||
+                    !inputPattern.matcher(matkhau).matches()){
+                throw new ValidationException("Wrong formats");
+            }
+            nguoiDung.setHoTen(hoten);
+            nguoiDung.setGioiTinh(request.getParameter("txt-gioi-tinh").trim().equals("1"));
+            nguoiDung.setEmail(email);
+            nguoiDung.setSdt(dienthoai);
+            nguoiDung.setDiaChi(diachi);
+            java.util.Date ngaySinh = null;
+            if (request.getParameter("dt-ngay-sinh") != null) {
+                try {
+                    ngaySinh = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dt-ngay-sinh"));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+            nguoiDung.setNgaySinh(new java.sql.Date(ngaySinh.getTime()));
+            nguoiDung.setMatKhau(matkhau);
+        }catch (Exception e){
+            HttpSession error = request.getSession();
+            error.setAttribute("error", e.toString());
+            e.printStackTrace();
+        }
         NguoiDung nd=null;
         try {
             NguoiDungThongThuongService.getInstance().add(nguoiDung);
