@@ -23,7 +23,7 @@ import java.util.regex.Pattern;
 @WebServlet(name = "DangKyThanhVienServlet", urlPatterns = {"/DangKyThanhVien"})
 public class DangKyThanhVienServlet extends HttpServlet {
 
-    private static final Pattern inputPattern = Pattern.compile("[^A-Za-z0-9]+");
+    private static final Pattern inputPattern = Pattern.compile("^[a-zA-Z0-9_.-]*$");
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");

@@ -17,6 +17,8 @@ import java.util.regex.Pattern;
 
 @WebServlet(name = "TimKiemServlet",urlPatterns = {"/TimKiem"})
 public class TimKiemServlet extends HttpServlet {
+
+    private static final Pattern inputPattern = Pattern.compile("^[a-zA-Z0-9_.-]*$");
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -29,9 +31,9 @@ public class TimKiemServlet extends HttpServlet {
             return;
         }
         try {
-//            Pattern ptn = Pattern.compile("/[^a-z0-9\\s]/gi");
-//            Matcher matcher = ptn.matcher(keyword);
-//            keyword = matcher.replaceAll("");
+            if(!inputPattern.matcher(keyword).matches()){
+                keyword = "nọthing";
+            }
             ArrayList<SanPham> sanPhams = SanPhamService.getInstance().timkiemSanPham(keyword);
             request.setAttribute("sanPhams",sanPhams);
             request.setAttribute("keyword",keyword);
